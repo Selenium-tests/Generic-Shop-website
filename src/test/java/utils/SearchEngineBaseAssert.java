@@ -5,7 +5,6 @@ import pages.components.ResultsPage;
 import pages.components.SearchEngine;
 
 public interface SearchEngineBaseAssert {
-
-    public void perform(String phrase, ResultsPage resultsPage, SoftAssert softAssert);
+    void perform(String phrase, ResultsPage resultsPage, SoftAssert softAssert);
 }
 
