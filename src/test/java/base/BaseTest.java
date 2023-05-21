@@ -2,7 +2,10 @@ package base;
 
 import driver.Browser;
 import driver.DriverType;
+import listener.MyEventListener;
+import listener.ScreenshotCaptorListener;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.asserts.SoftAssert;
@@ -23,6 +26,8 @@ public class BaseTest {
         driver.navigate().to("http://skleptest.pl/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        driver = new EventFiringDecorator(new MyEventListener(),
+                                          new ScreenshotCaptorListener(driver)).decorate(driver);
 
         softAssert = new SoftAssert();
     }
