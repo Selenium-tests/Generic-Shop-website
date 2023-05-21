@@ -5,24 +5,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends BasePage {
-
-    //private int elementWait = 80;
-    //private String pageTitle = "Cart title";
-    //private int totalAmount;
-
-    //private List<String> productsInCart = new ArrayList<>();
-    //private List<String> prices = new ArrayList<>();
 
     public CartPage(WebDriver driver) {
 
         super(driver);
     }
+
+    @FindBy(className = "woocommerce")
+    protected WebElement woocommerce;
 
     @FindBy(xpath = "//td[@data-title='Product']")
     protected List<WebElement> products;
@@ -39,10 +32,15 @@ public class CartPage extends BasePage {
     @FindBy(xpath = "//input[@type='number']")
     protected List<WebElement> quantity;
 
+    public void checkIfTableExists() {
+
+        woocommerce.findElement(By.xpath("//table[@class='shop_table shop_table_responsive cart woocommerce-cart-form__contents']"));
+    }
     public boolean cartIsNotEmpty() {
 
         return !(products.isEmpty());
     }
+
     public String getProductName(int index) {
 
         return products.get(index).getText();
