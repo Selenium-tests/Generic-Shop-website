@@ -22,9 +22,9 @@ public class AddToCartTest extends BaseTest {
 
             productThumbnail.setProduct(i);
             productThumbnail.clickAddToCart(i);
-
             header.clickCartButton();
 
+            cartPage.checkIfTableExists();
             getSoftAssert().assertEquals(productThumbnail.getName(), cartPage.getProductName(i));
 
             back();
@@ -47,12 +47,8 @@ public class AddToCartTest extends BaseTest {
             productPage.clickAddToCart();
             header.clickCartButton();
 
-            getSoftAssert().assertTrue(cartPage.cartIsNotEmpty());
-
-            if (cartPage.cartIsNotEmpty()) {
-
-                getSoftAssert().assertEquals(productThumbnail.getName(), cartPage.getProductName(i));
-            }
+            cartPage.checkIfTableExists();
+            getSoftAssert().assertEquals(productThumbnail.getName(), cartPage.getProductName(i));
 
             header.clickLogo();
         }
