@@ -2,7 +2,6 @@ package utils;
 
 import org.testng.asserts.SoftAssert;
 import pages.components.ResultsPage;
-import pages.components.SearchEngine;
 
 public class SearchEngineAssertFalse implements SearchEngineBaseAssert {
 
