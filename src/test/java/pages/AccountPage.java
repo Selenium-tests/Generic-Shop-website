@@ -4,13 +4,20 @@ import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.components.AddressForm;
+
+import java.awt.*;
 
 
 public class AccountPage extends BasePage {
 
-    AccountPage(WebDriver driver) {
+    private final AddressForm addressForm;
+
+    public AccountPage(WebDriver driver) throws AWTException {
 
         super(driver);
+
+        addressForm = new AddressForm(driver);
     }
 
     @FindBy(linkText = "Orders")
@@ -36,23 +43,33 @@ public class AccountPage extends BasePage {
         orders.click();
     }
 
-    void clickDownloads() {
+    public void clickDownloads() {
 
         downloads.click();
     }
 
-    void clickDashboard() {
+    public void clickDashboard() {
 
         dashboard.click();
     }
 
-    void clickAccountDetails() {
+    public void clickAccountDetails() {
 
         accountDetails.click();
     }
 
-    void clickAddresses() {
+    public void clickAddresses() {
 
         addresses.click();
+    }
+
+    public void clickBillingAddressEditLink() {
+
+        billingAddressEditLink.click();
+    }
+
+    public AddressForm getAddressForm() {
+
+        return addressForm;
     }
 }
