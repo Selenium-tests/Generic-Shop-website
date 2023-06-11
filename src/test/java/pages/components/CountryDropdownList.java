@@ -4,7 +4,7 @@ import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
+import java.util.List;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
@@ -25,7 +25,7 @@ public class CountryDropdownList extends BasePage {
     WebElement countryButton;
 
     @FindBy(xpath = "//li[@role='alert']")
-    WebElement alert;
+    List<WebElement> alert;
 
     public void clickCountryButton() {
 
@@ -45,6 +45,11 @@ public class CountryDropdownList extends BasePage {
 
     public boolean isAlertDisplayed() {
 
-        return alert.isDisplayed();
+        if (!alert.isEmpty()) {
+
+            return alert.get(0).isDisplayed();
+        }
+
+        return false;
     }
 }
