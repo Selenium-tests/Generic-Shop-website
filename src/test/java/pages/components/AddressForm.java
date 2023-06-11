@@ -33,6 +33,11 @@ public class AddressForm extends BasePage {
         return countryDropdownList;
     }
 
+    public int inputsListSize() {
+
+        return inputs.size();
+    }
+
     public void setData(int index, String data) {
 
         inputs.get(index).clear();
