@@ -38,6 +38,9 @@ public class AccountPage extends BasePage {
     @FindBy(xpath = "//a[@href='https://skleptest.pl/my-account/edit-address/billing']")
     WebElement billingAddressEditLink;
 
+    @FindBy(xpath = "//a[@href='https://skleptest.pl/my-account/edit-address/shipping']")
+    WebElement shippingAddressEditLink;
+
     public void clickOrders() {
 
         orders.click();
@@ -66,6 +69,11 @@ public class AccountPage extends BasePage {
     public void clickBillingAddressEditLink() {
 
         billingAddressEditLink.click();
+    }
+
+    public void clickShippingAddressEditLink() {
+
+        shippingAddressEditLink.click();
     }
 
     public AddressForm getAddressForm() {
