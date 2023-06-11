@@ -26,8 +26,8 @@ public class BaseTest {
         driver.navigate().to("http://skleptest.pl/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver = new EventFiringDecorator(new MyEventListener(),
-                                          new ScreenshotCaptorListener(driver)).decorate(driver);
+        //driver = new EventFiringDecorator(new MyEventListener(),
+          //                                new ScreenshotCaptorListener(driver)).decorate(driver);
 
         softAssert = new SoftAssert();
     }
@@ -55,6 +55,6 @@ public class BaseTest {
     public void tearDown() {
 
         System.out.println("Quit driver");
-        //driver.quit();
+        driver.quit();
     }
 }
