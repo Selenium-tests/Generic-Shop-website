@@ -9,11 +9,11 @@ import java.util.List;
 
 public class MyDataProvider {
 
-    private String path = "./resources/test data/";
+    private final String path = "./resources/test data/";
 
-    private List<String[]> helper(String filemane) throws CsvValidationException, IOException {
+    private List<String[]> helper(String filename) throws CsvValidationException, IOException {
 
-        List<String[]> data = CSVFileManager.loadFile(path + filemane);
+        List<String[]> data = CSVFileManager.loadFile(path + filename);
 
         return data;
     }
@@ -109,6 +109,70 @@ public class MyDataProvider {
     public Object[][] getSpecialSigns() throws CsvValidationException, IOException {
 
         List<String[]> data = helper("search engine/specialSigns.csv");
+
+        return new Object[][] {{data}};
+    }
+
+    @DataProvider(name = "getCorrectBillingAddress")
+    public Object[][] getCorrectBillingAddress() throws CsvValidationException, IOException {
+
+        List<String[]> data = helper("addresses/billingCorrectData.csv");
+
+        return new Object[][] {{data}};
+    }
+
+    @DataProvider(name = "getIncorrectFirstName")
+    public Object[][] getIncorrectFirstName() throws CsvValidationException, IOException {
+
+        List<String[]> data = helper("addresses/incorrectFirstName.csv");
+
+        return new Object[][] {{data}};
+    }
+
+    @DataProvider(name = "getIncorrectLastName")
+    public Object[][] getIncorrectLastName() throws CsvValidationException, IOException {
+
+        List<String[]> data = helper("addresses/incorrectLastName.csv");
+
+        return new Object[][] {{data}};
+    }
+
+    @DataProvider(name = "getIncorrectPostcode")
+    public Object[][] getIncorrectPostcode() throws CsvValidationException, IOException {
+
+        List<String[]> data = helper("addresses/incorrectPostcode.csv");
+
+        return new Object[][] {{data}};
+    }
+
+    @DataProvider(name = "getIncorrectPhoneNumber")
+    public Object[][] getIncorrectPhoneNumber() throws CsvValidationException, IOException {
+
+        List<String[]> data = helper("addresses/incorrectPhoneNumber.csv");
+
+        return new Object[][] {{data}};
+    }
+
+    @DataProvider(name = "getIncorrectEmail")
+    public Object[][] getIncorrectEmail() throws CsvValidationException, IOException {
+
+        List<String[]> data = helper("addresses/incorrectEmail.csv");
+
+        return new Object[][] {{data}};
+    }
+
+    @DataProvider(name = "getCorrectCountryNames")
+    public Object[][] getCorrectCountryNames() throws CsvValidationException, IOException {
+
+        List<String[]> data = helper("addresses/correctCountryNames.csv");
+
+        return new Object[][] {{data}};
+    }
+
+    @DataProvider(name = "getIncorrectCountryNames")
+    public Object[][] getIncorrectCountryNames() throws CsvValidationException, IOException {
+
+        List<String[]> data = helper("addresses/incorrectCountryNames.csv");
 
         return new Object[][] {{data}};
     }
