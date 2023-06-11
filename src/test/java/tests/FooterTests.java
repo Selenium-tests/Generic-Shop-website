@@ -7,9 +7,9 @@ import pages.TagPage;
 import pages.components.Footer;
 import provider.MyDataProvider;
 
-import utils.NewsletterAssertFalse;
-import utils.NewsletterAssertTrue;
-import utils.NewsletterBaseAssert;
+import utils.SoftAssertAuxTrue;
+import utils.SoftAssertAuxFalse;
+import utils.SoftAssertAux;
 
 import java.util.List;
 
@@ -50,7 +50,7 @@ public class FooterTests extends BaseTest {
         }
     }
 
-    private void helper(List<String[]> data, NewsletterBaseAssert newsletterBaseAssert) {
+    private void helper(List<String[]> data, SoftAssertAux newsletterBaseAssert) {
 
         Footer footer = new Footer(getDriver());
 
@@ -62,7 +62,7 @@ public class FooterTests extends BaseTest {
             footer.getNewsletterSection().setEmail(datum[1]);
             footer.getNewsletterSection().clickSubscribeButton();
 
-            newsletterBaseAssert.perform(footer.getNewsletterSection(), getSoftAssert());
+            newsletterBaseAssert.newsletter(footer.getNewsletterSection(), getSoftAssert());
         }
 
         getSoftAssert().assertAll();
@@ -71,13 +71,13 @@ public class FooterTests extends BaseTest {
     @Test(dataProvider = "getBlankNameFieldNewsletterData", dataProviderClass = MyDataProvider.class)
     public void newsletterBlankNameField(List<String[]> data) {
 
-        helper(data, new NewsletterAssertTrue());
+        helper(data, new SoftAssertAuxTrue());
     }
 
     @Test(dataProvider = "getIncorrectEmailNewsletterData", dataProviderClass = MyDataProvider.class)
     public void newsletterIncorrectEmail(List<String[]> data) {
 
-        helper(data, new NewsletterAssertFalse());
+        helper(data, new SoftAssertAuxFalse());
     }
 
 }
