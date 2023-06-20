@@ -1,4 +1,4 @@
-package pages.components;
+package pages.components.addressform;
 
 import base.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -38,9 +38,16 @@ public class AddressForm extends BasePage {
         return inputs.size();
     }
 
+    public void clearAll() {
+
+        for (int i = 0; i < inputs.size(); i++) {
+
+            inputs.get(i).clear();
+        }
+    }
+
     public void setData(int index, String data) {
 
-        inputs.get(index).clear();
         inputs.get(index).sendKeys(data);
     }
 
