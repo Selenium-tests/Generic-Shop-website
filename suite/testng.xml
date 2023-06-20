@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Generic Shop tests">
+    <suite-files>
+        <suite-file path="links.xml"/>
+        <suite-file path="footer.xml"/>
+        <suite-file path="search-engine.xml"/>
+        <suite-file path="adding-to-cart.xml"/>
+        <suite-file path="login.xml"/>
+        <suite-file path="setting-address.xml"/>
+    </suite-files>
+</suite>
