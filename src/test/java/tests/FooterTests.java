@@ -1,58 +1,63 @@
 package tests;
 
 import base.BaseTest;
+import org.json.JSONException;
+import org.junit.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.BlogPage;
-import pages.TagPage;
-import pages.components.Footer;
+import pages.components.footer.Footer;
 import provider.MyDataProvider;
 
-import utils.SoftAssertAuxTrue;
-import utils.SoftAssertAuxFalse;
-import utils.SoftAssertAux;
+import utils.*;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class FooterTests extends BaseTest {
 
-    @Test
-    public void tagsLinks() {
+    private Footer footer;
 
-        Footer footer = new Footer(getDriver());
-        TagPage tagPage = new TagPage(getDriver());
+    @BeforeClass
+    private void init() {
+
+        footer = new Footer(getDriver());
+    }
+
+    @Test(priority = 3)
+    public void tags() throws FileNotFoundException, JSONException {
+
+        ExtentReportsManager.setName("Tags");
+        String[] expectedURLs = JSONReader.get("URLs", "tags");
 
         for (int i = 0; i < footer.getTagsSection().getSize(); i++) {
 
             footer.getTagsSection().setTag(i);
             footer.getTagsSection().clickTagButton();
 
-            getSoftAssert().assertTrue(tagPage.getPageTitle().contains(footer.getTagsSection().getName().toUpperCase()));
+            Assert.assertEquals(expectedURLs[i], getDriver().getCurrentUrl());
 
             back();
         }
-
-        getSoftAssert().assertAll();
     }
 
     @Test
-    public void recentPostLinks() {
+    public void recentPostLinks() throws JSONException {
 
-        Footer footer = new Footer(getDriver());
-        BlogPage blogPage = new BlogPage(getDriver());
+        ExtentReportsManager.setName("Recent post links");
+        String[] expectedURLs = JSONReader.get("URLs", "recentPosts");
 
         for (int i = 0; i < footer.getRecentPostsSection().getSize(); i++) {
 
             footer.getRecentPostsSection().setRecentPost(i);
-            System.out.println(footer.getRecentPostsSection().getName());
-            //footer.getRecentPostsSection().clickRecentButton();
+            footer.getRecentPostsSection().clickRecentButton();
 
-            //back();
+            Assert.assertEquals(expectedURLs[i], getDriver().getCurrentUrl());
+
+            back();
         }
     }
 
-    private void helper(List<String[]> data, SoftAssertAux newsletterBaseAssert) {
-
-        Footer footer = new Footer(getDriver());
+    private void fillAndCheck(List<String[]> data, FuncInterface assertion) {
 
         for (String[] datum : data) {
 
@@ -62,22 +67,22 @@ public class FooterTests extends BaseTest {
             footer.getNewsletterSection().setEmail(datum[1]);
             footer.getNewsletterSection().clickSubscribeButton();
 
-            newsletterBaseAssert.newsletter(footer.getNewsletterSection(), getSoftAssert());
+            assertion.run();
         }
-
-        getSoftAssert().assertAll();
     }
 
-    @Test(dataProvider = "getBlankNameFieldNewsletterData", dataProviderClass = MyDataProvider.class)
-    public void newsletterBlankNameField(List<String[]> data) {
+    @Test(priority = 1, dataProvider = "getBlankNameFieldNewsletterData", dataProviderClass = MyDataProvider.class)
+    public void newsletterEmptyUsernameField(List<String[]> data) {
 
-        helper(data, new SoftAssertAuxTrue());
+        ExtentReportsManager.setName("Empty Username field");
+        fillAndCheck(data, ()->{ Assert.assertTrue(footer.getNewsletterSection().isNewsletterMessageDisplayed()); });
     }
 
-    @Test(dataProvider = "getIncorrectEmailNewsletterData", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 2, dataProvider = "getIncorrectEmailNewsletterData", dataProviderClass = MyDataProvider.class)
     public void newsletterIncorrectEmail(List<String[]> data) {
 
-        helper(data, new SoftAssertAuxFalse());
+        ExtentReportsManager.setName("Incorrect Email address");
+        fillAndCheck(data, ()->{ Assert.assertFalse(footer.getNewsletterSection().isNewsletterMessageDisplayed()); });
     }
 
 }
