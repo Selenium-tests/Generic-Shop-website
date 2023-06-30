@@ -1,53 +1,57 @@
 package tests;
 
 import base.BaseTest;
+import org.json.JSONException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.BlogPage;
-import pages.ProductPage;
-import pages.components.BlogThumbnail;
-import pages.components.ProductThumbnail;
+import pages.components.thumbnails.BlogThumbnail;
+import pages.components.thumbnails.ProductThumbnail;
+import utils.ExtentReportsManager;
+import utils.JSONReader;
 
 public class LinksTest extends BaseTest {
 
     @Test
-    public void linksToProductPages() {
+    public void linksToProductPages() throws JSONException {
 
+        ExtentReportsManager.setName("Links to product pages");
         ProductThumbnail productThumbnail = new ProductThumbnail(getDriver());
-        ProductPage productPage = new ProductPage(getDriver());
 
-        for (int i = 0; i < productThumbnail.getSize(); i++) {
+        String[] expectedURLs = JSONReader.get("URLs", "products");
+        //String[] URLs = JSONReader.get("products");
+
+        for (int i = 0, j = 0; i < productThumbnail.getSize(); i++) {
 
             productThumbnail.setProduct(i);
 
             if (!productThumbnail.getName().isEmpty()) {
 
                 productThumbnail.clickToLink(i);
-                getSoftAssert().assertEquals(productThumbnail.getName(), productPage.getProductTitle());
+
+                Assert.assertEquals(expectedURLs[j], getDriver().getCurrentUrl());
+                j++;
 
                 back();
             }
         }
-
-        getSoftAssert().assertAll();
     }
 
     @Test
-    void linksToBlogPage() {
+    void linksToBlogPages() throws JSONException {
 
+        ExtentReportsManager.setName("Links to blog pages");
         BlogThumbnail blogThumbnail = new BlogThumbnail(getDriver());
-        BlogPage blogPage = new BlogPage(getDriver());
+
+        String[] expectedURLs = JSONReader.get("URLs", "blogs");
 
         for (int i = 0; i < blogThumbnail.getSize(); i++) {
 
             blogThumbnail.setBlog(i);
             blogThumbnail.clickToLink();
 
-            getSoftAssert().assertTrue(blogPage.getBlogTitle().contains(blogThumbnail.getName()
-                    .substring(0, blogThumbnail.getName().length() - 1)));
+            Assert.assertEquals(expectedURLs[i], getDriver().getCurrentUrl());
 
             back();
         }
-
-        getSoftAssert().assertAll();
     }
 }
