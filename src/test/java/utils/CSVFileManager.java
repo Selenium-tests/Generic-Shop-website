@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVFileManager {
+public class
+CSVFileManager {
 
     public static List<String[]> loadFile(String fileName) throws IOException, CsvValidationException {
 
