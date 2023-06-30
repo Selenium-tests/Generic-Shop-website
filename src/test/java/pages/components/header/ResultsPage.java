@@ -1,4 +1,4 @@
-package pages.components;
+package pages.components.header;
 
 import base.BasePage;
 import org.openqa.selenium.WebDriver;
