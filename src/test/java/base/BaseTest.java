@@ -2,23 +2,21 @@ package base;
 
 import driver.Browser;
 import driver.DriverType;
-import listener.MyEventListener;
-import listener.ScreenshotCaptorListener;
+import org.json.JSONException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.asserts.SoftAssert;
+import utils.JSONReader;
+
+import java.io.FileNotFoundException;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    private WebDriver driver;
-
-    private SoftAssert softAssert;
+    private static WebDriver driver;
 
     @BeforeClass
-    public void startDriver() {
+    public void startDriver() throws FileNotFoundException, JSONException {
 
         System.out.println("Starting driver...");
 
@@ -26,10 +24,8 @@ public class BaseTest {
         driver.navigate().to("http://skleptest.pl/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        //driver = new EventFiringDecorator(new MyEventListener(),
-          //                                new ScreenshotCaptorListener(driver)).decorate(driver);
 
-        softAssert = new SoftAssert();
+        JSONReader.read();
     }
 
     protected void back() {
@@ -38,17 +34,12 @@ public class BaseTest {
     }
     public void setDriver(WebDriver driver) {
 
-        this.driver = driver;
+        BaseTest.driver = driver;
     }
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
 
         return driver;
-    }
-
-    public SoftAssert getSoftAssert() {
-
-        return softAssert;
     }
 
     @AfterClass
