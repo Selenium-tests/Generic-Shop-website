@@ -1,11 +1,20 @@
 package tests;
 
+import org.testng.annotations.BeforeClass;
 import pages.AccountPage;
 
-public class ShippingAddressFormTest extends AbstractAddressFormTests {
+import java.awt.*;
+
+public class ShippingAddressFormTest extends AddressFormTests {
+
+    @BeforeClass
+    private void init() throws AWTException {
+
+        accountPage = new AccountPage(getDriver());
+    }
 
     @Override
-    public void openForm(AccountPage accountPage) {
+    public void openForm() {
 
         accountPage.clickShippingAddressEditLink();
     }
