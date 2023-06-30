@@ -1,5 +1,6 @@
 package utils;
 
+import base.BaseTest;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -7,45 +8,60 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
 
 public class ExtentReportsManager {
 
-    private ExtentReports extentReports = new ExtentReports();
+    private static ExtentReports extentReports = new ExtentReports();
 
-    private ExtentTest logger;
+    private static ExtentTest extentTest;
+    private static final String path = "./reports/";
 
-
-    public ExtentReportsManager() {
+    public static void create(String fileName) {
 
         extentReports = new ExtentReports();
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("C:\\Projekty\\Testowanie\\Generic-Shop-tests-master\\reports\\myReport.html");
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter(path + fileName);
         sparkReporter.config().setTheme(Theme.STANDARD);
         extentReports.attachReporter(sparkReporter);
     }
 
-    public void setName(String testName) {
+    public static void setName(String testName) {
 
-        logger = extentReports.createTest(testName);
+        extentTest = extentReports.createTest(testName);
     }
 
-    public void setInfo(String message) {
+    public static void setInfo(String message) {
 
-        logger.log(Status.INFO, MarkupHelper.createLabel(message, ExtentColor.CYAN));
+        extentTest.log(Status.INFO, MarkupHelper.createLabel(message, ExtentColor.CYAN));
     }
 
-    public void setTestPassed(String message) {
+    public static void setTestPassed(String message) {
 
-        logger.log(Status.PASS, MarkupHelper.createLabel(message, ExtentColor.GREEN));
+        extentTest.log(Status.PASS, message);
     }
 
-    public void setTestFailed(String message) {
+    public static void setTestFailed(String message) {
 
-        logger.log(Status.FAIL, MarkupHelper.createLabel(message, ExtentColor.RED));
+        extentTest.log(Status.FAIL, message);
     }
 
-    private void flush() {
+    public static void setTestSkipped(String message) {
+
+        extentTest.log(Status.SKIP, message);
+    }
+
+    public static void setEnvironment() {
+
+        extentReports.setSystemInfo("System property", System.getProperty("user.dir"));
+        extentReports.setSystemInfo("Operating system", System.getProperty("os.name") +
+                " " + System.getProperty("os.arch"));
+        extentReports.setSystemInfo("Browser", ((RemoteWebDriver)BaseTest.getDriver()).getCapabilities().getBrowserName() +
+                " " + (((RemoteWebDriver) BaseTest.getDriver()).getCapabilities().getBrowserVersion()));
+        extentReports.setSystemInfo("Java runtime version", System.getProperty("java.runtime.version"));
+    }
+
+    public static void flush() {
 
         extentReports.flush();
     }
