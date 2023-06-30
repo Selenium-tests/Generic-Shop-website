@@ -1,4 +1,4 @@
-package pages.components;
+package pages.components.addressform;
 
 import base.BasePage;
 import org.openqa.selenium.WebDriver;
