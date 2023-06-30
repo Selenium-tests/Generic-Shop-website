@@ -1,4 +1,4 @@
-package pages.components;
+package pages.components.thumbnails;
 
 import base.BasePage;
 import org.openqa.selenium.By;
@@ -23,6 +23,10 @@ public class ProductThumbnail extends BasePage {
     public void setProduct(int index) {
 
         name = products.get(index).findElement(By.className("woocommerce-LoopProduct-link")).getText();
+    }
+
+    public void setPrice(int index) {
+
         String priceString = products.get(index).findElement(By.className("woocommerce-Price-amount")).getText();
         price = Integer.parseInt(priceString.substring(0, 2));
     }
