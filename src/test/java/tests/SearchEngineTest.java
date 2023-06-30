@@ -1,65 +1,70 @@
 package tests;
 
 import base.BaseTest;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.components.ResultsPage;
-import pages.components.SearchEngine;
+import pages.components.header.ResultsPage;
+import pages.components.header.SearchEngine;
 import provider.MyDataProvider;
-import utils.SearchEngineAssertFalse;
-import utils.SearchEngineAssertTrue;
-import utils.SearchEngineBaseAssert;
+import utils.*;
 
-import java.util.List;
 
 public class SearchEngineTest extends BaseTest {
 
-    private void helper(List<String[]> data, SearchEngineBaseAssert searchEngineBaseAssert) throws InterruptedException {
+    private SearchEngine searchEngine;
+    private ResultsPage resultsPage;
 
-        SearchEngine searchEngine = new SearchEngine(getDriver());
-        ResultsPage resultsPage = new ResultsPage(getDriver());
+    @BeforeClass
+    private void init() {
 
-        for (String[] phrases : data) {
+        searchEngine = new SearchEngine(getDriver());
+        resultsPage = new ResultsPage(getDriver());
+    }
 
-            for (String phrase : phrases) {
+    private void fillAndCheck(String[] data, FuncInterface assertion) {
 
-                searchEngine.setPhrase(phrase);
-                searchEngine.clickSubmitButton();
+        for (String phrase : data) {
 
-                searchEngineBaseAssert.perform(phrase, resultsPage, getSoftAssert());
+            searchEngine.setPhrase(phrase);
+            searchEngine.clickSubmitButton();
 
-            }
+            assertion.run();
         }
-
-        getSoftAssert().assertAll();
     }
 
-    @Test(dataProvider = "getCorrectPhrase", dataProviderClass = MyDataProvider.class)
-    public void correctPhrase(List<String[]> data) throws InterruptedException {
+    @Test(priority = 1, dataProvider = "getCorrectPhrase", dataProviderClass = MyDataProvider.class)
+    public void correctPhrase(String[] data) {
 
-        helper(data, new SearchEngineAssertTrue());
+        ExtentReportsManager.setName("Searching with correct phrase");
+        fillAndCheck(data, ()->{ Assert.assertFalse(resultsPage.hasNoResults()); });
     }
 
-    @Test(dataProvider = "getPartOfCorrectPhrase", dataProviderClass = MyDataProvider.class)
-    public void partOfCorrectPhrase(List<String[]> data) throws InterruptedException {
+    @Test(priority = 2, dataProvider = "getPartOfCorrectPhrase", dataProviderClass = MyDataProvider.class)
+    public void partOfCorrectPhrase(String[] data) {
 
-        helper(data, new SearchEngineAssertTrue());
+        ExtentReportsManager.setName("Searching with part of correct phrase");
+        fillAndCheck(data, ()->{ Assert.assertFalse(resultsPage.hasNoResults()); });
     }
 
-    @Test(dataProvider = "getUpperLower", dataProviderClass = MyDataProvider.class)
-    public void upperLowerCases(List<String[]> data) throws InterruptedException {
+    @Test(priority = 3, dataProvider = "getUpperLower", dataProviderClass = MyDataProvider.class)
+    public void upperLowerCases(String[] data) {
 
-        helper(data, new SearchEngineAssertTrue());
+        ExtentReportsManager.setName("Searching with phrase which has upper and lower cases");
+        fillAndCheck(data, ()->{ Assert.assertFalse(resultsPage.hasNoResults()); });
     }
 
-    @Test(dataProvider = "getIncorrectPhrase", dataProviderClass = MyDataProvider.class)
-    public void incorrectPhrase(List<String[]> data) throws InterruptedException {
+    @Test(priority = 4, dataProvider = "getIncorrectPhrase", dataProviderClass = MyDataProvider.class)
+    public void incorrectPhrase(String[] data) {
 
-        helper(data, new SearchEngineAssertFalse());
+        ExtentReportsManager.setName("Searching with incorrect phrase");
+        fillAndCheck(data, ()->{ Assert.assertTrue(resultsPage.hasNoResults()); });
     }
 
-    @Test(dataProvider = "getSpecialSigns", dataProviderClass = MyDataProvider.class)
-    public void specialSigns(List<String[]> data) throws InterruptedException {
+    @Test(priority = 4, dataProvider = "getSpecialSigns", dataProviderClass = MyDataProvider.class)
+    public void naughtyStrings(String[] data) {
 
-        helper(data, new SearchEngineAssertFalse());
+        ExtentReportsManager.setName("Searching with naughty strings");
+        fillAndCheck(data, ()->{ Assert.assertTrue(resultsPage.hasNoResults()); });
     }
 }
