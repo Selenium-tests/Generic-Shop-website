@@ -1,20 +1,29 @@
 package tests;
 
 import base.BaseTest;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.components.Header;
+import pages.components.header.Header;
 import provider.MyDataProvider;
+import utils.ExtentReportsManager;
+
 import java.util.List;
 
 public class LoginTest extends BaseTest {
 
-    private void helper(List<String[]> data) {
+    private LoginPage loginPage;
+
+    @BeforeClass
+    private void init() {
 
         Header header = new Header(getDriver());
-        LoginPage loginPage = new LoginPage(getDriver());
-
+        loginPage = new LoginPage(getDriver());
         header.clickAccountButton();
+    }
+
+    private void fillAndCheck(List<String[]> data) {
 
         for (String[] datum : data) {
 
@@ -23,43 +32,47 @@ public class LoginTest extends BaseTest {
             loginPage.setPassword(datum[1]);
             loginPage.clickLoginButton();
 
-            getSoftAssert().assertTrue(loginPage.isErrorMessageDisplayed());
+            Assert.assertTrue(loginPage.isErrorMessageDisplayed());
         }
     }
-    @Test(dataProvider = "getIncorrectUsernameData", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 1, dataProvider = "getIncorrectUsernameData", dataProviderClass = MyDataProvider.class)
     public void incorrectEmailAddress(List<String[]> data) {
 
-        helper(data);
+        ExtentReportsManager.setName("Incorrect email address");
+        fillAndCheck(data);
     }
 
-    @Test(dataProvider = "getBlankUsernameFieldData", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 3, dataProvider = "getBlankUsernameFieldData", dataProviderClass = MyDataProvider.class)
     public void blankUsernameField(List<String[]> data) {
 
-        helper(data);
+        ExtentReportsManager.setName("Blank username field");
+        fillAndCheck(data);
     }
 
-    @Test(dataProvider = "getIncorrectPasswordData", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 2, dataProvider = "getIncorrectPasswordData", dataProviderClass = MyDataProvider.class)
     public void incorrectPassword(List<String[]> data) {
 
-        helper(data);
+        ExtentReportsManager.setName("Incorrect password");
+        fillAndCheck(data);
     }
 
-    @Test(dataProvider = "getBlankPasswordFieldData", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 4, dataProvider = "getBlankPasswordFieldData", dataProviderClass = MyDataProvider.class)
     public void blankPasswordField(List<String[]> data) {
 
-        helper(data);
+        ExtentReportsManager.setName("Blank password field");
+        fillAndCheck(data);
     }
 
-    @Test(dataProvider = "getCorrectLoginData", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 5, dataProvider = "getCorrectLoginData", dataProviderClass = MyDataProvider.class)
     public void correctData(List<String[]> data) {
 
-        Header header = new Header(getDriver());
-        LoginPage loginPage = new LoginPage(getDriver());
+        ExtentReportsManager.setName("Correct data");
 
-        header.clickAccountButton();
-
+        loginPage.clearAll();
         loginPage.setUsername(data.get(0)[0]);
         loginPage.setPassword(data.get(0)[0]);
         loginPage.clickLoginButton();
+
+        Assert.assertFalse(loginPage.isErrorMessageDisplayed());
     }
 }
