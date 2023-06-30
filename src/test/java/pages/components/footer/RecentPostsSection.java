@@ -1,4 +1,4 @@
-package pages.components;
+package pages.components.footer;
 
 import base.BasePage;
 import com.google.j2objc.annotations.Weak;
@@ -24,7 +24,7 @@ public class RecentPostsSection extends BasePage {
     public void setRecentPost(int index) {
 
         link = buttons.get(index).findElement(By.xpath(".//a[@href]"));
-        name = link.getAttribute("text");
+        name = link.getText();
     }
 
     public void clickRecentButton() {
