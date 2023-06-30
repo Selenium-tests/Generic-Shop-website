@@ -1,4 +1,4 @@
-package pages.components;
+package pages.components.thumbnails;
 
 import base.BasePage;
 import org.openqa.selenium.By;
