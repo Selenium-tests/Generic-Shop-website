@@ -41,8 +41,9 @@ public class CartPage extends BasePage {
         return !(products.isEmpty());
     }
 
-    public String getProductName(int index) {
+    public String getLastProductName(int index) {
 
-        return products.get(index).getText();
+        //return products.get(index).getText();
+        return products.get(products.size() - 1).getText();
     }
 }
