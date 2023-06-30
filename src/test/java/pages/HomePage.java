@@ -1,8 +1,8 @@
 package pages;
 
 import base.BasePage;
-import pages.components.Header;
-import pages.components.Footer;
+import pages.components.header.Header;
+import pages.components.footer.Footer;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
