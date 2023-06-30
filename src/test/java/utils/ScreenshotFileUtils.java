@@ -11,11 +11,11 @@ import java.time.LocalTime;
 
 public class ScreenshotFileUtils {
     private static final String path = "./screenshots/";
-    public static void saveToFile(WebDriver driver, String methodName) {
+    public static void saveToFile(WebDriver driver, String testName) {
 
         LocalTime localTime = LocalTime.now();
 
-        String fileName = methodName + "_" + localTime.getHour() + "-" + localTime.getMinute() +
+        String fileName = testName + "_" + localTime.getHour() + "-" + localTime.getMinute() +
                           "-" + localTime.getSecond() + ".png";
 
         File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
