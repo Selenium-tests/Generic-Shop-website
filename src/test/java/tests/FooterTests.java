@@ -11,6 +11,7 @@ import provider.MyDataProvider;
 import utils.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public class FooterTests extends BaseTest {
@@ -57,14 +58,14 @@ public class FooterTests extends BaseTest {
         }
     }
 
-    private void fillAndCheck(List<String[]> data, FuncInterface assertion) {
+    private void fillAndCheck(List<Pair<String, String>> data, FuncInterface assertion) throws IOException {
 
-        for (String[] datum : data) {
+        for (Pair<String, String> datum : data) {
 
             footer.getNewsletterSection().clearAll();
 
-            footer.getNewsletterSection().setName(datum[0]);
-            footer.getNewsletterSection().setEmail(datum[1]);
+            footer.getNewsletterSection().setName(datum.first());
+            footer.getNewsletterSection().setEmail(datum.second());
             footer.getNewsletterSection().clickSubscribeButton();
 
             assertion.run();
@@ -72,14 +73,14 @@ public class FooterTests extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = "getBlankNameFieldNewsletterData", dataProviderClass = MyDataProvider.class)
-    public void newsletterEmptyUsernameField(List<String[]> data) {
+    public void newsletterEmptyUsernameField(List<Pair<String, String>> data) throws IOException {
 
         ExtentReportsManager.setName("Empty Username field");
         fillAndCheck(data, ()->{ Assert.assertTrue(footer.getNewsletterSection().isNewsletterMessageDisplayed()); });
     }
 
     @Test(priority = 2, dataProvider = "getIncorrectEmailNewsletterData", dataProviderClass = MyDataProvider.class)
-    public void newsletterIncorrectEmail(List<String[]> data) {
+    public void newsletterIncorrectEmail(List<Pair<String, String>> data) throws IOException {
 
         ExtentReportsManager.setName("Incorrect Email address");
         fillAndCheck(data, ()->{ Assert.assertFalse(footer.getNewsletterSection().isNewsletterMessageDisplayed()); });
