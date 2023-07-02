@@ -11,6 +11,7 @@ import provider.MyDataProvider;
 import utils.*;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 
 public abstract class AddressFormTests extends BaseTest {
@@ -24,7 +25,7 @@ public abstract class AddressFormTests extends BaseTest {
         accountPage = new AccountPage(getDriver());
     }
 
-    private void setFields(String[] data) {
+    private void setFields(String[] data) throws InterruptedException {
 
         accountPage.getAddressForm().clearAll();
 
@@ -34,6 +35,7 @@ public abstract class AddressFormTests extends BaseTest {
 
         for (int i = 0; i < accountPage.getAddressForm().inputsListSize(); i++) {
 
+            Thread.sleep(1000);
             accountPage.getAddressForm().setData(i, data[i]);
         }
 
@@ -50,8 +52,8 @@ public abstract class AddressFormTests extends BaseTest {
         }
     }
 
-    @Test(dataProvider = "getCorrectLoginData", dataProviderClass = MyDataProvider.class)
-    public void correctLogin(List<String[]> data) {
+    @Test(dataProvider = "correctLoginData", dataProviderClass = MyDataProvider.class)
+    public void correctLogin(List<Pair<String, String>> data) {
 
         ExtentReportsManager.setName("Correct login");
 
@@ -60,44 +62,41 @@ public abstract class AddressFormTests extends BaseTest {
 
         header.clickAccountButton();
 
-        loginPage.setUsername(data.get(0)[0]);
-        loginPage.setPassword(data.get(0)[1]);
+        loginPage.setUsername(data.get(0).first());
+        loginPage.setPassword(data.get(0).second());
         loginPage.clickLoginButton();
     }
 
-    public void checkCountryDropdownList(List<String[]> data, FuncInterface funcInterface1) {
+    public void checkCountryDropdownList(String[] data, FuncInterface funcInterface1) throws IOException {
 
         accountPage.clickAddresses();
         openForm();
 
-        for (String[] datum : data) {
+        for (String str : data) {
 
-            for (String str : datum) {
-
-                accountPage.getAddressForm().getCountryDropdownList().clickCountryButton();
-                accountPage.getAddressForm().getCountryDropdownList().setCountry(str);
-                funcInterface1.run();
-                accountPage.getAddressForm().getCountryDropdownList().clickCountryButton();
-            }
+            accountPage.getAddressForm().getCountryDropdownList().clickCountryButton();
+            accountPage.getAddressForm().getCountryDropdownList().setCountry(str);
+            funcInterface1.run();
+            accountPage.getAddressForm().getCountryDropdownList().clickCountryButton();
         }
     }
 
-    @Test(dependsOnMethods = {"correctLogin"},priority = 6, dataProvider = "getCorrectCountryNames", dataProviderClass = MyDataProvider.class)
-    public void correctCountryName(List<String[]> data) {
+    @Test(dependsOnMethods = {"correctLogin"},priority = 6, dataProvider = "correctCountryName", dataProviderClass = MyDataProvider.class)
+    public void correctCountryName(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Correct country name");
         checkCountryDropdownList(data, ()->{ Assert.assertFalse(accountPage.getAddressForm().getCountryDropdownList().isAlertDisplayed()); });
     }
 
-    @Test(dependsOnMethods = {"correctLogin"},priority = 6, dataProvider = "getIncorrectCountryNames", dataProviderClass = MyDataProvider.class)
-    public void incorrectCountryName(List<String[]> data) {
+    @Test(dependsOnMethods = {"correctLogin"},priority = 6, dataProvider = "incorrectCountryName", dataProviderClass = MyDataProvider.class)
+    public void incorrectCountryName(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Incorrect country name");
         checkCountryDropdownList(data, ()->{ Assert.assertTrue(accountPage.getAddressForm().getCountryDropdownList().isAlertDisplayed()); });
     }
 
-    @Test(priority = 1, dataProvider = "getCorrectBillingAddress", dataProviderClass = MyDataProvider.class)
-    public void correctAddressData(List<String[]> data) throws AWTException {
+    @Test(priority = 1, dataProvider = "correctAddress", dataProviderClass = MyDataProvider.class)
+    public void correctAddress(List<String[]> data) throws AWTException, InterruptedException {
 
         ExtentReportsManager.setName("Correct address");
         AccountPage accountPage = new AccountPage(getDriver());
@@ -112,7 +111,7 @@ public abstract class AddressFormTests extends BaseTest {
         }
     }
 
-    protected void checkErrorMessageDisplaying(List<String[]> data, String assertMessage) throws AWTException {
+    protected void checkErrorMessageDisplaying(List<String[]> data) throws AWTException, InterruptedException {
 
         AccountPage accountPage = new AccountPage(getDriver());
 
@@ -121,28 +120,28 @@ public abstract class AddressFormTests extends BaseTest {
             accountPage.clickAddresses();
             openForm();
             setFields(datum);
-            Assert.assertTrue(accountPage.getAddressForm().isErrorMessageDisplayed(), assertMessage);
+            Assert.assertTrue(accountPage.getAddressForm().isErrorMessageDisplayed());
         }
     }
 
-    @Test(priority = 4, dataProvider = "getIncorrectFirstName", dataProviderClass = MyDataProvider.class)
-    public void incorrectFirstName(List<String[]> data) throws AWTException {
+    @Test(priority = 5, dataProvider = "addressIncorrectFirstName", dataProviderClass = MyDataProvider.class)
+    public void incorrectFirstName(List<String[]> data) throws AWTException, InterruptedException {
 
         ExtentReportsManager.setName("Incorrect first name");
-        checkErrorMessageDisplaying(data, "No incorrect first name message");
+        checkErrorMessageDisplaying(data);
     }
 
-    @Test(priority = 5, dataProvider = "getIncorrectLastName", dataProviderClass = MyDataProvider.class)
-    public void incorrectLastName(List<String[]> data) throws AWTException {
+    @Test(priority = 6, dataProvider = "addressIncorrectLastName", dataProviderClass = MyDataProvider.class)
+    public void incorrectLastName(List<String[]> data) throws AWTException, InterruptedException {
 
         ExtentReportsManager.setName("Incorrect last name");
-        checkErrorMessageDisplaying(data, "No incorrect last name message");
+        checkErrorMessageDisplaying(data);
     }
 
-    @Test(priority = 2, dataProvider = "getIncorrectPostcode", dataProviderClass = MyDataProvider.class)
-    public void incorrectPostcode(List<String[]> data) throws AWTException {
+    @Test(priority = 2, dataProvider = "addressIncorrectPostcode", dataProviderClass = MyDataProvider.class)
+    public void incorrectPostcode(List<String[]> data) throws AWTException, InterruptedException {
 
         ExtentReportsManager.setName("Incorrect postcode");
-        checkErrorMessageDisplaying(data, "No incorrect postcode message");
+        checkErrorMessageDisplaying(data);
     }
 }
