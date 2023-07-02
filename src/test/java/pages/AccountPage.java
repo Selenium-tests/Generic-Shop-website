@@ -61,6 +61,11 @@ public class AccountPage extends BasePage {
         accountDetails.click();
     }
 
+    public boolean isDashboardLinkDisplayed() {
+
+        return dashboard.isDisplayed();
+    }
+
     public void clickAddresses() {
 
         addresses.click();
