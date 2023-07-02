@@ -4,11 +4,16 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.AccountPage;
 import pages.LoginPage;
 import pages.components.header.Header;
 import provider.MyDataProvider;
 import utils.ExtentReportsManager;
+import utils.FuncInterface;
+import utils.Pair;
 
+import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 
 public class LoginTest extends BaseTest {
@@ -23,56 +28,52 @@ public class LoginTest extends BaseTest {
         header.clickAccountButton();
     }
 
-    private void fillAndCheck(List<String[]> data) {
+    private void fillAndCheck(List<Pair<String, String>> data, FuncInterface funcInterface) throws IOException {
 
-        for (String[] datum : data) {
+        for (Pair<String, String> datum : data) {
 
             loginPage.clearAll();
-            loginPage.setUsername(datum[0]);
-            loginPage.setPassword(datum[1]);
+            loginPage.setUsername(datum.first());
+            loginPage.setPassword(datum.second());
             loginPage.clickLoginButton();
 
-            Assert.assertTrue(loginPage.isErrorMessageDisplayed());
+            funcInterface.run();
         }
     }
-    @Test(priority = 1, dataProvider = "getIncorrectUsernameData", dataProviderClass = MyDataProvider.class)
-    public void incorrectEmailAddress(List<String[]> data) {
+    @Test(priority = 1, dataProvider = "incorrectUsername", dataProviderClass = MyDataProvider.class)
+    public void incorrectUsername(List<Pair<String, String>> data) throws IOException {
 
         ExtentReportsManager.setName("Incorrect email address");
-        fillAndCheck(data);
+        fillAndCheck(data, ()->{ Assert.assertTrue(loginPage.isErrorMessageDisplayed()); });
     }
 
-    @Test(priority = 3, dataProvider = "getBlankUsernameFieldData", dataProviderClass = MyDataProvider.class)
-    public void blankUsernameField(List<String[]> data) {
+    @Test(priority = 3, dataProvider = "noUsername", dataProviderClass = MyDataProvider.class)
+    public void noUsername(List<Pair<String, String>> data) throws IOException {
 
         ExtentReportsManager.setName("Blank username field");
-        fillAndCheck(data);
+        fillAndCheck(data, ()->{ Assert.assertTrue(loginPage.isErrorMessageDisplayed()); });
     }
 
-    @Test(priority = 2, dataProvider = "getIncorrectPasswordData", dataProviderClass = MyDataProvider.class)
-    public void incorrectPassword(List<String[]> data) {
+    @Test(priority = 2, dataProvider = "incorrectPassword", dataProviderClass = MyDataProvider.class)
+    public void incorrectPassword(List<Pair<String, String>> data) throws IOException {
 
         ExtentReportsManager.setName("Incorrect password");
-        fillAndCheck(data);
+        fillAndCheck(data, ()->{ Assert.assertTrue(loginPage.isErrorMessageDisplayed()); });
     }
 
-    @Test(priority = 4, dataProvider = "getBlankPasswordFieldData", dataProviderClass = MyDataProvider.class)
-    public void blankPasswordField(List<String[]> data) {
+    @Test(priority = 4, dataProvider = "noPassword", dataProviderClass = MyDataProvider.class)
+    public void noPassword(List<Pair<String, String>> data) throws IOException {
 
         ExtentReportsManager.setName("Blank password field");
-        fillAndCheck(data);
+        fillAndCheck(data, ()->{ Assert.assertTrue(loginPage.isErrorMessageDisplayed()); });
     }
 
-    @Test(priority = 5, dataProvider = "getCorrectLoginData", dataProviderClass = MyDataProvider.class)
-    public void correctData(List<String[]> data) {
+    @Test(priority = 5, dataProvider = "correctLoginData", dataProviderClass = MyDataProvider.class)
+    public void correctData(List<Pair<String, String>> data) throws AWTException, IOException {
 
         ExtentReportsManager.setName("Correct data");
+        AccountPage accountPage = new AccountPage(getDriver());
 
-        loginPage.clearAll();
-        loginPage.setUsername(data.get(0)[0]);
-        loginPage.setPassword(data.get(0)[0]);
-        loginPage.clickLoginButton();
-
-        Assert.assertFalse(loginPage.isErrorMessageDisplayed());
+        fillAndCheck(data, ()->{ Assert.assertTrue(accountPage.isDashboardLinkDisplayed()); });
     }
 }
