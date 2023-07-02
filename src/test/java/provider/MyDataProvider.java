@@ -1,79 +1,68 @@
 package provider;
 
-import com.opencsv.exceptions.CsvValidationException;
 import org.json.JSONException;
 import org.testng.annotations.DataProvider;
-import utils.CSVFileManager;
 import utils.JSONReader;
+import utils.Pair;
 
-import java.io.IOException;
 import java.util.List;
 
 public class MyDataProvider {
 
-    private final String path = "./resources/test data/";
+    @DataProvider(name = "correctLoginData")
+    public Object[] correctLoginData() throws JSONException {
 
-    private List<String[]> loadFile(String filename) throws CsvValidationException, IOException {
+        List<Pair<String, String>> data = JSONReader.get("login", "correct", new Pair<>("email", "password"));
 
-        List<String[]> data = CSVFileManager.loadFile(path + filename);
-
-        return data;
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getCorrectLoginData")
-    public Object[][] getCorrectLoginData() throws CsvValidationException, IOException {
+    @DataProvider(name = "incorrectUsername")
+    public Object[] incorrectUsername() throws JSONException {
 
-        List<String[]> data = loadFile("login/correctData.csv");
+        List<Pair<String, String>> data = JSONReader.get("login", "incorrectEmail", new Pair<>("email", "password"));
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getIncorrectUsernameData")
-    public Object[][] getIncorrectEmailAddress() throws CsvValidationException, IOException {
+    @DataProvider(name = "noUsername")
+    public Object[] noUsername() throws JSONException {
 
-        List<String[]> data = loadFile("login/incorrectEmail.csv");
+        List<Pair<String, String>> data = JSONReader.get("login", "noEmail", new Pair<>("email", "password"));
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getBlankUsernameFieldData")
-    public Object[][] getBlankEmailAddressField() throws CsvValidationException, IOException {
+    @DataProvider(name = "incorrectPassword")
+    public Object[] incorrectPassword() throws JSONException {
 
-        List<String[]> data = loadFile("login/emptyEmailForm.csv");
+        List<Pair<String, String>> data = JSONReader.get("login", "incorrectPassword", new Pair<>("email", "password"));
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getIncorrectPasswordData")
-    public Object[][] getIncorrectPassword() throws CsvValidationException, IOException {
+    @DataProvider(name = "noPassword")
+    public Object[] noPassword() throws JSONException {
 
-        List<String[]> data = loadFile("login/incorrectPassword.csv");
+        List<Pair<String, String>> data = JSONReader.get("login", "noPassword", new Pair<>("email", "password"));
 
-        return new Object[][] {{data}};
-    }
-
-    @DataProvider(name = "getBlankPasswordFieldData")
-    public Object[][] getBlankPasswordField() throws CsvValidationException, IOException {
-
-        List<String[]> data = loadFile("login/emptyPasswordForm.csv");
-
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
     @DataProvider(name = "getBlankNameFieldNewsletterData")
-    public Object[][] getBlankNameFieldNewsletterData() throws CsvValidationException, IOException {
+    public Object[] getBlankNameFieldNewsletterData() throws JSONException {
 
-        List<String[]> data = loadFile("newsletter/blankNameField.csv");
+        List<Pair<String, String>> data = JSONReader.get("newsletter", "noUsername", new Pair<>("username", "email"));
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
     @DataProvider(name = "getIncorrectEmailNewsletterData")
-    public Object[][] getIncorrectEmailNewsletterData() throws CsvValidationException, IOException {
+    public Object[] getIncorrectEmailNewsletterData() throws JSONException {
 
-        List<String[]> data = loadFile("newsletter/incorrectEmail.csv");
+        List<Pair<String, String>> data = JSONReader.get("newsletter", "incorrectEmail", new Pair<>("username", "email"));
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
     @DataProvider(name = "getCorrectPhrase")
@@ -81,7 +70,7 @@ public class MyDataProvider {
 
         String[] data = JSONReader.get("searchEngine", "correct");
 
-        return new Object[][] {data};
+        return new Object[] {data};
     }
 
     @DataProvider(name = "getPartOfCorrectPhrase")
@@ -105,7 +94,7 @@ public class MyDataProvider {
 
         String[] data = JSONReader.get("searchEngine", "incorrect");
 
-        return new Object[][] {data};
+        return new Object[] {data};
     }
 
     @DataProvider(name = "getSpecialSigns")
@@ -116,67 +105,67 @@ public class MyDataProvider {
         return new Object[] {data};
     }
 
-    @DataProvider(name = "getCorrectBillingAddress")
-    public Object[][] getCorrectBillingAddress() throws CsvValidationException, IOException {
+    @DataProvider(name = "correctAddress")
+    public Object[] correctAddress() throws JSONException {
 
-        List<String[]> data = loadFile("addresses/billingCorrectData.csv");
+        List<String[]> data = JSONReader.getArrays("address", "correct");
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getIncorrectFirstName")
-    public Object[][] getIncorrectFirstName() throws CsvValidationException, IOException {
+    @DataProvider(name = "addressIncorrectFirstName")
+    public Object[] addressIncorrectFirstName() throws JSONException {
 
-        List<String[]> data = loadFile("addresses/incorrectFirstName.csv");
+        List<String[]> data = JSONReader.getArrays("address", "incorrectFirstName");
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getIncorrectLastName")
-    public Object[][] getIncorrectLastName() throws CsvValidationException, IOException {
+    @DataProvider(name = "addressIncorrectLastName")
+    public Object[] addressIncorrectLastName() throws JSONException {
 
-        List<String[]> data = loadFile("addresses/incorrectLastName.csv");
+        List<String[]> data = JSONReader.getArrays("address", "incorrectLastName");
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getIncorrectPostcode")
-    public Object[][] getIncorrectPostcode() throws CsvValidationException, IOException {
+    @DataProvider(name = "addressIncorrectPostcode")
+    public Object[] addressIncorrectPostcode() throws JSONException {
 
-        List<String[]> data = loadFile("addresses/incorrectPostcode.csv");
+        List<String[]> data = JSONReader.getArrays("address", "incorrectPostcode");
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getIncorrectPhoneNumber")
-    public Object[][] getIncorrectPhoneNumber() throws CsvValidationException, IOException {
+    @DataProvider(name = "addressIncorrectPhoneNumber")
+    public Object[] getIncorrectPhoneNumber() throws JSONException {
 
-        List<String[]> data = loadFile("addresses/incorrectPhoneNumber.csv");
+        List<String[]> data = JSONReader.getArrays("address", "incorrectPhoneNumber");
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getIncorrectEmail")
-    public Object[][] getIncorrectEmail() throws CsvValidationException, IOException {
+    @DataProvider(name = "addressIncorrectEmail")
+    public Object[] getIncorrectEmail() throws JSONException {
 
-        List<String[]> data = loadFile("addresses/incorrectEmail.csv");
+        List<String[]> data = JSONReader.getArrays("address", "incorrectEmail");
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getCorrectCountryNames")
-    public Object[][] getCorrectCountryNames() throws CsvValidationException, IOException {
+    @DataProvider(name = "correctCountryName")
+    public Object[] correctCountryName() throws JSONException {
 
-        List<String[]> data = loadFile("addresses/correctCountryNames.csv");
+        String[] data = JSONReader.get("countries", "correct");
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 
-    @DataProvider(name = "getIncorrectCountryNames")
-    public Object[][] getIncorrectCountryNames() throws CsvValidationException, IOException {
+    @DataProvider(name = "incorrectCountryName")
+    public Object[] incorrectCountryName() throws JSONException {
 
-        List<String[]> data = loadFile("addresses/incorrectCountryNames.csv");
+        String[] data = JSONReader.get("countries", "incorrect");
 
-        return new Object[][] {{data}};
+        return new Object[] {data};
     }
 }
