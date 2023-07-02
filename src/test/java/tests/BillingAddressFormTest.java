@@ -23,10 +23,15 @@ public class BillingAddressFormTest extends AddressFormTests {
         accountPage.clickBillingAddressEditLink();
     }
 
-    @Test(priority = 3, dataProvider = "getIncorrectPhoneNumber", dataProviderClass = MyDataProvider.class)
-    public void incorrectPhoneNumber(List<String[]> data) throws AWTException {
+    @Test(priority = 4, dataProvider = "addressIncorrectPhoneNumber", dataProviderClass = MyDataProvider.class)
+    public void incorrectPhoneNumber(List<String[]> data) throws AWTException, InterruptedException {
 
         ExtentReportsManager.setName("Incorrect phone number");
-        checkErrorMessageDisplaying(data, "No incorrect phone number message");
+        checkErrorMessageDisplaying(data);
+    }
+
+    @Test(priority = 3, dataProvider = "addressIncorrectEmail", dataProviderClass = MyDataProvider.class)
+    public void incorrectEmail(List<String[]> data) {
+
     }
 }
