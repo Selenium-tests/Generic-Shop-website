@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JSONReader {
-    private static final String filePath = "./resources/test data/testdata.json";
+    private static final String filePath = "./resources/testdata.json";
 
     private static JSONObject jsonObject;
 
@@ -38,7 +38,7 @@ public class JSONReader {
         }
     }
 
-    public static void read() throws FileNotFoundException, JSONException {
+    public static void read() throws JSONException {
 
         jsonObject = new JSONObject(fileToString());
     }
@@ -72,5 +72,28 @@ public class JSONReader {
         }
 
         return pairList;
+    }
+
+    public static List<String[]> getArrays(String key, String node) throws JSONException {
+
+        Object object = jsonObject.get(key);
+        JSONObject jsonObject1 =(JSONObject) object;
+        JSONArray array = jsonObject1.getJSONArray(node);
+
+        List<String[]> data = new ArrayList<>();
+
+        for (int i = 0; i < array.length(); i++) {
+
+            String[] temp = new String[array.getJSONArray(i).length()];
+
+            for (int j = 0; j < array.getJSONArray(i).length(); j++) {
+
+                temp[j] = array.getJSONArray(i).getString(j);
+            }
+
+            data.add(temp);
+        }
+
+        return data;
     }
 }
