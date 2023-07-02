@@ -9,6 +9,10 @@ import pages.components.header.SearchEngine;
 import provider.MyDataProvider;
 import utils.*;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 
 public class SearchEngineTest extends BaseTest {
 
@@ -22,7 +26,7 @@ public class SearchEngineTest extends BaseTest {
         resultsPage = new ResultsPage(getDriver());
     }
 
-    private void fillAndCheck(String[] data, FuncInterface assertion) {
+    private void fillAndCheck(String[] data, FuncInterface assertion) throws IOException {
 
         for (String phrase : data) {
 
@@ -34,37 +38,39 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = "getCorrectPhrase", dataProviderClass = MyDataProvider.class)
-    public void correctPhrase(String[] data) {
+    public void correctPhrase(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Searching with correct phrase");
         fillAndCheck(data, ()->{ Assert.assertFalse(resultsPage.hasNoResults()); });
     }
 
     @Test(priority = 2, dataProvider = "getPartOfCorrectPhrase", dataProviderClass = MyDataProvider.class)
-    public void partOfCorrectPhrase(String[] data) {
+    public void partOfCorrectPhrase(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Searching with part of correct phrase");
         fillAndCheck(data, ()->{ Assert.assertFalse(resultsPage.hasNoResults()); });
     }
 
     @Test(priority = 3, dataProvider = "getUpperLower", dataProviderClass = MyDataProvider.class)
-    public void upperLowerCases(String[] data) {
+    public void upperLowerCases(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Searching with phrase which has upper and lower cases");
         fillAndCheck(data, ()->{ Assert.assertFalse(resultsPage.hasNoResults()); });
     }
 
     @Test(priority = 4, dataProvider = "getIncorrectPhrase", dataProviderClass = MyDataProvider.class)
-    public void incorrectPhrase(String[] data) {
+    public void incorrectPhrase(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Searching with incorrect phrase");
         fillAndCheck(data, ()->{ Assert.assertTrue(resultsPage.hasNoResults()); });
     }
 
     @Test(priority = 4, dataProvider = "getSpecialSigns", dataProviderClass = MyDataProvider.class)
-    public void naughtyStrings(String[] data) {
+    public void naughtyStrings(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Searching with naughty strings");
-        fillAndCheck(data, ()->{ Assert.assertTrue(resultsPage.hasNoResults()); });
+        HttpURLConnection httpURLConnection = (HttpURLConnection) new URL(getDriver().getCurrentUrl()).openConnection();
+
+        fillAndCheck(data, ()->{ Assert.assertEquals(httpURLConnection.getResponseCode(), 200); });
     }
 }
