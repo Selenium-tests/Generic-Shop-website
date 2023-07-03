@@ -8,6 +8,7 @@
         <suite-file path="search-engine.xml"/>
         <suite-file path="adding-to-cart.xml"/>
         <suite-file path="login.xml"/>
+        <suite-file path="account-page-links.xml"></suite-file>
         <suite-file path="setting-address.xml"/>
     </suite-files>
 </suite>
