@@ -69,7 +69,7 @@ public abstract class AddressFormTests extends BaseTest {
 
     public void checkCountryDropdownList(String[] data, FuncInterface funcInterface1) throws IOException {
 
-        accountPage.clickAddresses();
+        accountPage.clickAddressesLink();
         openForm();
 
         for (String str : data) {
@@ -103,7 +103,7 @@ public abstract class AddressFormTests extends BaseTest {
 
         for (String[] datum : data) {
 
-            accountPage.clickAddresses();
+            accountPage.clickAddressesLink();
             openForm();
             setFields(datum);
             openForm();
@@ -117,7 +117,7 @@ public abstract class AddressFormTests extends BaseTest {
 
         for (String[] datum : data) {
 
-            accountPage.clickAddresses();
+            accountPage.clickAddressesLink();
             openForm();
             setFields(datum);
             Assert.assertTrue(accountPage.getAddressForm().isErrorMessageDisplayed());
