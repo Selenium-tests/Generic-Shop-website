@@ -35,28 +35,36 @@ public class AccountPage extends BasePage {
     @FindBy(linkText = "Addresses")
     WebElement addresses;
 
+    @FindBy(linkText = "Logout")
+    WebElement logout;
+
     @FindBy(xpath = "//a[@href='https://skleptest.pl/my-account/edit-address/billing']")
     WebElement billingAddressEditLink;
 
     @FindBy(xpath = "//a[@href='https://skleptest.pl/my-account/edit-address/shipping']")
     WebElement shippingAddressEditLink;
 
-    public void clickOrders() {
+    public void clickOrdersLink() {
 
         orders.click();
     }
 
-    public void clickDownloads() {
+    public void clickDownloadsLink() {
 
         downloads.click();
     }
 
-    public void clickDashboard() {
+    public void clickDashboardLink() {
 
         dashboard.click();
     }
 
-    public void clickAccountDetails() {
+    public void clickLogoutLink() {
+
+        logout.click();
+    }
+
+    public void clickAccountDetailsLink() {
 
         accountDetails.click();
     }
@@ -66,7 +74,7 @@ public class AccountPage extends BasePage {
         return dashboard.isDisplayed();
     }
 
-    public void clickAddresses() {
+    public void clickAddressesLink() {
 
         addresses.click();
     }
