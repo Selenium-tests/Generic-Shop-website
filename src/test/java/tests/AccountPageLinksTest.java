@@ -44,7 +44,7 @@ public class AccountPageLinksTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    private void linkToDashboardPage() {
+    public void linkToDashboardPage() {
 
         ExtentReportsManager.setName("Link to Dashboard page");
 
@@ -53,7 +53,7 @@ public class AccountPageLinksTest extends BaseTest {
     }
 
     @Test(priority = 3)
-    private void linkToOrdersPage() {
+    public void linkToOrdersPage() {
 
         ExtentReportsManager.setName("Link to Orders page");
 
@@ -62,7 +62,7 @@ public class AccountPageLinksTest extends BaseTest {
     }
 
     @Test(priority = 4)
-    private void linkToDownloadsPage() {
+    public void linkToDownloadsPage() {
 
         ExtentReportsManager.setName("Link to Downloads page");
 
@@ -71,7 +71,7 @@ public class AccountPageLinksTest extends BaseTest {
     }
 
     @Test(priority = 5)
-    private void linkToAddressesPage() {
+    public void linkToAddressesPage() {
 
         ExtentReportsManager.setName("Link to Addresses page");
 
@@ -80,7 +80,7 @@ public class AccountPageLinksTest extends BaseTest {
     }
 
     @Test(priority = 6)
-    private void linkToAccountDetailsPage() {
+    public void linkToAccountDetailsPage() {
 
         ExtentReportsManager.setName("Link to Account details page");
 
@@ -89,7 +89,7 @@ public class AccountPageLinksTest extends BaseTest {
     }
 
     @Test(priority = 7)
-    private void linkToLogoutPage() {
+    public void linkToLogoutPage() {
 
         ExtentReportsManager.setName("Link to Logout page");
 
