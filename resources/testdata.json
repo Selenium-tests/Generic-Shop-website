@@ -505,6 +505,17 @@
       "https://skleptest.pl/best-fabrics-dream-dress-dare-try/",
       "https://skleptest.pl/long-legs-no-longer-myth-check/",
       "https://skleptest.pl/best-fabrics-dream-dress-dare-try/"
+    ],
+
+    "accountPage": [
+
+        "https://skleptest.pl/my-account/",
+        "https://skleptest.pl/my-account/orders/",
+        "https://skleptest.pl/my-account/downloads/",
+        "https://skleptest.pl/my-account/edit-address/",
+        "https://skleptest.pl/my-account/details/",
+        "https://skleptest.pl/my-account/customer-logout/"
     ]
+
     }
 }
