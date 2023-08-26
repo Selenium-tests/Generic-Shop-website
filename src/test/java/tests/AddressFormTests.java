@@ -5,11 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.AccountPage;
-import pages.LoginPage;
-import pages.components.header.Header;
 import provider.MyDataProvider;
 import utils.*;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
@@ -52,21 +49,6 @@ public abstract class AddressFormTests extends BaseTest {
         }
     }
 
-    @Test(dataProvider = "correctLoginData", dataProviderClass = MyDataProvider.class)
-    public void correctLogin(List<Pair<String, String>> data) {
-
-        ExtentReportsManager.setName("Correct login");
-
-        Header header = new Header(getDriver());
-        LoginPage loginPage = new LoginPage(getDriver());
-
-        header.clickAccountButton();
-
-        loginPage.setUsername(data.get(0).first());
-        loginPage.setPassword(data.get(0).second());
-        loginPage.clickLoginButton();
-    }
-
     public void checkCountryDropdownList(String[] data, FuncInterface funcInterface1) throws IOException {
 
         accountPage.clickAddressesLink();
@@ -81,14 +63,14 @@ public abstract class AddressFormTests extends BaseTest {
         }
     }
 
-    @Test(dependsOnMethods = {"correctLogin"},priority = 6, dataProvider = "correctCountryName", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 6, dataProvider = "correctCountryName", dataProviderClass = MyDataProvider.class)
     public void correctCountryName(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Correct country name");
         checkCountryDropdownList(data, ()->{ Assert.assertFalse(accountPage.getAddressForm().getCountryDropdownList().isAlertDisplayed()); });
     }
 
-    @Test(dependsOnMethods = {"correctLogin"},priority = 6, dataProvider = "incorrectCountryName", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 6, dataProvider = "incorrectCountryName", dataProviderClass = MyDataProvider.class)
     public void incorrectCountryName(String[] data) throws IOException {
 
         ExtentReportsManager.setName("Incorrect country name");
