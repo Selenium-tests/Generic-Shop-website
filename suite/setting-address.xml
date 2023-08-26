@@ -3,13 +3,13 @@
 
 <suite name="Setting address">
     <listeners>
-        <listener class-name="listener.TestListener"></listener>
+        <listener class-name="listener.TestListener"/>
     </listeners>
 
     <test verbose="2" preserve-order="true" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
         <classes>
             <class name="tests.BillingAddressFormTest"/>
-            <class name="tests.ShippingAddressFormTest"></class>
+            <class name="tests.ShippingAddressFormTest"/>
         </classes>
     </test>
 </suite>
