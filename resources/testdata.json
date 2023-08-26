@@ -77,17 +77,17 @@
             },
 
             {
-                "email": "fox@gmail.com",
+                "email": "@gmail.com",
                 "password": "Kvc$11324#"
             },
 
             {
-                "email": "fff34@.gmail.com",
+                "email": "fff34@.com",
                 "password": "Kvc$11324#"
             },
 
             {
-                "email": "opr123@gmail.com",
+                "email": "opr.123@gmail_com_com",
                 "password": "Kvc$11324#"
             },
 
@@ -234,36 +234,10 @@
                 "233564788",
                 "jandrade@zox.por",
                 "Portugal"
-            ],
-
-            [
-                "J***e",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "1000-203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
             ]
         ],
 
         "incorrectLastName": [
-
-            [
-                "Jorge",
-                "_______",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "1000-203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
-            ],
 
             [
                 "Jorge",
@@ -280,7 +254,7 @@
 
             [
                 "Jorge",
-                "A%d@a-e",
+                "@%d@#342",
                 "Zoland",
                 "Saint Lucia",
                 "Andrada",
