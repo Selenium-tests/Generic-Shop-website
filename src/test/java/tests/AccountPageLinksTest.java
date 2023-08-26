@@ -6,9 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.AccountPage;
-import pages.LoginPage;
-import pages.components.header.Header;
-import provider.MyDataProvider;
 import utils.ExtentReportsManager;
 import utils.JSONReader;
 import utils.Pair;
@@ -26,21 +23,9 @@ public class AccountPageLinksTest extends BaseTest {
 
         accountPage = new AccountPage(getDriver());
         expectedURLs = JSONReader.get("URLs", "accountPage");
-    }
 
-    @Test(priority = 1, dataProvider = "correctLoginData", dataProviderClass = MyDataProvider.class)
-    public void correctLogin(List<Pair<String, String>> data) {
-
-        ExtentReportsManager.setName("Correct login");
-
-        Header header = new Header(getDriver());
-        LoginPage loginPage = new LoginPage(getDriver());
-
-        header.clickAccountButton();
-
-        loginPage.setUsername(data.get(0).first());
-        loginPage.setPassword(data.get(0).second());
-        loginPage.clickLoginButton();
+        List<Pair<String, String>> data = JSONReader.get("login", "correct", new Pair<>("email", "password"));
+        login(data);
     }
 
     @Test(priority = 2)
