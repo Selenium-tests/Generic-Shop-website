@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import pages.AccountPage;
 import provider.MyDataProvider;
 import utils.ExtentReportsManager;
+import utils.JSONReader;
+import utils.Pair;
 
 import java.awt.*;
 import java.util.List;
@@ -15,6 +17,9 @@ public class BillingAddressFormTest extends AddressFormTests {
     private void init() throws AWTException {
 
         accountPage = new AccountPage(getDriver());
+
+        List<Pair<String, String>> data = JSONReader.get("login", "correct", new Pair<>("email", "password"));
+        login(data);
     }
 
     @Override
@@ -28,10 +33,5 @@ public class BillingAddressFormTest extends AddressFormTests {
 
         ExtentReportsManager.setName("Incorrect phone number");
         checkErrorMessageDisplaying(data);
-    }
-
-    @Test(priority = 3, dataProvider = "addressIncorrectEmail", dataProviderClass = MyDataProvider.class)
-    public void incorrectEmail(List<String[]> data) {
-
     }
 }
