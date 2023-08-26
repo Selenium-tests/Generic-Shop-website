@@ -40,13 +40,13 @@ public class AddressForm extends BasePage {
 
     public void clearAll() {
 
-        for (int i = 0; i < inputs.size(); i++) {
+        for (WebElement input : inputs) {
 
-            inputs.get(i).clear();
+            input.clear();
         }
     }
 
-    public void setData(int index, String data) {
+    public void setData(int index, String data) throws InterruptedException {
 
         inputs.get(index).sendKeys(data);
     }
