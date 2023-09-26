@@ -4,20 +4,16 @@ import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.components.addressform.AddressForm;
+
 
 import java.awt.*;
 
 
 public class AccountPage extends BasePage {
 
-    private final AddressForm addressForm;
-
     public AccountPage(WebDriver driver) throws AWTException {
 
         super(driver);
-
-        addressForm = new AddressForm(driver);
     }
 
     @FindBy(linkText = "Orders")
@@ -87,10 +83,5 @@ public class AccountPage extends BasePage {
     public void clickShippingAddressEditLink() {
 
         shippingAddressEditLink.click();
-    }
-
-    public AddressForm getAddressForm() {
-
-        return addressForm;
     }
 }
