@@ -1,6 +1,7 @@
 package pages.components.addressform;
 
 import base.BasePage;
+import enums.AddressFormType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,11 +15,12 @@ public class AddressFormBase extends BasePage {
     private final String prefix;
     private final CountryDropdownList countryDropdownList;
 
-    public AddressFormBase(WebDriver driver, String prefix) throws AWTException {
+    public AddressFormBase(WebDriver driver, AddressFormType type) throws AWTException {
 
         super(driver);
 
-        this.prefix = prefix;
+        this.prefix = type == AddressFormType.BILLING ? "billing" : "shipping";
+
         countryDropdownList = new CountryDropdownList(driver);
     }
 
