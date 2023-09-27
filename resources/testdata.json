@@ -161,222 +161,106 @@
         ]
     },
 
-    "address": {
+    "addressForm": {
 
-        "correct": [
+        "correctAddress": [
 
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
+                "Portugal",
+                "Pedro",
+                "Ribeiro",
+                "Tech Genius",
+                "Praca do Municipio",
+                " ",
                 "Lisbon",
-                "1000-203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
-            ],
+                "1100-365",
+                "213227000",
+                "gocidey596@vigoneo.com"
+        ],
 
-            [
-                "Andre",
-                "Silva",
-                "UCompany",
-                "Saint Lucia",
-                "Complex",
-                "Montevideo",
-                "Tormex",
-                "55100",
-                "317538089",
-                "asilva@cmp.uru",
-                "Uruguay"
-            ],
 
-            [
-                "Marko",
-                "Fuchs",
-                "Zoland",
-                "Saint Lucia",
-                "Fulkrug.Vaduz",
-                "9485",
-                "Vaduzin",
-                "Vadizun",
-                "554783023",
-                "mfuchs@org.lie",
-                "Liechtenstein"
-            ]
-            
+        "additionalField": [
+
+                "Uruguay",
+                "Juan",
+                "Roman",
+                "UrbanSpaces",
+                "Lavalleja 591 entre Avda",
+                " ",
+                "Las Piedras",
+                "90200",
+                "23644506",
+                "gocidey596@vigoneo.com",
+                "Cancelones"
         ],
 
         "incorrectFirstName": [
 
-            [
-                "@#$%#@",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
+                "Portugal",
+                "_@?",
+                "Ribeiro",
+                "Tech Genius",
+                "Praca do Municipio",
+                " ",
                 "Lisbon",
-                "1000-203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
-            ],
-
-            [
-                "1234",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "1000-203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
-            ]
+                "1100-365",
+                "213227000",
+                "gocidey596@vigoneo.com"
         ],
 
         "incorrectLastName": [
 
-            [
-                "Jorge",
-                "09876",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
+                "Portugal",
+                "Pedro",
+                "_Rib_er@io",
+                "Tech Genius",
+                "Praca do Municipio",
+                " ",
                 "Lisbon",
-                "1000-203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
-            ],
-
-            [
-                "Jorge",
-                "@%d@#342",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "1000-203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
-            ]
+                "1100-365",
+                "213227000",
+                "gocidey596@vigoneo.com"
         ],
 
         "incorrectPostcode": [
 
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
+                "Portugal",
+                "Pedro",
+                "Ribeiro",
+                "Tech Genius",
+                "Praca do Municipio",
+                " ",
                 "Lisbon",
-                "100l*203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
-            ],
-
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "PCode:5203",
-                "233564788",
-                "jandrade@zox.por",
-                "Portugal"
-            ]
+                "1100^36x",
+                "213227000",
+                "gocidey596@vigoneo.com"
         ],
 
         "incorrectPhoneNumber": [
 
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
+                "Portugal",
+                "Pedro",
+                "Ribeiro",
+                "Tech Genius",
+                "Praca do Municipio",
+                " ",
                 "Lisbon",
-                "1000-203",
-                "233a647g8",
-                "jandrade@zox.por",
-                "Portugal"
-            ],
-
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "1000-203",
-                "phone:number",
-                "jandrade@zox.por",
-                "Portugal"
-            ],
-
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "1000-203",
-                "@34!aAt",
-                "jandrade@zox.por",
-                "Portugal"
-            ]
+                "1100-365",
+                "phone111222333",
+                "gocidey596@vigoneo.com"
         ],
 
         "incorrectEmail": [
 
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
+                "Portugal",
+                "Pedro",
+                "Ribeiro",
+                "Tech Genius",
+                "Praca do Municipio",
+                " ",
                 "Lisbon",
-                "1000-203",
-                "233564788",
-                "@zox.cov.por",
-                "Portugal"
-            ],
-
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "1000-203",
-                "233564788",
-                "a-vaMonkey.cmp.por",
-                "Portugal"
-            ],
-
-            [
-                "Jorge",
-                "Andrade",
-                "Zoland",
-                "Saint Lucia",
-                "Andrada",
-                "Lisbon",
-                "1000-203",
-                "233564788",
-                "jorge@",
-                "Portugal"
-            ]
+                "1100-365",
+                "213227000",
+                "#@%^%#$@#$@#.com"
         ]
     },
 
