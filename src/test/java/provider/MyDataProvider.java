@@ -105,50 +105,58 @@ public class MyDataProvider {
         return new Object[] {data};
     }
 
-    @DataProvider(name = "correctAddress")
-    public Object[] correctAddress() throws JSONException {
+    @DataProvider(name = "AF_correctAddress")
+    public Object[] AF_correctAddress() throws JSONException {
 
-        List<String[]> data = JSONReader.getArrays("address", "correct");
-
-        return new Object[] {data};
-    }
-
-    @DataProvider(name = "addressIncorrectFirstName")
-    public Object[] addressIncorrectFirstName() throws JSONException {
-
-        List<String[]> data = JSONReader.getArrays("address", "incorrectFirstName");
+        String[] data = JSONReader.get("addressForm", "correctAddress");
 
         return new Object[] {data};
     }
 
-    @DataProvider(name = "addressIncorrectLastName")
-    public Object[] addressIncorrectLastName() throws JSONException {
+    @DataProvider(name = "AF_additionalField")
+    public Object[] AF_additionalField() throws JSONException {
 
-        List<String[]> data = JSONReader.getArrays("address", "incorrectLastName");
-
-        return new Object[] {data};
-    }
-
-    @DataProvider(name = "addressIncorrectPostcode")
-    public Object[] addressIncorrectPostcode() throws JSONException {
-
-        List<String[]> data = JSONReader.getArrays("address", "incorrectPostcode");
+        String[] data = JSONReader.get("addressForm", "additionalField");
 
         return new Object[] {data};
     }
 
-    @DataProvider(name = "addressIncorrectPhoneNumber")
-    public Object[] getIncorrectPhoneNumber() throws JSONException {
+    @DataProvider(name = "AF_incorrectFirstName")
+    public Object[] AF_incorrectFirstName() throws JSONException {
 
-        List<String[]> data = JSONReader.getArrays("address", "incorrectPhoneNumber");
+        String[] data = JSONReader.get("addressForm", "incorrectFirstName");
 
         return new Object[] {data};
     }
 
-    @DataProvider(name = "addressIncorrectEmail")
-    public Object[] getIncorrectEmail() throws JSONException {
+    @DataProvider(name = "AF_incorrectLastName")
+    public Object[] AF_incorrectLastName() throws JSONException {
 
-        List<String[]> data = JSONReader.getArrays("address", "incorrectEmail");
+        String[] data = JSONReader.get("addressForm", "incorrectLastName");
+
+        return new Object[] {data};
+    }
+
+    @DataProvider(name = "AF_incorrectPostcode")
+    public Object[] AF_incorrectPostcode() throws JSONException {
+
+        String[] data = JSONReader.get("addressForm", "incorrectPostcode");
+
+        return new Object[] {data};
+    }
+
+    @DataProvider(name = "AF_incorrectPhoneNumber")
+    public Object[] AF_incorrectPhoneNumber() throws JSONException {
+
+        String[] data = JSONReader.get("addressForm", "incorrectPhoneNumber");
+
+        return new Object[] {data};
+    }
+
+    @DataProvider(name = "AF_incorrectEmail")
+    public Object[] AF_incorrectEmail() throws JSONException {
+
+        String[] data = JSONReader.get("addressForm", "incorrectEmail");
 
         return new Object[] {data};
     }
