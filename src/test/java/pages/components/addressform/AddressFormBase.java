@@ -27,6 +27,9 @@ public class AddressFormBase extends BasePage {
     @FindBy(xpath = ".//div[@class='woocommerce-address-fields']")
     WebElement addressFields;
 
+    @FindBy(xpath = ".//input[@type='submit']")
+    WebElement saveAddressButton;
+
     @FindBy(xpath = "//ul[@class='woocommerce-error']")
     List<WebElement> errorMessage;
 
@@ -79,5 +82,15 @@ public class AddressFormBase extends BasePage {
     public CountryDropdownList getCountryDropdownList() {
 
         return countryDropdownList;
+    }
+
+    public void clickSaveAddressButton() {
+
+        saveAddressButton.click();
+    }
+
+    public boolean isErrorMessageDisplayed() {
+
+        return !(errorMessage.isEmpty());
     }
 }
