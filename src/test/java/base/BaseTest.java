@@ -1,6 +1,6 @@
 package base;
 
-import driver.Browser;
+import enums.Browser;
 import driver.DriverType;
 import org.json.JSONException;
 import org.openqa.selenium.WebDriver;
