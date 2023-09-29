@@ -1,47 +1,53 @@
 package tests.addressForms.BillingAddressForm;
 
 import constans.AddressFormFields;
+import enums.AddressFormType;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.components.addressform.BillingAddressForm;
+import pages.AccountPage;
+import pages.components.addressform.AddressForm;
 import provider.MyDataProvider;
-import tests.addressForms.PositiveBase;
+import tests.addressForms.AddressFormBaseTests;
+import utils.ExtentReportsManager;
+
 import java.awt.*;
 
 
-public class PositiveTests extends PositiveBase<BillingAddressForm> {
+public class PositiveTests extends AddressFormBaseTests {
+
 
     @BeforeClass
     public void init() throws AWTException {
 
         begin();
 
-        accountPage.clickBillingAddressEditLink();
-        setAddressForm(new BillingAddressForm(getDriver()));
+        setAddressForm(new AddressForm(getDriver(), AddressFormType.BILLING));
         setExpectedURL("https://skleptest.pl/my-account/edit-address/");
     }
 
-    @Test(dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
-    public void correctAddress(String[] data) {
+    @BeforeMethod
+    public void openPage() {
 
-        fill(data, (BillingAddressForm b)->{
-            b.setPhone(data[AddressFormFields.PHONE]);
-            b.setEmail(data[AddressFormFields.EMAIL]);
-        });
-        goToAccountPageIfTestFailed();
-        check(Assert::assertTrue, getIsURL());
+        openForm(AccountPage::clickBillingAddressEditLink);
     }
 
-    @Test(dataProvider = "AF_additionalField", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 1, dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
+    public void correctAddress(String[] data) {
+
+        ExtentReportsManager.setName("Correct data");
+
+        fill(data, (AddressForm af)->{});
+        check(Assert::assertTrue, isUrlValid());
+    }
+
+    @Test(priority = 2, dataProvider = "AF_additionalField", dataProviderClass = MyDataProvider.class)
     public void additionalField(String[] data) {
 
-        fill(data, (BillingAddressForm b)->{
-            b.setPhone(data[AddressFormFields.PHONE]);
-            b.setEmail(data[AddressFormFields.EMAIL]);
-            b.setState(data[AddressFormFields.STATE]);
-        });
-        goToAccountPageIfTestFailed();
-        check(Assert::assertTrue, getIsURL());
+        ExtentReportsManager.setName("Correct data with 'State / County' field");
+
+        fill(data, (AddressForm af)->{ af.setState(data[AddressFormFields.STATE]); });
+        check(Assert::assertTrue, isUrlValid());
     }
 }
