@@ -25,7 +25,7 @@ public class AddingProductToCartTest extends BaseTest {
     }
 
     @Test(priority = 1)
-    public void fromHomePage() {
+    public void addingProductFromHomePage() {
 
         ExtentReportsManager.setName("Adding product from the home page");
 
@@ -46,7 +46,7 @@ public class AddingProductToCartTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void fromProductPage() {
+    public void addingProductFromProductPage() {
 
         ExtentReportsManager.setName("Adding product from a product page");
         ProductPage productPage = new ProductPage(getDriver());
