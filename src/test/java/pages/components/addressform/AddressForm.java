@@ -10,15 +10,17 @@ import org.openqa.selenium.support.FindBy;
 import java.awt.*;
 import java.util.List;
 
-public class AddressFormBase extends BasePage {
+public class AddressForm extends BasePage {
 
     private final String prefix;
     private final CountryDropdownList countryDropdownList;
+    private final AddressFormType addressFormType;
 
-    public AddressFormBase(WebDriver driver, AddressFormType type) throws AWTException {
+    public AddressForm(WebDriver driver, AddressFormType type) throws AWTException {
 
         super(driver);
 
+        this.addressFormType = type;
         this.prefix = type == AddressFormType.BILLING ? "billing" : "shipping";
 
         countryDropdownList = new CountryDropdownList(driver);
@@ -32,6 +34,12 @@ public class AddressFormBase extends BasePage {
 
     @FindBy(xpath = "//ul[@class='woocommerce-error']")
     List<WebElement> errorMessage;
+
+    @FindBy(id = "billing_phone")
+    WebElement phoneField;
+
+    @FindBy(id = "billing_email")
+    WebElement emailField;
 
     protected void fill(WebElement element, String data) {
 
@@ -74,6 +82,16 @@ public class AddressFormBase extends BasePage {
         fill(addressFields.findElement(By.id(prefix + "_state")), state);
     }
 
+    public void setPhone(String phone) {
+
+        fill(phoneField, phone);
+    }
+
+    public void setEmail(String email) {
+
+        fill(emailField, email);
+    }
+
     public void setPostcode(String postcode) {
 
         fill(addressFields.findElement(By.id(prefix + "_postcode")), postcode);
@@ -92,5 +110,10 @@ public class AddressFormBase extends BasePage {
     public boolean isErrorMessageDisplayed() {
 
         return !(errorMessage.isEmpty());
+    }
+
+    public AddressFormType getAddressFormType() {
+
+        return addressFormType;
     }
 }
