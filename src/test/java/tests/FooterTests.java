@@ -7,12 +7,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.components.footer.Footer;
 import provider.MyDataProvider;
-
 import utils.*;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class FooterTests extends BaseTest {
 
@@ -25,9 +23,10 @@ public class FooterTests extends BaseTest {
     }
 
     @Test(priority = 3)
-    public void tags() throws FileNotFoundException, JSONException {
+    public void tags() throws JSONException {
 
         ExtentReportsManager.setName("Tags");
+
         String[] expectedURLs = JSONReader.get("URLs", "tags");
 
         for (int i = 0; i < footer.getTagsSection().getSize(); i++) {
@@ -45,6 +44,7 @@ public class FooterTests extends BaseTest {
     public void recentPostLinks() throws JSONException {
 
         ExtentReportsManager.setName("Recent post links");
+
         String[] expectedURLs = JSONReader.get("URLs", "recentPosts");
 
         for (int i = 0; i < footer.getRecentPostsSection().getSize(); i++) {
@@ -58,7 +58,11 @@ public class FooterTests extends BaseTest {
         }
     }
 
-    private void fillAndCheck(List<Pair<String, String>> data, FuncInterface assertion) throws IOException {
+    private void check(Consumer<Footer> consumer) {
+
+        consumer.accept(footer);
+    }
+    private void fill(List<Pair<String, String>> data) {
 
         for (Pair<String, String> datum : data) {
 
@@ -67,8 +71,6 @@ public class FooterTests extends BaseTest {
             footer.getNewsletterSection().setName(datum.first());
             footer.getNewsletterSection().setEmail(datum.second());
             footer.getNewsletterSection().clickSubscribeButton();
-
-            assertion.run();
         }
     }
 
@@ -76,14 +78,17 @@ public class FooterTests extends BaseTest {
     public void newsletterEmptyUsernameField(List<Pair<String, String>> data) throws IOException {
 
         ExtentReportsManager.setName("Empty Username field");
-        fillAndCheck(data, ()->{ Assert.assertTrue(footer.getNewsletterSection().isNewsletterMessageDisplayed()); });
+
+        fill(data);
+        check((Footer f)->{ Assert.assertTrue(f.getNewsletterSection().isNewsletterMessageDisplayed()); });
     }
 
     @Test(priority = 2, dataProvider = "getIncorrectEmailNewsletterData", dataProviderClass = MyDataProvider.class)
     public void newsletterIncorrectEmail(List<Pair<String, String>> data) throws IOException {
 
         ExtentReportsManager.setName("Incorrect Email address");
-        fillAndCheck(data, ()->{ Assert.assertFalse(footer.getNewsletterSection().isNewsletterMessageDisplayed()); });
+        fill(data);
+        check((Footer f)->{ Assert.assertFalse(f.getNewsletterSection().isNewsletterMessageDisplayed()); });
     }
 
 }
