@@ -2,17 +2,25 @@ package tests.addressForms;
 
 import base.BaseTest;
 import constans.AddressFormFields;
+import enums.AddressFormType;
 import pages.AccountPage;
-import pages.components.addressform.AddressFormBase;
+import pages.components.addressform.AddressForm;
 import pages.components.header.Header;
 import java.awt.*;
 import java.util.function.Consumer;
 
 public abstract class AddressFormBaseTests extends BaseTest {
 
-    protected AccountPage accountPage;
+    private AccountPage accountPage;
+    protected AddressForm addressForm;
     private String expectedURL;
     private boolean isURL;
+
+
+    protected void setAddressForm(AddressForm addressForm) {
+
+        this.addressForm = addressForm;
+    }
 
     protected void setExpectedURL(String expectedURL) {
 
@@ -34,7 +42,7 @@ public abstract class AddressFormBaseTests extends BaseTest {
         accountPage.clickAddressesLink();
     }
 
-    protected <T extends AddressFormBase> void fillBasicFields(T addressForm, String[] data) {
+    protected void fill(String[] data, Consumer<AddressForm> consumer) {
 
         addressForm.getCountryDropdownList().clickCountryButton();
         addressForm.getCountryDropdownList().setCountry(data[AddressFormFields.COUNTRY]);
@@ -46,6 +54,16 @@ public abstract class AddressFormBaseTests extends BaseTest {
         addressForm.setAddress_2(data[AddressFormFields.STREET_2]);
         addressForm.setCity(data[AddressFormFields.CITY]);
         addressForm.setPostcode(data[AddressFormFields.POSTCODE]);
+
+        if (addressForm.getAddressFormType() == AddressFormType.BILLING) {
+
+            addressForm.setPhone(data[AddressFormFields.PHONE]);
+            addressForm.setEmail(data[AddressFormFields.EMAIL]);
+        }
+
+        consumer.accept(addressForm);
+        addressForm.clickSaveAddressButton();
+        isURL = expectedURL.equals(getDriver().getCurrentUrl());
     }
 
     protected void check(Consumer<Boolean> consumer, Boolean b) {
@@ -53,13 +71,14 @@ public abstract class AddressFormBaseTests extends BaseTest {
         consumer.accept(b);
     }
 
-    public void setIsURL() {
-
-        isURL = expectedURL.equals(getDriver().getCurrentUrl());
-    }
-
-    public boolean getIsURL() {
+    public boolean isUrlValid() {
 
         return isURL;
+    }
+
+    protected void openForm(Consumer<AccountPage> consumer) {
+
+        accountPage.clickAddressesLink();
+        consumer.accept(accountPage);
     }
 }
