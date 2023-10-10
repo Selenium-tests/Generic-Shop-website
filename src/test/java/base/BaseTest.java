@@ -59,14 +59,14 @@ public class BaseTest {
         return driver;
     }
 
-    public void login(List<Pair<String, String>> data) {
+    public void login(String username, String password) {
 
         Header header = new Header(driver);
 
         header.clickAccountButton();
 
-        loginPage.setUsername(data.get(0).first());
-        loginPage.setPassword(data.get(0).second());
+        loginPage.setUsername(username);
+        loginPage.setPassword(password);
         loginPage.clickLoginButton();
 
     }
