@@ -2,87 +2,72 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AccountPage;
 import pages.LoginPage;
 import pages.components.header.Header;
 import provider.MyDataProvider;
-import utils.ExtentReportsManager;
 import utils.Pair;
-
 import java.awt.*;
-import java.io.IOException;
-import java.util.List;
 import java.util.function.Consumer;
 
 public class LoginTest extends BaseTest {
 
-    @BeforeClass
-    private void init() {
+    @BeforeMethod
+    private void create() {
 
         Header header = new Header(getDriver());
         header.clickAccountButton();
     }
 
-    private <T> void check(Consumer<T> consumer, T object) {
+    private <T> void check(Consumer<T> consumer, T object, Pair<String, String> data) {
+
+        getLoginPage().clearAll();
+        getLoginPage().setUsername(data.first());
+        getLoginPage().setPassword(data.second());
+        getLoginPage().clickLoginButton();
 
         consumer.accept(object);
     }
 
-    private void fill(List<Pair<String, String>> data/*, FuncInterface funcInterface*/) throws IOException {
-
-        for (Pair<String, String> datum : data) {
-
-            getLoginPage().clearAll();
-            getLoginPage().setUsername(datum.first());
-            getLoginPage().setPassword(datum.second());
-            getLoginPage().clickLoginButton();
-        }
-    }
-    @Test(priority = 1, dataProvider = "incorrectUsername", dataProviderClass = MyDataProvider.class)
-    public void incorrectUsername(List<Pair<String, String>> data) throws IOException {
+    @Test(priority = 1, dataProvider = "incorrectEmailFormat", dataProviderClass = MyDataProvider.class)
+    public void incorrectUsername(Pair<String, String> data) {
 
         //ExtentReportsManager.setName("Incorrect email address");
 
-        fill(data);
-        check((LoginPage lp)-> { Assert.assertTrue(lp.isErrorMessageDisplayed()); }, getLoginPage());
+        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed()), getLoginPage(), data);
     }
 
-    @Test(priority = 3, dataProvider = "noUsername", dataProviderClass = MyDataProvider.class)
-    public void noUsername(List<Pair<String, String>> data) throws IOException {
+    @Test(priority = 3, dataProvider = "blankEmailField", dataProviderClass = MyDataProvider.class)
+    public void blankUsernameField(Pair<String, String> data) {
 
-       // ExtentReportsManager.setName("Blank username field");
+        //ExtentReportsManager.setName("Blank username field");
 
-        fill(data);
-        check((LoginPage lp)-> { Assert.assertTrue(lp.isErrorMessageDisplayed()); }, getLoginPage());
+        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed()), getLoginPage(), data);
     }
 
     @Test(priority = 2, dataProvider = "incorrectPassword", dataProviderClass = MyDataProvider.class)
-    public void incorrectPassword(List<Pair<String, String>> data) throws IOException {
+    public void incorrectPassword(Pair<String, String> data) {
 
         //ExtentReportsManager.setName("Incorrect password");
 
-        fill(data);
-        check((LoginPage lp)-> { Assert.assertTrue(lp.isErrorMessageDisplayed()); }, getLoginPage());
+        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed()), getLoginPage(), data);
     }
 
-    @Test(priority = 4, dataProvider = "noPassword", dataProviderClass = MyDataProvider.class)
-    public void noPassword(List<Pair<String, String>> data) throws IOException {
+    @Test(priority = 4, dataProvider = "blankPasswordField", dataProviderClass = MyDataProvider.class)
+    public void blankPasswordField(Pair<String, String> data) {
 
         //ExtentReportsManager.setName("Blank password field");
 
-        fill(data);
-        check((LoginPage lp)-> { Assert.assertTrue(lp.isErrorMessageDisplayed()); }, getLoginPage());
+        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed()), getLoginPage(), data);
     }
 
-    @Test(priority = 5, dataProvider = "correctLoginData", dataProviderClass = MyDataProvider.class)
-    public void correctData(List<Pair<String, String>> data) throws AWTException, IOException {
+    @Test(priority = 5, dataProvider = "correctCredentials", dataProviderClass = MyDataProvider.class)
+    public void correctCredentials(Pair<String, String> data) throws AWTException {
 
-        //ExtentReportsManager.setName("Correct data");
-        AccountPage accountPage = new AccountPage(getDriver());
+        //ExtentReportsManager.setName("Correct credentials");
 
-        fill(data);
-        check((AccountPage ap)-> { Assert.assertTrue(ap.isDashboardLinkDisplayed()); }, accountPage);
+        check((AccountPage ap)-> Assert.assertTrue(ap.isDashboardLinkDisplayed()), new AccountPage(getDriver()), data);
     }
 }
