@@ -58,20 +58,37 @@ public class JSONReader {
         return data;
     }
 
-    public static List<Pair<String, String>> get(String key, String node, Pair<String, String> params) throws JSONException {
+    public static List<LoginData> getLoginData(String node) throws JSONException {
+
+        Object object = jsonObject.get("login");
+        JSONObject jsonObject1 = (JSONObject) object;
+        JSONArray jsonArray = jsonObject1.getJSONArray(node);
+
+        List<LoginData> loginData = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+
+            loginData.add(new LoginData(jsonArray.getJSONObject(i).getString("email"),
+                    jsonArray.getJSONObject(i).getString("password")));
+        }
+
+        return loginData;
+    }
+
+    public static Pair<String, String>[] get(String key, String node, Pair<String, String> params) throws JSONException {
 
         Object object = jsonObject.get(key);
         JSONObject jsonObject1 = (JSONObject) object;
         JSONArray jsonArray = jsonObject1.getJSONArray(node);
 
-        List<Pair<String, String>> pairList = new ArrayList<>();
+        Pair<String, String>[] data = new Pair[jsonArray.length()];
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            pairList.add(new Pair<>( jsonArray.getJSONObject(i).getString(params.first()),
-                    jsonArray.getJSONObject(i).getString(params.second())));
+            data[i] = new Pair<>( jsonArray.getJSONObject(i).getString(params.first()),
+                        jsonArray.getJSONObject(i).getString(params.second()));
         }
 
-        return pairList;
+        return data;
     }
 
     public static List<String[]> getArrays(String key, String node) throws JSONException {
