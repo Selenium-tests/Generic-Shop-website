@@ -7,14 +7,14 @@ public class Footer extends BasePage {
 
     private final TagsSection tagsSection;
     private final RecentPostsSection recentPostsSection;
-    private final NewsletterSection newsletterSection;
+    private final NewsletterForm newsletterForm;
     public Footer(WebDriver driver) {
 
         super(driver);
 
         tagsSection = new TagsSection(driver);
         recentPostsSection = new RecentPostsSection(driver);
-        newsletterSection = new NewsletterSection(driver);
+        newsletterForm = new NewsletterForm(driver);
     }
 
     public TagsSection getTagsSection() {
@@ -27,8 +27,8 @@ public class Footer extends BasePage {
         return recentPostsSection;
     }
 
-    public NewsletterSection getNewsletterSection() {
+    public NewsletterForm getNewsletterForm() {
 
-        return newsletterSection;
+        return newsletterForm;
     }
 }

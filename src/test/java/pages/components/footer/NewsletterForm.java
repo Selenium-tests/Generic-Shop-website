@@ -5,33 +5,33 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class NewsletterSection extends BasePage {
+public class NewsletterForm extends BasePage {
 
-    public NewsletterSection(WebDriver driver) {
+    public NewsletterForm(WebDriver driver) {
 
         super(driver);
     }
 
     @FindBy(id = "es_txt_name")
-    WebElement name;
+    WebElement nameField;
 
     @FindBy(id = "es_txt_email")
-    WebElement email;
+    WebElement emailField;
 
     @FindBy(id = "es_txt_button")
     WebElement subscribeButton;
 
     @FindBy(id = "es_widget_msg")
-    WebElement newsletterMessage;
+    WebElement message;
 
     public void setName(String name) {
 
-        this.name.sendKeys(name);
+        this.nameField.sendKeys(name);
     }
 
     public void setEmail(String email) {
 
-        this.email.sendKeys(email);
+        this.emailField.sendKeys(email);
     }
 
     public void clickSubscribeButton() {
@@ -41,12 +41,17 @@ public class NewsletterSection extends BasePage {
 
     public void clearAll() {
 
-        name.clear();
-        email.clear();
+        nameField.clear();
+        emailField.clear();
     }
 
-    public boolean isNewsletterMessageDisplayed() {
+    public boolean isMessageDisplayed() {
 
-        return newsletterMessage.isDisplayed();
+        return message.isDisplayed();
+    }
+
+    public String getMessageText() {
+
+        return message.getText();
     }
 }
