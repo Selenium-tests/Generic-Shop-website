@@ -1,57 +1,64 @@
 package tests;
 
 import base.BaseTest;
-import org.json.JSONException;
+import enums.SiteContentSections;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.components.thumbnails.BlogThumbnail;
-import pages.components.thumbnails.ProductThumbnail;
-import utils.ExtentReportsManager;
-import utils.JSONReader;
+import pages.components.SiteContentSection;
+import provider.MyDataProvider;
+import utils.Pair;
 
 public class LinksTest extends BaseTest {
 
-    @Test
-    public void linksToProductPages() throws JSONException {
+    private SiteContentSection siteContentSection;
 
-        ExtentReportsManager.setName("Links to product pages");
-        ProductThumbnail productThumbnail = new ProductThumbnail(getDriver());
+    @BeforeMethod
+    public void create() {
 
-        String[] expectedURLs = JSONReader.get("URLs", "products");
-        //String[] URLs = JSONReader.get("products");
-
-        for (int i = 0, j = 0; i < productThumbnail.getSize(); i++) {
-
-            productThumbnail.setProduct(i);
-
-            if (!productThumbnail.getName().isEmpty()) {
-
-                productThumbnail.clickToLink(i);
-
-                Assert.assertEquals(expectedURLs[j], getDriver().getCurrentUrl());
-                j++;
-
-                back();
-            }
-        }
+        siteContentSection = new SiteContentSection(getDriver());
     }
 
-    @Test
-    void linksToBlogPages() throws JSONException {
+    private void check(SiteContentSections sections, Pair<String, String> data) {
 
-        ExtentReportsManager.setName("Links to blog pages");
-        BlogThumbnail blogThumbnail = new BlogThumbnail(getDriver());
+        siteContentSection.clickLink(data.first(), sections);
 
-        String[] expectedURLs = JSONReader.get("URLs", "blogs");
+        Assert.assertEquals(getDriver().getCurrentUrl(), data.second());
+    }
 
-        for (int i = 0; i < blogThumbnail.getSize(); i++) {
+    @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
+    public void allBlackTops(Pair<String, String> data) {
 
-            blogThumbnail.setBlog(i);
-            blogThumbnail.clickToLink();
+        check(SiteContentSections.ALL_BLACK_TOPS, data);
+    }
 
-            Assert.assertEquals(expectedURLs[i], getDriver().getCurrentUrl());
+    @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
+    public void highHeelShoes(Pair<String, String> data) {
 
-            back();
-        }
+        check(SiteContentSections.HIGH_HEEL_SHOES, data);
+    }
+
+    @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
+    public void mostWanted(Pair<String, String> data) {
+
+        check(SiteContentSections.MOST_WANTED, data);
+    }
+
+    @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
+    public void featured(Pair<String, String> data) {
+
+        check(SiteContentSections.FEATURED, data);
+    }
+
+    @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
+    public void trends(Pair<String, String> data) {
+
+        check(SiteContentSections.TRENDS, data);
+    }
+
+    @Test(dataProvider = "blogs", dataProviderClass = MyDataProvider.class)
+    public void blogs(Pair<String, String> data) {
+
+        check(SiteContentSections.FROM_THE_BLOG, data);
     }
 }
