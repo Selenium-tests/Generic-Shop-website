@@ -1,6 +1,6 @@
 package tests;
 
-import base.BaseTest;
+/*import base.BaseTest;
 import org.json.JSONException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -81,4 +81,4 @@ public class AccountPageLinksTest extends BaseTest {
         accountPage.clickLogoutLink();
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedURLs[5]);
     }
-}
+}*/

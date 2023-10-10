@@ -4,14 +4,13 @@ import enums.Browser;
 import driver.DriverType;
 import org.json.JSONException;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.components.header.Header;
 import utils.JSONReader;
 import utils.Pair;
-
-import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.List;
 
@@ -21,7 +20,13 @@ public class BaseTest {
     private LoginPage loginPage;
 
     @BeforeClass
-    public void startDriver() throws FileNotFoundException, JSONException {
+    public void readJSONFile() throws JSONException {
+
+        JSONReader.read();
+    }
+
+    @BeforeMethod
+    public void startDriver() {
 
         System.out.println("Starting driver...");
 
@@ -30,9 +35,14 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
 
-        JSONReader.read();
-
         loginPage = new LoginPage(driver);
+    }
+
+    @AfterMethod
+    public void quitDriver() {
+
+        System.out.println("Quit driver");
+        driver.quit();
     }
 
     protected void back() {
@@ -63,12 +73,5 @@ public class BaseTest {
     public LoginPage getLoginPage() {
 
         return loginPage;
-    }
-
-    @AfterClass
-    public void tearDown() {
-
-        System.out.println("Quit driver");
-        driver.quit();
     }
 }
