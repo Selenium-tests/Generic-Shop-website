@@ -1,6 +1,6 @@
-package pages;
+package qa.pageobject;
 
-import base.BasePage;
+import qa.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,9 +41,8 @@ public class CartPage extends BasePage {
         return !(products.isEmpty());
     }
 
-    public String getLastProductName(int index) {
+    public String getProductName() {
 
-        //return products.get(index).getText();
         return products.get(products.size() - 1).getText();
     }
 }

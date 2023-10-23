@@ -1,6 +1,6 @@
-package pages.components.thumbnails;
+package qa.pageobject.thumbnails;
 
-import base.BasePage;
+import qa.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

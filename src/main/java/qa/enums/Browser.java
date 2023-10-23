@@ -1,4 +1,4 @@
-package enums;
+package qa.enums;
 
 public enum Browser {
     CHROME,

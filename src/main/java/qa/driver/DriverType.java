@@ -1,6 +1,6 @@
-package driver;
+package qa.driver;
 
-import enums.Browser;
+import qa.enums.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,7 +9,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import utils.Pair;
+import qa.utils.Pair;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,21 +1,17 @@
-package pages.components.addressform;
+package qa.pageobject.addressform;
 
-import base.BasePage;
+import qa.base.BasePage;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
-import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class CountryDropdownList extends BasePage {
 
-    private final Robot robot;
-    public CountryDropdownList(WebDriver driver) throws AWTException {
+    public CountryDropdownList(WebDriver driver) {
 
         super(driver);
-
-        robot = new Robot();
     }
 
     @FindBy(xpath = "//input[@class='select2-search__field']")
@@ -35,7 +31,11 @@ public class CountryDropdownList extends BasePage {
     public void setCountry(String countryName) {
 
         searchField.sendKeys(countryName);
-        robot.keyPress(KeyEvent.VK_ENTER);
+    }
+
+    public void pressEnter() {
+
+        searchField.sendKeys(Keys.ENTER);
     }
 
     public String getCountry() {

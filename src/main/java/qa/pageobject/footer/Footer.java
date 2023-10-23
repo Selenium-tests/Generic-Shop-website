@@ -1,6 +1,6 @@
-package pages.components.footer;
+package qa.pageobject.footer;
 
-import base.BasePage;
+import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 
 public class Footer extends BasePage {

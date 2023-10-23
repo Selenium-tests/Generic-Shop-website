@@ -1,4 +1,4 @@
-package utils;
+package qa.utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,8 +7,6 @@ import org.json.JSONArray;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class JSONReader {
     private static final String filePath = "./resources/testdata.json";
@@ -52,27 +50,11 @@ public class JSONReader {
         String[] data = new String[jsonArray.length()];
 
         for (int i = 0; i < jsonArray.length(); i++) {
+
             data[i] = jsonArray.getString(i);
         }
 
         return data;
-    }
-
-    public static List<LoginData> getLoginData(String node) throws JSONException {
-
-        Object object = jsonObject.get("login");
-        JSONObject jsonObject1 = (JSONObject) object;
-        JSONArray jsonArray = jsonObject1.getJSONArray(node);
-
-        List<LoginData> loginData = new ArrayList<>();
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-
-            loginData.add(new LoginData(jsonArray.getJSONObject(i).getString("email"),
-                    jsonArray.getJSONObject(i).getString("password")));
-        }
-
-        return loginData;
     }
 
     public static Pair<String, String>[] get(String key, String node, Pair<String, String> params) throws JSONException {
@@ -91,26 +73,32 @@ public class JSONReader {
         return data;
     }
 
-    public static List<String[]> getArrays(String key, String node) throws JSONException {
+    public static AddressFormData[] getAddressFormData(String node) {
 
-        Object object = jsonObject.get(key);
-        JSONObject jsonObject1 =(JSONObject) object;
-        JSONArray array = jsonObject1.getJSONArray(node);
+        Object object = jsonObject.get("addressForm");
+        JSONObject jsonObject1 = (JSONObject) object;
+        JSONArray jsonArray = jsonObject1.getJSONArray(node);
 
-        List<String[]> data = new ArrayList<>();
+        AddressFormData[] addressFormData = new AddressFormData[jsonArray.length()];
 
-        for (int i = 0; i < array.length(); i++) {
+        for (int i = 0; i < jsonArray.length(); i++) {
 
-            String[] temp = new String[array.getJSONArray(i).length()];
+            AddressFormData data = new AddressFormData();
 
-            for (int j = 0; j < array.getJSONArray(i).length(); j++) {
+            data.setCountry(jsonArray.getJSONObject(i).getString("country"));
+            data.setFirstName(jsonArray.getJSONObject(i).getString("firstName"));
+            data.setLastName(jsonArray.getJSONObject(i).getString("lastName"));
+            data.setCompanyName(jsonArray.getJSONObject(i).getString("companyName"));
+            data.setAddress1(jsonArray.getJSONObject(i).getString("address1"));
+            data.setAddress2(jsonArray.getJSONObject(i).getString("address2"));
+            data.setCity(jsonArray.getJSONObject(i).getString("city"));
+            data.setPostcode(jsonArray.getJSONObject(i).getString("postcode"));
+            data.setPhone(jsonArray.getJSONObject(i).getString("phone"));
+            data.setEmail(jsonArray.getJSONObject(i).getString("email"));
 
-                temp[j] = array.getJSONArray(i).getString(j);
-            }
-
-            data.add(temp);
+            addressFormData[i] = data;
         }
 
-        return data;
+        return addressFormData;
     }
 }

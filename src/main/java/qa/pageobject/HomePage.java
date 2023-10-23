@@ -1,8 +1,8 @@
-package pages;
+package qa.pageobject;
 
-import base.BasePage;
-import pages.components.header.Header;
-import pages.components.footer.Footer;
+import qa.base.BasePage;
+import qa.pageobject.header.Header;
+import qa.pageobject.footer.Footer;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {

@@ -1,6 +1,6 @@
-package utils;
+package qa.utils;
 
-import base.BaseTest;
+import qa.base.BaseTest;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;

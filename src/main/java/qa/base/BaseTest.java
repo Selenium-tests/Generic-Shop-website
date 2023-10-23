@@ -1,18 +1,18 @@
-package base;
+package qa.base;
 
-import enums.Browser;
-import driver.DriverType;
+
 import org.json.JSONException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.LoginPage;
-import pages.components.header.Header;
-import utils.JSONReader;
-import utils.Pair;
+import qa.enums.Browser;
+import qa.driver.DriverType;
+import qa.pageobject.LoginPage;
+import qa.pageobject.header.Header;
+import qa.utils.JSONReader;
+
 import java.time.Duration;
-import java.util.List;
 
 public class BaseTest {
 
