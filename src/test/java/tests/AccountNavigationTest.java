@@ -1,13 +1,13 @@
 package tests;
 
-import base.BaseTest;
+import qa.base.BaseTest;
 import org.json.JSONException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.AccountPage;
-import provider.MyDataProvider;
-import utils.Pair;
+import qa.pageobject.account.AccountPage;
+import qa.provider.MyDataProvider;
+import qa.utils.Pair;
 import java.awt.*;
 
 public class AccountNavigationTest extends BaseTest {
