@@ -116,4 +116,14 @@ public class AddressForm extends BasePage {
 
         return !(errorMessage.isEmpty());
     }
+
+    public String getErrorMessageText() {
+
+        return errorMessage.get(0).getText();
+    }
+
+    public String getValidationMessageText() {
+
+        return emailField.getAttribute("validationMessage");
+    }
 }
