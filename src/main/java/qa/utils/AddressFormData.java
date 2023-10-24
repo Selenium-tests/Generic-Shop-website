@@ -12,6 +12,7 @@ public class AddressFormData {
     private String postcode;
     private String phone;
     private String email;
+    private String errorMessage;
 
     public AddressFormData() { }
 
@@ -55,9 +56,8 @@ public class AddressFormData {
         this.email = email;
     }
 
-    public String getCountry() {
-        return country;
-    }
+    public void setErrorMessage(String errorMessage) { this.errorMessage = errorMessage; }
+    public String getCountry() { return country; }
 
     public String getFirstName() {
         return firstName;
@@ -94,4 +94,6 @@ public class AddressFormData {
     public String getEmail() {
         return email;
     }
+
+    public String getErrorMessage() { return errorMessage; }
 }
