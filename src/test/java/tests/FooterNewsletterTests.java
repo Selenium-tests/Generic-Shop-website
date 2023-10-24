@@ -1,14 +1,14 @@
 package tests;
 
-import base.BaseTest;
+import qa.base.BaseTest;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.components.footer.Footer;
-import provider.MyDataProvider;
-import utils.Pair;
+import qa.pageobject.footer.Footer;
+import qa.provider.MyDataProvider;
+import qa.utils.Pair;
 
 public class FooterNewsletterTests extends BaseTest {
 

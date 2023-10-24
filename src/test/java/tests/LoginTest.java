@@ -1,14 +1,14 @@
 package tests;
 
-import base.BaseTest;
+import qa.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.AccountPage;
-import pages.LoginPage;
-import pages.components.header.Header;
-import provider.MyDataProvider;
-import utils.Pair;
+import qa.pageobject.account.AccountPage;
+import qa.pageobject.LoginPage;
+import qa.pageobject.header.Header;
+import qa.provider.MyDataProvider;
+import qa.utils.Pair;
 import java.awt.*;
 import java.util.function.Consumer;
 

@@ -1,13 +1,13 @@
 package tests;
 
-import base.BaseTest;
-import enums.SiteContentSections;
+import qa.base.BaseTest;
+import qa.enums.SiteContentSections;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.components.SiteContentSection;
-import provider.MyDataProvider;
-import utils.Pair;
+import qa.pageobject.SiteContentSection;
+import qa.provider.MyDataProvider;
+import qa.utils.Pair;
 
 public class LinksTest extends BaseTest {
 

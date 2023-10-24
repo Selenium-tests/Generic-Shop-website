@@ -1,12 +1,12 @@
 package tests;
 
-import base.BaseTest;
+import qa.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.components.header.ResultsPage;
-import pages.components.header.SearchEngine;
-import provider.MyDataProvider;
+import qa.pageobject.header.ResultsPage;
+import qa.pageobject.header.SearchEngine;
+import qa.provider.MyDataProvider;
 import java.util.function.Consumer;
 
 
