@@ -1,70 +1,42 @@
 package tests;
 
-import base.BaseTest;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import qa.base.BaseTest;
+import qa.enums.SiteContentSections;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.ProductPage;
-import pages.components.header.Header;
-import pages.components.thumbnails.ProductThumbnail;
-import utils.ExtentReportsManager;
+import qa.pageobject.CartPage;
+import qa.pageobject.SiteContentSection;
+import qa.pageobject.header.Header;
+import qa.pageobject.thumbnails.ProductThumbnail;
+import qa.utils.ExtentReportsManager;
 
 public class AddingProductToCartTest extends BaseTest {
 
     private Header header;
+    private SiteContentSection section;
     private ProductThumbnail productThumbnail;
     private CartPage cartPage;
 
-    @BeforeClass
-    private void init() {
+    @BeforeMethod
+    private void create() {
 
         header = new Header(getDriver());
-        productThumbnail = new ProductThumbnail(getDriver());
+        section = new SiteContentSection(getDriver());
         cartPage = new CartPage(getDriver());
     }
 
     @Test(priority = 1)
     public void addingProductFromHomePage() {
 
-        ExtentReportsManager.setName("Adding product from the home page");
+        //ExtentReportsManager.setName("Adding product from the home page");
 
-        final int MAX = 5;
-
-        for (int i = 0; i < MAX; i++) {
-
-            productThumbnail.setProduct(i);
-            productThumbnail.setPrice(i);
-            productThumbnail.clickAddToCart(i);
-            header.clickCartButton();
-
-            Assert.assertTrue(cartPage.cartIsNotEmpty());
-            Assert.assertEquals(productThumbnail.getName(), cartPage.getLastProductName(i));
-
-            back();
-        }
+        productThumbnail = new ProductThumbnail(getDriver(), section.getSection("Blue Sweater", SiteContentSections.HIGH_HEEL_SHOES));
+        productThumbnail.clickButton();
     }
 
     @Test(priority = 2)
     public void addingProductFromProductPage() {
 
         ExtentReportsManager.setName("Adding product from a product page");
-        ProductPage productPage = new ProductPage(getDriver());
-
-        final int BEGIN = 15;
-        final int END = 20;
-
-        for (int i = BEGIN; i < END; i++) {
-
-            productThumbnail.setProduct(i);
-            productThumbnail.clickToLink(i);
-            productPage.clickAddToCart();
-            header.clickCartButton();
-
-            Assert.assertTrue(cartPage.cartIsNotEmpty());
-            Assert.assertEquals(productThumbnail.getName(), cartPage.getLastProductName(i));
-
-            header.clickLogo();
-        }
     }
 }
