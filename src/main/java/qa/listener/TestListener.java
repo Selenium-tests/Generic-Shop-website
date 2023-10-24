@@ -1,11 +1,11 @@
-package listener;
+package qa.listener;
 
-import base.BaseTest;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import utils.ExtentReportsManager;
-import utils.ScreenshotFileUtils;
+import qa.base.BaseTest;
+import qa.utils.ExtentReportsManager;
+import qa.utils.ScreenshotFileUtils;
 
 public class TestListener implements ITestListener {
 

@@ -1,6 +1,6 @@
-package pages.components.header;
+package qa.pageobject.header;
 
-import base.BasePage;
+import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -1,4 +1,4 @@
-package utils;
+package qa.utils;
 
 public class Pair<A, B> {
 

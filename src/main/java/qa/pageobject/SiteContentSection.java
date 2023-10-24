@@ -1,11 +1,12 @@
-package pages.components;
+package qa.pageobject;
 
-import base.BasePage;
-import enums.SiteContentSections;
+import qa.base.BasePage;
+import qa.enums.SiteContentSections;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.utils.Pair;
 
 public class SiteContentSection extends BasePage {
 
@@ -26,6 +27,14 @@ public class SiteContentSection extends BasePage {
 
     @FindBy(xpath = ".//div[@class='site-content']")
     WebElement siteContent;
+
+    public Pair<WebElement, String> getSection(String linkText, SiteContentSections sections) {
+
+        return new Pair<>(
+                siteContent.findElement(By.xpath(xPaths[sections.ordinal()])).findElement(By.linkText(linkText)),
+                linkText
+        );
+    }
 
     public void clickLink(String linkText, SiteContentSections sections) {
 
