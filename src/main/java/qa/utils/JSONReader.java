@@ -95,6 +95,7 @@ public class JSONReader {
             data.setPostcode(jsonArray.getJSONObject(i).getString("postcode"));
             data.setPhone(jsonArray.getJSONObject(i).getString("phone"));
             data.setEmail(jsonArray.getJSONObject(i).getString("email"));
+            data.setErrorMessage(jsonArray.getJSONObject(i).getString("errorMessage"));
 
             addressFormData[i] = data;
         }
