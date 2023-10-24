@@ -7,7 +7,7 @@ import qa.utils.AddressFormData;
 
 public class AddressFormFactory {
 
-    public static AddressForm correctData(AddressFormData data, WebDriver driver) {
+    public static AddressForm get(AddressFormData data, WebDriver driver) {
 
         AddressForm addressForm = new AddressForm(driver);
 
