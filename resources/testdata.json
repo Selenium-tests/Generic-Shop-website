@@ -1,7 +1,7 @@
 {
     "searchEngine": {
 
-        "correct": [
+        "correctPhrase": [
             "jeans",
             "JEANS",
             "red",
@@ -12,28 +12,28 @@
             "T-SHIRT"
         ],
 
-        "upperLower": [
+        "upperAndLowerCases": [
             "JeAns", 
             "t-ShIrT", 
             "bLoUsE", 
             "sWeAtEr"
         ],
 
-        "part": [
+        "partOfCorrectPhrase": [
             "jea", 
             "SCA", 
             "shi", 
             "SHOE"
         ],
 
-        "incorrect": [
+        "incorrectPhrase": [
             "TTT", 
             "QWERTY", 
             "453Sudoku", 
             "QqqtwY#43"
         ],
 
-        "naughtyStrings": [
+        "strangePhrase": [
             "undefined", 
             "undef", 
             "null",
@@ -61,7 +61,7 @@
 
     "login" : {
 
-        "correct": [
+        "correctCredentials": [
 
             {
                 "email": "karen@gmail.com",
@@ -69,10 +69,10 @@
             }
         ],
 
-        "incorrectEmail": [
+        "incorrectEmailFormat": [
 
             {
-                "email": "Marek",
+                "email": "Marek@",
                 "password": "Kvc$11324#"
             },
 
@@ -97,7 +97,7 @@
             }
         ],
 
-        "noEmail": [
+        "blankEmailField": [
 
             {
                 "email": "",
@@ -134,7 +134,7 @@
 
         ],
 
-        "noPassword": [
+        "blankPasswordField": [
 
             {
                 "email": "karen@gmail.com",
@@ -145,7 +145,7 @@
 
     "countries": {
 
-        "correct": [
+        "correctCountryName": [
 
             "United States (US)",
             "vietnam",
@@ -153,7 +153,7 @@
             "san Marino"
         ],
 
-        "incorrect": [
+        "incorrectCountryName": [
 
             "this is not a country!",
             "do you (know) my country?",
@@ -161,21 +161,105 @@
         ]
     },
 
+
     "addressForm": {
 
-        "correctAddress": [
+        "correctAddressData": [
 
-                "Portugal",
-                "Pedro",
-                "Ribeiro",
-                "Tech Genius",
-                "Praca do Municipio",
-                " ",
-                "Lisbon",
-                "1100-365",
-                "213227000",
-                "gocidey596@vigoneo.com"
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com"
+            }
         ],
+
+        "incorrectFirstName": [
+
+            {
+                "country": "Portugal",
+                "firstName": "_@?",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com"
+            }
+        ],
+
+        "incorrectLastName": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "_Rib_er@io",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com"
+            }
+        ],
+
+        "incorrectPostcode": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "/1100^3?6x",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com"
+            }
+        ],
+
+        "incorrectPhoneNumber": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "phone111222333",
+                "email": "gocidey596@vigoneo.com"
+            }
+        ],
+
+        "incorrectEmail": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "#@%^%#$@#$@#.com"
+            }
+        ],
+
 
 
         "additionalField": [
@@ -191,82 +275,12 @@
                 "23644506",
                 "gocidey596@vigoneo.com",
                 "Cancelones"
-        ],
-
-        "incorrectFirstName": [
-
-                "Portugal",
-                "_@?",
-                "Ribeiro",
-                "Tech Genius",
-                "Praca do Municipio",
-                " ",
-                "Lisbon",
-                "1100-365",
-                "213227000",
-                "gocidey596@vigoneo.com"
-        ],
-
-        "incorrectLastName": [
-
-                "Portugal",
-                "Pedro",
-                "_Rib_er@io",
-                "Tech Genius",
-                "Praca do Municipio",
-                " ",
-                "Lisbon",
-                "1100-365",
-                "213227000",
-                "gocidey596@vigoneo.com"
-        ],
-
-        "incorrectPostcode": [
-
-                "Portugal",
-                "Pedro",
-                "Ribeiro",
-                "Tech Genius",
-                "Praca do Municipio",
-                " ",
-                "Lisbon",
-                "1100^36x",
-                "213227000",
-                "gocidey596@vigoneo.com"
-        ],
-
-        "incorrectPhoneNumber": [
-
-                "Portugal",
-                "Pedro",
-                "Ribeiro",
-                "Tech Genius",
-                "Praca do Municipio",
-                " ",
-                "Lisbon",
-                "1100-365",
-                "phone111222333",
-                "gocidey596@vigoneo.com"
-        ],
-
-        "incorrectEmail": [
-
-                "Portugal",
-                "Pedro",
-                "Ribeiro",
-                "Tech Genius",
-                "Praca do Municipio",
-                " ",
-                "Lisbon",
-                "1100-365",
-                "213227000",
-                "#@%^%#$@#$@#.com"
         ]
     },
 
     "newsletter": {
 
-        "correct": [
+        "correctCredentials": [
             
             {
                 "username": "The user",
@@ -274,7 +288,7 @@
             }
         ],
 
-        "noUsername": [ 
+        "blankUsernameField": [ 
             
             {
                 "username": "",
@@ -282,7 +296,7 @@
             }
         ],
 
-        "incorrectEmail": [
+        "incorrectEmailFormat": [
             
             {
                 "username": "The user",
@@ -308,71 +322,262 @@
                 "username": "The user",
                 "email": "#@$"
             }
+        ],
+
+        "blankEmailField": [
+
+            {
+                "username": "The user",
+                "email": ""
+            }
         ] 
     },
 
     "URLs": {
 
-        "products": [
+        "allBlackTopsProducts": [
 
-      "https://skleptest.pl/product/black-top/",
-      "https://skleptest.pl/product/little-black-top/",
-      "https://skleptest.pl/product/little-black-shirt/",
-      "https://skleptest.pl/product/amari-shirt/",
-      "https://skleptest.pl/product/manago-shirt/",
-      "https://skleptest.pl/product/blue-sweater/",
-      "https://skleptest.pl/product/fitt-belts/",
-      "https://skleptest.pl/product/magnolia-dress/",
-      "https://skleptest.pl/product/rocadi-jeans/",
-      "https://skleptest.pl/product/istwic-scarf/",
-      "https://skleptest.pl/product/jennifer-scarf/",
-      "https://skleptest.pl/product/andora-scarf/",
-      "https://skleptest.pl/product/marina-style/",
-      "https://skleptest.pl/product/amari-shirt/",
-      "https://skleptest.pl/product/manago-shirt/",
-      "https://skleptest.pl/product/manago-shirt/",
-      "https://skleptest.pl/product/blue-sweater/",
-      "https://skleptest.pl/product/asabi-jeans/",
-      "https://skleptest.pl/product/merchantile-blouse/",
-      "https://skleptest.pl/product/marina-style/",
-      "https://skleptest.pl/product/amari-shirt/",
-      "https://skleptest.pl/product/marcara-sleeveless-dress/",
-      "https://skleptest.pl/product/black-top/"
-    ],
+            {
+                "linkText": "Black Top",
+                "pageURL": "https://skleptest.pl/product/black-top/"
+            },
+
+            {
+                "linkText": "Little Black Top",
+                "pageURL": "https://skleptest.pl/product/little-black-top/"
+            },
+
+            {
+                "linkText": "Little Black Shirt",
+                "pageURL": "https://skleptest.pl/product/little-black-shirt/"
+            }
+        ],
+
+        "highHeelShoesProducts": [
+
+            {
+                "linkText": "Amari Shirt",
+                "pageURL": "https://skleptest.pl/product/amari-shirt/"
+            },
+
+            {
+                "linkText": "Manago Shirt",
+                "pageURL": "https://skleptest.pl/product/manago-shirt/"
+            },
+
+            {
+                "linkText": "Blue Sweater",
+                "pageURL": "https://skleptest.pl/product/blue-sweater/"
+            }
+        ],
+
+        "mostWantedProducts": [
+
+            {
+                "linkText": "FITT Belts",
+                "pageURL": "https://skleptest.pl/product/fitt-belts/"
+            },
+      
+            {
+                "linkText": "Magnolia Dress",
+                "pageURL": "https://skleptest.pl/product/magnolia-dress/"
+            },
+
+            {
+                "linkText": "Rocadi Jeans",
+                "pageURL": "https://skleptest.pl/product/rocadi-jeans/"
+            },
+      
+            {
+                "linkText": "Istwic Scarf",
+                "pageURL": "https://skleptest.pl/product/istwic-scarf/"
+            },
+      
+            {
+                "linkText": "Jennifer Scarf",
+                "pageURL": "https://skleptest.pl/product/jennifer-scarf/"
+            },
+
+            {
+                "linkText": "Andora Scarf",
+                "pageURL": "https://skleptest.pl/product/andora-scarf/"
+            },
+      
+            {
+                "linkText": "Marina Style",
+                "pageURL": "https://skleptest.pl/product/marina-style/"
+            },
+      
+            {
+                "linkText": "Amari Shirt",
+                "pageURL": "https://skleptest.pl/product/amari-shirt/"
+            },
+
+            {
+                "linkText": "Manago Shirt",
+                "pageURL": "https://skleptest.pl/product/manago-shirt/"
+            }
+        ],
+
+        "featuredProducts": [
+
+            {
+                "linkText": "Manago Shirt",
+                "pageURL": "https://skleptest.pl/product/manago-shirt/"
+            },
+
+            {
+                "linkText": "Blue Sweater",
+                "pageURL":  "https://skleptest.pl/product/blue-sweater/"
+            },
+
+            {
+                "linkText": "Asabi – Jeans",
+                "pageURL":  "https://skleptest.pl/product/asabi-jeans/"
+            },
+
+            {
+                "linkText": "Merchantile – Blouse",
+                "pageURL":  "https://skleptest.pl/product/merchantile-blouse/"
+            }
+        ],
+
+
+        "trendsProducts": [
+
+            {
+                "linkText": "Marina Style",
+                "pageURL": "https://skleptest.pl/product/marina-style/"
+
+            },
+
+            {
+                "linkText": "Amari Shirt",
+                "pageURL": "https://skleptest.pl/product/amari-shirt/"
+            },
+
+            {
+                "linkText": "Marcara Sleeveless Dress",
+                "pageURL": "https://skleptest.pl/product/marcara-sleeveless-dress/"
+            },
+
+            {
+                "linkText": "Black Top",
+                "pageURL": "https://skleptest.pl/product/black-top/"
+
+            }
+        ],
+
 
     "blogs": [
 
-      "https://skleptest.pl/best-fabrics-dream-dress-dare-try/",
-      "https://skleptest.pl/latest-trends-autumn/",
-      "https://skleptest.pl/long-legs-no-longer-myth-check/",
-      "https://skleptest.pl/jackets-soul-color/"
+        {
+            "linkText": "Best Fabrics For Your Dream…",
+            "pageURL": "https://skleptest.pl/best-fabrics-dream-dress-dare-try/"
+
+        },
+
+        {
+            "linkText": "Latest Trends For Autumn Are…",
+            "pageURL": "https://skleptest.pl/latest-trends-autumn/"
+
+        },
+
+        {
+            "linkText": "Long Legs? No Longer A…",
+            "pageURL": "https://skleptest.pl/long-legs-no-longer-myth-check/"
+
+        },
+
+        {
+            "linkText": "Jackets For The Soul. What…",
+            "pageURL": "https://skleptest.pl/jackets-soul-color/"
+        }
     ],
 
     "tags": [
 
-      "https://skleptest.pl/tag/autumn/",
-      "https://skleptest.pl/tag/dress/",
-      "https://skleptest.pl/tag/fashion/",
-      "https://skleptest.pl/tag/jackets/",
-      "https://skleptest.pl/tag/stockings/",
-      "https://skleptest.pl/tag/trends/"
+        {
+            "linkText": "Autumn",
+            "pageURL": "https://skleptest.pl/tag/autumn/"
+        },
+
+        {
+            "linkText": "dress",
+            "pageURL": "https://skleptest.pl/tag/dress/"
+        },
+
+        {
+            "linkText": "fashion",
+            "pageURL": "https://skleptest.pl/tag/fashion/"
+        },
+
+        {
+            "linkText": "jackets",
+            "pageURL": "https://skleptest.pl/tag/jackets/"
+        },
+
+        {
+            "linkText": "stockings",
+            "pageURL": "https://skleptest.pl/tag/stockings/"
+        },
+      
+        {
+            "linkText": "trends",
+            "pageURL": "https://skleptest.pl/tag/trends/"
+        }
     ],
 
     "recentPosts": [
 
-      "https://skleptest.pl/best-fabrics-dream-dress-dare-try/",
-      "https://skleptest.pl/long-legs-no-longer-myth-check/",
-      "https://skleptest.pl/best-fabrics-dream-dress-dare-try/"
+        {
+            "linkText": "Best Fabrics For Your Dream Dress!",
+            "pageURL": "https://skleptest.pl/best-fabrics-dream-dress-dare-try/"
+        },
+
+        {
+            "linkText": "Latest Trends For Autumn Are Here!",
+            "pageURL": "https://skleptest.pl/long-legs-no-longer-myth-check/"
+        },
+
+        {
+            "linkText": "Long Legs? No Longer A Myth! Check it out!",
+            "pageURL": "https://skleptest.pl/best-fabrics-dream-dress-dare-try/"
+        }
     ],
 
-    "accountPage": [
+    "accountNavigation": [
 
-        "https://skleptest.pl/my-account/",
-        "https://skleptest.pl/my-account/orders/",
-        "https://skleptest.pl/my-account/downloads/",
-        "https://skleptest.pl/my-account/edit-address/",
-        "https://skleptest.pl/my-account/details/",
-        "https://skleptest.pl/my-account/customer-logout/"
+        {
+            "linkText": "Dashboard",
+            "pageURL": "https://skleptest.pl/my-account/"
+        },
+
+        {
+            "linkText": "Orders",
+            "pageURL": "https://skleptest.pl/my-account/orders/"
+        },
+
+        {
+            "linkText": "Downloads",
+            "pageURL": "https://skleptest.pl/my-account/downloads/"
+        },
+
+        {
+            "linkText": "Addresses",
+            "pageURL": "https://skleptest.pl/my-account/edit-address/"
+        },
+        
+        {
+            "linkText": "Account details",
+            "pageURL": "https://skleptest.pl/my-account/details/"
+        },
+        
+        {
+            "linkText": "Logout",
+            "pageURL":  "https://skleptest.pl/my-account/customer-logout/"
+
+        }
     ]
 
     }
