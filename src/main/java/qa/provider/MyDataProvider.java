@@ -146,6 +146,48 @@ public class MyDataProvider {
         return JSONReader.getAddressFormData("incorrectEmail");
     }
 
+    @DataProvider(name = "AF_withoutFirstName")
+    public Object[] AF_withoutFirstName() {
+
+        return JSONReader.getAddressFormData("withoutFirstName");
+    }
+
+    @DataProvider(name = "AF_withoutLastName")
+    public Object[] AF_withoutLastName() {
+
+        return JSONReader.getAddressFormData("withoutLastName");
+    }
+
+    @DataProvider(name = "AF_withoutAddress")
+    public Object[] AF_withoutAddress() {
+
+        return JSONReader.getAddressFormData("withoutAddress");
+    }
+
+    @DataProvider(name = "AF_withoutCity")
+    public Object[] AF_withoutCity() {
+
+        return JSONReader.getAddressFormData("withoutCity");
+    }
+
+    @DataProvider(name = "AF_withoutPostcode")
+    public Object[] AF_withoutPostcode() {
+
+        return JSONReader.getAddressFormData("withoutPostcode");
+    }
+
+    @DataProvider(name = "AF_withoutPhone")
+    public Object[] AF_withoutPhone() {
+
+        return JSONReader.getAddressFormData("withoutPhone");
+    }
+
+    @DataProvider(name = "AF_withoutEmail")
+    public Object[] AF_withoutEmail() {
+
+        return JSONReader.getAddressFormData("withoutEmail");
+    }
+
     @DataProvider(name = "correctCountryName")
     public Object[] correctCountryName() throws JSONException {
 
