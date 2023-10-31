@@ -176,7 +176,9 @@
                 "city": "Lisbon",
                 "postcode": "1100-365",
                 "phone": "213227000",
-                "email": "gocidey596@vigoneo.com"
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": ""
             }
         ],
 
@@ -192,7 +194,9 @@
                 "city": "Lisbon",
                 "postcode": "1100-365",
                 "phone": "213227000",
-                "email": "gocidey596@vigoneo.com"
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": ""
             }
         ],
 
@@ -208,7 +212,9 @@
                 "city": "Lisbon",
                 "postcode": "1100-365",
                 "phone": "213227000",
-                "email": "gocidey596@vigoneo.com"
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": ""
             }
         ],
 
@@ -224,7 +230,9 @@
                 "city": "Lisbon",
                 "postcode": "/1100^3?6x",
                 "phone": "213227000",
-                "email": "gocidey596@vigoneo.com"
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": "Please enter a valid postcode / ZIP."
             }
         ],
 
@@ -240,7 +248,9 @@
                 "city": "Lisbon",
                 "postcode": "1100-365",
                 "phone": "phone111222333",
-                "email": "gocidey596@vigoneo.com"
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": "Phone is not a valid phone number."
             }
         ],
 
@@ -256,25 +266,359 @@
                 "city": "Lisbon",
                 "postcode": "1100-365",
                 "phone": "213227000",
-                "email": "#@%^%#$@#$@#.com"
+                "email": "#@%^%#$@#$@#.com",
+
+                "errorMessage": "Część po znaku „@” nie może zawierać symbolu"
+            },
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596vigoneo.com",
+
+                "errorMessage": "Uwzględnij znak „@” w adresie e-mail."
             }
         ],
 
+        "withoutFirstName": [
 
+            {
+                "country": "Portugal",
+                "firstName": "",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com",
 
-        "additionalField": [
+                "errorMessage": "First name is a required field."
+            }
+        ],
 
-                "Uruguay",
-                "Juan",
-                "Roman",
-                "UrbanSpaces",
-                "Lavalleja 591 entre Avda",
-                " ",
-                "Las Piedras",
-                "90200",
-                "23644506",
-                "gocidey596@vigoneo.com",
-                "Cancelones"
+        "withoutLastName": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": "Last name is a required field."
+            }
+        ],
+
+        "withoutAddress": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": "Street address is a required field."
+            }
+        ],
+
+        "withoutCity": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": "Town / City is a required field."
+            }
+        ],
+
+        "withoutPostcode": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "",
+                "phone": "213227000",
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": "Postcode / ZIP is a required field."
+            }
+        ],
+
+        "withoutPhone": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "",
+                "email": "gocidey596@vigoneo.com",
+
+                "errorMessage": "Phone is a required field."
+            }
+        ],
+
+        "withoutEmail": [
+
+            {
+                "country": "Portugal",
+                "firstName": "Pedro",
+                "lastName": "Ribeiro",
+                "companyName": "Tech Genius",
+                "address1": "Praca do Municipio",
+                "address2": "",
+                "city": "Lisbon",
+                "postcode": "1100-365",
+                "phone": "213227000",
+                "email": "",
+
+                "errorMessage": "Email address is a required field."
+            }
+        ],
+
+        "stateCountyField": [
+
+            "Albania",
+            "Algeria",
+            "Roman",
+            "American Samoa",
+            "Andora",
+            "Anguilla",
+            "Antarctica",
+            "Antigua and Barbuda",
+            "Armenia",
+            "Aruba",
+            "Azerbaijan",
+            "Bahrain",
+            "Barbados",
+            "Belarus",
+            "Belau",
+            "Belize",
+            "Benin",
+            "Bermuda",
+            "Bhutan",
+            "Bonaire, Saint Eustatius and Saba",
+            "Bosnia and Herzegovina",
+            "Botswana",
+            "Bouvet Island",
+            "British Indian Ocean Territory",
+            "British Virgin Islands",
+            "Brunei",
+            "Burkina Faso",
+            "Cambodia",
+            "Cameroon",
+            "Cape Verde",
+            "Cayman Islands",
+            "Central African Republic",
+            "Chad",
+            "Christmas Island",
+            "Cocos (Keeling) Islands",
+            "Colombia",
+            "Comoros",
+            "Congo (Brazzaville)",
+            "Congo (Kinshasa)",
+            "Cook Islands",
+            "Costa Rica",
+            "Croatia",
+            "Cuba",
+            "Curaçao",
+            "Cyprus",
+            "Djibouti",
+            "Dominica",
+            "Dominican Republic",
+            "Ecuador",
+            "Egypt",
+            "El Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Ethiopia",
+            "Falkland Islands",
+            "Faroe Islands",
+            "Fiji",
+            "French Polynesia",
+            "French Southern Territories",
+            "Gabon",
+            "Gambia",
+            "Georgia",
+            "Ghana",
+            "Gibraltar",
+            "Greenland",
+            "Grenada",
+            "Guam",
+            "Guatemala",
+            "Guernsey",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Heard Island and McDonald Islands",
+            "Honduras",
+            "Iraq",
+            "Isle of Man",
+            "Ivory Coast",
+            "Jamaica",
+            "Jersey",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Kyrgyzstan",
+            "Laos",
+            "Latvia",
+            "Lesotho",
+            "Liberia",
+            "Libya",
+            "Lithuania",
+            "Luxembourg",
+            "Macao S.A.R., China",
+            "Macedonia",
+            "Madagascar",
+            "Malawi",
+            "Malaysia",
+            "Maldives",
+            "Mali",
+            "Malta",
+            "Marshall Islands",
+            "Mauritania",
+            "Mauritius",
+            "Micronesia",
+            "Moldova",
+            "Monaco",
+            "Mongolia",
+            "Montenegro",
+            "Montserrat",
+            "Morocco",
+            "Mozambique",
+            "Myanmar",
+            "Namibia",
+            "Nauru",
+            "New Caledonia",
+            "Nicaragua",
+            "Niger",
+            "Niue",
+            "Norfolk Island",
+            "North Korea",
+            "Northern Mariana Islands",
+            "Oman",
+            "Palestinian Territory",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Pitcairn",
+            "Puerto Rico",
+            "Qatar",
+            "Russia",
+            "Rwanda",
+            "São Tomé and Príncipe",
+            "Saint Barthélemy",
+            "Saint Helena",
+            "Saint Kitts and Nevis",
+            "Saint Lucia"
+        ],
+
+        "stateCountyDropdownList": [
+
+            "Angola",
+            "Argentina",
+            "Bolivia",
+            "Brazil",
+            "Bulgaria",
+            "Greece",
+            "India",
+            "Iran",
+            "Mexico",
+            "Nigeria",
+            "Pakistan",
+            "Peru",
+            "Philippines",
+            "Romania"
+        ],
+
+        "countyDropdownList": [
+
+            "Hungary",
+            "Ireland"
+        ],
+
+        "stateDropdownList": [
+
+            "Australia"
+        ],
+
+        "districtDropdownList": [
+
+            "Bangladesh"
+        ],
+
+        "provinceDropDownList": [
+
+            "Canada",
+            "China",
+            "Indonesia",
+            "Italy"
+        ],
+
+        "regionField": [
+
+            "Chile",
+            "Hong Kong"
+        ],
+
+        "regionDropdownList": [
+
+            "New Zealand"
+        ],
+
+        "prefectureDropDownList": [
+
+            "Japan"
+        ],
+
+        "municipalityField": [
+
+            "Liechtenstein"
+        ],
+
+        "stateZoneDropdownList": [
+
+            "Nepal"
         ]
     },
 
