@@ -1,4 +1,4 @@
-package tests;
+package tests.footer;
 
 import qa.base.BaseTest;
 import org.json.JSONException;
@@ -9,22 +9,23 @@ import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
 import qa.utils.Pair;
 
-public class FooterRecentPostsTests extends BaseTest {
+
+public class FooterTagTests extends BaseTest {
 
     private Footer footer;
 
     @BeforeMethod
-    public void create() {
+    private void create() {
 
         footer = new Footer(getDriver());
     }
 
-    @Test(dataProvider = "recentPosts", dataProviderClass = MyDataProvider.class)
-    public void recentPostLinks(Pair<String, String> data) throws JSONException {
+    @Test(priority = 3, dataProvider = "tags", dataProviderClass = MyDataProvider.class)
+    public void tags(Pair<String, String> data) throws JSONException {
 
-        //ExtentReportsManager.setName("Recent post links");
+        //ExtentReportsManager.setName("Tags");
 
-        footer.getRecentPostsSection().clickLink(data.first());
+        footer.getTagsSection().clickLink(data.first());
 
         Assert.assertEquals(getDriver().getCurrentUrl(), data.second());
     }

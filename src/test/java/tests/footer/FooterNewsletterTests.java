@@ -1,4 +1,4 @@
-package tests;
+package tests.footer;
 
 import qa.base.BaseTest;
 import org.openqa.selenium.Alert;

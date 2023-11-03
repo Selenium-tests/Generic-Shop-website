@@ -1,4 +1,4 @@
-package tests;
+package tests.shoppingcart;
 
 import qa.base.BaseTest;
 import qa.enums.SiteContentSections;
