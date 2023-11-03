@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
+import qa.utils.ExtentReportsManager;
 import qa.utils.Pair;
 
 public class FooterRecentPostsTests extends BaseTest {
@@ -22,10 +23,11 @@ public class FooterRecentPostsTests extends BaseTest {
     @Test(dataProvider = "recentPosts", dataProviderClass = MyDataProvider.class)
     public void recentPostLinks(Pair<String, String> data) throws JSONException {
 
-        //ExtentReportsManager.setName("Recent post links");
+        ExtentReportsManager.setName("Clicking the \"" + data.first() + "\" link");
 
         footer.getRecentPostsSection().clickLink(data.first());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), data.second());
+        Assert.assertEquals(getDriver().getCurrentUrl(), data.second(),
+                "The page with the address \"" + data.second() + "\" has not been opened");
     }
 }

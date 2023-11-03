@@ -9,6 +9,7 @@ import qa.pageobject.LoginPage;
 import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
 import qa.utils.Pair;
+import qa.utils.ExtentReportsManager;
 import java.awt.*;
 import java.util.function.Consumer;
 
@@ -34,40 +35,45 @@ public class LoginTest extends BaseTest {
     @Test(priority = 1, dataProvider = "incorrectEmailFormat", dataProviderClass = MyDataProvider.class)
     public void incorrectUsername(Pair<String, String> data) {
 
-        //ExtentReportsManager.setName("Incorrect email address");
+        ExtentReportsManager.setName("Incorrect email address");
 
-        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed()), getLoginPage(), data);
+        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed(),
+                "No error message during login with \"" + data.first() + "\" as an incorrect email address"), getLoginPage(), data);
     }
 
     @Test(priority = 3, dataProvider = "blankEmailField", dataProviderClass = MyDataProvider.class)
     public void blankUsernameField(Pair<String, String> data) {
 
-        //ExtentReportsManager.setName("Blank username field");
+        ExtentReportsManager.setName("Blank username field");
 
-        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed()), getLoginPage(), data);
+        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed(),
+                "No error message during login with the blank username field"), getLoginPage(), data);
     }
 
     @Test(priority = 2, dataProvider = "incorrectPassword", dataProviderClass = MyDataProvider.class)
     public void incorrectPassword(Pair<String, String> data) {
 
-        //ExtentReportsManager.setName("Incorrect password");
+        ExtentReportsManager.setName("Incorrect password");
 
-        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed()), getLoginPage(), data);
+        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed(),
+                "No error message during login with \"" + data.first() + "\" as an incorrect password"), getLoginPage(), data);
     }
 
     @Test(priority = 4, dataProvider = "blankPasswordField", dataProviderClass = MyDataProvider.class)
     public void blankPasswordField(Pair<String, String> data) {
 
-        //ExtentReportsManager.setName("Blank password field");
+        ExtentReportsManager.setName("Blank password field");
 
-        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed()), getLoginPage(), data);
+        check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed(),
+                "No error message during login with blank password field"), getLoginPage(), data);
     }
 
     @Test(priority = 5, dataProvider = "correctCredentials", dataProviderClass = MyDataProvider.class)
     public void correctCredentials(Pair<String, String> data) throws AWTException {
 
-        //ExtentReportsManager.setName("Correct credentials");
+        ExtentReportsManager.setName("Correct credentials");
 
-        check((AccountPage ap)-> Assert.assertTrue(ap.isDashboardLinkDisplayed()), new AccountPage(getDriver()), data);
+        check((AccountPage ap)-> Assert.assertTrue(ap.isDashboardLinkDisplayed(),
+               "Failure to log in with valid credentials"), new AccountPage(getDriver()), data);
     }
 }

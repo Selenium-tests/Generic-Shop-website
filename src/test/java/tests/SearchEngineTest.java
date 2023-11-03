@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import qa.pageobject.header.ResultsPage;
 import qa.pageobject.header.SearchEngine;
 import qa.provider.MyDataProvider;
+import qa.utils.ExtentReportsManager;
+
 import java.util.function.Consumer;
 
 
@@ -33,40 +35,45 @@ public class SearchEngineTest extends BaseTest {
     @Test(priority = 1, dataProvider = "correctPhrase", dataProviderClass = MyDataProvider.class)
     public void correctPhrase(String phrase) {
 
-        //ExtentReportsManager.setName("Searching with correct phrase");
+        ExtentReportsManager.setName("Searching with correct phrase");
 
-        check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults()));
+        check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults(),
+                "No results when searching with the \"" + phrase + "\" phrase"));
     }
 
     @Test(priority = 2, dataProvider = "partOfCorrectPhrase", dataProviderClass = MyDataProvider.class)
     public void partOfCorrectPhrase(String phrase) {
 
-        //ExtentReportsManager.setName("Searching with part of correct phrase");
+        ExtentReportsManager.setName("Searching with part of correct phrase");
 
-        check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults()));
+        check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults(),
+                "No results when searching with the \"" + phrase + "\" phrase"));
     }
 
     @Test(priority = 3, dataProvider = "upperAndLowerCases", dataProviderClass = MyDataProvider.class)
     public void upperAndLowerCases(String phrase) {
 
-        //ExtentReportsManager.setName("Searching with phrase which has upper and lower cases");
+        ExtentReportsManager.setName("Searching with phrase which has upper and lower cases");
 
-        check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults()));
+        check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults(),
+                "No results when searching with the \"" + phrase + "\" phrase"));
     }
 
     @Test(priority = 4, dataProvider = "incorrectPhrase", dataProviderClass = MyDataProvider.class)
     public void incorrectPhrase(String phrase) {
 
-        //ExtentReportsManager.setName("Searching with incorrect phrase");
+        ExtentReportsManager.setName("Searching with incorrect phrase");
 
-        check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults()));
+        check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
+                "Results found when searching with \"" + phrase + "\" as an incorrect phrase"));
     }
 
     @Test(priority = 4, dataProvider = "strangePhrase", dataProviderClass = MyDataProvider.class)
     public void strangePhrase(String phrase) {
 
-        //ExtentReportsManager.setName("Searching with strange phrase");
+        ExtentReportsManager.setName("Searching with strange phrase");
 
-        check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults()));
+        check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
+                "Results found when searching with \"" + phrase + "\" as an incorrect phrase"));
     }
 }

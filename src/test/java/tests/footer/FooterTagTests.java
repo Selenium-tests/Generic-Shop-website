@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
+import qa.utils.ExtentReportsManager;
 import qa.utils.Pair;
 
 
@@ -23,10 +24,11 @@ public class FooterTagTests extends BaseTest {
     @Test(priority = 3, dataProvider = "tags", dataProviderClass = MyDataProvider.class)
     public void tags(Pair<String, String> data) throws JSONException {
 
-        //ExtentReportsManager.setName("Tags");
+        ExtentReportsManager.setName("CLicking the \"" + data.first() + "\" button");
 
         footer.getTagsSection().clickLink(data.first());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), data.second());
+        Assert.assertEquals(getDriver().getCurrentUrl(), data.second(),
+                "The page with the address \"" + data.second() + "\" has not been opened");
     }
 }
