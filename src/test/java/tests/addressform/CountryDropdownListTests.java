@@ -9,6 +9,7 @@ import qa.pageobject.account.AddressColumns;
 import qa.pageobject.addressform.CountryDropdownList;
 import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
+import qa.utils.ExtentReportsManager;
 
 import java.awt.*;
 
@@ -35,10 +36,12 @@ public class CountryDropdownListTests extends BaseTest {
     @Test(dataProvider = "correctCountryName", dataProviderClass = MyDataProvider.class)
     public void correctCountryName(String countryName) {
 
+        ExtentReportsManager.setName("Searching with a correct country name");
+
         countryDropdownList.clickCountryButton();
         countryDropdownList.setCountry(countryName);
 
-        Assert.assertFalse(countryDropdownList.isAlertDisplayed());
+        Assert.assertFalse(countryDropdownList.isAlertDisplayed(), "A country \"" + countryName + "\" has not been found");
     }
 
     @Test(dataProvider = "incorrectCountryName", dataProviderClass = MyDataProvider.class)
@@ -47,6 +50,6 @@ public class CountryDropdownListTests extends BaseTest {
         countryDropdownList.clickCountryButton();
         countryDropdownList.setCountry(countryName);
 
-        Assert.assertTrue(countryDropdownList.isAlertDisplayed());
+        Assert.assertTrue(countryDropdownList.isAlertDisplayed(), "No message about an incorrect country name");
     }
 }
