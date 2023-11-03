@@ -44,6 +44,9 @@ public class AddressForm extends BasePage {
     @FindBy(id = "billing_email")
     WebElement emailField;
 
+    @FindBy(id = "billing_state")
+    List<WebElement> stateCountyField;
+
     @FindBy(xpath = ".//input[@type='submit']")
     WebElement saveAddressButton;
 
@@ -110,6 +113,11 @@ public class AddressForm extends BasePage {
     public void clickSaveAddressButton() {
 
         saveAddressButton.click();
+    }
+
+    public boolean isStateCountyFieldVisible() {
+
+        return !(stateCountyField.isEmpty());
     }
 
     public boolean isErrorMessageDisplayed() {
