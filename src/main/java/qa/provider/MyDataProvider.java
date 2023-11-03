@@ -110,10 +110,40 @@ public class MyDataProvider {
         return JSONReader.get("searchEngine", "strangePhrase");
     }
 
+    @DataProvider(name = "stateCountyField")
+    public Object[] stateCountyField() {
+
+        return JSONReader.get("addressForm", "stateCountyField");
+    }
+
     @DataProvider(name = "stateCountyDropdownList")
     public Object[] stateCountyDropdownList() {
 
         return JSONReader.get("addressForm", "stateCountyDropdownList");
+    }
+
+    @DataProvider(name = "countyDropdownList")
+    public Object[] countyDropdownList() {
+
+        return JSONReader.get("addressForm", "countyDropdownList");
+    }
+
+    @DataProvider(name = "districtDropdownList")
+    public Object[] districtDropdownList() {
+
+        return JSONReader.get("addressForm", "districtDropdownList");
+    }
+
+    @DataProvider(name = "provinceDropdownList")
+    public Object[] provinceDropdownList() {
+
+        return JSONReader.get("addressForm", "provinceDropdownList");
+    }
+
+    @DataProvider(name = "regionField")
+    public Object[] regionField() {
+
+        return JSONReader.get("addressForm", "regionField");
     }
 
     @DataProvider(name = "AF_correctAddress")
