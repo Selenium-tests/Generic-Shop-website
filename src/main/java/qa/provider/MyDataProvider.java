@@ -110,6 +110,12 @@ public class MyDataProvider {
         return JSONReader.get("searchEngine", "strangePhrase");
     }
 
+    @DataProvider(name = "stateCountyDropdownList")
+    public Object[] stateCountyDropdownList() {
+
+        return JSONReader.get("addressForm", "stateCountyDropdownList");
+    }
+
     @DataProvider(name = "AF_correctAddress")
     public Object[] AF_correctAddress() throws JSONException {
 
