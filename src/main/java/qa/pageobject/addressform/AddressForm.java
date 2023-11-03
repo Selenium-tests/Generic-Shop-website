@@ -47,6 +47,9 @@ public class AddressForm extends BasePage {
     @FindBy(id = "billing_state")
     List<WebElement> stateCountyField;
 
+    @FindBy(xpath = ".//span[@class='select2-selection select2-selection--single']")
+    List<WebElement> stateCountyDropdownList;
+
     @FindBy(xpath = ".//input[@type='submit']")
     WebElement saveAddressButton;
 
@@ -118,6 +121,16 @@ public class AddressForm extends BasePage {
     public boolean isStateCountyFieldVisible() {
 
         return !(stateCountyField.isEmpty());
+    }
+
+    public boolean isProvinceDropdownListVisible() {
+
+        return stateCountyDropdownList.size() == 2;
+    }
+
+    public boolean isStateCountyDropdownListVisible() {
+
+        return stateCountyField.size() == 2;
     }
 
     public boolean isErrorMessageDisplayed() {
