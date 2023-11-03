@@ -40,7 +40,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult iTestResult) {
 
         System.out.println("Test failed on method " + iTestResult.getMethod().getMethodName());
-        ExtentReportsManager.setTestFailed("Test failed on method: " + iTestResult.getMethod().getMethodName());
+        ExtentReportsManager.setTestFailed(iTestResult.getThrowable().getMessage());
 
         ScreenshotFileUtils.saveToFile(BaseTest.getDriver(), iTestResult.getMethod().getMethodName());
     }
