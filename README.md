@@ -1,6 +1,6 @@
 # Generic-Shop-tests
 
-This repository contains automated tests of the [skleptest.pl]((https://skleptest.pl/)) website. 
+This repository contains automated tests of the [skleptest.pl](https://skleptest.pl/) website. 
 Selenium Webdriver, TestNG and ExtentReports were used for testing.
 
 An online store created for testers who want to practice test automation. 
