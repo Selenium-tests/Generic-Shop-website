@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Setting address">
+<suite name="Address form">
     <listeners>
-        <listener class-name="listener.TestListener"/>
+        <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
     <test verbose="2" preserve-order="true" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
         <classes>
-            <class name="tests.BillingAddressFormTest"/>
-            <class name="tests.ShippingAddressFormTest"/>
+            <class name="tests.addressform.CountryDropdownListTests"/>
+            <class name="tests.addressform.AddressFormTests"/>
         </classes>
     </test>
 </suite>
