@@ -3,12 +3,12 @@
 
 <suite name="Adding a product to the cart">
     <listeners>
-        <listener class-name="listener.TestListener"/>
+        <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
     <test verbose="2" preserve-order="true" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
         <classes>
-            <class name="tests.AddingProductToCartTest"/>
+            <class name="tests.shoppingcart.AddingProductToCartTest"/>
         </classes>
     </test>
 </suite>

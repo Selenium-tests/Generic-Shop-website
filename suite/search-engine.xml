@@ -3,12 +3,12 @@
 
 <suite name="Search engine">
     <listeners>
-        <listener class-name="listener.TestListener"/>
+        <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
     <test verbose="2" preserve-order="true" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
         <classes>
-            <class name="tests.SearchEngineTest"></class>
+            <class name="tests.SearchEngineTest"/>
         </classes>
     </test>
 </suite>
