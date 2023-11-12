@@ -20,4 +20,9 @@ public class QuantityField extends BasePage {
         field.clear();
         field.sendKeys(quantity);
     }
+
+    public String getValidationMessage() {
+
+        return field.getAttribute("validationMessage");
+    }
 }
