@@ -266,6 +266,18 @@ public class MyDataProvider {
         return JSONReader.get("countries", "incorrectCountryName");
     }
 
+    @DataProvider(name = "QF_characters1")
+    public Object[] QF_characters1() {
+
+        return JSONReader.get("quantityFieldProductPage", "first");
+    }
+
+    @DataProvider(name = "QF_characters2")
+    public Object[] QF_Characters2() {
+
+        return JSONReader.get("quantityFieldProductPage", "second");
+    }
+
     @DataProvider(name = "tags")
     public Object[] tags() {
 
