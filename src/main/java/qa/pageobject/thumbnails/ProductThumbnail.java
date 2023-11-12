@@ -34,6 +34,11 @@ public class ProductThumbnail extends BasePage {
         button.click();
     }
 
+    public String getName() {
+
+        return name;
+    }
+
     public String getPrice() {
 
         return price.getText();
