@@ -9,8 +9,7 @@ import qa.pageobject.account.AddressColumns;
 import qa.pageobject.addressform.AddressForm;
 import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
-
-
+import qa.utils.ExtentReportsManager;
 import java.util.function.Consumer;
 
 public class AdditionalFieldsTests extends BaseTest {
@@ -41,72 +40,117 @@ public class AdditionalFieldsTests extends BaseTest {
 
         consumer.accept(addressForm);
 
-        Assert.assertEquals(addressForm.getBillingStateLabelText(), expectedLabelText);
+        Assert.assertEquals(addressForm.getBillingStateLabelText(), expectedLabelText,
+                "Incorrect additional field name");
     }
 
     @Test(dataProvider = "stateCountyField", dataProviderClass = MyDataProvider.class)
     public void stateCountyField(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible());}, "State / County *");
+        ExtentReportsManager.setName("The appearance of the \"State / County *\" field after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible(), "No additional field");},
+             "State / County *");
     }
 
     @Test(dataProvider = "stateCountyDropdownList", dataProviderClass = MyDataProvider.class)
     public void stateCountyDropdownList(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible());}, "State / County *");
+        ExtentReportsManager.setName("The appearance of the \"State / County *\" drop-down list after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
+             "State / County *");
     }
 
     @Test(dataProvider = "countyDropdownList", dataProviderClass = MyDataProvider.class)
     public void countyDropdownList(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible());}, "County *");
+        ExtentReportsManager.setName("The appearance of the \"County *\" drop-down list after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
+             "County *");
     }
 
     @Test(dataProvider = "stateDropdownList", dataProviderClass = MyDataProvider.class)
     public void stateDropdownList(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible());}, "State *");
+        ExtentReportsManager.setName("The appearance of the \"State *\" drop-down list after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
+              "State *");
     }
 
     @Test(dataProvider = "districtDropdownList", dataProviderClass = MyDataProvider.class)
     public void districtDropdownList(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible());}, "District *");
+        ExtentReportsManager.setName("The appearance of the \"District *\" drop-down list after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
+             "District *");
     }
 
     @Test(dataProvider = "provinceDropdownList", dataProviderClass = MyDataProvider.class)
     public void provinceDropdownList(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible());}, "Province *");
+        ExtentReportsManager.setName("The appearance of the \"Province *\" drop-down list after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
+             "Province *");
     }
 
     @Test(dataProvider = "regionField", dataProviderClass = MyDataProvider.class)
     public void regionField(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible());}, "Region *");
+        ExtentReportsManager.setName("The appearance of the \"Region *\" field after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible(), "No additional field");},
+              "Region *");
     }
 
     @Test(dataProvider = "regionDropdownList", dataProviderClass = MyDataProvider.class)
     public void regionDropdownList(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible());}, "Region *");
+        ExtentReportsManager.setName("The appearance of the \"Region\" drop-down list after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
+             "Region");
     }
 
     @Test(dataProvider = "prefectureDropdownList", dataProviderClass = MyDataProvider.class)
     public void prefectureDropdownList(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible());}, "Prefecture *");
+        ExtentReportsManager.setName("The appearance of the \"Prefecture *\" drop-down list after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
+              "Prefecture *");
     }
 
     @Test(dataProvider = "municipalityField", dataProviderClass = MyDataProvider.class)
     public void municipalityField(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible());}, "Municipality *");
+        ExtentReportsManager.setName("The appearance of the \"Municipality\" field after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible(), "No additional field");},
+             "Municipality");
     }
 
     @Test(dataProvider = "stateZoneDropdownList", dataProviderClass = MyDataProvider.class)
     public void stateZoneDropdownList(String country) {
 
-        check(country, (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible());}, "State / Zone *");
+        ExtentReportsManager.setName("The appearance of the \"State / Zone *\" drop-down list after entering \"" + country + "as the country name");
+
+        check(country,
+             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
+              "State / Zone *");
     }
 }
