@@ -417,9 +417,8 @@
 
             "Albania",
             "Algeria",
-            "Roman",
             "American Samoa",
-            "Andora",
+            "Andorra",
             "Anguilla",
             "Antarctica",
             "Antigua and Barbuda",
@@ -606,7 +605,7 @@
             "New Zealand"
         ],
 
-        "prefectureDropDownList": [
+        "prefectureDropdownList": [
 
             "Japan"
         ],
