@@ -22,6 +22,9 @@ public class ProductPage extends BasePage {
     @FindBy(className = "product_title")
     WebElement productTitle;
 
+    @FindBy(xpath = ".//span[@class='woocommerce-Price-amount amount']")
+    WebElement price;
+
     @FindBy(xpath = "//button[@name='add-to-cart']")
     WebElement addToCartButton;
 
@@ -35,6 +38,11 @@ public class ProductPage extends BasePage {
     public String getProductTitle() {
 
         return productTitle.getText();
+    }
+
+    public String getPrice() {
+
+        return price.getText();
     }
 
     public QuantityField getQuantityField() {
