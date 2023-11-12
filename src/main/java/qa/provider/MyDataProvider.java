@@ -128,6 +128,12 @@ public class MyDataProvider {
         return JSONReader.get("addressForm", "countyDropdownList");
     }
 
+    @DataProvider(name = "stateDropdownList")
+    public Object[] stateDropdownList() {
+
+        return JSONReader.get("addressForm", "stateDropdownList");
+    }
+
     @DataProvider(name = "districtDropdownList")
     public Object[] districtDropdownList() {
 
@@ -144,6 +150,30 @@ public class MyDataProvider {
     public Object[] regionField() {
 
         return JSONReader.get("addressForm", "regionField");
+    }
+
+    @DataProvider(name = "regionDropdownList")
+    public Object[] regionDropdownList() {
+
+        return JSONReader.get("addressForm", "regionDropdownList");
+    }
+
+    @DataProvider(name = "prefectureDropdownList")
+    public Object[] prefectureDropdownList() {
+
+        return JSONReader.get("addressForm", "prefectureDropdownList");
+    }
+
+    @DataProvider(name = "municipalityField")
+    public Object[] municipalityField() {
+
+        return JSONReader.get("addressForm", "municipalityField");
+    }
+
+    @DataProvider(name = "stateZoneDropdownList")
+    public Object[] stateZoneDropdownList() {
+
+        return JSONReader.get("addressForm", "stateZoneDropdownList");
     }
 
     @DataProvider(name = "AF_correctAddress")
