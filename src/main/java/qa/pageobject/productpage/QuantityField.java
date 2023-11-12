@@ -15,10 +15,26 @@ public class QuantityField extends BasePage {
     @FindBy(xpath = ".//input[@type='number']")
     WebElement field;
 
+    @FindBy(xpath = "//a[@class='arrow-down incrementor']")
+    WebElement iconMinus;
+
+    @FindBy(xpath = "//a[@class='arrow-up incrementor']")
+    WebElement iconPlus;
+
     public void setQuantity(String quantity) {
 
         field.clear();
         field.sendKeys(quantity);
+    }
+
+    public void clickIconMinus() {
+
+        iconMinus.click();
+    }
+
+    public void clickIconPlus() {
+
+        iconPlus.click();
     }
 
     public String getValidationMessage() {
