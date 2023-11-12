@@ -45,10 +45,14 @@ public class AddressForm extends BasePage {
     WebElement emailField;
 
     @FindBy(id = "billing_state")
-    List<WebElement> stateCountyField;
+    List<WebElement> additionalField;
 
-    @FindBy(xpath = ".//span[@class='select2-selection select2-selection--single']")
-    List<WebElement> stateCountyDropdownList;
+    @FindBy(xpath = ".//span[@aria-labelledby='select2-billing_state-container']")
+    List<WebElement> additionalDropdownList;
+
+
+    @FindBy(css = "label[for='billing_state']")
+    List<WebElement> billingStateLabel;
 
     @FindBy(xpath = ".//input[@type='submit']")
     WebElement saveAddressButton;
@@ -118,19 +122,19 @@ public class AddressForm extends BasePage {
         saveAddressButton.click();
     }
 
-    public boolean isStateCountyFieldVisible() {
+    public boolean isAdditionalFieldVisible() {
 
-        return !(stateCountyField.isEmpty());
+        return !(additionalField.isEmpty());
     }
 
-    public boolean isProvinceDropdownListVisible() {
+    public boolean isAdditionalDropdownListVisible() {
 
-        return stateCountyDropdownList.size() == 2;
+        return !(additionalDropdownList.isEmpty());
     }
 
-    public boolean isStateCountyDropdownListVisible() {
+    public String getBillingStateLabelText() {
 
-        return stateCountyField.size() == 2;
+        return billingStateLabel.get(0).getText();
     }
 
     public boolean isErrorMessageDisplayed() {
