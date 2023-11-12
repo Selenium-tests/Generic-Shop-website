@@ -621,6 +621,30 @@
         ]
     },
 
+    "quantityFieldProductPage": {
+
+        "first": [
+
+            "-",
+            "+",
+            ".",
+            ",",
+            "3+",
+            "3-",
+            "3.",
+            "5,",
+            "4+3",
+            "4-1",
+            ".9+4"
+        ],
+
+        "second": [
+
+            "1.2",
+            "4,2"
+        ]
+    },
+
     "newsletter": {
 
         "correctCredentials": [
