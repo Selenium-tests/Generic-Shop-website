@@ -2,7 +2,9 @@ package qa.base;
 
 
 import org.json.JSONException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -17,6 +19,7 @@ import java.time.Duration;
 public class BaseTest {
 
     private static WebDriver driver;
+    private WebDriverWait webDriverWait;
     private LoginPage loginPage;
 
     @BeforeClass
@@ -36,6 +39,8 @@ public class BaseTest {
         driver.manage().window().maximize();
 
         loginPage = new LoginPage(driver);
+
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     @AfterMethod
@@ -52,6 +57,11 @@ public class BaseTest {
     public void setDriver(WebDriver driver) {
 
         BaseTest.driver = driver;
+    }
+
+    public void waitUntilPageIsLoaded() {
+
+        webDriverWait.until(driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
     }
 
     public static WebDriver getDriver() {
