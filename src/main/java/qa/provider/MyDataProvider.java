@@ -269,13 +269,13 @@ public class MyDataProvider {
     @DataProvider(name = "QF_characters1")
     public Object[] QF_characters1() {
 
-        return JSONReader.get("quantityFieldProductPage", "first");
+        return JSONReader.get("quantityField", "first");
     }
 
     @DataProvider(name = "QF_characters2")
     public Object[] QF_Characters2() {
 
-        return JSONReader.get("quantityFieldProductPage", "second");
+        return JSONReader.get("quantityField", "second");
     }
 
     @DataProvider(name = "tags")
