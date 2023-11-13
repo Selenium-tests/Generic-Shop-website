@@ -19,8 +19,11 @@ public class ShoppingCart extends BasePage {
         table = new Table(driver);
     }
 
+    @FindBy(xpath = "//form[@class='woocommerce-cart-form']")
+    List<WebElement> contents;
+
     @FindBy(className = "woocommerce")
-    protected WebElement woocommerce;
+    WebElement woocommerce;
 
     @FindBy(name = "update_cart")
     WebElement updateButton;
@@ -31,7 +34,7 @@ public class ShoppingCart extends BasePage {
 
     public List<WebElement> getContentsLocator() {
 
-        return woocommerce.findElements(By.xpath("//table[@class='shop_table shop_table_responsive cart woocommerce-cart-form__contents']"));
+        return contents;
     }
 
     public boolean hasContents() {
