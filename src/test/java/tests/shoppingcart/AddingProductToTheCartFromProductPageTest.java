@@ -39,7 +39,7 @@ public class AddingProductToTheCartFromProductPageTest extends BaseTest {
         productPage.clickAddToCart();
         header.clickCartButton();
 
-        Assert.assertTrue(shoppingCart.hasContents(), "The shopping cart is empty");
+        Assert.assertFalse(shoppingCart.getContentsLocator().isEmpty(), "The shopping cart is empty");
 
         Row row = shoppingCart.getTable().getRow(0);
 
