@@ -93,12 +93,29 @@ public class QuantityFieldTest extends BaseTest {
 
     @Parameters({"belowZero"})
     @Test
-    public void belowZero() {
+    public void belowZero(String value) throws InterruptedException {
 
+        int abs = Math.abs(Integer.parseInt(value));
+
+        check(String.valueOf(abs));
+    }
+
+    @Parameters("aboveMax")
+    @Test
+    public void aboveMaximum(String value) throws InterruptedException {
+
+        BigInteger bigInteger = new BigInteger(value);
+        bigInteger = bigInteger.subtract(new BigInteger("1"));
+
+        check(String.valueOf(bigInteger));
     }
 
     @Test
-    public void aboveMaximum() {
+    public void zero() {
 
+        shoppingCart.getTable().getRow(0).getQuantityField().setQuantity("0");
+        shoppingCart.clickUpdateButton();
+
+        Assert.assertTrue(shoppingCart.getContentsLocator().isEmpty());
     }
 }
