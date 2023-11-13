@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Adding a product to the cart">
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <parameter name="min" value="1"/>
+    <parameter name="aboveMin" value="2"/>
+    <parameter name="nominal" value="10"/>
+    <parameter name="belowMax" value="9223372036854775806"/>
+    <parameter name="max" value="9223372036854775807"/>
+    <parameter name="belowMin" value="0"/>
+    <parameter name="aboveMax" value="9223372036854775808"/>
+
+    <test verbose="2" preserve-order="true" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
+        <classes>
+            <class name="tests.productpage.QuantityFieldTest"/>
+        </classes>
+    </test>
+</suite>
