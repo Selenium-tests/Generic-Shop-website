@@ -6,9 +6,10 @@
         <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
-    <test verbose="2" preserve-order="true" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
+    <test verbose="2" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
         <classes>
             <class name="tests.addressform.CountryDropdownListTests"/>
+            <class name="tests.addressform.AdditionalFieldsTests"/>
             <class name="tests.addressform.AddressFormTests"/>
         </classes>
     </test>
