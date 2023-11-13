@@ -8,6 +8,7 @@ import qa.base.BaseTest;
 import qa.enums.SiteContentSections;
 import qa.pageobject.SiteContentSection;
 import qa.pageobject.productpage.ProductPage;
+import qa.pageobject.productpage.QuantityField;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
 
@@ -39,12 +40,12 @@ public class QuantityFieldTest extends BaseTest {
         Assert.assertEquals(productPage.getMessageText(), expectedMessageText, "Incorrect message text");
     }
 
-    private void validationCheck(String quantity, Consumer<ProductPage> consumer) {
+    private void validationCheck(String quantity, Consumer<QuantityField> consumer) {
 
         productPage.getQuantityField().setQuantity(quantity);
         productPage.clickAddToCart();
 
-        consumer.accept(productPage);
+        consumer.accept(productPage.getQuantityField());
     }
 
     @Parameters({"min"})
@@ -107,9 +108,9 @@ public class QuantityFieldTest extends BaseTest {
         ExtentReportsManager.create("\"" + value + "\" as the value in the quantity field");
 
         validationCheck(value,
-                (ProductPage pp)->{
-                    Assert.assertFalse(pp.getQuantityField().getValidationMessage().isEmpty(), "No validation message");
-                    Assert.assertEquals(pp.getQuantityField().getValidationMessage(), "Wpisz liczbę.", "Incorrect message content");
+                (QuantityField qf)->{
+                    Assert.assertFalse(qf.getValidationMessage().isEmpty(), "No validation message");
+                    Assert.assertEquals(qf.getValidationMessage(), "Wpisz liczbę.", "Incorrect message content");
         });
     }
 
@@ -119,9 +120,9 @@ public class QuantityFieldTest extends BaseTest {
         ExtentReportsManager.create("\"" + value + "\" as the value in the quantity field");
 
         validationCheck(value,
-                (ProductPage pp)->{
-                    Assert.assertFalse(pp.getQuantityField().getValidationMessage().isEmpty(), "No validation message");
-                    Assert.assertTrue(pp.getQuantityField().getValidationMessage().contains("Podaj prawidłową wartość. Dwie najbliższe prawidłowe wartości"), "Incorrect message content");
+                (QuantityField qf)->{
+                    Assert.assertFalse(qf.getValidationMessage().isEmpty(), "No validation message");
+                    Assert.assertTrue(qf.getValidationMessage().contains("Podaj prawidłową wartość. Dwie najbliższe prawidłowe wartości"), "Incorrect message content");
                 });
     }
 }
