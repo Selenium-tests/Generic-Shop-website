@@ -8,16 +8,20 @@ import qa.base.BaseTest;
 import qa.enums.SiteContentSections;
 import qa.pageobject.SiteContentSection;
 import qa.pageobject.header.Header;
+import qa.pageobject.productpage.QuantityField;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.pageobject.thumbnails.ProductThumbnail;
+import qa.provider.MyDataProvider;
+import qa.utils.ExtentReportsManager;
 import qa.utils.Price;
-
 import java.math.BigInteger;
+import java.util.function.Consumer;
 
 
 public class QuantityFieldTest extends BaseTest {
 
     private ShoppingCart shoppingCart;
+    private int rowIndex;
 
     @BeforeMethod
     public void create() {
@@ -30,12 +34,14 @@ public class QuantityFieldTest extends BaseTest {
 
         Header header = new Header(getDriver());
         header.clickCartButton();
+
+        rowIndex = 0;
     }
 
     @Test
     public void removeProduct() {
 
-        shoppingCart.getTable().getRow(0).clickRemoveButton();
+        shoppingCart.getTable().getRow(rowIndex).clickRemoveButton();
 
         Assert.assertFalse(shoppingCart.hasContents());
     }
@@ -47,18 +53,29 @@ public class QuantityFieldTest extends BaseTest {
 
         String result = Price.toString(price.multiply(qty));
 
-        shoppingCart.getTable().getRow(0).getQuantityField().setQuantity(quantity);
+        shoppingCart.getTable().getRow(rowIndex).getQuantityField().setQuantity(quantity);
         shoppingCart.clickUpdateButton();
 
         Thread.sleep(3000);
         //waitUntilPageIsLoaded();
 
-        Assert.assertEquals(shoppingCart.getTable().getRow(0).getSubtotal(), result, "Incorrect subtotal");
+        Assert.assertEquals(shoppingCart.getTable().getRow(rowIndex).getSubtotal(), result, "Incorrect subtotal");
+    }
+
+    private void validationCheck(String quantity, Consumer<QuantityField> consumer) {
+
+        shoppingCart.getTable().getRow(rowIndex).getQuantityField().setQuantity(quantity);
+        shoppingCart.clickUpdateButton();
+
+        consumer.accept(shoppingCart.getTable().getRow(rowIndex).getQuantityField());
+
     }
 
     @Parameters({"min"})
     @Test
     public void minimumValue(String value) throws InterruptedException {
+
+        ExtentReportsManager.create("\"" + value + "\" as the minimum value in the quantity field");
 
         check(value);
     }
@@ -67,6 +84,8 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void aboveMinimum(String value) throws InterruptedException {
 
+        ExtentReportsManager.create("\"" + value + "\" as the min + 1 value in the quantity field");
+
         check(value);
     }
 
@@ -74,19 +93,25 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void nominal(String value) throws InterruptedException {
 
+        ExtentReportsManager.create("\"" + value + "\" as the nominal value in the quantity field");
+
         check(value);
     }
 
     @Parameters({"belowMax"})
     @Test
-    public void belowMaximum() throws InterruptedException {
+    public void belowMaximum(String value) throws InterruptedException {
 
-        check("9223372036854775806");
+        ExtentReportsManager.create("\"" + value + "\" as the maximum - 1 value in the quantity field");
+
+        check(value);
     }
 
     @Parameters({"max"})
     @Test
     public void maximum(String value) throws InterruptedException {
+
+        ExtentReportsManager.create("\"" + value + "\" as the maximum value in the quantity field");
 
         check(value);
     }
@@ -94,6 +119,8 @@ public class QuantityFieldTest extends BaseTest {
     @Parameters({"belowZero"})
     @Test
     public void belowZero(String value) throws InterruptedException {
+
+        ExtentReportsManager.create("\"" + value + "\" as the below zero value in the quantity field");
 
         int abs = Math.abs(Integer.parseInt(value));
 
@@ -104,6 +131,8 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void aboveMaximum(String value) throws InterruptedException {
 
+        ExtentReportsManager.create("\"" + value + "\" as the maximum + 1 value in the quantity field");
+
         BigInteger bigInteger = new BigInteger(value);
         bigInteger = bigInteger.subtract(new BigInteger("1"));
 
@@ -113,9 +142,35 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void zero() {
 
-        shoppingCart.getTable().getRow(0).getQuantityField().setQuantity("0");
+        ExtentReportsManager.create("Zero value in the quantity field");
+
+        shoppingCart.getTable().getRow(rowIndex).getQuantityField().setQuantity("0");
         shoppingCart.clickUpdateButton();
 
         Assert.assertTrue(shoppingCart.getContentsLocator().isEmpty());
+    }
+
+    @Test(dataProvider = "QF_characters1", dataProviderClass = MyDataProvider.class)
+    public void specialCharacters1(String value) {
+
+        ExtentReportsManager.create("\"" + value + "\" as the value in the quantity field");
+
+        validationCheck(value,
+                (QuantityField qf)->{
+                    Assert.assertFalse(qf.getValidationMessage().isEmpty(), "No validation message");
+                    Assert.assertEquals(qf.getValidationMessage(), "Wpisz liczbę.", "Incorrect message content");
+                });
+    }
+
+    @Test(dataProvider = "QF_characters2", dataProviderClass = MyDataProvider.class)
+    public void specialCharacters2(String value) {
+
+        ExtentReportsManager.create("\"" + value + "\" as the value in the quantity field");
+
+        validationCheck(value,
+                (QuantityField qf)->{
+                    Assert.assertFalse(qf.getValidationMessage().isEmpty(), "No validation message");
+                    Assert.assertTrue(qf.getValidationMessage().contains("Podaj prawidłową wartość. Dwie najbliższe prawidłowe wartości"), "Incorrect message content");
+                });
     }
 }
