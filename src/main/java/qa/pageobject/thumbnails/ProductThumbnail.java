@@ -4,7 +4,7 @@ import qa.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import qa.utils.Pair;
+import qa.utils.Section;
 
 
 public class ProductThumbnail extends BasePage {
@@ -13,18 +13,18 @@ public class ProductThumbnail extends BasePage {
     private WebElement button;
     private String name;
 
-    public ProductThumbnail(WebDriver driver, Pair<WebElement, String> data) {
+    public ProductThumbnail(WebDriver driver, Section section) {
 
         super(driver);
 
-        setLocators(data);
+        setLocators(section);
     }
 
-    private void setLocators(Pair<WebElement, String> data) {
+    private void setLocators(Section section) {
 
-        WebElement parent = data.first().findElement(By.xpath("./..")).findElement(By.xpath("./.."));
+        WebElement parent = section.getWebElement().findElement(By.xpath("./..")).findElement(By.xpath("./.."));
 
-        name = data.second();
+        name = section.getName();
         price = parent.findElement(By.xpath(".//span[@class='price']"));
         button = parent.findElement(By.className("ajax_add_to_cart"));
     }
