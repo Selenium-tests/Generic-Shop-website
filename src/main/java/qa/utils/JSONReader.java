@@ -3,42 +3,31 @@ package qa.utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
-
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 
 public class JSONReader {
     private static final String filePath = "./resources/testdata.json";
-
     private static JSONObject jsonObject;
 
-    private static String fileToString() {
 
-        try {
+    private static JSONArray getJSONArray(String key, String node) {
 
-            InputStream is = Files.newInputStream(Paths.get(filePath));
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+        Object object = jsonObject.get(key);
+        JSONObject jsonObject1 = (JSONObject) object;
 
-            String line = bufferedReader.readLine();
-            StringBuilder stringBuilder = new StringBuilder();
-
-            while (line != null) {
-
-                stringBuilder.append(line).append("\n");
-                line = bufferedReader.readLine();
-            }
-
-            return stringBuilder.toString();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return jsonObject1.getJSONArray(node);
     }
 
-    public static void read() throws JSONException {
+    public static void read() throws JSONException, IOException, ParseException {
 
-        jsonObject = new JSONObject(fileToString());
+        JSONParser jsonParser = new JSONParser();
+        Reader reader = new FileReader(filePath);
+
+        Object object = jsonParser.parse(reader);
+        jsonObject = new JSONObject(object.toString());
     }
 
     public static String[] get(String key, String node) throws JSONException {
@@ -57,20 +46,55 @@ public class JSONReader {
         return data;
     }
 
-    public static Pair<String, String>[] get(String key, String node, Pair<String, String> params) throws JSONException {
+    public static Credentials[] getCredentials(String node) {
 
-        Object object = jsonObject.get(key);
-        JSONObject jsonObject1 = (JSONObject) object;
-        JSONArray jsonArray = jsonObject1.getJSONArray(node);
+        JSONArray jsonArray = getJSONArray("login", node);
 
-        Pair<String, String>[] data = new Pair[jsonArray.length()];
+        Credentials[] credentials = new Credentials[jsonArray.length()];
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            data[i] = new Pair<>( jsonArray.getJSONObject(i).getString(params.first()),
-                        jsonArray.getJSONObject(i).getString(params.second()));
+
+            credentials[i] = new Credentials(
+                    jsonArray.getJSONObject(i).getString("email"),
+                    jsonArray.getJSONObject(i).getString("password")
+            );
         }
 
-        return data;
+        return credentials;
+    }
+
+    public static Link[] getLink(String node) {
+
+        JSONArray jsonArray = getJSONArray("URLs", node);
+
+        Link[] links = new Link[jsonArray.length()];
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+
+            links[i] = new Link(
+                    jsonArray.getJSONObject(i).getString("linkText"),
+                    jsonArray.getJSONObject(i).getString("pageURL")
+            );
+        }
+
+        return links;
+    }
+
+    public static Newsletter[] getNewsletter(String node) {
+
+        JSONArray jsonArray = getJSONArray("newsletter", node);
+
+        Newsletter[] newsletters = new Newsletter[jsonArray.length()];
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+
+            newsletters[i] = new Newsletter(
+                    jsonArray.getJSONObject(i).getString("username"),
+                    jsonArray.getJSONObject(i).getString("email")
+            );
+        }
+
+        return newsletters;
     }
 
     public static AddressFormData[] getAddressFormData(String node) {
