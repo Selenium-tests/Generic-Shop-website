@@ -46,32 +46,31 @@ public class MyDataProvider {
     @DataProvider(name = "correctCredentials")
     public Object[] correctCredentials() throws JSONException {
 
-        return JSONReader.get("login", "correctCredentials", new Pair<>("email", "password"));
+        return JSONReader.getCredentials("correctCredentials");
     }
 
     @DataProvider(name = "incorrectEmailFormat")
     public Object[] incorrectEmailFormat() throws JSONException {
 
-        return JSONReader.get("login", "incorrectEmailFormat", new Pair<>("email", "password"));
+        return JSONReader.getCredentials("incorrectEmailFormat");
     }
 
     @DataProvider(name = "blankEmailField")
     public Object[] blankEmailField() throws JSONException {
 
-        return JSONReader.get("login", "blankEmailField", new Pair<>("email", "password"));
+        return JSONReader.getCredentials("blankEmailField");
     }
 
     @DataProvider(name = "incorrectPassword")
     public Object[] incorrectPassword() throws JSONException {
 
-        return  JSONReader.get("login", "incorrectPassword", new Pair<>("email", "password"));
-
+        return JSONReader.getCredentials("incorrectPassword");
     }
 
     @DataProvider(name = "blankPasswordField")
     public Object[] blankPasswordField() throws JSONException {
 
-        return JSONReader.get("login", "blankPasswordField", new Pair<>("email", "password"));
+        return JSONReader.getCredentials("blankPasswordField");
     }
 
     @DataProvider(name = "accountNavigation")
