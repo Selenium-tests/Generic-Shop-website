@@ -13,7 +13,7 @@ public class NewsletterForm extends BasePage {
     }
 
     @FindBy(id = "es_txt_name")
-    WebElement nameField;
+    WebElement usernameField;
 
     @FindBy(id = "es_txt_email")
     WebElement emailField;
@@ -24,9 +24,9 @@ public class NewsletterForm extends BasePage {
     @FindBy(id = "es_widget_msg")
     WebElement message;
 
-    public void setName(String name) {
+    public void setUsername(String name) {
 
-        this.nameField.sendKeys(name);
+        this.usernameField.sendKeys(name);
     }
 
     public void setEmail(String email) {
@@ -41,7 +41,7 @@ public class NewsletterForm extends BasePage {
 
     public void clearAll() {
 
-        nameField.clear();
+        usernameField.clear();
         emailField.clear();
     }
 
