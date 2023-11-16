@@ -9,7 +9,8 @@ import org.testng.annotations.Test;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
-import qa.utils.Pair;
+import qa.utils.Newsletter;
+
 
 public class FooterNewsletterTests extends BaseTest {
 
@@ -21,11 +22,11 @@ public class FooterNewsletterTests extends BaseTest {
         footer = new Footer(getDriver());
     }
 
-    private void fill(Pair<String, String> data) {
+    private void fill(Newsletter newsletter) {
 
         footer.getNewsletterForm().clearAll();
-        footer.getNewsletterForm().setName(data.first());
-        footer.getNewsletterForm().setEmail(data.second());
+        footer.getNewsletterForm().setUsername(newsletter.getUsername());
+        footer.getNewsletterForm().setEmail(newsletter.getEmail());
         footer.getNewsletterForm().clickSubscribeButton();
     }
 
@@ -44,11 +45,11 @@ public class FooterNewsletterTests extends BaseTest {
     }
 
     @Test(dataProvider = "newsletterCorrectCredentials", dataProviderClass = MyDataProvider.class)
-    public void correctCredentials(Pair<String, String> data) throws InterruptedException {
+    public void correctCredentials(Newsletter newsletter) throws InterruptedException {
 
         ExtentReportsManager.setName("Signing up for the newsletter with correct credentials.");
 
-        fill(data);
+        fill(newsletter);
 
         Thread.sleep(2000);
 
@@ -59,33 +60,33 @@ public class FooterNewsletterTests extends BaseTest {
     }
 
     @Test(dataProvider = "newsletterBlankUsernameField", dataProviderClass = MyDataProvider.class)
-    public void blankUsernameField(Pair<String, String> data) {
+    public void blankUsernameField(Newsletter newsletter) {
 
         ExtentReportsManager.setName("Signing up for the newsletter with the blank username field.");
 
-        fill(data);
+        fill(newsletter);
 
         Assert.assertTrue(footer.getNewsletterForm().isMessageDisplayed(),
                 "No signing up with the blank username field");
     }
 
     @Test(dataProvider = "newsletterIncorrectEmailFormat", dataProviderClass = MyDataProvider.class)
-    public void incorrectEmailFormat(Pair<String, String> data) {
+    public void incorrectEmailFormat(Newsletter newsletter) {
 
         ExtentReportsManager.setName("Signing up for the newsletter with an incorrect email format.");
 
-        fill(data);
+        fill(newsletter);
 
         check("Please enter correct email address",
               "Incorrect message text during signing up with an incorrect email format");
     }
 
     @Test(dataProvider = "newsletterBlankEmailField", dataProviderClass = MyDataProvider.class)
-    public void blankEmailField(Pair<String, String> data) {
+    public void blankEmailField(Newsletter newsletter) {
 
         ExtentReportsManager.setName("Signing up for the newsletter with the blank email field.");
 
-        fill(data);
+        fill(newsletter);
 
         check("Please enter email address",
               "Incorrect message text during signing up with the blank email field");
