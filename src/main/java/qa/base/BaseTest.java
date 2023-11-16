@@ -2,6 +2,7 @@ package qa.base;
 
 
 import org.json.JSONException;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,7 +14,7 @@ import qa.driver.DriverType;
 import qa.pageobject.LoginPage;
 import qa.pageobject.header.Header;
 import qa.utils.JSONReader;
-
+import java.io.IOException;
 import java.time.Duration;
 
 public class BaseTest {
@@ -23,7 +24,7 @@ public class BaseTest {
     private LoginPage loginPage;
 
     @BeforeClass
-    public void readJSONFile() throws JSONException {
+    public void readJSONFile() throws JSONException, IOException, ParseException {
 
         JSONReader.read();
     }
