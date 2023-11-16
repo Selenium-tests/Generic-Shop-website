@@ -3,44 +3,44 @@ package qa.provider;
 import org.json.JSONException;
 import org.testng.annotations.DataProvider;
 import qa.utils.JSONReader;
-import qa.utils.Pair;
+
 
 public class MyDataProvider {
 
     @DataProvider(name = "allBlackTops")
     public Object[] allBlackTops() {
 
-        return JSONReader.get("URLs", "allBlackTopsProducts", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("allBlackTopsProducts");
     }
 
     @DataProvider(name = "highHeelShoesProducts")
     public Object[] highHeelShoes() {
 
-        return JSONReader.get("URLs", "highHeelShoesProducts", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("highHeelShoesProducts");
     }
 
     @DataProvider(name = "mostWantedProducts")
     public Object[] mostWanted() {
 
-        return JSONReader.get("URLs", "mostWantedProducts", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("mostWantedProducts");
     }
 
     @DataProvider(name = "featuredProducts")
     public Object[] featured() {
 
-        return JSONReader.get("URLs", "featuredProducts", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("featuredProducts");
     }
 
     @DataProvider(name = "trendsProducts")
     public Object[] trends() {
 
-        return JSONReader.get("URLs", "trendsProducts", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("trendsProducts");
     }
 
     @DataProvider(name = "blogs")
     public Object[] blogs() {
 
-        return JSONReader.get("URLs", "blogs", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("blogs");
     }
 
     @DataProvider(name = "correctCredentials")
@@ -76,7 +76,7 @@ public class MyDataProvider {
     @DataProvider(name = "accountNavigation")
     public Object[] accountNavigation() {
 
-        return JSONReader.get("URLs", "accountNavigation", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("accountNavigation");
     }
 
     @DataProvider(name = "correctPhrase")
@@ -280,36 +280,37 @@ public class MyDataProvider {
     @DataProvider(name = "tags")
     public Object[] tags() {
 
-        return JSONReader.get("URLs", "tags", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("tags");
+        //return JSONReader.get("URLs", "tags", new Pair<>("linkText", "pageURL"));
     }
 
     @DataProvider(name = "recentPosts")
     public Object[] recentPosts() {
 
-        return JSONReader.get("URLs", "recentPosts", new Pair<>("linkText", "pageURL"));
+        return JSONReader.getLink("recentPosts");
     }
 
     @DataProvider(name = "newsletterCorrectCredentials")
     public Object[] newsletterCorrectCredentials() {
 
-        return JSONReader.get("newsletter", "correctCredentials", new Pair<>("username", "email"));
+        return JSONReader.getNewsletter("correctCredentials");
     }
 
     @DataProvider(name = "newsletterBlankUsernameField")
     public Object[] newsletterBlankUsernameField() {
 
-        return JSONReader.get("newsletter", "blankUsernameField", new Pair<>("username", "email"));
+        return JSONReader.getNewsletter("blankUsernameField");
     }
 
     @DataProvider(name = "newsletterIncorrectEmailFormat")
     public Object[] newsletterIncorrectEmailFormat() {
 
-        return JSONReader.get("newsletter", "incorrectEmailFormat", new Pair<>("username", "email"));
+        return JSONReader.getNewsletter("incorrectEmailFormat");
     }
 
     @DataProvider(name = "newsletterBlankEmailField")
-    public Object[] newsletterBlankPasswordField() {
+    public Object[] newsletterBlankEmailField() {
 
-        return JSONReader.get("newsletter", "blankEmailField", new Pair<>("username", "email"));
+        return JSONReader.getNewsletter("blankEmailField");
     }
 }
