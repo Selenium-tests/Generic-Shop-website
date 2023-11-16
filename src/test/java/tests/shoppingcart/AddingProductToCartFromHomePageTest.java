@@ -12,25 +12,26 @@ import qa.pageobject.header.Header;
 import qa.pageobject.thumbnails.ProductThumbnail;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
-import qa.utils.Pair;
+import qa.utils.Link;
+
 
 public class AddingProductToCartFromHomePageTest extends BaseTest {
 
     private Header header;
-    private SiteContentSection section;
+    private SiteContentSection siteContentSection;
     private ShoppingCart shoppingCart;
 
     @BeforeMethod
     private void create() {
 
         header = new Header(getDriver());
-        section = new SiteContentSection(getDriver());
+        siteContentSection = new SiteContentSection(getDriver());
         shoppingCart = new ShoppingCart(getDriver());
     }
 
     public void check(String productName, SiteContentSections sections) {
 
-        ProductThumbnail productThumbnail = section.getProductThumbnail(getDriver(), productName, sections);
+        ProductThumbnail productThumbnail = siteContentSection.getProductThumbnail(getDriver(), productName, sections);
 
         final String name = productThumbnail.getName();
         final String price = productThumbnail.getPrice();
@@ -46,42 +47,42 @@ public class AddingProductToCartFromHomePageTest extends BaseTest {
     }
 
     @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
-    public void allBlackTopsSection(Pair<String, String> data) {
+    public void allBlackTops(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"ALL BLACK TOPS\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"ALL BLACK TOPS\" category");
 
-        check(data.first(), SiteContentSections.ALL_BLACK_TOPS);
+        check(link.getLinkText(), SiteContentSections.ALL_BLACK_TOPS);
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
-    public void highHeelShoesSection(Pair<String, String> data) {
+    public void highHeelShoes(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"HIGH HEEL SHOES\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"HIGH HEEL SHOES\" category");
 
-        check(data.first(), SiteContentSections.HIGH_HEEL_SHOES);
+        check(link.getLinkText(), SiteContentSections.HIGH_HEEL_SHOES);
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
-    public void mostWantedSection(Pair<String, String> data) {
+    public void mostWanted(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"MOST WANTED\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"MOST WANTED\" category");
 
-        check(data.first(), SiteContentSections.MOST_WANTED);
+        check(link.getLinkText(), SiteContentSections.MOST_WANTED);
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
-    public void featuredSection(Pair<String, String> data) {
+    public void featured(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"FEATURED\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"FEATURED\" category");
 
-        check(data.first(), SiteContentSections.FEATURED);
+        check(link.getLinkText(), SiteContentSections.FEATURED);
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
-    public void trendsSection(Pair<String, String> data) {
+    public void trends(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"TRENDS\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"TRENDS\" category");
 
-        check(data.first(), SiteContentSections.TRENDS);
+        check(link.getLinkText(), SiteContentSections.TRENDS);
     }
 }

@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
 import qa.pageobject.SiteContentSection;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
-import qa.utils.Pair;
+import qa.utils.Link;
+
 
 public class LinksTest extends BaseTest {
 
@@ -20,59 +21,59 @@ public class LinksTest extends BaseTest {
         siteContentSection = new SiteContentSection(getDriver());
     }
 
-    private void check(SiteContentSections sections, Pair<String, String> data) {
+    private void check(SiteContentSections sections, Link link) {
 
-        siteContentSection.clickLink(data.first(), sections);
+        siteContentSection.clickLink(link.getLinkText(), sections);
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), data.second(),
-                "The page with the address \"" + data.second() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been found");
     }
 
     @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
-    public void allBlackTops(Pair<String, String> data) {
+    public void allBlackTops(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + data.first() + "\" link in the \"ALL BLACK TOP\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"ALL BLACK TOP\" section");
 
-        check(SiteContentSections.ALL_BLACK_TOPS, data);
+        check(SiteContentSections.ALL_BLACK_TOPS, link);
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
-    public void highHeelShoes(Pair<String, String> data) {
+    public void highHeelShoes(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + data.first() + "\" link in the \"HIGH HEEL SHOES\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"HIGH HEEL SHOES\" section");
 
-        check(SiteContentSections.HIGH_HEEL_SHOES, data);
+        check(SiteContentSections.HIGH_HEEL_SHOES, link);
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
-    public void mostWanted(Pair<String, String> data) {
+    public void mostWanted(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + data.first() + "\" link in the \"MOST WANTED\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"MOST WANTED\" section");
 
-        check(SiteContentSections.MOST_WANTED, data);
+        check(SiteContentSections.MOST_WANTED, link);
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
-    public void featured(Pair<String, String> data) {
+    public void featured(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + data.first() + "\" link in the \"FEATURED\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"FEATURED\" section");
 
-        check(SiteContentSections.FEATURED, data);
+        check(SiteContentSections.FEATURED, link);
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
-    public void trends(Pair<String, String> data) {
+    public void trends(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + data.first() + "\" link in the \"TRENDS\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"TRENDS\" section");
 
-        check(SiteContentSections.TRENDS, data);
+        check(SiteContentSections.TRENDS, link);
     }
 
     @Test(dataProvider = "blogs", dataProviderClass = MyDataProvider.class)
-    public void blogs(Pair<String, String> data) {
+    public void blogs(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + data.first() + "\" link in the \"BLOGS\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"BLOGS\" section");
 
-        check(SiteContentSections.FROM_THE_BLOG, data);
+        check(SiteContentSections.FROM_THE_BLOG, link);
     }
 }

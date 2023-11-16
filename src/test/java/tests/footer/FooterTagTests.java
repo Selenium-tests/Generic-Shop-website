@@ -1,14 +1,14 @@
 package tests.footer;
 
+import org.testng.Assert;
 import qa.base.BaseTest;
 import org.json.JSONException;
-import org.junit.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
-import qa.utils.Pair;
+import qa.utils.Link;
 
 
 public class FooterTagTests extends BaseTest {
@@ -22,13 +22,13 @@ public class FooterTagTests extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = "tags", dataProviderClass = MyDataProvider.class)
-    public void tags(Pair<String, String> data) throws JSONException {
+    public void tags(Link link) throws JSONException {
 
-        ExtentReportsManager.setName("CLicking the \"" + data.first() + "\" button");
+        ExtentReportsManager.setName("CLicking the \"" + link.getLinkText() + "\" button");
 
-        footer.getTagsSection().clickLink(data.first());
+        footer.getTagsSection().clickLink(link.getLinkText());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), data.second(),
-                "The page with the address \"" + data.second() + "\" has not been opened");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been opened");
     }
 }

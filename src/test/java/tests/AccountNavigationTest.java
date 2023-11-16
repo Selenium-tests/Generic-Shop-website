@@ -8,15 +8,15 @@ import org.testng.annotations.Test;
 import qa.pageobject.account.AccountPage;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
-import qa.utils.Pair;
-import java.awt.*;
+import qa.utils.Link;
+
 
 public class AccountNavigationTest extends BaseTest {
 
     private AccountPage accountPage;
 
     @BeforeMethod
-    private void init() throws AWTException, JSONException {
+    private void init() throws JSONException {
 
         accountPage = new AccountPage(getDriver());
 
@@ -24,13 +24,13 @@ public class AccountNavigationTest extends BaseTest {
     }
 
     @Test(dataProvider = "accountNavigation", dataProviderClass = MyDataProvider.class)
-    public void link(Pair<String, String> data) {
+    public void link(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + data.first() + "\" link");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link");
 
-        accountPage.getAccountNavigation().clickLink(data.first());
+        accountPage.getAccountNavigation().clickLink(link.getLinkText());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), data.second(),
-                "The page with the address \"" + data.second() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been found");
     }
 }

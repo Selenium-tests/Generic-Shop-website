@@ -12,7 +12,8 @@ import qa.pageobject.shoppingcart.Row;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
-import qa.utils.Pair;
+import qa.utils.Link;
+
 
 public class AddingProductToTheCartFromProductPageTest extends BaseTest {
 
@@ -48,42 +49,42 @@ public class AddingProductToTheCartFromProductPageTest extends BaseTest {
     }
 
     @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
-    public void fromAllBlackTops(Pair<String, String> data) {
+    public void fromAllBlackTops(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"ALL BLACK TOPS\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"ALL BLACK TOPS\" category");
 
-        check(data.first(), SiteContentSections.ALL_BLACK_TOPS);
+        check(link.getLinkText(), SiteContentSections.ALL_BLACK_TOPS);
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
-    public void fromHighHeelShoes(Pair<String, String> data) {
+    public void fromHighHeelShoes(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"HIGH HEEL SHOES\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"HIGH HEEL SHOES\" category");
 
-        check(data.first(), SiteContentSections.HIGH_HEEL_SHOES);
+        check(link.getLinkText(), SiteContentSections.HIGH_HEEL_SHOES);
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
-    public void fromMostWanted(Pair<String, String> data) {
+    public void fromMostWanted(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"MOST WANTED\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"MOST WANTED\" category");
 
-        check(data.first(), SiteContentSections.MOST_WANTED);
+        check(link.getLinkText(), SiteContentSections.MOST_WANTED);
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
-    public void fromFeatured(Pair<String, String> data) {
+    public void fromFeatured(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"FEATURED\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"FEATURED\" category");
 
-        check(data.first(), SiteContentSections.FEATURED);
+        check(link.getLinkText(), SiteContentSections.FEATURED);
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
-    public void fromTrends(Pair<String, String> data) {
+    public void fromTrends(Link link) {
 
-        ExtentReportsManager.setName("Adding the \"" + data.first() + "\" product from the \"TRENDS\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"TRENDS\" category");
 
-        check(data.first(), SiteContentSections.TRENDS);
+        check(link.getLinkText(), SiteContentSections.TRENDS);
     }
 }
