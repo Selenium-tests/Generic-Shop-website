@@ -5,12 +5,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.enums.SiteContentSections;
-import qa.pageobject.SiteContentSection;
-import qa.pageobject.header.Header;
+import qa.enums.ProductCategory;
+import qa.helpers.ShoppingCartActions;
 import qa.pageobject.productpage.QuantityField;
 import qa.pageobject.shoppingcart.ShoppingCart;
-import qa.pageobject.thumbnails.ProductThumbnail;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
 import qa.utils.Price;
@@ -27,13 +25,9 @@ public class QuantityFieldTest extends BaseTest {
     public void create() {
 
         shoppingCart = new ShoppingCart(getDriver());
-        SiteContentSection section = new SiteContentSection(getDriver());
-        ProductThumbnail productThumbnail = section.getProductThumbnail(getDriver(), "Manago Shirt", SiteContentSections.FEATURED);
 
-        productThumbnail.clickButton();
-
-        Header header = new Header(getDriver());
-        header.clickCartButton();
+        ShoppingCartActions.addToCart(getDriver(), "Manago Shirt", ProductCategory.FEATURED);
+        ShoppingCartActions.openCartPage(getDriver());
 
         rowIndex = 0;
     }
@@ -68,7 +62,6 @@ public class QuantityFieldTest extends BaseTest {
         shoppingCart.clickUpdateButton();
 
         consumer.accept(shoppingCart.getTable().getRow(rowIndex).getQuantityField());
-
     }
 
     @Parameters({"min"})

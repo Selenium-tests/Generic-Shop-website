@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.enums.SiteContentSections;
+import qa.enums.ProductCategory;
 import qa.pageobject.SiteContentSection;
 import qa.pageobject.header.Header;
 import qa.pageobject.productpage.ProductPage;
@@ -29,10 +29,10 @@ public class AddingProductToTheCartFromProductPageTest extends BaseTest {
         header = new Header(getDriver());
     }
 
-    private void check(String productName, SiteContentSections siteContentSections) {
+    private void check(String productName, ProductCategory category) {
 
         SiteContentSection section = new SiteContentSection(getDriver());
-        section.clickLink(productName, siteContentSections);
+        section.clickLink(productName, category);
 
         final String price = productPage.getPrice();
 
@@ -53,7 +53,7 @@ public class AddingProductToTheCartFromProductPageTest extends BaseTest {
 
         ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"ALL BLACK TOPS\" category");
 
-        check(link.getLinkText(), SiteContentSections.ALL_BLACK_TOPS);
+        check(link.getLinkText(), ProductCategory.ALL_BLACK_TOPS);
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
@@ -61,7 +61,7 @@ public class AddingProductToTheCartFromProductPageTest extends BaseTest {
 
         ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"HIGH HEEL SHOES\" category");
 
-        check(link.getLinkText(), SiteContentSections.HIGH_HEEL_SHOES);
+        check(link.getLinkText(), ProductCategory.HIGH_HEEL_SHOES);
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
@@ -69,7 +69,7 @@ public class AddingProductToTheCartFromProductPageTest extends BaseTest {
 
         ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"MOST WANTED\" category");
 
-        check(link.getLinkText(), SiteContentSections.MOST_WANTED);
+        check(link.getLinkText(), ProductCategory.MOST_WANTED);
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
@@ -77,7 +77,7 @@ public class AddingProductToTheCartFromProductPageTest extends BaseTest {
 
         ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"FEATURED\" category");
 
-        check(link.getLinkText(), SiteContentSections.FEATURED);
+        check(link.getLinkText(), ProductCategory.FEATURED);
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
@@ -85,6 +85,6 @@ public class AddingProductToTheCartFromProductPageTest extends BaseTest {
 
         ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"TRENDS\" category");
 
-        check(link.getLinkText(), SiteContentSections.TRENDS);
+        check(link.getLinkText(), ProductCategory.TRENDS);
     }
 }

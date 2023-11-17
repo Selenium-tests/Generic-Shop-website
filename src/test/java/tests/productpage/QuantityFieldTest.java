@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.enums.SiteContentSections;
+import qa.enums.ProductCategory;
 import qa.pageobject.SiteContentSection;
 import qa.pageobject.productpage.ProductPage;
 import qa.pageobject.productpage.QuantityField;
@@ -26,7 +26,7 @@ public class QuantityFieldTest extends BaseTest {
         productName = "Black Top";
 
         SiteContentSection section = new SiteContentSection(getDriver());
-        section.clickLink(productName, SiteContentSections.ALL_BLACK_TOPS);
+        section.clickLink(productName, ProductCategory.ALL_BLACK_TOPS);
 
         productPage = new ProductPage(getDriver());
     }
