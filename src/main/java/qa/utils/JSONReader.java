@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.io.*;
+import java.util.stream.IntStream;
 
 
 public class JSONReader {
@@ -32,98 +33,67 @@ public class JSONReader {
 
     public static String[] get(String key, String node) throws JSONException {
 
-        Object object = jsonObject.get(key);
-        JSONObject jsonObject1 = (JSONObject) object;
-        JSONArray jsonArray = jsonObject1.getJSONArray(node);
+        JSONArray jsonArray = getJSONArray(key, node);
 
-        String[] data = new String[jsonArray.length()];
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-
-            data[i] = jsonArray.getString(i);
-        }
-
-        return data;
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(jsonArray::getString)
+                .toArray(String[]::new);
     }
 
     public static Credentials[] getCredentials(String node) {
 
         JSONArray jsonArray = getJSONArray("login", node);
 
-        Credentials[] credentials = new Credentials[jsonArray.length()];
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-
-            credentials[i] = new Credentials(
-                    jsonArray.getJSONObject(i).getString("email"),
-                    jsonArray.getJSONObject(i).getString("password")
-            );
-        }
-
-        return credentials;
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new Credentials(
+                        jsonArray.getJSONObject(i).getString("email"),
+                        jsonArray.getJSONObject(i).getString("password")
+                ))
+                .toArray(Credentials[]::new);
     }
 
     public static Link[] getLink(String node) {
 
         JSONArray jsonArray = getJSONArray("URLs", node);
 
-        Link[] links = new Link[jsonArray.length()];
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-
-            links[i] = new Link(
-                    jsonArray.getJSONObject(i).getString("linkText"),
-                    jsonArray.getJSONObject(i).getString("pageURL")
-            );
-        }
-
-        return links;
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new Link(
+                        jsonArray.getJSONObject(i).getString("linkText"),
+                        jsonArray.getJSONObject(i).getString("pageURL")
+                ))
+                .toArray(Link[]::new);
     }
 
     public static Newsletter[] getNewsletter(String node) {
 
         JSONArray jsonArray = getJSONArray("newsletter", node);
 
-        Newsletter[] newsletters = new Newsletter[jsonArray.length()];
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-
-            newsletters[i] = new Newsletter(
-                    jsonArray.getJSONObject(i).getString("username"),
-                    jsonArray.getJSONObject(i).getString("email")
-            );
-        }
-
-        return newsletters;
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new Newsletter(
+                        jsonArray.getJSONObject(i).getString("username"),
+                        jsonArray.getJSONObject(i).getString("email")
+                ))
+                .toArray(Newsletter[]::new);
     }
 
     public static AddressFormData[] getAddressFormData(String node) {
 
-        Object object = jsonObject.get("addressForm");
-        JSONObject jsonObject1 = (JSONObject) object;
-        JSONArray jsonArray = jsonObject1.getJSONArray(node);
+        JSONArray jsonArray = getJSONArray("addressForm", node);
 
-        AddressFormData[] addressFormData = new AddressFormData[jsonArray.length()];
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-
-            AddressFormData data = new AddressFormData();
-
-            data.setCountry(jsonArray.getJSONObject(i).getString("country"));
-            data.setFirstName(jsonArray.getJSONObject(i).getString("firstName"));
-            data.setLastName(jsonArray.getJSONObject(i).getString("lastName"));
-            data.setCompanyName(jsonArray.getJSONObject(i).getString("companyName"));
-            data.setAddress1(jsonArray.getJSONObject(i).getString("address1"));
-            data.setAddress2(jsonArray.getJSONObject(i).getString("address2"));
-            data.setCity(jsonArray.getJSONObject(i).getString("city"));
-            data.setPostcode(jsonArray.getJSONObject(i).getString("postcode"));
-            data.setPhone(jsonArray.getJSONObject(i).getString("phone"));
-            data.setEmail(jsonArray.getJSONObject(i).getString("email"));
-            data.setErrorMessage(jsonArray.getJSONObject(i).getString("errorMessage"));
-
-            addressFormData[i] = data;
-        }
-
-        return addressFormData;
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new AddressFormData(
+                        jsonArray.getJSONObject(i).getString("country"),
+                        jsonArray.getJSONObject(i).getString("firstName"),
+                        jsonArray.getJSONObject(i).getString("lastName"),
+                        jsonArray.getJSONObject(i).getString("companyName"),
+                        jsonArray.getJSONObject(i).getString("address1"),
+                        jsonArray.getJSONObject(i).getString("address2"),
+                        jsonArray.getJSONObject(i).getString("city"),
+                        jsonArray.getJSONObject(i).getString("postcode"),
+                        jsonArray.getJSONObject(i).getString("phone"),
+                        jsonArray.getJSONObject(i).getString("email"),
+                        jsonArray.getJSONObject(i).getString("errorMessage")
+                ))
+                .toArray(AddressFormData[]::new);
     }
 }
