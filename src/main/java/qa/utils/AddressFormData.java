@@ -2,61 +2,33 @@ package qa.utils;
 
 public class AddressFormData {
 
-    private String country;
-    private String firstName;
-    private String lastName;
-    private String companyName;
-    private String address1;
-    private String address2;
-    private String city;
-    private String postcode;
-    private String phone;
-    private String email;
-    private String errorMessage;
+    private final String country;
+    private final String firstName;
+    private final String lastName;
+    private final String companyName;
+    private final String address1;
+    private final String address2;
+    private final String city;
+    private final String postcode;
+    private final String phone;
+    private final String email;
+    private final String errorMessage;
 
-    public AddressFormData() { }
+    public AddressFormData(String country, String firstName, String lastName, String companyName, String address1, String address2, String city, String postcode, String phone, String email, String errorMessage) {
 
-    public void setCountry(String country) {
         this.country = country;
-    }
-
-    public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public void setCompanyName(String companyName) {
         this.companyName = companyName;
-    }
-
-    public void setAddress1(String address1) {
         this.address1 = address1;
-    }
-
-    public void setAddress2(String address2) {
         this.address2 = address2;
-    }
-
-    public void setCity(String city) {
         this.city = city;
-    }
-
-    public void setPostcode(String postcode) {
         this.postcode = postcode;
-    }
-
-    public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
+        this.errorMessage = errorMessage;
     }
 
-    public void setErrorMessage(String errorMessage) { this.errorMessage = errorMessage; }
     public String getCountry() { return country; }
 
     public String getFirstName() {
