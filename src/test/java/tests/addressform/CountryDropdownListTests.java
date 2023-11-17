@@ -4,10 +4,9 @@ import qa.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.pageobject.account.AccountPage;
-import qa.pageobject.account.AddressColumns;
+import qa.helpers.AddressFormPageHandler;
+import qa.helpers.Authentication;
 import qa.pageobject.addressform.CountryDropdownList;
-import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
 
@@ -20,15 +19,8 @@ public class CountryDropdownListTests extends BaseTest {
     @BeforeMethod
     public void create() throws AWTException {
 
-        Header header = new Header(getDriver());
-        AccountPage accountPage = new AccountPage(getDriver());
-        AddressColumns addressColumns = new AddressColumns(getDriver());
-
-        header.clickAccountButton();
-        login("karen@gmail.com", "Kvc$11324#");
-
-        accountPage.getAccountNavigation().clickLink("Addresses");
-        addressColumns.clickBillingAddressLink();
+        Authentication.loginWithCredentials(getDriver());
+        AddressFormPageHandler.openAddressFormPage(getDriver());
 
         countryDropdownList = new CountryDropdownList(getDriver());
     }

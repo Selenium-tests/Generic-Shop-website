@@ -4,10 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.pageobject.account.AccountPage;
-import qa.pageobject.account.AddressColumns;
+import qa.helpers.AddressFormPageHandler;
+import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
-import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
 import java.util.function.Consumer;
@@ -19,17 +18,10 @@ public class AdditionalFieldsTests extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        Header header = new Header(getDriver());
-        AccountPage accountPage = new AccountPage(getDriver());
-        AddressColumns addressColumns = new AddressColumns(getDriver());
-
-        header.clickAccountButton();
-        login("karen@gmail.com", "Kvc$11324#");
-
-        accountPage.getAccountNavigation().clickLink("Addresses");
-        addressColumns.clickBillingAddressLink();
-
         addressForm = new AddressForm(getDriver());
+
+        Authentication.loginWithCredentials(getDriver());
+        AddressFormPageHandler.openAddressFormPage(getDriver());
     }
 
     private void check(String country, Consumer<AddressForm> consumer, String expectedLabelText) {
@@ -107,7 +99,7 @@ public class AdditionalFieldsTests extends BaseTest {
     @Test(dataProvider = "regionField", dataProviderClass = MyDataProvider.class)
     public void regionField(String country) {
 
-        ExtentReportsManager.setName("The appearance of the \"Region *\" field after entering \"" + country + "as the country name");
+      //  ExtentReportsManager.setName("The appearance of the \"Region *\" field after entering \"" + country + "as the country name");
 
         check(country,
              (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible(), "No additional field");},

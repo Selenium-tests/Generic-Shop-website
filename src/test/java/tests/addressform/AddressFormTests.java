@@ -5,14 +5,12 @@ import qa.base.BaseTest;
 import qa.factories.AddressFormFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.pageobject.account.AccountPage;
-import qa.pageobject.account.AddressColumns;
+import qa.helpers.AddressFormPageHandler;
+import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
-import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
 import qa.utils.AddressFormData;
 import qa.utils.ExtentReportsManager;
-
 import java.util.function.Consumer;
 
 public class AddressFormTests extends BaseTest {
@@ -20,15 +18,8 @@ public class AddressFormTests extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        Header header = new Header(getDriver());
-        AccountPage accountPage = new AccountPage(getDriver());
-        AddressColumns addressColumns = new AddressColumns(getDriver());
-
-        header.clickAccountButton();
-        login("karen@gmail.com", "Kvc$11324#");
-
-        accountPage.getAccountNavigation().clickLink("Addresses");
-        addressColumns.clickBillingAddressLink();
+        Authentication.loginWithCredentials(getDriver());
+        AddressFormPageHandler.openAddressFormPage(getDriver());
     }
 
     private void fill(AddressFormData data, Consumer<AddressForm> consumer) {
