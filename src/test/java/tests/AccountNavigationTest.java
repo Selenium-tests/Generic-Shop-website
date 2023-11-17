@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.helpers.Authentication;
 import qa.pageobject.account.AccountPage;
 import qa.provider.MyDataProvider;
 import qa.utils.ExtentReportsManager;
@@ -20,13 +21,13 @@ public class AccountNavigationTest extends BaseTest {
 
         accountPage = new AccountPage(getDriver());
 
-        login("karen@gmail.com", "Kvc$11324#");
+        Authentication.loginWithCredentials(getDriver());
     }
 
     @Test(dataProvider = "accountNavigation", dataProviderClass = MyDataProvider.class)
     public void link(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link");
+       // ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link");
 
         accountPage.getAccountNavigation().clickLink(link.getLinkText());
 
