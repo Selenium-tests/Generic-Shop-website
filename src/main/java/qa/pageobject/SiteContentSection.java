@@ -1,7 +1,7 @@
 package qa.pageobject;
 
 import qa.base.BasePage;
-import qa.enums.SiteContentSections;
+import qa.enums.ProductCategory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,21 +31,21 @@ public class SiteContentSection extends BasePage {
     WebElement siteContent;
 
 
-    private Section getSection(String linkText, SiteContentSections siteContentSections) {
+    private Section getSection(String linkText, ProductCategory category) {
 
         return new Section(
-                siteContent.findElement(By.xpath(xPaths[siteContentSections.ordinal()])).findElement(By.linkText(linkText)),
+                siteContent.findElement(By.xpath(xPaths[category.ordinal()])).findElement(By.linkText(linkText)),
                 linkText
         );
     }
 
-    public ProductThumbnail getProductThumbnail(WebDriver driver, String productName, SiteContentSections sections) {
+    public ProductThumbnail getProductThumbnail(WebDriver driver, String productName, ProductCategory category) {
 
-        return new ProductThumbnail(driver, getSection(productName, sections));
+        return new ProductThumbnail(driver, getSection(productName, category));
     }
 
-    public void clickLink(String linkText, SiteContentSections sections) {
+    public void clickLink(String linkText, ProductCategory category) {
 
-        siteContent.findElement(By.xpath(xPaths[sections.ordinal()])).findElement(By.linkText(linkText)).click();
+        siteContent.findElement(By.xpath(xPaths[category.ordinal()])).findElement(By.linkText(linkText)).click();
     }
 }

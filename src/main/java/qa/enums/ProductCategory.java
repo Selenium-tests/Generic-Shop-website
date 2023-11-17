@@ -1,6 +1,6 @@
 package qa.enums;
 
-public enum SiteContentSections {
+public enum ProductCategory {
 
     ALL_BLACK_TOPS,
     HIGH_HEEL_SHOES,
