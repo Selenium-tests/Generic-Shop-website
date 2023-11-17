@@ -1,7 +1,7 @@
 package tests;
 
 import qa.base.BaseTest;
-import qa.enums.SiteContentSections;
+import qa.enums.ProductCategory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,9 +21,9 @@ public class LinksTest extends BaseTest {
         siteContentSection = new SiteContentSection(getDriver());
     }
 
-    private void check(SiteContentSections sections, Link link) {
+    private void check(ProductCategory category, Link link) {
 
-        siteContentSection.clickLink(link.getLinkText(), sections);
+        siteContentSection.clickLink(link.getLinkText(), category);
 
         Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
                 "The page with the address \"" + link.getPageURL() + "\" has not been found");
@@ -34,7 +34,7 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"ALL BLACK TOP\" section");
 
-        check(SiteContentSections.ALL_BLACK_TOPS, link);
+        check(ProductCategory.ALL_BLACK_TOPS, link);
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
@@ -42,7 +42,7 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"HIGH HEEL SHOES\" section");
 
-        check(SiteContentSections.HIGH_HEEL_SHOES, link);
+        check(ProductCategory.HIGH_HEEL_SHOES, link);
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
@@ -50,7 +50,7 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"MOST WANTED\" section");
 
-        check(SiteContentSections.MOST_WANTED, link);
+        check(ProductCategory.MOST_WANTED, link);
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
@@ -58,7 +58,7 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"FEATURED\" section");
 
-        check(SiteContentSections.FEATURED, link);
+        check(ProductCategory.FEATURED, link);
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
@@ -66,7 +66,7 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"TRENDS\" section");
 
-        check(SiteContentSections.TRENDS, link);
+        check(ProductCategory.TRENDS, link);
     }
 
     @Test(dataProvider = "blogs", dataProviderClass = MyDataProvider.class)
@@ -74,6 +74,6 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"BLOGS\" section");
 
-        check(SiteContentSections.FROM_THE_BLOG, link);
+        check(ProductCategory.FROM_THE_BLOG, link);
     }
 }
