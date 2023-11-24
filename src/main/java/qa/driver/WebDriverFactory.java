@@ -18,5 +18,5 @@ public abstract class WebDriverFactory {
         System.setProperty(key, value);
     }
 
-    public abstract WebDriver createWebDriver();
+    public abstract WebDriver createDriver();
 }
