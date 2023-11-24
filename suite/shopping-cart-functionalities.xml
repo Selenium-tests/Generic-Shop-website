@@ -6,14 +6,6 @@
         <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
-    <parameter name="min" value="1"/>
-    <parameter name="aboveMin" value="2"/>
-    <parameter name="nominal" value="10"/>
-    <parameter name="belowMax" value="9223372036854775806"/>
-    <parameter name="max" value="9223372036854775807"/>
-    <parameter name="belowZero" value="-1"/>
-    <parameter name="aboveMax" value="9223372036854775808"/>
-
     <test verbose="2" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
         <classes>
             <class name="tests.shoppingcart.QuantityFieldTest"/>
