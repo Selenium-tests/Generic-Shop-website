@@ -31,14 +31,6 @@ public class QuantityFieldTest extends BaseTest {
         rowIndex = 0;
     }
 
-    /*@Test
-    public void removeProduct() {
-
-        shoppingCart.getTable().getRow(rowIndex).clickRemoveButton();
-
-        Assert.assertFalse(shoppingCart.hasContents());
-    }*/
-
     private void check(String quantity) throws InterruptedException {
 
         BigInteger price = Price.toInt(shoppingCart.getTable().getRow(0).getPrice());

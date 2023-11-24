@@ -52,7 +52,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void minimumValue(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the minimum value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the minimum value in the quantity field");
 
         check(value, "View cart\n" + productName + "” has been added to your cart.");
     }
@@ -61,7 +61,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void aboveMinimum(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the min + 1 value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the min + 1 value in the quantity field");
 
         check(value, "View cart\n" + value + " × “" + productName + "” have been added to your cart.");
     }
@@ -70,7 +70,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void nominal(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the nominal value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the nominal value in the quantity field");
 
         check(value, "View cart\n"+value + " × “" + productName + "” have been added to your cart.");
     }
@@ -79,7 +79,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void belowMaximum(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the maximum - 1 value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the maximum - 1 value in the quantity field");
 
         check(value, "View cart\n"+value + " × “" + productName + "” have been added to your cart.");
     }
@@ -88,7 +88,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void belowMinimum(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the minimum - 1 value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the minimum - 1 value in the quantity field");
 
         check(value, "Cannot add product with \"" + value + "\" quantity");
     }
@@ -97,7 +97,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void aboveMaximum(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the maximum + 1 value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the maximum + 1 value in the quantity field");
 
         check(value, "Cannot add product with \"" + value + "\" quantity");
     }
@@ -105,7 +105,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test(dataProvider = "QF_characters1", dataProviderClass = MyDataProvider.class)
     public void specialCharacters1(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the value in the quantity field");
 
         validationCheck(value,
                 (QuantityField qf)->{
@@ -117,7 +117,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test(dataProvider = "QF_characters2", dataProviderClass = MyDataProvider.class)
     public void specialCharacters2(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the value in the quantity field");
 
         validationCheck(value,
                 (QuantityField qf)->{
