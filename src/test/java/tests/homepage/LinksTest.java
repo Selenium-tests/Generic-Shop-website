@@ -1,4 +1,4 @@
-package tests;
+package tests.homepage;
 
 import qa.base.BaseTest;
 import qa.enums.ProductCategory;
@@ -56,7 +56,7 @@ public class LinksTest extends BaseTest {
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
     public void featured(Link link) {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"FEATURED\" section");
+        //ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"FEATURED\" section");
 
         check(ProductCategory.FEATURED, link);
     }

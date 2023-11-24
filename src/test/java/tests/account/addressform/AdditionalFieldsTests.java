@@ -1,4 +1,4 @@
-package tests.addressform;
+package tests.account.addressform;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;

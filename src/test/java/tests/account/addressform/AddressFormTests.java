@@ -1,4 +1,4 @@
-package tests.addressform;
+package tests.account.addressform;
 
 import org.testng.Assert;
 import qa.base.BaseTest;

@@ -1,10 +1,11 @@
-package tests;
+package tests.account;
 
 import qa.base.BaseTest;
 import org.json.JSONException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.extentreports.ExtentReportsManager;
 import qa.helpers.Authentication;
 import qa.pageobject.account.AccountPage;
 import qa.provider.MyDataProvider;
@@ -26,7 +27,7 @@ public class AccountNavigationTest extends BaseTest {
     @Test(dataProvider = "accountNavigation", dataProviderClass = MyDataProvider.class)
     public void link(Link link) {
 
-       // ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link");
+        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link");
 
         accountPage.getAccountNavigation().clickLink(link.linkText());
 

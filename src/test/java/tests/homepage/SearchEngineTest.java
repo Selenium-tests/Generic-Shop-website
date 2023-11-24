@@ -1,4 +1,4 @@
-package tests;
+package tests.homepage;
 
 import qa.base.BaseTest;
 import org.testng.Assert;
