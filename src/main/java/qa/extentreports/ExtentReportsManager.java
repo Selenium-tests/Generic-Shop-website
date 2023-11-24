@@ -1,4 +1,4 @@
-package qa.utils;
+package qa.extentreports;
 
 import qa.base.BaseTest;
 import com.aventstack.extentreports.ExtentReports;
