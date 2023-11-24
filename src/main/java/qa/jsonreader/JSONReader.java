@@ -45,6 +45,17 @@ public class JSONReader {
                 .toArray(String[]::new);
     }
 
+    public static String[] getQuantityFieldValue(String node) {
+
+        JSONArray jsonArray = getJSONArray("quantityFieldValues", node);
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new String(
+                        jsonArray.getJSONObject(i).getString("value")
+                ))
+                .toArray(String[]::new);
+    }
+
     public static Credentials[] getCredentials(String node) {
 
         JSONArray jsonArray = getJSONArray("login", node);
