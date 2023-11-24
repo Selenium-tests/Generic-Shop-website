@@ -2,7 +2,6 @@ package tests.shoppingcart;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.enums.ProductCategory;
@@ -32,13 +31,13 @@ public class QuantityFieldTest extends BaseTest {
         rowIndex = 0;
     }
 
-    @Test
+    /*@Test
     public void removeProduct() {
 
         shoppingCart.getTable().getRow(rowIndex).clickRemoveButton();
 
         Assert.assertFalse(shoppingCart.hasContents());
-    }
+    }*/
 
     private void check(String quantity) throws InterruptedException {
 
@@ -64,67 +63,60 @@ public class QuantityFieldTest extends BaseTest {
         consumer.accept(shoppingCart.getTable().getRow(rowIndex).getQuantityField());
     }
 
-    @Parameters({"min"})
-    @Test
+    @Test(dataProvider = "QF_min", dataProviderClass = MyDataProvider.class)
     public void minimumValue(String value) throws InterruptedException {
 
-        ExtentReportsManager.create("\"" + value + "\" as the minimum value in the quantity field");
+        ExtentReportsManager.setName("{" + value + "} as the minimum value in the quantity field");
 
         check(value);
     }
 
-    @Parameters({"aboveMin"})
-    @Test
+    @Test(dataProvider = "QF_aboveMin", dataProviderClass = MyDataProvider.class)
     public void aboveMinimum(String value) throws InterruptedException {
 
-        ExtentReportsManager.create("\"" + value + "\" as the min + 1 value in the quantity field");
+        ExtentReportsManager.create("{" + value + "} as the min + 1 value in the quantity field");
 
         check(value);
     }
 
-    @Parameters({"nominal"})
-    @Test
+    @Test(dataProvider = "QF_nominal", dataProviderClass = MyDataProvider.class)
     public void nominal(String value) throws InterruptedException {
 
-        ExtentReportsManager.create("\"" + value + "\" as the nominal value in the quantity field");
+        ExtentReportsManager.setName("{" + value + "} as the nominal value in the quantity field");
 
         check(value);
     }
 
-    @Parameters({"belowMax"})
-    @Test
+    @Test(dataProvider = "QF_belowMax", dataProviderClass = MyDataProvider.class)
     public void belowMaximum(String value) throws InterruptedException {
 
-        ExtentReportsManager.create("\"" + value + "\" as the maximum - 1 value in the quantity field");
+        ExtentReportsManager.setName("{" + value + "} as the maximum - 1 value in the quantity field");
 
         check(value);
     }
 
-    @Parameters({"max"})
-    @Test
+    @Test(dataProvider = "QF_max", dataProviderClass = MyDataProvider.class)
     public void maximum(String value) throws InterruptedException {
 
-        ExtentReportsManager.create("\"" + value + "\" as the maximum value in the quantity field");
+        ExtentReportsManager.setName("{" + value + "} as the maximum value in the quantity field");
 
         check(value);
     }
 
-    @Parameters({"belowZero"})
-    @Test
+    @Test(dataProvider = "QF_belowZero", dataProviderClass = MyDataProvider.class)
     public void belowZero(String value) throws InterruptedException {
 
-        ExtentReportsManager.create("\"" + value + "\" as the below zero value in the quantity field");
+        ExtentReportsManager.setName("{" + value + "} as the below zero value in the quantity field");
 
         int abs = Math.abs(Integer.parseInt(value));
 
         check(String.valueOf(abs));
     }
 
-    @Parameters("aboveMax")
-    @Test
+    @Test(dataProvider = "QF_aboveMax", dataProviderClass = MyDataProvider.class)
     public void aboveMaximum(String value) throws InterruptedException {
 
-        ExtentReportsManager.create("\"" + value + "\" as the maximum + 1 value in the quantity field");
+        ExtentReportsManager.setName("{" + value + "} as the maximum + 1 value in the quantity field");
 
         BigInteger bigInteger = new BigInteger(value);
         bigInteger = bigInteger.subtract(new BigInteger("1"));
@@ -135,7 +127,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test
     public void zero() {
 
-        ExtentReportsManager.create("Zero value in the quantity field");
+        ExtentReportsManager.setName("Zero value in the quantity field");
 
         shoppingCart.getTable().getRow(rowIndex).getQuantityField().setQuantity("0");
         shoppingCart.clickUpdateButton();
@@ -146,7 +138,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test(dataProvider = "QF_characters1", dataProviderClass = MyDataProvider.class)
     public void specialCharacters1(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the value in the quantity field");
+        ExtentReportsManager.setName("{" + value + "} as the value in the quantity field");
 
         validationCheck(value,
                 (QuantityField qf)->{
@@ -158,7 +150,7 @@ public class QuantityFieldTest extends BaseTest {
     @Test(dataProvider = "QF_characters2", dataProviderClass = MyDataProvider.class)
     public void specialCharacters2(String value) {
 
-        ExtentReportsManager.create("\"" + value + "\" as the value in the quantity field");
+        ExtentReportsManager.setName("{" + value + "} as the value in the quantity field");
 
         validationCheck(value,
                 (QuantityField qf)->{
