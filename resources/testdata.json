@@ -161,7 +161,6 @@
         ]
     },
 
-
     "addressForm": {
 
         "correctAddressData": [
@@ -642,6 +641,58 @@
 
             "1.2",
             "4,2"
+        ]
+    },
+
+    "quantityFieldValues": {
+
+        "min": [
+
+            {
+                "value": "1"
+            }
+        ],
+
+        "aboveMin": [
+
+            {
+                "value": "2"
+            }
+        ],
+
+        "nominal": [
+
+            {
+                "value": "10"
+            }
+        ],
+
+        "belowMax": [
+
+            {
+                "value": "9223372036854775806"
+            }
+        ],
+
+        "max": [
+
+            {
+                "value": "9223372036854775807"
+            }
+        ],
+
+        "belowZero": [
+
+            {
+                "value": "-1"
+            }
+        ],
+
+        "aboveMax": [
+
+            {
+                "value": "9223372036854775808"
+            }
         ]
     },
 
