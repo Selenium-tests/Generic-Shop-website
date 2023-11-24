@@ -265,6 +265,48 @@ public class MyDataProvider {
         return JSONReader.get("countries", "incorrectCountryName");
     }
 
+    @DataProvider(name = "QF_min")
+    public Object[] QF_min() {
+
+        return JSONReader.getQuantityFieldValue("min");
+    }
+
+    @DataProvider(name = "QF_aboveMin")
+    public Object[] QF_aboveMin() {
+
+        return JSONReader.getQuantityFieldValue("aboveMin");
+    }
+
+    @DataProvider(name = "QF_nominal")
+    public Object[] QF_nominal() {
+
+        return JSONReader.getQuantityFieldValue("nominal");
+    }
+
+    @DataProvider(name = "QF_belowMax")
+    public Object[] QF_belowMax() {
+
+        return JSONReader.getQuantityFieldValue("belowMax");
+    }
+
+    @DataProvider(name = "QF_max")
+    public Object[] QF_max() {
+
+        return JSONReader.getQuantityFieldValue("max");
+    }
+
+    @DataProvider(name = "QF_belowZero")
+    public Object[] QF_belowZero() {
+
+        return JSONReader.get("quantityFieldValues", "belowZero");
+    }
+
+    @DataProvider(name = "QF_aboveMax")
+    public Object[] QF_aboveMax() {
+
+        return JSONReader.getQuantityFieldValue("aboveMax");
+    }
+
     @DataProvider(name = "QF_characters1")
     public Object[] QF_characters1() {
 
