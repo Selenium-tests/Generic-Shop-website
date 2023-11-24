@@ -10,7 +10,7 @@ import qa.pageobject.SiteContentSection;
 import qa.pageobject.productpage.ProductPage;
 import qa.pageobject.productpage.QuantityField;
 import qa.provider.MyDataProvider;
-import qa.utils.ExtentReportsManager;
+import qa.extentreports.ExtentReportsManager;
 
 import java.util.function.Consumer;
 

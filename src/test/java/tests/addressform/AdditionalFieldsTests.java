@@ -8,7 +8,7 @@ import qa.helpers.AddressFormPageHandler;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
 import qa.provider.MyDataProvider;
-import qa.utils.ExtentReportsManager;
+import qa.extentreports.ExtentReportsManager;
 import java.util.function.Consumer;
 
 public class AdditionalFieldsTests extends BaseTest {

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import qa.pageobject.header.ResultsPage;
 import qa.pageobject.header.SearchEngine;
 import qa.provider.MyDataProvider;
-import qa.utils.ExtentReportsManager;
+import qa.extentreports.ExtentReportsManager;
 
 import java.util.function.Consumer;
 

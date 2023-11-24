@@ -2,7 +2,7 @@ package qa.provider;
 
 import org.json.JSONException;
 import org.testng.annotations.DataProvider;
-import qa.utils.JSONReader;
+import qa.jsonreader.JSONReader;
 
 
 public class MyDataProvider {

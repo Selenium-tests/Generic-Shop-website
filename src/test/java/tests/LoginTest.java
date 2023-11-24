@@ -8,8 +8,8 @@ import qa.pageobject.account.AccountPage;
 import qa.pageobject.LoginPage;
 import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
-import qa.utils.Credentials;
-import qa.utils.ExtentReportsManager;
+import qa.records.Credentials;
+import qa.extentreports.ExtentReportsManager;
 import java.util.function.Consumer;
 
 public class LoginTest extends BaseTest {
@@ -28,8 +28,8 @@ public class LoginTest extends BaseTest {
     private <T> void check(Consumer<T> consumer, T object, Credentials credentials) {
 
         loginPage.clearAll();
-        loginPage.setUsername(credentials.getEmail());
-        loginPage.setPassword(credentials.getPassword());
+        loginPage.setUsername(credentials.email());
+        loginPage.setPassword(credentials.password());
         loginPage.clickLoginButton();
 
         consumer.accept(object);
@@ -41,7 +41,7 @@ public class LoginTest extends BaseTest {
         ExtentReportsManager.setName("Incorrect email address");
 
         check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed(),
-                "No error message during login with \"" + credentials.getEmail() + "\" as an incorrect email address"),
+                "No error message during login with \"" + credentials.email() + "\" as an incorrect email address"),
                 loginPage, credentials);
     }
 
@@ -60,7 +60,7 @@ public class LoginTest extends BaseTest {
         ExtentReportsManager.setName("Incorrect password");
 
         check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed(),
-                "No error message during login with \"" + credentials.getPassword() + "\" as an incorrect password"),
+                "No error message during login with \"" + credentials.password() + "\" as an incorrect password"),
                 loginPage, credentials);
     }
 

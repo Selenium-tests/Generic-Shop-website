@@ -8,7 +8,7 @@ import qa.helpers.AddressFormPageHandler;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.CountryDropdownList;
 import qa.provider.MyDataProvider;
-import qa.utils.ExtentReportsManager;
+import qa.extentreports.ExtentReportsManager;
 
 import java.awt.*;
 

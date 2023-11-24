@@ -9,8 +9,8 @@ import qa.helpers.AddressFormPageHandler;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
 import qa.provider.MyDataProvider;
-import qa.utils.AddressFormData;
-import qa.utils.ExtentReportsManager;
+import qa.records.AddressFormData;
+import qa.extentreports.ExtentReportsManager;
 import java.util.function.Consumer;
 
 public class AddressFormTests extends BaseTest {
@@ -44,7 +44,7 @@ public class AddressFormTests extends BaseTest {
     @Test(dataProvider = "AF_incorrectFirstName", dataProviderClass = MyDataProvider.class)
     public void incorrectFirstName(AddressFormData data) {
 
-        ExtentReportsManager.setName("\"" + data.getFirstName() + "\" + as the incorrect first name");
+        ExtentReportsManager.setName("\"" + data.firstName() + "\" + as the incorrect first name");
 
         AddressFormFactory.get(data, getDriver()).clickSaveAddressButton();
 
@@ -55,7 +55,7 @@ public class AddressFormTests extends BaseTest {
     @Test(dataProvider = "AF_incorrectLastName", dataProviderClass = MyDataProvider.class)
     public void incorrectLastName(AddressFormData data) {
 
-        ExtentReportsManager.setName("\"" + data.getLastName() + "\" + as the incorrect last name");
+        ExtentReportsManager.setName("\"" + data.lastName() + "\" + as the incorrect last name");
 
         AddressFormFactory.get(data, getDriver()).clickSaveAddressButton();
 
@@ -66,32 +66,32 @@ public class AddressFormTests extends BaseTest {
     @Test(dataProvider = "AF_incorrectPostcode", dataProviderClass = MyDataProvider.class)
     public void incorrectPostcode(AddressFormData data) {
 
-        ExtentReportsManager.setName("\"" + data.getPostcode() + "\" + as the incorrect postcode");
+        ExtentReportsManager.setName("\"" + data.postcode() + "\" + as the incorrect postcode");
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about an incorrect postcode");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 
     @Test(dataProvider = "AF_incorrectPhoneNumber", dataProviderClass = MyDataProvider.class)
     public void incorrectPhoneNumber(AddressFormData data) {
 
-        ExtentReportsManager.setName("\"" + data.getPhone() + "\" + as the incorrect phone number");
+        ExtentReportsManager.setName("\"" + data.phone() + "\" + as the incorrect phone number");
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about an incorrect phone number");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 
     @Test(dataProvider = "AF_incorrectEmail", dataProviderClass = MyDataProvider.class)
     public void incorrectEmail(AddressFormData data) {
 
-        ExtentReportsManager.setName("\"" + data.getEmail() + "\" + as the incorrect email");
+        ExtentReportsManager.setName("\"" + data.email() + "\" + as the incorrect email");
 
         fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.getValidationMessageText().contains(data.getErrorMessage()),"Incorrect message text");
+            Assert.assertTrue(af.getValidationMessageText().contains(data.errorMessage()),"Incorrect message text");
         });
     }
 
@@ -102,7 +102,7 @@ public class AddressFormTests extends BaseTest {
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank first name field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 
@@ -113,7 +113,7 @@ public class AddressFormTests extends BaseTest {
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank last name field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 
@@ -124,7 +124,7 @@ public class AddressFormTests extends BaseTest {
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank address field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 
@@ -135,7 +135,7 @@ public class AddressFormTests extends BaseTest {
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank city field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 
@@ -146,7 +146,7 @@ public class AddressFormTests extends BaseTest {
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank postcode field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 
@@ -157,7 +157,7 @@ public class AddressFormTests extends BaseTest {
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank phone field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 
@@ -168,7 +168,7 @@ public class AddressFormTests extends BaseTest {
 
         fill(data, (AddressForm af)->{
             Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank email field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message text");
+            Assert.assertEquals(af.getErrorMessageText(), data.errorMessage(), "Incorrect message text");
         });
     }
 }

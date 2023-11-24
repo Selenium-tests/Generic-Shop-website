@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import qa.browsermanager.BrowserManager;
 import qa.driver.WebDriverProvider;
 import qa.enums.Browser;
-import qa.utils.JSONReader;
+import qa.jsonreader.JSONReader;
 import java.io.IOException;
 
 

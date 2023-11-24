@@ -2,7 +2,7 @@ package qa.factories;
 
 import org.openqa.selenium.WebDriver;
 import qa.pageobject.addressform.AddressForm;
-import qa.utils.AddressFormData;
+import qa.records.AddressFormData;
 
 
 public class AddressFormFactory {
@@ -12,17 +12,17 @@ public class AddressFormFactory {
         AddressForm addressForm = new AddressForm(driver);
 
         addressForm.getCountryDropdownList().clickCountryButton();
-        addressForm.getCountryDropdownList().setCountry(data.getCountry());
+        addressForm.getCountryDropdownList().setCountry(data.country());
         addressForm.getCountryDropdownList().pressEnter();
-        addressForm.setFirstName(data.getFirstName());
-        addressForm.setLastName(data.getLastName());
-        addressForm.setCompany(data.getCompanyName());
-        addressForm.setAddress_1(data.getAddress1());
-        addressForm.setAddress_2(data.getAddress2());
-        addressForm.setCity(data.getCity());
-        addressForm.setPostcode(data.getPostcode());
-        addressForm.setPhone(data.getPhone());
-        addressForm.setEmail(data.getEmail());
+        addressForm.setFirstName(data.firstName());
+        addressForm.setLastName(data.lastName());
+        addressForm.setCompany(data.companyName());
+        addressForm.setAddress_1(data.address1());
+        addressForm.setAddress_2(data.address2());
+        addressForm.setCity(data.city());
+        addressForm.setPostcode(data.postcode());
+        addressForm.setPhone(data.phone());
+        addressForm.setEmail(data.email());
 
         return addressForm;
     }

@@ -8,8 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
-import qa.utils.ExtentReportsManager;
-import qa.utils.Newsletter;
+import qa.extentreports.ExtentReportsManager;
+import qa.records.Newsletter;
 
 
 public class FooterNewsletterTests extends BaseTest {
@@ -25,8 +25,8 @@ public class FooterNewsletterTests extends BaseTest {
     private void fill(Newsletter newsletter) {
 
         footer.getNewsletterForm().clearAll();
-        footer.getNewsletterForm().setUsername(newsletter.getUsername());
-        footer.getNewsletterForm().setEmail(newsletter.getEmail());
+        footer.getNewsletterForm().setUsername(newsletter.username());
+        footer.getNewsletterForm().setEmail(newsletter.email());
         footer.getNewsletterForm().clickSubscribeButton();
     }
 

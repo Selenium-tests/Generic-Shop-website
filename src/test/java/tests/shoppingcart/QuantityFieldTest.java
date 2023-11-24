@@ -10,7 +10,7 @@ import qa.helpers.ShoppingCartActions;
 import qa.pageobject.productpage.QuantityField;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.provider.MyDataProvider;
-import qa.utils.ExtentReportsManager;
+import qa.extentreports.ExtentReportsManager;
 import qa.utils.Price;
 import java.math.BigInteger;
 import java.util.function.Consumer;

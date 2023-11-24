@@ -8,8 +8,7 @@ import org.testng.annotations.Test;
 import qa.helpers.Authentication;
 import qa.pageobject.account.AccountPage;
 import qa.provider.MyDataProvider;
-import qa.utils.ExtentReportsManager;
-import qa.utils.Link;
+import qa.records.Link;
 
 
 public class AccountNavigationTest extends BaseTest {
@@ -29,9 +28,9 @@ public class AccountNavigationTest extends BaseTest {
 
        // ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link");
 
-        accountPage.getAccountNavigation().clickLink(link.getLinkText());
+        accountPage.getAccountNavigation().clickLink(link.linkText());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
-                "The page with the address \"" + link.getPageURL() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
+                "The page with the address \"" + link.pageURL() + "\" has not been found");
     }
 }
