@@ -7,8 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import qa.browsermanager.BrowserManager;
-import qa.driver.ChromeDriverFactory;
-import qa.driver.WebDriverFactory;
+import qa.driver.WebDriverProvider;
+import qa.enums.Browser;
 import qa.utils.JSONReader;
 import java.io.IOException;
 
@@ -26,9 +26,7 @@ public class BaseTest {
     @BeforeMethod
     public void startDriver() {
 
-        WebDriverFactory factory = new ChromeDriverFactory();
-        driver = factory.createWebDriver();
-
+        driver = WebDriverProvider.getDriver(Browser.CHROME).createDriver();
         BrowserManager.openBrowser(driver, "http://skleptest.pl/");
     }
 
