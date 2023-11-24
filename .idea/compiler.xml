@@ -10,5 +10,8 @@
         <module name="untitled10" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Generic-Shop-tests-master" target="20" />
+    </bytecodeTargetLevel>
   </component>
 </project>
