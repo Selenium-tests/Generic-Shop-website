@@ -1,46 +1,55 @@
 package qa.pageobject.thumbnails;
 
 import qa.base.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import qa.utils.Section;
 
+public class ProductThumbnail extends BasePage implements Thumbnail {
 
-public class ProductThumbnail extends BasePage {
-
+    private WebElement link;
     private WebElement price;
-    private WebElement button;
-    private String name;
+    private WebElement addToCartButton;
 
-    public ProductThumbnail(WebDriver driver, Section section) {
+    public ProductThumbnail(WebDriver driver) {
 
         super(driver);
-
-        setLocators(section);
     }
 
-    private void setLocators(Section section) {
+    @Override
+    public void setLink(WebElement link) {
 
-        WebElement parent = section.getWebElement().findElement(By.xpath("./..")).findElement(By.xpath("./.."));
-
-        name = section.getName();
-        price = parent.findElement(By.xpath(".//span[@class='price']"));
-        button = parent.findElement(By.className("ajax_add_to_cart"));
+        this.link = link;
     }
 
-    public void clickButton() {
+    public void setPrice(WebElement price) {
 
-        button.click();
+        this.price = price;
     }
 
-    public String getName() {
+    public void setAddToCartButton(WebElement addToCartButton) {
 
-        return name;
+        this.addToCartButton = addToCartButton;
+    }
+
+    @Override
+    public String getLinkText() {
+
+        return link.getText();
     }
 
     public String getPrice() {
 
         return price.getText();
+    }
+
+    @Override
+    public void clickLink() {
+
+        link.click();
+    }
+
+    public void clickAddToCartButton() {
+
+        addToCartButton.click();
     }
 }
