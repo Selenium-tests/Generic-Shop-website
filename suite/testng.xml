@@ -4,7 +4,7 @@
 <suite name="Generic Shop tests">
     <suite-files>
         <suite-file path="search-engine.xml"/>
-        <suite-file path="links.xml"/>
+        <suite-file path="links-on-home-page.xml"/>
         <suite-file path="footer.xml"/>
         <suite-file path="login.xml"/>
         <suite-file path="account-page-navigation.xml"/>
