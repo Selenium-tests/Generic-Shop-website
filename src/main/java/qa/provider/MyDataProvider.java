@@ -49,10 +49,16 @@ public class MyDataProvider {
         return JSONReader.getLink("trendsProducts");
     }
 
-    @DataProvider(name = "blogs")
-    public Object[] blogs() {
+    @DataProvider(name = "blogs1")
+    public Object[] blogs1() {
 
-        return JSONReader.getLink("blogs");
+        return JSONReader.getLink("blogs_1");
+    }
+
+    @DataProvider(name = "blogs2")
+    public Object[] blogs2() {
+
+        return JSONReader.getLink("blogs_2");
     }
 
     @DataProvider(name = "correctCredentials")
