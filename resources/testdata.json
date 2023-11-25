@@ -804,13 +804,16 @@
             {
                 "linkText": "Rocadi Jeans",
                 "pageURL": "https://skleptest.pl/product/rocadi-jeans/"
-            },
-      
+            }
+        ],
+
+        "scarfsProducts": [
+
             {
                 "linkText": "Istwic Scarf",
                 "pageURL": "https://skleptest.pl/product/istwic-scarf/"
             },
-      
+
             {
                 "linkText": "Jennifer Scarf",
                 "pageURL": "https://skleptest.pl/product/jennifer-scarf/"
@@ -819,13 +822,17 @@
             {
                 "linkText": "Andora Scarf",
                 "pageURL": "https://skleptest.pl/product/andora-scarf/"
-            },
-      
+            }
+
+        ],
+
+        "onSaleProducts": [
+
             {
                 "linkText": "Marina Style",
                 "pageURL": "https://skleptest.pl/product/marina-style/"
             },
-      
+
             {
                 "linkText": "Amari Shirt",
                 "pageURL": "https://skleptest.pl/product/amari-shirt/"
@@ -850,12 +857,12 @@
             },
 
             {
-                "linkText": "Asabi - Jeans",
+                "linkText": "Asabi – Jeans",
                 "pageURL":  "https://skleptest.pl/product/asabi-jeans/"
             },
 
             {
-                "linkText": "Merchantile - Blouse",
+                "linkText": "Merchantile – Blouse",
                 "pageURL":  "https://skleptest.pl/product/merchantile-blouse/"
             }
         ],
