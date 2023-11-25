@@ -25,6 +25,18 @@ public class MyDataProvider {
         return JSONReader.getLink("mostWantedProducts");
     }
 
+    @DataProvider(name = "scarfsProducts")
+    public Object[] scarfsProducts() {
+
+        return JSONReader.getLink("scarfsProducts");
+    }
+
+    @DataProvider(name = "onSaleProducts")
+    public Object[] onSaleProducts() {
+
+        return JSONReader.getLink("onSaleProducts");
+    }
+
     @DataProvider(name = "featuredProducts")
     public Object[] featured() {
 
@@ -298,7 +310,7 @@ public class MyDataProvider {
     @DataProvider(name = "QF_belowZero")
     public Object[] QF_belowZero() {
 
-        return JSONReader.get("quantityFieldValues", "belowZero");
+        return JSONReader.getQuantityFieldValue("belowZero");
     }
 
     @DataProvider(name = "QF_aboveMax")
