@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.enums.ProductCategory;
+import qa.enums.ThumbnailCategory;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.productpage.QuantityField;
 import qa.pageobject.shoppingcart.ShoppingCart;
@@ -25,7 +25,7 @@ public class QuantityFieldTest extends BaseTest {
 
         shoppingCart = new ShoppingCart(getDriver());
 
-        ShoppingCartActions.addToCart(getDriver(), "Manago Shirt", ProductCategory.FEATURED);
+        ShoppingCartActions.addToCart(getDriver(), ThumbnailCategory.FEATURED, "Manago Shirt");
         ShoppingCartActions.openCartPage(getDriver());
 
         rowIndex = 0;
