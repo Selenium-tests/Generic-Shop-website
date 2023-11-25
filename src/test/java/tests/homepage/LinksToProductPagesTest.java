@@ -1,29 +1,26 @@
 package tests.homepage;
 
+import qa.enums.ThumbnailType;
+import qa.pageobject.thumbnails.Thumbnail;
 import qa.base.BaseTest;
-import qa.enums.ProductCategory;
+import qa.enums.ThumbnailCategory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.pageobject.SiteContentSection;
 import qa.provider.MyDataProvider;
 import qa.extentreports.ExtentReportsManager;
 import qa.records.Link;
+import qa.thumbnailgenerators.ThumbnailProvider;
 
 
-public class LinksTest extends BaseTest {
+public class LinksToProductPagesTest extends BaseTest {
 
-    private SiteContentSection siteContentSection;
+    private void check(ThumbnailCategory category, Link link) {
 
-    @BeforeMethod
-    public void create() {
+        Thumbnail thumbnail = ThumbnailProvider
+                .getFactory(ThumbnailType.PRODUCT)
+                .createThumbnail(getDriver(), category, link.linkText());
 
-        siteContentSection = new SiteContentSection(getDriver());
-    }
-
-    private void check(ProductCategory category, Link link) {
-
-        siteContentSection.clickLink(link.linkText(), category);
+        thumbnail.clickLink();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
                 "The page with the address \"" + link.pageURL() + "\" has not been found");
@@ -34,7 +31,7 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"ALL BLACK TOP\" section");
 
-        check(ProductCategory.ALL_BLACK_TOPS, link);
+        check(ThumbnailCategory.ALL_BLACK_TOPS, link);
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
@@ -42,7 +39,7 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"HIGH HEEL SHOES\" section");
 
-        check(ProductCategory.HIGH_HEEL_SHOES, link);
+        check(ThumbnailCategory.HIGH_HEEL_SHOES, link);
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
@@ -50,15 +47,31 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"MOST WANTED\" section");
 
-        check(ProductCategory.MOST_WANTED, link);
+        check(ThumbnailCategory.MOST_WANTED, link);
+    }
+
+    @Test(dataProvider = "scarfsProducts", dataProviderClass = MyDataProvider.class)
+    public void scarfs(Link link) {
+
+        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"SCARFS\" section");
+
+        check(ThumbnailCategory.SCARFS, link);
+    }
+
+    @Test(dataProvider = "onSaleProducts", dataProviderClass = MyDataProvider.class)
+    public void onSale(Link link) {
+
+        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"ON SALE\" section");
+
+        check(ThumbnailCategory.ON_SALE, link);
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
     public void featured(Link link) {
 
-        //ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"FEATURED\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"FEATURED\" section");
 
-        check(ProductCategory.FEATURED, link);
+        check(ThumbnailCategory.FEATURED, link);
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
@@ -66,14 +79,6 @@ public class LinksTest extends BaseTest {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"TRENDS\" section");
 
-        check(ProductCategory.TRENDS, link);
-    }
-
-    @Test(dataProvider = "blogs", dataProviderClass = MyDataProvider.class)
-    public void blogs(Link link) {
-
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"BLOGS\" section");
-
-        check(ProductCategory.FROM_THE_BLOG, link);
+        check(ThumbnailCategory.TRENDS, link);
     }
 }
