@@ -894,7 +894,7 @@
         ],
 
 
-    "blogs": [
+    "blogs_1": [
 
         {
             "linkText": "Best Fabrics For Your Dream…",
@@ -906,7 +906,10 @@
             "linkText": "Latest Trends For Autumn Are…",
             "pageURL": "https://skleptest.pl/latest-trends-autumn/"
 
-        },
+        }
+    ],
+
+    "blogs_2": [
 
         {
             "linkText": "Long Legs? No Longer A…",
