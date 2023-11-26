@@ -753,6 +753,87 @@
 
     "URLs": {
 
+        "mainMenuLinks": [
+
+            {
+                "linkText": "menu-item-142",
+                "pageURL": "https://skleptest.pl/"
+            },
+
+            {
+                "linkText": "menu-item-128",
+                "pageURL": "https://skleptest.pl/product-category/most-wanted/"
+            },
+
+            {
+                "linkText": "menu-item-118",
+                "pageURL": "https://skleptest.pl/test-contact-blablabla/"
+            },
+
+            {
+                "linkText": "menu-item-108",
+                "pageURL": "https://skleptest.pl/tag/contact/"
+            },
+
+            {
+                "linkText": "menu-item-163",
+                "pageURL": "https://skleptest.pl/tag/all/"
+            }
+        ],
+
+        "mainMenuDropdownList": [
+
+            {
+                "linkText": "menu-item-138",
+                "pageURL": "https://skleptest.pl/shop/"
+            },
+
+            {
+                "linkText": "menu-item-125",
+                "pageURL": "https://skleptest.pl/product-category/shirts/"
+            },
+
+            {
+                "linkText": "menu-item-126",
+                "pageURL": "https://skleptest.pl/product-category/featured/"
+            },
+
+            {
+                "linkText": "menu-item-127",
+                "pageURL": "https://skleptest.pl/product-category/trends/"
+            },
+
+            {
+                "linkText": "menu-item-129",
+                "pageURL": "https://skleptest.pl/product-category/scarfs/"
+            },
+
+            {
+                "linkText": "menu-item-130",
+                "pageURL": "https://skleptest.pl/product-category/shoes/"
+            },
+
+            {
+                "linkText": "menu-item-131",
+                "pageURL": "https://skleptest.pl/product-category/tops/"
+            },
+
+            {
+                "linkText": "menu-item-132",
+                "pageURL": "https://skleptest.pl/product-category/blouse/"
+            },
+
+            {
+                "linkText": "menu-item-134",
+                "pageURL": "https://skleptest.pl/product-category/jeans/"
+            },
+
+            {
+                "linkText": "menu-item-134",
+                "pageURL": "https://skleptest.pl/product-category/dresses/"
+            }
+        ],
+
         "allBlackTopsProducts": [
 
             {
