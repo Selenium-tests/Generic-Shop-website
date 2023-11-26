@@ -7,6 +7,18 @@ import qa.jsonreader.JSONReader;
 
 public class MyDataProvider {
 
+    @DataProvider(name = "mainMenu")
+    public Object[] mainMenu() {
+
+        return JSONReader.getLink("mainMenuLinks");
+    }
+
+    @DataProvider(name = "mainMenuDropdownList")
+    public Object[] mainMenuDropdownList() {
+
+        return JSONReader.getLink("mainMenuDropdownList");
+    }
+
     @DataProvider(name = "allBlackTops")
     public Object[] allBlackTops() {
 
