@@ -1,11 +1,11 @@
-package qa.factories;
+package qa.helpers;
 
 import org.openqa.selenium.WebDriver;
 import qa.pageobject.addressform.AddressForm;
 import qa.records.AddressFormData;
 
 
-public class AddressFormFactory {
+public class AddressFormFiller {
 
     public static AddressForm get(AddressFormData data, WebDriver driver) {
 
