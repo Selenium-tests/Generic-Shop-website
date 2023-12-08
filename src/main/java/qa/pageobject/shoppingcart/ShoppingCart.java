@@ -28,7 +28,7 @@ public class ShoppingCart extends BasePage {
     @FindBy(name = "update_cart")
     WebElement updateButton;
 
-    @FindBy(xpath = ".//div[@class='wc-proceed-to-checkout']")
+    @FindBy(className = "wc-proceed-to-checkout")
     WebElement checkoutButton;
 
 
