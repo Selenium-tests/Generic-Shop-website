@@ -12,5 +12,6 @@
         <suite-file path="product-page.xml"/>
         <suite-file path="adding-product-to-the-shopping-cart.xml"/>
         <suite-file path="shopping-cart-functionalities.xml"/>
+        <suite-file path="checkout-page.xml"/>
     </suite-files>
 </suite>
