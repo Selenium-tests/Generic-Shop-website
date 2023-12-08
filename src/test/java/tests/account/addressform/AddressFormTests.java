@@ -2,7 +2,7 @@ package tests.account.addressform;
 
 import org.testng.Assert;
 import qa.base.BaseTest;
-import qa.factories.AddressFormFactory;
+import qa.helpers.AddressFormFiller;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.helpers.AddressFormPageHandler;
@@ -24,7 +24,7 @@ public class AddressFormTests extends BaseTest {
 
     private void fill(AddressFormData data, Consumer<AddressForm> consumer) {
 
-        AddressForm addressForm = AddressFormFactory.get(data, getDriver());
+        AddressForm addressForm = AddressFormFiller.get(data, getDriver());
         addressForm.clickSaveAddressButton();
 
         consumer.accept(addressForm);
@@ -35,7 +35,7 @@ public class AddressFormTests extends BaseTest {
 
         ExtentReportsManager.setName("Filling the form with a correct address data");
 
-        AddressFormFactory.get(data, getDriver()).clickSaveAddressButton();
+        AddressFormFiller.get(data, getDriver()).clickSaveAddressButton();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://skleptest.pl/my-account/edit-address/",
                 "The address data has not been saved");
@@ -46,7 +46,7 @@ public class AddressFormTests extends BaseTest {
 
         ExtentReportsManager.setName("\"" + data.firstName() + "\" + as the incorrect first name");
 
-        AddressFormFactory.get(data, getDriver()).clickSaveAddressButton();
+        AddressFormFiller.get(data, getDriver()).clickSaveAddressButton();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://skleptest.pl/my-account/edit-address/billing/",
                 "No message about an incorrect first name");
@@ -57,7 +57,7 @@ public class AddressFormTests extends BaseTest {
 
         ExtentReportsManager.setName("\"" + data.lastName() + "\" + as the incorrect last name");
 
-        AddressFormFactory.get(data, getDriver()).clickSaveAddressButton();
+        AddressFormFiller.get(data, getDriver()).clickSaveAddressButton();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://skleptest.pl/my-account/edit-address/billing/",
                 "No message about an incorrect last name");
