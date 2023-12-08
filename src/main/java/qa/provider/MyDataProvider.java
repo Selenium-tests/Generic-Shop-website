@@ -385,4 +385,10 @@ public class MyDataProvider {
 
         return JSONReader.getNewsletter("blankEmailField");
     }
+
+    @DataProvider(name = "checkoutPage")
+    public Object[] checkoutPage() {
+
+        return JSONReader.getLink("checkoutPage");
+    }
 }
