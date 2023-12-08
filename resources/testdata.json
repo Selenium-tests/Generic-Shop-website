@@ -1090,7 +1090,14 @@
         {
             "linkText": "Logout",
             "pageURL":  "https://skleptest.pl/my-account/customer-logout/"
+        }
+    ],
 
+    "checkoutPage": [
+
+        {
+            "linkText": "",
+            "pageURL": "https://skleptest.pl/checkout/"
         }
     ]
 
