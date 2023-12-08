@@ -25,10 +25,19 @@ public class CheckoutPage extends BasePage {
     @FindBy(id = "ship-to-different-address-checkbox")
     WebElement differentAddressCheckbox;
 
+    @FindBy(id = "place_order")
+    WebElement placeOrderButton;
+
     public void clickDifferentAddressCheckbox() {
 
         differentAddressCheckbox.click();
     }
+
+    public void clickPlaceOrderButton() {
+
+        placeOrderButton.click();
+    }
+
     public AddressForm getAddressForm() {
 
         return addressForm;
