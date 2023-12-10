@@ -1,5 +1,4 @@
 package qa.pageobject;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -29,12 +28,12 @@ public class LoginPage extends BasePage {
 
     public void setUsername(String username) throws IllegalAccessException {
 
-        clearAndFill(ToBy.get(usernameField), username);
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(usernameField))).sendKeys(username);
     }
 
     public void setPassword(String password) throws IllegalAccessException {
 
-        clearAndFill(ToBy.get(passwordField), password);
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(passwordField))).sendKeys(password);
     }
 
     public void clickLoginButton() throws IllegalAccessException {
@@ -45,11 +44,5 @@ public class LoginPage extends BasePage {
     public boolean isErrorMessageDisplayed() {
 
         return errorMessage.isDisplayed();
-    }
-
-    public void clearAll() {
-
-        usernameField.clear();
-        passwordField.clear();
     }
 }
