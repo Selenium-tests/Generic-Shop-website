@@ -1,10 +1,13 @@
 package qa.pageobject.shoppingcart;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+
 import java.util.List;
 
 
@@ -31,7 +34,6 @@ public class ShoppingCart extends BasePage {
     @FindBy(className = "wc-proceed-to-checkout")
     WebElement checkoutButton;
 
-
     public List<WebElement> getContentsLocator() {
 
         return contents;
@@ -44,12 +46,12 @@ public class ShoppingCart extends BasePage {
 
     public void clickUpdateButton() {
 
-        updateButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateButton)).click();
     }
 
-    public void clickCheckoutButton() {
+    public void clickCheckoutButton() throws IllegalAccessException {
 
-        checkoutButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(checkoutButton));
     }
 
     public Table getTable() {
