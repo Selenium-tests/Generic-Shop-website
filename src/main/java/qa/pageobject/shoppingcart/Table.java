@@ -8,8 +8,7 @@ import qa.base.BasePage;
 
 public class Table extends BasePage {
 
-    private Row row;
-
+    private final Row row;
 
     public Table(WebDriver driver) {
 
