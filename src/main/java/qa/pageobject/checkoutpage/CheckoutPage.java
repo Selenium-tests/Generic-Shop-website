@@ -3,9 +3,11 @@ package qa.pageobject.checkoutpage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import qa.pageobject.addressform.AddressForm;
 import qa.pageobject.addressform.ShippingAddressForm;
+
 
 public class CheckoutPage extends BasePage {
 
@@ -30,12 +32,12 @@ public class CheckoutPage extends BasePage {
 
     public void clickDifferentAddressCheckbox() {
 
-        differentAddressCheckbox.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(differentAddressCheckbox)).click();
     }
 
     public void clickPlaceOrderButton() {
 
-        placeOrderButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(placeOrderButton)).click();
     }
 
     public AddressForm getAddressForm() {
