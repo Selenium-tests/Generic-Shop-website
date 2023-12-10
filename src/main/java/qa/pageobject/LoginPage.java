@@ -1,8 +1,11 @@
 package qa.pageobject;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.tools.toby.ToBy;
 
 
 public class LoginPage extends BasePage {
@@ -13,30 +16,30 @@ public class LoginPage extends BasePage {
     }
 
     @FindBy(xpath = ".//input[@id='username']")
-    WebElement username;
+    WebElement usernameField;
 
     @FindBy(xpath = ".//input[@id='password']")
-    WebElement password;
+    WebElement passwordField;
 
     @FindBy(name = "login")
-    WebElement login;
+    WebElement loginButton;
 
     @FindBy(className = "woocommerce-error")
     WebElement errorMessage;
 
-    public void setUsername(String username) {
+    public void setUsername(String username) throws IllegalAccessException {
 
-        this.username.sendKeys(username);
+        clearAndFill(ToBy.get(usernameField), username);
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws IllegalAccessException {
 
-        this.password.sendKeys(password);
+        clearAndFill(ToBy.get(passwordField), password);
     }
 
-    public void clickLoginButton() {
+    public void clickLoginButton() throws IllegalAccessException {
 
-        login.click();
+        click(ToBy.get(loginButton));
     }
 
     public boolean isErrorMessageDisplayed() {
@@ -46,7 +49,7 @@ public class LoginPage extends BasePage {
 
     public void clearAll() {
 
-        username.clear();
-        password.clear();
+        usernameField.clear();
+        passwordField.clear();
     }
 }

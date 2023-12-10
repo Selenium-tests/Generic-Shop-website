@@ -4,6 +4,7 @@ import qa.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.enums.URLs;
 import qa.pageobject.account.AccountPage;
 import qa.pageobject.LoginPage;
 import qa.provider.MyDataProvider;
@@ -18,7 +19,7 @@ public class LoginTest extends BaseTest {
     @BeforeMethod
     private void create() {
 
-        goToSpecificPage("https://skleptest.pl/my-account/");
+        goToSpecificPage(URLs.LOGIN_PAGE.getName());
         loginPage = new LoginPage(getDriver());
     }
 
