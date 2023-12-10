@@ -3,8 +3,11 @@ package qa.pageobject.shoppingcart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import qa.pageobject.productpage.QuantityField;
+import qa.tools.toby.ToBy;
+
 
 public class Row extends BasePage {
 
@@ -38,8 +41,9 @@ public class Row extends BasePage {
         return parent.findElement(By.className("product-price")).getText();
     }
 
-    public String getSubtotal() {
+    public String getSubtotal() throws IllegalAccessException {
 
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(parent.findElement(By.className("product-subtotal")))));
         return parent.findElement(By.className("product-subtotal")).getText();
     }
 
