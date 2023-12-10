@@ -1,9 +1,12 @@
 package qa.pageobject.addressform;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+
 import java.util.List;
 
 public class AddressForm extends BasePage {
@@ -60,56 +63,57 @@ public class AddressForm extends BasePage {
     @FindBy(xpath = "//ul[@class='woocommerce-error']")
     List<WebElement> errorMessage;
 
+    private void clearAndFill(WebElement element, String text) {
 
-    protected void fill(WebElement element, String data) {
-
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(element));
+        focus(element);
         element.clear();
-        element.sendKeys(data);
+        element.sendKeys(text);
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) throws IllegalAccessException {
 
-        fill(firstNameField, firstName);
+        clearAndFill(firstNameField, firstName);
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws IllegalAccessException {
 
-        fill(lastNameField, lastName);
+        clearAndFill(lastNameField, lastName);
     }
 
-    public void setCompany(String company) {
+    public void setCompany(String company) throws IllegalAccessException {
 
-        fill(companyField, company);
+        clearAndFill(companyField, company);
     }
 
-    public void setAddress_1(String address) {
+    public void setAddress_1(String address) throws IllegalAccessException {
 
-        fill(addressField1, address);
+        clearAndFill(addressField1, address);
     }
 
-    public void setAddress_2(String address) {
+    public void setAddress_2(String address) throws IllegalAccessException {
 
-        fill(addressField2, address);
+        clearAndFill(addressField2, address);
     }
 
-    public void setCity(String city) {
+    public void setCity(String city) throws IllegalAccessException {
 
-        fill(cityField, city);
+        clearAndFill(cityField, city);
     }
 
-    public void setPostcode(String postcode) {
+    public void setPostcode(String postcode) throws IllegalAccessException {
 
-        fill(postcodeField, postcode);
+        clearAndFill(postcodeField, postcode);
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(String phone) throws IllegalAccessException {
 
-        fill(phoneField, phone);
+        clearAndFill(phoneField, phone);
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws IllegalAccessException {
 
-        fill(emailField, email);
+        clearAndFill(emailField, email);
     }
 
     public CountryDropdownList getCountryDropdownList() {
@@ -119,6 +123,7 @@ public class AddressForm extends BasePage {
 
     public void clickSaveAddressButton() {
 
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveAddressButton));
         saveAddressButton.click();
     }
 
