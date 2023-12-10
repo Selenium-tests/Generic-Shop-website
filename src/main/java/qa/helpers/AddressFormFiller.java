@@ -7,7 +7,7 @@ import qa.records.AddressFormData;
 
 public class AddressFormFiller {
 
-    public static AddressForm get(AddressFormData data, WebDriver driver) {
+    public static AddressForm get(AddressFormData data, WebDriver driver) throws IllegalAccessException {
 
         AddressForm addressForm = new AddressForm(driver);
 
