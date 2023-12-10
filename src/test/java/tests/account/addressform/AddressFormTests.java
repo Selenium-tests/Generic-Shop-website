@@ -2,10 +2,10 @@ package tests.account.addressform;
 
 import org.testng.Assert;
 import qa.base.BaseTest;
+import qa.enums.URLs;
 import qa.helpers.AddressFormFiller;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.helpers.AddressFormPageHandler;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
 import qa.provider.MyDataProvider;
@@ -16,13 +16,14 @@ import java.util.function.Consumer;
 public class AddressFormTests extends BaseTest {
 
     @BeforeMethod
-    public void create() {
+    public void create() throws IllegalAccessException {
 
+        goToSpecificPage(URLs.LOGIN_PAGE.getName());
         Authentication.loginWithCredentials(getDriver());
-        AddressFormPageHandler.openAddressFormPage(getDriver());
+        goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
     }
 
-    private void fill(AddressFormData data, Consumer<AddressForm> consumer) {
+    private void fill(AddressFormData data, Consumer<AddressForm> consumer) throws IllegalAccessException {
 
         AddressForm addressForm = AddressFormFiller.get(data, getDriver());
         addressForm.clickSaveAddressButton();
@@ -31,7 +32,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
-    public void correctAddressData(AddressFormData data) {
+    public void correctAddressData(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Filling the form with a correct address data");
 
@@ -42,7 +43,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_incorrectFirstName", dataProviderClass = MyDataProvider.class)
-    public void incorrectFirstName(AddressFormData data) {
+    public void incorrectFirstName(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("\"" + data.firstName() + "\" + as the incorrect first name");
 
@@ -53,7 +54,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_incorrectLastName", dataProviderClass = MyDataProvider.class)
-    public void incorrectLastName(AddressFormData data) {
+    public void incorrectLastName(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("\"" + data.lastName() + "\" + as the incorrect last name");
 
@@ -64,7 +65,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_incorrectPostcode", dataProviderClass = MyDataProvider.class)
-    public void incorrectPostcode(AddressFormData data) {
+    public void incorrectPostcode(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("\"" + data.postcode() + "\" + as the incorrect postcode");
 
@@ -75,7 +76,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_incorrectPhoneNumber", dataProviderClass = MyDataProvider.class)
-    public void incorrectPhoneNumber(AddressFormData data) {
+    public void incorrectPhoneNumber(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("\"" + data.phone() + "\" + as the incorrect phone number");
 
@@ -86,7 +87,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_incorrectEmail", dataProviderClass = MyDataProvider.class)
-    public void incorrectEmail(AddressFormData data) {
+    public void incorrectEmail(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("\"" + data.email() + "\" + as the incorrect email");
 
@@ -96,7 +97,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_withoutFirstName", dataProviderClass = MyDataProvider.class)
-    public void blankFirstNameField(AddressFormData data) {
+    public void blankFirstNameField(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank the first name field");
 
@@ -107,7 +108,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_withoutLastName", dataProviderClass = MyDataProvider.class)
-    public void blankLastNameField(AddressFormData data) {
+    public void blankLastNameField(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank the last name field");
 
@@ -118,7 +119,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_withoutAddress", dataProviderClass = MyDataProvider.class)
-    public void blankAddressField(AddressFormData data) {
+    public void blankAddressField(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank the address field");
 
@@ -129,7 +130,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_withoutCity", dataProviderClass = MyDataProvider.class)
-    public void blankCityField(AddressFormData data) {
+    public void blankCityField(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank the city field");
 
@@ -140,7 +141,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_withoutPostcode", dataProviderClass = MyDataProvider.class)
-    public void blankPostcodeField(AddressFormData data) {
+    public void blankPostcodeField(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank the postcode field");
 
@@ -151,7 +152,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_withoutPhone", dataProviderClass = MyDataProvider.class)
-    public void blankPhoneField(AddressFormData data) {
+    public void blankPhoneField(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank the phone field");
 
@@ -162,7 +163,7 @@ public class AddressFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "AF_withoutEmail", dataProviderClass = MyDataProvider.class)
-    public void blankEmailField(AddressFormData data) {
+    public void blankEmailField(AddressFormData data) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank the email field");
 
