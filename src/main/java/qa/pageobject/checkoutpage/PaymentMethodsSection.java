@@ -3,7 +3,9 @@ package qa.pageobject.checkoutpage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
+
 
 public class PaymentMethodsSection extends BasePage {
 
@@ -26,21 +28,21 @@ public class PaymentMethodsSection extends BasePage {
 
     public void clickDirectBankTransferCheckbox() {
 
-        directBankTransferCheckbox.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(directBankTransferCheckbox)).click();
     }
 
     public void clickCheckPaymentsCheckbox() {
 
-        checkPaymentsCheckbox.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(checkPaymentsCheckbox)).click();
     }
 
-    public void clickCashOnDeliveryCheckbox() {
+    public void clickCashOnDeliveryCheckbox() throws IllegalAccessException {
 
-        cashOnDeliveryCheckbox.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashOnDeliveryCheckbox)).click();
     }
 
     public void clickPayPalCheckbox() {
 
-        payPalCheckbox.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(payPalCheckbox)).click();
     }
 }
