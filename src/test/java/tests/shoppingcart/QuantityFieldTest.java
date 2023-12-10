@@ -4,8 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.enums.ThumbnailCategory;
-import qa.helpers.ShoppingCartActions;
+import qa.enums.URLs;
+import qa.pageobject.header.Header;
+import qa.pageobject.productpage.ProductPage;
 import qa.pageobject.productpage.QuantityField;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.provider.MyDataProvider;
@@ -18,20 +19,24 @@ import java.util.function.Consumer;
 public class QuantityFieldTest extends BaseTest {
 
     private ShoppingCart shoppingCart;
-    private int rowIndex;
+    private final int rowIndex = 0;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws IllegalAccessException {
+
+        goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+
+        ProductPage productPage = new ProductPage(getDriver());
+        productPage.getQuantityField().setQuantity("1");
+        productPage.clickAddToCart();
 
         shoppingCart = new ShoppingCart(getDriver());
 
-        ShoppingCartActions.addToCart(getDriver(), ThumbnailCategory.FEATURED, "Manago Shirt");
-        ShoppingCartActions.openCartPage(getDriver());
-
-        rowIndex = 0;
+        Header header = new Header(getDriver());
+        header.clickCartButton();
     }
 
-    private void check(String quantity) throws InterruptedException {
+    private void check(String quantity) throws IllegalAccessException, InterruptedException {
 
         BigInteger price = Price.toInt(shoppingCart.getTable().getRow(0).getPrice());
         BigInteger qty = new BigInteger(quantity);
@@ -41,13 +46,12 @@ public class QuantityFieldTest extends BaseTest {
         shoppingCart.getTable().getRow(rowIndex).getQuantityField().setQuantity(quantity);
         shoppingCart.clickUpdateButton();
 
-        Thread.sleep(3000);
-        //waitUntilPageIsLoaded();
+        Thread.sleep(1000);
 
         Assert.assertEquals(shoppingCart.getTable().getRow(rowIndex).getSubtotal(), result, "Incorrect subtotal");
     }
 
-    private void validationCheck(String quantity, Consumer<QuantityField> consumer) {
+    private void validationCheck(String quantity, Consumer<QuantityField> consumer) throws IllegalAccessException {
 
         shoppingCart.getTable().getRow(rowIndex).getQuantityField().setQuantity(quantity);
         shoppingCart.clickUpdateButton();
@@ -56,7 +60,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_min", dataProviderClass = MyDataProvider.class)
-    public void minimumValue(String value) throws InterruptedException {
+    public void minimumValue(String value) throws InterruptedException, IllegalAccessException {
 
         ExtentReportsManager.setName("{" + value + "} as the minimum value in the quantity field");
 
@@ -64,7 +68,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_aboveMin", dataProviderClass = MyDataProvider.class)
-    public void aboveMinimum(String value) throws InterruptedException {
+    public void aboveMinimum(String value) throws InterruptedException, IllegalAccessException {
 
         ExtentReportsManager.create("{" + value + "} as the min + 1 value in the quantity field");
 
@@ -72,7 +76,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_nominal", dataProviderClass = MyDataProvider.class)
-    public void nominal(String value) throws InterruptedException {
+    public void nominal(String value) throws InterruptedException, IllegalAccessException {
 
         ExtentReportsManager.setName("{" + value + "} as the nominal value in the quantity field");
 
@@ -80,7 +84,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_belowMax", dataProviderClass = MyDataProvider.class)
-    public void belowMaximum(String value) throws InterruptedException {
+    public void belowMaximum(String value) throws InterruptedException, IllegalAccessException {
 
         ExtentReportsManager.setName("{" + value + "} as the maximum - 1 value in the quantity field");
 
@@ -88,7 +92,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_max", dataProviderClass = MyDataProvider.class)
-    public void maximum(String value) throws InterruptedException {
+    public void maximum(String value) throws InterruptedException, IllegalAccessException {
 
         ExtentReportsManager.setName("{" + value + "} as the maximum value in the quantity field");
 
@@ -96,7 +100,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_belowZero", dataProviderClass = MyDataProvider.class)
-    public void belowZero(String value) throws InterruptedException {
+    public void belowZero(String value) throws InterruptedException, IllegalAccessException {
 
         ExtentReportsManager.setName("{" + value + "} as the below zero value in the quantity field");
 
@@ -106,7 +110,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_aboveMax", dataProviderClass = MyDataProvider.class)
-    public void aboveMaximum(String value) throws InterruptedException {
+    public void aboveMaximum(String value) throws InterruptedException, IllegalAccessException {
 
         ExtentReportsManager.setName("{" + value + "} as the maximum + 1 value in the quantity field");
 
@@ -117,7 +121,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test
-    public void zero() {
+    public void zero() throws IllegalAccessException {
 
         ExtentReportsManager.setName("Zero value in the quantity field");
 
@@ -128,7 +132,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_characters1", dataProviderClass = MyDataProvider.class)
-    public void specialCharacters1(String value) {
+    public void specialCharacters1(String value) throws IllegalAccessException {
 
         ExtentReportsManager.setName("{" + value + "} as the value in the quantity field");
 
@@ -140,7 +144,7 @@ public class QuantityFieldTest extends BaseTest {
     }
 
     @Test(dataProvider = "QF_characters2", dataProviderClass = MyDataProvider.class)
-    public void specialCharacters2(String value) {
+    public void specialCharacters2(String value) throws IllegalAccessException {
 
         ExtentReportsManager.setName("{" + value + "} as the value in the quantity field");
 
