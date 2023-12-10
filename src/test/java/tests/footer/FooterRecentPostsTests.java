@@ -6,6 +6,7 @@ import org.json.JSONException;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.enums.URLs;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
 import qa.extentreports.ExtentReportsManager;
@@ -19,11 +20,12 @@ public class FooterRecentPostsTests extends BaseTest {
     @BeforeMethod
     public void create() {
 
+        goToSpecificPage(URLs.HOME_PAGE.getName());
         footer = new Footer(getDriver());
     }
 
     @Test(dataProvider = "recentPosts", dataProviderClass = MyDataProvider.class)
-    public void recentPostLinks(Link link) throws JSONException {
+    public void recentPostLinks(Link link) throws JSONException, IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link");
 
