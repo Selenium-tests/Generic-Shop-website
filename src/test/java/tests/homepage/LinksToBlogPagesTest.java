@@ -1,10 +1,12 @@
 package tests.homepage;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.enums.ThumbnailCategory;
 import qa.enums.ThumbnailType;
+import qa.enums.URLs;
 import qa.extentreports.ExtentReportsManager;
 import qa.pageobject.thumbnails.Thumbnail;
 import qa.provider.MyDataProvider;
@@ -13,7 +15,13 @@ import qa.thumbnailgenerators.ThumbnailProvider;
 
 public class LinksToBlogPagesTest extends BaseTest {
 
-    private void check(ThumbnailCategory category, Link link) {
+    @BeforeMethod
+    public void create() {
+
+        goToSpecificPage(URLs.HOME_PAGE.getName());
+    }
+
+    private void check(ThumbnailCategory category, Link link) throws IllegalAccessException {
 
         Thumbnail thumbnail = ThumbnailProvider
                 .getFactory(ThumbnailType.BLOG)
@@ -26,7 +34,7 @@ public class LinksToBlogPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "blogs1", dataProviderClass = MyDataProvider.class)
-    public void group1(Link link) {
+    public void group1(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"BLOGS\" section");
 
@@ -34,7 +42,7 @@ public class LinksToBlogPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "blogs2", dataProviderClass = MyDataProvider.class)
-    public void group2(Link link) {
+    public void group2(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"BLOGS\" section");
 
