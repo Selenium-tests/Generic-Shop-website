@@ -4,6 +4,7 @@ import qa.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.enums.URLs;
 import qa.pageobject.header.ResultsPage;
 import qa.pageobject.header.SearchEngine;
 import qa.provider.MyDataProvider;
@@ -20,11 +21,12 @@ public class SearchEngineTest extends BaseTest {
     @BeforeMethod
     private void create() {
 
+        goToSpecificPage(URLs.HOME_PAGE.getName());
         searchEngine = new SearchEngine(getDriver());
         resultsPage = new ResultsPage(getDriver());
     }
 
-    private void check(String phrase, Consumer<ResultsPage> consumer) {
+    private void check(String phrase, Consumer<ResultsPage> consumer) throws IllegalAccessException {
 
         searchEngine.setPhrase(phrase);
         searchEngine.clickSubmitButton();
@@ -33,7 +35,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = "correctPhrase", dataProviderClass = MyDataProvider.class)
-    public void correctPhrase(String phrase) {
+    public void correctPhrase(String phrase) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Searching with correct phrase");
 
@@ -42,7 +44,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = "partOfCorrectPhrase", dataProviderClass = MyDataProvider.class)
-    public void partOfCorrectPhrase(String phrase) {
+    public void partOfCorrectPhrase(String phrase) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Searching with part of correct phrase");
 
@@ -51,7 +53,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = "upperAndLowerCases", dataProviderClass = MyDataProvider.class)
-    public void upperAndLowerCases(String phrase) {
+    public void upperAndLowerCases(String phrase) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Searching with phrase which has upper and lower cases");
 
@@ -60,7 +62,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 4, dataProvider = "incorrectPhrase", dataProviderClass = MyDataProvider.class)
-    public void incorrectPhrase(String phrase) {
+    public void incorrectPhrase(String phrase) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Searching with incorrect phrase");
 
@@ -69,7 +71,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 4, dataProvider = "strangePhrase", dataProviderClass = MyDataProvider.class)
-    public void strangePhrase(String phrase) {
+    public void strangePhrase(String phrase) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Searching with strange phrase");
 
