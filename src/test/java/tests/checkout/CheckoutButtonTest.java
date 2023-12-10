@@ -17,8 +17,7 @@ public class CheckoutButtonTest extends BaseTest {
     public void create() throws IllegalAccessException {
 
         goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
-        ShoppingCartActions.addToCart(getDriver());
-        ShoppingCartActions.openCartPage(getDriver());
+        ShoppingCartActions.addToCartAndOpen(getDriver());
     }
 
     @Test(dataProvider = "checkoutPage", dataProviderClass = MyDataProvider.class)
