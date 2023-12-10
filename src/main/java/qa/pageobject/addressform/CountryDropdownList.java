@@ -1,10 +1,13 @@
 package qa.pageobject.addressform;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.tools.toby.ToBy;
+
 import java.util.List;
 
 public class CountryDropdownList extends BasePage {
@@ -23,24 +26,19 @@ public class CountryDropdownList extends BasePage {
     @FindBy(xpath = "//li[@role='alert']")
     List<WebElement> alert;
 
-    public void clickCountryButton() {
+    public void clickCountryButton() throws IllegalAccessException {
 
-        countryButton.click();
+        click(ToBy.get(countryButton));
     }
 
-    public void setCountry(String countryName) {
+    public void setCountry(String countryName) throws IllegalAccessException {
 
-        searchField.sendKeys(countryName);
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(searchField))).sendKeys(countryName);
     }
 
     public void pressEnter() {
 
         searchField.sendKeys(Keys.ENTER);
-    }
-
-    public String getCountry() {
-
-        return countryButton.getText();
     }
 
     public boolean isAlertDisplayed() {
