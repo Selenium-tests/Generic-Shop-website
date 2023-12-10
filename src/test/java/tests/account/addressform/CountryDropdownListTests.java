@@ -4,7 +4,7 @@ import qa.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.helpers.AddressFormPageHandler;
+import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.CountryDropdownList;
 import qa.provider.MyDataProvider;
@@ -17,16 +17,17 @@ public class CountryDropdownListTests extends BaseTest {
     private CountryDropdownList countryDropdownList;
 
     @BeforeMethod
-    public void create() throws AWTException {
+    public void create() throws AWTException, IllegalAccessException {
 
+        goToSpecificPage(URLs.LOGIN_PAGE.getName());
         Authentication.loginWithCredentials(getDriver());
-        AddressFormPageHandler.openAddressFormPage(getDriver());
+        goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
 
         countryDropdownList = new CountryDropdownList(getDriver());
     }
 
     @Test(dataProvider = "correctCountryName", dataProviderClass = MyDataProvider.class)
-    public void correctCountryName(String countryName) {
+    public void correctCountryName(String countryName) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Searching with a correct country name");
 
@@ -37,7 +38,7 @@ public class CountryDropdownListTests extends BaseTest {
     }
 
     @Test(dataProvider = "incorrectCountryName", dataProviderClass = MyDataProvider.class)
-    public void incorrectCountryName(String countryName) {
+    public void incorrectCountryName(String countryName) throws IllegalAccessException {
 
         countryDropdownList.clickCountryButton();
         countryDropdownList.setCountry(countryName);
