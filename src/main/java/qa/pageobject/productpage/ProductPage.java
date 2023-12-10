@@ -9,8 +9,7 @@ import java.util.List;
 
 public class ProductPage extends BasePage {
 
-    private QuantityField quantityField;
-
+    private final QuantityField quantityField;
 
     public ProductPage(WebDriver driver) {
 
