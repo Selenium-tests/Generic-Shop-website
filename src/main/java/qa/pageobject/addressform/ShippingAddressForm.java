@@ -3,6 +3,7 @@ package qa.pageobject.addressform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 
 import java.util.List;
@@ -42,6 +43,8 @@ public class ShippingAddressForm extends BasePage {
     protected void fill(WebElement element, String data) {
 
         element.clear();
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+        focus(element);
         element.sendKeys(data);
     }
 
