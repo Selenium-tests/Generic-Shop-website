@@ -16,7 +16,7 @@ public class FunctionalitiesTest extends BaseTest {
     public void create() throws IllegalAccessException {
 
         goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
-        ShoppingCartActions.addToCart(getDriver());
+        ShoppingCartActions.addToCartAndOpen(getDriver());
         goToSpecificPage(URLs.CHECKOUT_PAGE.getName());
     }
 
