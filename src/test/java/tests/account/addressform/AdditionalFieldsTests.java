@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.helpers.AddressFormPageHandler;
+import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
 import qa.provider.MyDataProvider;
@@ -16,15 +16,16 @@ public class AdditionalFieldsTests extends BaseTest {
     private AddressForm addressForm;
 
     @BeforeMethod
-    public void create() {
+    public void create() throws IllegalAccessException {
+
+        goToSpecificPage(URLs.LOGIN_PAGE.getName());
+        Authentication.loginWithCredentials(getDriver());
+        goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
 
         addressForm = new AddressForm(getDriver());
-
-        Authentication.loginWithCredentials(getDriver());
-        AddressFormPageHandler.openAddressFormPage(getDriver());
     }
 
-    private void check(String country, Consumer<AddressForm> consumer, String expectedLabelText) {
+    private void check(String country, Consumer<AddressForm> consumer, String expectedLabelText) throws IllegalAccessException {
 
         addressForm.getCountryDropdownList().clickCountryButton();
         addressForm.getCountryDropdownList().setCountry(country);
@@ -37,7 +38,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "stateCountyField", dataProviderClass = MyDataProvider.class)
-    public void stateCountyField(String country) {
+    public void stateCountyField(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"State / County *\" field after entering \"" + country + "as the country name");
 
@@ -47,7 +48,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "stateCountyDropdownList", dataProviderClass = MyDataProvider.class)
-    public void stateCountyDropdownList(String country) {
+    public void stateCountyDropdownList(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"State / County *\" drop-down list after entering \"" + country + "as the country name");
 
@@ -57,7 +58,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "countyDropdownList", dataProviderClass = MyDataProvider.class)
-    public void countyDropdownList(String country) {
+    public void countyDropdownList(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"County *\" drop-down list after entering \"" + country + "as the country name");
 
@@ -67,7 +68,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "stateDropdownList", dataProviderClass = MyDataProvider.class)
-    public void stateDropdownList(String country) {
+    public void stateDropdownList(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"State *\" drop-down list after entering \"" + country + "as the country name");
 
@@ -77,7 +78,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "districtDropdownList", dataProviderClass = MyDataProvider.class)
-    public void districtDropdownList(String country) {
+    public void districtDropdownList(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"District *\" drop-down list after entering \"" + country + "as the country name");
 
@@ -87,7 +88,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "provinceDropdownList", dataProviderClass = MyDataProvider.class)
-    public void provinceDropdownList(String country) {
+    public void provinceDropdownList(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"Province *\" drop-down list after entering \"" + country + "as the country name");
 
@@ -97,9 +98,9 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "regionField", dataProviderClass = MyDataProvider.class)
-    public void regionField(String country) {
+    public void regionField(String country) throws IllegalAccessException {
 
-      //  ExtentReportsManager.setName("The appearance of the \"Region *\" field after entering \"" + country + "as the country name");
+        ExtentReportsManager.setName("The appearance of the \"Region *\" field after entering \"" + country + "as the country name");
 
         check(country,
              (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible(), "No additional field");},
@@ -107,7 +108,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "regionDropdownList", dataProviderClass = MyDataProvider.class)
-    public void regionDropdownList(String country) {
+    public void regionDropdownList(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"Region\" drop-down list after entering \"" + country + "as the country name");
 
@@ -117,7 +118,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "prefectureDropdownList", dataProviderClass = MyDataProvider.class)
-    public void prefectureDropdownList(String country) {
+    public void prefectureDropdownList(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"Prefecture *\" drop-down list after entering \"" + country + "as the country name");
 
@@ -127,7 +128,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "municipalityField", dataProviderClass = MyDataProvider.class)
-    public void municipalityField(String country) {
+    public void municipalityField(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"Municipality\" field after entering \"" + country + "as the country name");
 
@@ -137,7 +138,7 @@ public class AdditionalFieldsTests extends BaseTest {
     }
 
     @Test(dataProvider = "stateZoneDropdownList", dataProviderClass = MyDataProvider.class)
-    public void stateZoneDropdownList(String country) {
+    public void stateZoneDropdownList(String country) throws IllegalAccessException {
 
         ExtentReportsManager.setName("The appearance of the \"State / Zone *\" drop-down list after entering \"" + country + "as the country name");
 
