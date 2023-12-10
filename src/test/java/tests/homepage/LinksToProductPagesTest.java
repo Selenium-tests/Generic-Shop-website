@@ -2,6 +2,7 @@ package tests.homepage;
 
 import org.testng.annotations.BeforeMethod;
 import qa.enums.ThumbnailType;
+import qa.enums.URLs;
 import qa.pageobject.thumbnails.Thumbnail;
 import qa.base.BaseTest;
 import qa.enums.ThumbnailCategory;
@@ -18,7 +19,7 @@ public class LinksToProductPagesTest extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        goToSpecificPage("http://skleptest.pl/");
+        goToSpecificPage(URLs.HOME_PAGE.getName());
     }
 
     private void check(ThumbnailCategory category, Link link) throws IllegalAccessException {
