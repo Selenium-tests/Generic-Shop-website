@@ -1,9 +1,11 @@
 package qa.pageobject.footer;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.tools.toby.ToBy;
 
 public class NewsletterForm extends BasePage {
 
@@ -24,25 +26,19 @@ public class NewsletterForm extends BasePage {
     @FindBy(id = "es_widget_msg")
     WebElement message;
 
-    public void setUsername(String name) {
+    public void setUsername(String name) throws IllegalAccessException {
 
-        this.usernameField.sendKeys(name);
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(usernameField))).sendKeys(name);
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws IllegalAccessException {
 
-        this.emailField.sendKeys(email);
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(emailField))).sendKeys(email);
     }
 
     public void clickSubscribeButton() {
 
         subscribeButton.click();
-    }
-
-    public void clearAll() {
-
-        usernameField.clear();
-        emailField.clear();
     }
 
     public boolean isMessageDisplayed() {
