@@ -2,6 +2,7 @@ package tests.shoppingcart;
 
 import org.testng.Assert;
 import qa.enums.ThumbnailType;
+import qa.enums.URLs;
 import qa.pageobject.thumbnails.ProductThumbnail;
 import qa.pageobject.thumbnails.Thumbnail;
 import qa.enums.ThumbnailCategory;
@@ -25,11 +26,12 @@ public class AddingProductToCartFromHomePageTest extends BaseTest {
     @BeforeMethod
     private void create() {
 
+        goToSpecificPage(URLs.HOME_PAGE.getName());
         header = new Header(getDriver());
         shoppingCart = new ShoppingCart(getDriver());
     }
 
-    public void check(String productName, ThumbnailCategory category) {
+    public void check(String productName, ThumbnailCategory category) throws IllegalAccessException {
 
         Thumbnail thumbnail = ThumbnailProvider
                 .getFactory(ThumbnailType.PRODUCT)
@@ -52,7 +54,7 @@ public class AddingProductToCartFromHomePageTest extends BaseTest {
     }
 
     @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
-    public void allBlackTops(Link link) {
+    public void allBlackTops(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"ALL BLACK TOPS\" category");
 
@@ -60,7 +62,7 @@ public class AddingProductToCartFromHomePageTest extends BaseTest {
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
-    public void highHeelShoes(Link link) {
+    public void highHeelShoes(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"HIGH HEEL SHOES\" category");
 
@@ -68,7 +70,7 @@ public class AddingProductToCartFromHomePageTest extends BaseTest {
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
-    public void mostWanted(Link link) {
+    public void mostWanted(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"MOST WANTED\" category");
 
@@ -76,23 +78,23 @@ public class AddingProductToCartFromHomePageTest extends BaseTest {
     }
 
     @Test(dataProvider = "scarfsProducts", dataProviderClass = MyDataProvider.class)
-    public void scarfs(Link link) {
+    public void scarfs(Link link) throws IllegalAccessException {
 
-         ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"SCARFS\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"SCARFS\" category");
 
         check(link.linkText(), ThumbnailCategory.SCARFS);
     }
 
     @Test(dataProvider = "onSaleProducts", dataProviderClass = MyDataProvider.class)
-    public void onSale(Link link) {
+    public void onSale(Link link) throws IllegalAccessException {
 
-        // ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"ON SALE\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"ON SALE\" category");
 
         check(link.linkText(), ThumbnailCategory.ON_SALE);
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
-    public void featured(Link link) {
+    public void featured(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"FEATURED\" category");
 
@@ -100,7 +102,7 @@ public class AddingProductToCartFromHomePageTest extends BaseTest {
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
-    public void trends(Link link) {
+    public void trends(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"TRENDS\" category");
 
