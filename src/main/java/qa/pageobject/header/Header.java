@@ -1,9 +1,11 @@
 package qa.pageobject.header;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 
 public class Header extends BasePage {
 
@@ -26,15 +28,15 @@ public class Header extends BasePage {
 
     public void clickLogo() {
 
-        logo.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(logo)).click();
     }
     public void clickCartButton() {
 
-        cartButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(cartButton)).click();
     }
 
     public void clickAccountButton() {
 
-        accountButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(accountButton)).click();
     }
 }
