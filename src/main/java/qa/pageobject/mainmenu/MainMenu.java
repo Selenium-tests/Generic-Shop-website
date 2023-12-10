@@ -16,7 +16,7 @@ public class MainMenu extends BasePage {
     @FindBy(id = "desktop-menu")
     WebElement siteNavigation;
 
-    public void clickLink(String id) {
+    public void clickLink(String id) throws IllegalAccessException {
 
         siteNavigation.findElement(By.id(id)).click();
     }
