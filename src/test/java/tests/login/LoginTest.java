@@ -1,4 +1,4 @@
-package tests;
+package tests.login;
 
 import qa.base.BaseTest;
 import org.testng.Assert;
@@ -6,7 +6,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.pageobject.account.AccountPage;
 import qa.pageobject.LoginPage;
-import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
 import qa.records.Credentials;
 import qa.extentreports.ExtentReportsManager;
@@ -19,13 +18,11 @@ public class LoginTest extends BaseTest {
     @BeforeMethod
     private void create() {
 
-        Header header = new Header(getDriver());
+        goToSpecificPage("https://skleptest.pl/my-account/");
         loginPage = new LoginPage(getDriver());
-
-        header.clickAccountButton();
     }
 
-    private <T> void check(Consumer<T> consumer, T object, Credentials credentials) {
+    private <T> void check(Consumer<T> consumer, T object, Credentials credentials) throws IllegalAccessException {
 
         loginPage.clearAll();
         loginPage.setUsername(credentials.email());
@@ -36,7 +33,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = "incorrectEmailFormat", dataProviderClass = MyDataProvider.class)
-    public void incorrectUsername(Credentials credentials) {
+    public void incorrectUsername(Credentials credentials) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Incorrect email address");
 
@@ -46,7 +43,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = "blankEmailField", dataProviderClass = MyDataProvider.class)
-    public void blankUsernameField(Credentials credentials) {
+    public void blankUsernameField(Credentials credentials) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank username field");
 
@@ -55,7 +52,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = "incorrectPassword", dataProviderClass = MyDataProvider.class)
-    public void incorrectPassword(Credentials credentials) {
+    public void incorrectPassword(Credentials credentials) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Incorrect password");
 
@@ -65,7 +62,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 4, dataProvider = "blankPasswordField", dataProviderClass = MyDataProvider.class)
-    public void blankPasswordField(Credentials credentials) {
+    public void blankPasswordField(Credentials credentials) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Blank password field");
 
@@ -74,7 +71,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 5, dataProvider = "correctCredentials", dataProviderClass = MyDataProvider.class)
-    public void correctCredentials(Credentials credentials) {
+    public void correctCredentials(Credentials credentials) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Correct credentials");
 
