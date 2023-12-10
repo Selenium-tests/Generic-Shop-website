@@ -4,45 +4,28 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
-import qa.enums.ThumbnailCategory;
+import qa.enums.URLs;
 import qa.extentreports.ExtentReportsManager;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.checkoutpage.CheckoutPage;
-import qa.pageobject.shoppingcart.ShoppingCart;
-import qa.provider.MyDataProvider;
-import qa.records.Link;
+
 
 public class FunctionalitiesTest extends BaseTest {
 
-    private ShoppingCart shoppingCart;
-
     @BeforeMethod
-    public void create() {
+    public void create() throws IllegalAccessException {
 
-        ShoppingCartActions.addToCart(getDriver(), ThumbnailCategory.ALL_BLACK_TOPS, "Black Top");
-        ShoppingCartActions.openCartPage(getDriver());
-
-        shoppingCart = new ShoppingCart(getDriver());
-    }
-
-    @Test(dataProvider = "checkoutPage", dataProviderClass = MyDataProvider.class)
-    public void clickingCheckoutButton(Link link) {
-
-        ExtentReportsManager.setName("clicking the \"Proceed to checkout\" button");
-
-        shoppingCart.clickCheckoutButton();
-
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
-                "The page with the address \"" + link.pageURL() + "\" has not been found");
+        goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+        ShoppingCartActions.addToCart(getDriver());
+        goToSpecificPage(URLs.CHECKOUT_PAGE.getName());
     }
 
     @Test
-    public void makingShippingAddressFormVisible() {
+    public void makingShippingAddressFormVisible() throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the checkbox above the shipping address form");
 
         CheckoutPage checkoutPage = new CheckoutPage(getDriver());
-        shoppingCart.clickCheckoutButton();
         checkoutPage.clickDifferentAddressCheckbox();
 
         Assert.assertTrue(checkoutPage.getShippingAddressForm().isVisible(),
