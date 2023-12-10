@@ -5,6 +5,7 @@ import qa.base.BaseTest;
 import org.json.JSONException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.enums.URLs;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
 import qa.extentreports.ExtentReportsManager;
@@ -18,13 +19,14 @@ public class FooterTagTests extends BaseTest {
     @BeforeMethod
     private void create() {
 
+        goToSpecificPage(URLs.HOME_PAGE.getName());
         footer = new Footer(getDriver());
     }
 
     @Test(priority = 3, dataProvider = "tags", dataProviderClass = MyDataProvider.class)
-    public void tags(Link link) throws JSONException {
+    public void tags(Link link) throws JSONException, IllegalAccessException {
 
-        ExtentReportsManager.setName("CLicking the \"" + link.linkText() + "\" button");
+        //ExtentReportsManager.setName("CLicking the \"" + link.linkText() + "\" button");
 
         footer.getTagsSection().clickLink(link.linkText());
 
