@@ -1,5 +1,6 @@
 package tests.homepage;
 
+import org.testng.annotations.BeforeMethod;
 import qa.enums.ThumbnailType;
 import qa.pageobject.thumbnails.Thumbnail;
 import qa.base.BaseTest;
@@ -14,7 +15,13 @@ import qa.thumbnailgenerators.ThumbnailProvider;
 
 public class LinksToProductPagesTest extends BaseTest {
 
-    private void check(ThumbnailCategory category, Link link) {
+    @BeforeMethod
+    public void create() {
+
+        goToSpecificPage("http://skleptest.pl/");
+    }
+
+    private void check(ThumbnailCategory category, Link link) throws IllegalAccessException {
 
         Thumbnail thumbnail = ThumbnailProvider
                 .getFactory(ThumbnailType.PRODUCT)
@@ -27,7 +34,7 @@ public class LinksToProductPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
-    public void allBlackTops(Link link) {
+    public void allBlackTops(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"ALL BLACK TOP\" section");
 
@@ -35,7 +42,7 @@ public class LinksToProductPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
-    public void highHeelShoes(Link link) {
+    public void highHeelShoes(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"HIGH HEEL SHOES\" section");
 
@@ -43,7 +50,7 @@ public class LinksToProductPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
-    public void mostWanted(Link link) {
+    public void mostWanted(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"MOST WANTED\" section");
 
@@ -51,7 +58,7 @@ public class LinksToProductPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "scarfsProducts", dataProviderClass = MyDataProvider.class)
-    public void scarfs(Link link) {
+    public void scarfs(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"SCARFS\" section");
 
@@ -59,7 +66,7 @@ public class LinksToProductPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "onSaleProducts", dataProviderClass = MyDataProvider.class)
-    public void onSale(Link link) {
+    public void onSale(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"ON SALE\" section");
 
@@ -67,7 +74,7 @@ public class LinksToProductPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
-    public void featured(Link link) {
+    public void featured(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"FEATURED\" section");
 
@@ -75,7 +82,7 @@ public class LinksToProductPagesTest extends BaseTest {
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
-    public void trends(Link link) {
+    public void trends(Link link) throws IllegalAccessException {
 
         ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"TRENDS\" section");
 
