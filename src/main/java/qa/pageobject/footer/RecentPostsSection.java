@@ -1,10 +1,9 @@
 package qa.pageobject.footer;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 
 public class RecentPostsSection extends BasePage {
@@ -14,11 +13,8 @@ public class RecentPostsSection extends BasePage {
         super(driver);
     }
 
-    @FindBy(id = "tyche_recent-3")
-    WebElement container;
-
     public void clickLink(String linkText) {
 
-        container.findElement(By.linkText(linkText)).click();
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(By.linkText(linkText))).click();
     }
 }
