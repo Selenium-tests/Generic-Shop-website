@@ -25,7 +25,6 @@ public class LoginTest extends BaseTest {
 
     private <T> void check(Consumer<T> consumer, T object, Credentials credentials) throws IllegalAccessException {
 
-        loginPage.clearAll();
         loginPage.setUsername(credentials.email());
         loginPage.setPassword(credentials.password());
         loginPage.clickLoginButton();
