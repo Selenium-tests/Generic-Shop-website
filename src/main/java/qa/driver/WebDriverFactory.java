@@ -13,10 +13,5 @@ public abstract class WebDriverFactory {
         return capabilities;
     }
 
-    protected void setProperty(String key, String value) {
-
-        System.setProperty(key, value);
-    }
-
     public abstract WebDriver createDriver();
 }
