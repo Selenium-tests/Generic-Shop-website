@@ -36,9 +36,9 @@ public class LoginPage extends BasePage {
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(passwordField))).sendKeys(password);
     }
 
-    public void clickLoginButton() throws IllegalAccessException {
+    public void clickLoginButton() {
 
-        click(ToBy.get(loginButton));
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(loginButton)).click();
     }
 
     public boolean isErrorMessageDisplayed() {
