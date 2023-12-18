@@ -27,13 +27,17 @@ public class BaseTest {
     public void startDriver() {
 
         driver = WebDriverProvider.getDriver(Browser.CHROME).createDriver();
-        BrowserManager.openBrowser(driver, "http://skleptest.pl/");
     }
 
     @AfterMethod
     public void quitDriver() {
 
         BrowserManager.closeBrowser(driver);
+    }
+
+    protected void goToSpecificPage(String url) {
+
+        BrowserManager.goToPage(driver, url);
     }
 
     public void setDriver(WebDriver driver) {
