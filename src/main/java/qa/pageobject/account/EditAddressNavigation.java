@@ -24,7 +24,7 @@ public class EditAddressNavigation extends BasePage {
 
     public void clickBillingAddressLink() {
 
-        click(By.xpath(".//a[@href]"));
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(By.xpath(".//a[@href]"))).click();
     }
 
     public void clickShippingAddressLink() {
