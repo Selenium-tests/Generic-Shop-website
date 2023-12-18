@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Header">
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <test verbose="2" name="Header elements">
+        <classes>
+            <class name="tests.homepage.SearchEngineTest"/>
+            <class name="tests.homepage.MainMenuTest"/>
+            <class name="tests.homepage.MainMenuDropdownListTest"/>
+        </classes>
+    </test>
+</suite>
