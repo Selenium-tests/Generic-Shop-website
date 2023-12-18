@@ -3,9 +3,7 @@ package qa.listener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import qa.base.BaseTest;
 import qa.extentreports.ExtentReportsManager;
-import qa.utils.ScreenshotFileUtils;
 
 public class TestListener implements ITestListener {
 
@@ -41,8 +39,6 @@ public class TestListener implements ITestListener {
 
         System.out.println("Test failed on method " + iTestResult.getMethod().getMethodName());
         ExtentReportsManager.setTestFailed(iTestResult.getThrowable().getMessage());
-
-        ScreenshotFileUtils.saveToFile(BaseTest.getDriver(), iTestResult.getMethod().getMethodName());
     }
 
     @Override
