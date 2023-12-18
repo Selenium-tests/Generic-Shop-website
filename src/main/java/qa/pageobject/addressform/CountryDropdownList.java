@@ -26,9 +26,9 @@ public class CountryDropdownList extends BasePage {
     @FindBy(xpath = "//li[@role='alert']")
     List<WebElement> alert;
 
-    public void clickCountryButton() throws IllegalAccessException {
+    public void clickCountryButton() {
 
-        click(ToBy.get(countryButton));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(countryButton)).click();
     }
 
     public void setCountry(String countryName) throws IllegalAccessException {
