@@ -1,10 +1,8 @@
 package qa.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import qa.tools.jsfocus.FocusExecutor;
 
@@ -30,10 +28,5 @@ public abstract class BasePage {
         protected WebDriverWait getWebDriverWait() {
 
                 return webDriverWait;
-        }
-
-        protected void click(By by) {
-
-                webDriverWait.until(ExpectedConditions.elementToBeClickable(by)).click();
         }
 }
