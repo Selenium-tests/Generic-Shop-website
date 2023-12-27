@@ -11,7 +11,7 @@ import qa.provider.MyDataProvider;
 import qa.extentreports.ExtentReportsManager;
 import java.util.function.Consumer;
 
-public class AdditionalFieldsTests extends BaseTest {
+public class AdditionalFieldsTest extends BaseTest {
 
     private AddressForm addressForm;
 

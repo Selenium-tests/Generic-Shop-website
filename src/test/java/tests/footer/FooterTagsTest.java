@@ -12,7 +12,7 @@ import qa.extentreports.ExtentReportsManager;
 import qa.records.Link;
 
 
-public class FooterTagTests extends BaseTest {
+public class FooterTagsTest extends BaseTest {
 
     private Footer footer;
 
@@ -28,9 +28,9 @@ public class FooterTagTests extends BaseTest {
 
         //ExtentReportsManager.setName("CLicking the \"" + link.linkText() + "\" button");
 
-        footer.getTagsSection().clickLink(link.linkText());
+        footer.getTagsSection().clickLink(link.getLinkText());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
-                "The page with the address \"" + link.pageURL() + "\" has not been opened");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been opened");
     }
 }

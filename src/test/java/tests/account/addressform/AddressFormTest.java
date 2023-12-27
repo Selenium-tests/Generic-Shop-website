@@ -13,7 +13,7 @@ import qa.records.AddressFormData;
 import qa.extentreports.ExtentReportsManager;
 import java.util.function.Consumer;
 
-public class AddressFormTests extends BaseTest {
+public class AddressFormTest extends BaseTest {
 
     @BeforeMethod
     public void create() throws IllegalAccessException {

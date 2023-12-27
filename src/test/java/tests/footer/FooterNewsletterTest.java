@@ -13,7 +13,7 @@ import qa.extentreports.ExtentReportsManager;
 import qa.records.Newsletter;
 
 
-public class FooterNewsletterTests extends BaseTest {
+public class FooterNewsletterTest extends BaseTest {
 
     private Footer footer;
 

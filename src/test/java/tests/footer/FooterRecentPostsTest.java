@@ -13,7 +13,7 @@ import qa.extentreports.ExtentReportsManager;
 import qa.records.Link;
 
 
-public class FooterRecentPostsTests extends BaseTest {
+public class FooterRecentPostsTest extends BaseTest {
 
     private Footer footer;
 

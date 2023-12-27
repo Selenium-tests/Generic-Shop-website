@@ -12,7 +12,7 @@ import qa.extentreports.ExtentReportsManager;
 
 import java.awt.*;
 
-public class CountryDropdownListTests extends BaseTest {
+public class CountryDropdownListTest extends BaseTest {
 
     private CountryDropdownList countryDropdownList;
 
