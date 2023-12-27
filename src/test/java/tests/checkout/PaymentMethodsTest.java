@@ -16,8 +16,6 @@ import qa.utils.MyConsumer;
 
 public class PaymentMethodsTest extends BaseTest {
 
-    private final String url = "https://skleptest.pl/checkout/order-received/";
-
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
@@ -35,8 +33,8 @@ public class PaymentMethodsTest extends BaseTest {
 
         Thread.sleep(3000);
 
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("https://skleptest.pl/checkout/order-received/"),
-                "The page with the address \"" + url + "\"has not been found");
+        Assert.assertTrue(getDriver().getCurrentUrl().contains(URLs.ORDER_RECEIVED.getName()),
+                "The page with the address \"" + URLs.ORDER_RECEIVED.getName() + "\"has not been found");
     }
 
     @Test(dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
