@@ -1,5 +1,7 @@
 package qa.listener;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -7,16 +9,19 @@ import qa.extentreports.ExtentReportsManager;
 
 public class TestListener implements ITestListener {
 
+    private final Logger logger = LoggerFactory.getLogger(TestListener.class);
+
     @Override
     public void onStart(ITestContext iTestContext) {
 
+        logger.info("Suite: " + iTestContext.getSuite());
         ExtentReportsManager.create(iTestContext.getSuite().getName());
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
 
-        System.out.println("End testing on suite " + iTestContext.getSuite().getName());
+        logger.info("Test finish");
         ExtentReportsManager.setEnvironment();
         ExtentReportsManager.flush();
     }
@@ -24,27 +29,27 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {
 
-        System.out.println("Starting test with method: " + iTestResult.getMethod().getMethodName());
+        logger.info("Starting test omn method: " + iTestResult.getMethod().getMethodName());
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
 
-        System.out.println("Test passed on method " + iTestResult.getMethod().getMethodName());
+        logger.info("Test PASSED");
         ExtentReportsManager.setTestPassed("Test passed on method: " + iTestResult.getMethod().getMethodName());
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
 
-        System.out.println("Test failed on method " + iTestResult.getMethod().getMethodName());
+        logger.error("Test FAILED: " + iTestResult.getThrowable().getMessage());
         ExtentReportsManager.setTestFailed(iTestResult.getThrowable().getMessage());
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
 
-        System.out.println("Test skipped on method " + iTestResult.getMethod().getMethodName());
+        logger.info("Test SKIPPED");
         ExtentReportsManager.setTestSkipped("Test skipped on method: " + iTestResult.getMethod().getMethodName());
     }
 }
