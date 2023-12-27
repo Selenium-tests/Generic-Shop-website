@@ -25,8 +25,8 @@ public class LoginTest extends BaseTest {
 
     private <T> void check(Consumer<T> consumer, T object, Credentials credentials) throws IllegalAccessException {
 
-        loginPage.setUsername(credentials.email());
-        loginPage.setPassword(credentials.password());
+        loginPage.setUsername(credentials.getEmail());
+        loginPage.setPassword(credentials.getPassword());
         loginPage.clickLoginButton();
 
         consumer.accept(object);
@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
         ExtentReportsManager.setName("Incorrect email address");
 
         check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed(),
-                "No error message during login with \"" + credentials.email() + "\" as an incorrect email address"),
+                "No error message during login with \"" + credentials.getEmail() + "\" as an incorrect email address"),
                 loginPage, credentials);
     }
 
@@ -57,7 +57,7 @@ public class LoginTest extends BaseTest {
         ExtentReportsManager.setName("Incorrect password");
 
         check((LoginPage lp)-> Assert.assertTrue(lp.isErrorMessageDisplayed(),
-                "No error message during login with \"" + credentials.password() + "\" as an incorrect password"),
+                "No error message during login with \"" + credentials.getPassword() + "\" as an incorrect password"),
                 loginPage, credentials);
     }
 
