@@ -1,12 +1,10 @@
 package qa.browsermanager;
 
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.Duration;
 
 public class BrowserManager {
 
@@ -19,7 +17,6 @@ public class BrowserManager {
         logger.info("Url: " + url);
 
         driver.get(url);
-        driver.manage().window().maximize();
     }
 
     public static void closeBrowser(WebDriver driver) {
