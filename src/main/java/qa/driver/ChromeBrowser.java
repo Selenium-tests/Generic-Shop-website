@@ -13,9 +13,9 @@ public class ChromeBrowser extends WebDriverFactory {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remove-allow-origins=*");
+        options.addArguments("--headless=new");
         options.merge(getCapabilities(ChromeOptions.CAPABILITY, options));
 
-        return new ChromeDriver();
+        return new ChromeDriver(options);
     }
 }

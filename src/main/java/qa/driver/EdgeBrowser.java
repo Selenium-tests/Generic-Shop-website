@@ -11,7 +11,7 @@ public class EdgeBrowser extends WebDriverFactory {
 
         WebDriverManager.edgedriver().setup();
         EdgeOptions options = new EdgeOptions();
-        options.addArguments("--remove-allow-origins=*");
+        options.addArguments("--headless=new");
         options.merge(getCapabilities(EdgeOptions.CAPABILITY, options));
 
         return new EdgeDriver(options);
