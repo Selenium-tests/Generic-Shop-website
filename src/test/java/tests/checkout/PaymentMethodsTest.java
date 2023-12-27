@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.enums.URLs;
+import qa.extentreports.ExtentReportsManager;
 import qa.helpers.AddressFormFiller;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.checkoutpage.CheckoutPage;
@@ -40,11 +41,15 @@ public class PaymentMethodsTest extends BaseTest {
     @Test(dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
     public void directBankTransfer(AddressFormData data) throws InterruptedException, IllegalAccessException {
 
+        ExtentReportsManager.setName("Payment via direct bank transfer");
+
         check(data, PaymentMethodsSection::clickDirectBankTransferCheckbox);
     }
 
     @Test(dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
     public void checkPayments(AddressFormData data) throws InterruptedException, IllegalAccessException {
+
+        ExtentReportsManager.setName("Payment via check payments");
 
         check(data, PaymentMethodsSection::clickCheckPaymentsCheckbox);
     }
@@ -52,11 +57,15 @@ public class PaymentMethodsTest extends BaseTest {
     @Test(dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
     public void cashOnDelivery(AddressFormData data) throws InterruptedException, IllegalAccessException {
 
+        ExtentReportsManager.setName("Payment via cash on delivery");
+
         check(data, PaymentMethodsSection::clickCashOnDeliveryCheckbox);
     }
 
     @Test(dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
     public void payPal(AddressFormData data) throws InterruptedException, IllegalAccessException {
+
+        ExtentReportsManager.setName("Payment via PayPal");
 
         check(data, PaymentMethodsSection::clickPayPalCheckbox);
     }
