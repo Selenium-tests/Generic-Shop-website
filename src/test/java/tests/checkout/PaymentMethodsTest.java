@@ -27,7 +27,7 @@ public class PaymentMethodsTest extends BaseTest {
     private void check(AddressFormData data, MyConsumer<PaymentMethodsSection> consumer) throws InterruptedException, IllegalAccessException {
 
         CheckoutPage checkoutPage = new CheckoutPage(getDriver());
-        AddressFormFiller.get(data, getDriver());
+        AddressFormFiller.get(data, getDriver(), true);
         consumer.accept(checkoutPage.getPaymentMethodsSection());
         checkoutPage.clickPlaceOrderButton();
 
