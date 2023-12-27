@@ -25,7 +25,7 @@ public class AddressFormTest extends BaseTest {
 
     private void fill(AddressFormData data, Consumer<AddressForm> consumer) throws IllegalAccessException {
 
-        AddressForm addressForm = AddressFormFiller.get(data, getDriver());
+        AddressForm addressForm = AddressFormFiller.get(data, getDriver(), false);
         addressForm.clickSaveAddressButton();
 
         consumer.accept(addressForm);
@@ -36,7 +36,7 @@ public class AddressFormTest extends BaseTest {
 
         ExtentReportsManager.setName("Filling the form with a correct address data");
 
-        AddressFormFiller.get(data, getDriver()).clickSaveAddressButton();
+        AddressFormFiller.get(data, getDriver(), false).clickSaveAddressButton();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), URLs.EDIT_ADDRESS_NAVIGATION.getName(),
                 "The address data has not been saved");
@@ -47,7 +47,7 @@ public class AddressFormTest extends BaseTest {
 
         ExtentReportsManager.setName("\"" + data.getFirstName() + "\" + as the incorrect first name");
 
-        AddressFormFiller.get(data, getDriver()).clickSaveAddressButton();
+        AddressFormFiller.get(data, getDriver(), false).clickSaveAddressButton();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BILLING_ADDRESS_FORM.getName(),
                 "No message about an incorrect first name");
@@ -58,7 +58,7 @@ public class AddressFormTest extends BaseTest {
 
         ExtentReportsManager.setName("\"" + data.getLastName() + "\" + as the incorrect last name");
 
-        AddressFormFiller.get(data, getDriver()).clickSaveAddressButton();
+        AddressFormFiller.get(data, getDriver(), false).clickSaveAddressButton();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BILLING_ADDRESS_FORM.getName(),
                 "No message about an incorrect last name");
