@@ -26,8 +26,8 @@ public class FooterNewsletterTests extends BaseTest {
 
     private void fill(Newsletter newsletter) throws IllegalAccessException {
 
-        footer.getNewsletterForm().setUsername(newsletter.username());
-        footer.getNewsletterForm().setEmail(newsletter.email());
+        footer.getNewsletterForm().setUsername(newsletter.getUsername());
+        footer.getNewsletterForm().setEmail(newsletter.getEmail());
         footer.getNewsletterForm().clickSubscribeButton();
     }
 

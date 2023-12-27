@@ -24,10 +24,10 @@ public class MainMenuTest extends BaseTest {
     @Test(dataProvider = "mainMenu", dataProviderClass = MyDataProvider.class)
     public void mainMenu(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the main menu");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the main menu");
 
-        mainMenu.clickLink(link.linkText());
+        mainMenu.clickLink(link.getLinkText());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL());
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL());
     }
 }

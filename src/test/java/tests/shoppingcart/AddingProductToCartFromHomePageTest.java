@@ -56,56 +56,56 @@ public class AddingProductToCartFromHomePageTest extends BaseTest {
     @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
     public void allBlackTops(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"ALL BLACK TOPS\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"ALL BLACK TOPS\" category");
 
-        check(link.linkText(), ThumbnailCategory.ALL_BLACK_TOPS);
+        check(link.getLinkText(), ThumbnailCategory.ALL_BLACK_TOPS);
     }
 
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
     public void highHeelShoes(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"HIGH HEEL SHOES\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"HIGH HEEL SHOES\" category");
 
-        check(link.linkText(), ThumbnailCategory.HIGH_HEEL_SHOES);
+        check(link.getLinkText(), ThumbnailCategory.HIGH_HEEL_SHOES);
     }
 
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
     public void mostWanted(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"MOST WANTED\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"MOST WANTED\" category");
 
-        check(link.linkText(), ThumbnailCategory.MOST_WANTED);
+        check(link.getLinkText(), ThumbnailCategory.MOST_WANTED);
     }
 
     @Test(dataProvider = "scarfsProducts", dataProviderClass = MyDataProvider.class)
     public void scarfs(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"SCARFS\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"SCARFS\" category");
 
-        check(link.linkText(), ThumbnailCategory.SCARFS);
+        check(link.getLinkText(), ThumbnailCategory.SCARFS);
     }
 
     @Test(dataProvider = "onSaleProducts", dataProviderClass = MyDataProvider.class)
     public void onSale(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"ON SALE\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"ON SALE\" category");
 
-        check(link.linkText(), ThumbnailCategory.ON_SALE);
+        check(link.getLinkText(), ThumbnailCategory.ON_SALE);
     }
 
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
     public void featured(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"FEATURED\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"FEATURED\" category");
 
-        check(link.linkText(), ThumbnailCategory.FEATURED);
+        check(link.getLinkText(), ThumbnailCategory.FEATURED);
     }
 
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
     public void trends(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Adding the \"" + link.linkText() + "\" product from the \"TRENDS\" category");
+        ExtentReportsManager.setName("Adding the \"" + link.getLinkText() + "\" product from the \"TRENDS\" category");
 
-        check(link.linkText(), ThumbnailCategory.TRENDS);
+        check(link.getLinkText(), ThumbnailCategory.TRENDS);
     }
 }

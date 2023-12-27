@@ -25,18 +25,18 @@ public class LinksToBlogPagesTest extends BaseTest {
 
         Thumbnail thumbnail = ThumbnailProvider
                 .getFactory(ThumbnailType.BLOG)
-                .createThumbnail(getDriver(), category, link.linkText());
+                .createThumbnail(getDriver(), category, link.getLinkText());
 
         thumbnail.clickLink();
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
-                "The page with the address \"" + link.pageURL() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been found");
     }
 
     @Test(dataProvider = "blogs1", dataProviderClass = MyDataProvider.class)
     public void group1(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"BLOGS\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"BLOGS\" section");
 
         check(ThumbnailCategory.RECENT_1, link);
     }
@@ -44,7 +44,7 @@ public class LinksToBlogPagesTest extends BaseTest {
     @Test(dataProvider = "blogs2", dataProviderClass = MyDataProvider.class)
     public void group2(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"BLOGS\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"BLOGS\" section");
 
         check(ThumbnailCategory.RECENT_2, link);
     }

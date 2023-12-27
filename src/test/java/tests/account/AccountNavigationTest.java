@@ -28,11 +28,11 @@ public class AccountNavigationTest extends BaseTest {
     @Test(dataProvider = "accountNavigation", dataProviderClass = MyDataProvider.class)
     public void link(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link");
 
-        accountPage.getAccountNavigation().clickLink(link.linkText());
+        accountPage.getAccountNavigation().clickLink(link.getLinkText());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
-                "The page with the address \"" + link.pageURL() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been found");
     }
 }

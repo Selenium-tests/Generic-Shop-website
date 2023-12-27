@@ -27,11 +27,11 @@ public class FooterRecentPostsTests extends BaseTest {
     @Test(dataProvider = "recentPosts", dataProviderClass = MyDataProvider.class)
     public void recentPostLinks(Link link) throws JSONException, IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link");
 
-        footer.getRecentPostsSection().clickLink(link.linkText());
+        footer.getRecentPostsSection().clickLink(link.getLinkText());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
-                "The page with the address \"" + link.pageURL() + "\" has not been opened");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been opened");
     }
 }

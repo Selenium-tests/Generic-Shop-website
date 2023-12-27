@@ -27,8 +27,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         ExtentReportsManager.setName("Clicking the \"" + link + "\" item in the main menu drop-down list");
 
         dropdownList.hoveParent();
-        dropdownList.clickElement(link.linkText());
+        dropdownList.clickElement(link.getLinkText());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL());
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL());
     }
 }

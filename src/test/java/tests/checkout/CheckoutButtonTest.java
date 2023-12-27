@@ -28,7 +28,7 @@ public class CheckoutButtonTest extends BaseTest {
         ShoppingCart shoppingCart = new ShoppingCart(getDriver());
         shoppingCart.clickCheckoutButton();
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
-                "The page with the address \"" + link.pageURL() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been found");
     }
 }

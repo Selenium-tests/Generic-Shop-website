@@ -26,18 +26,18 @@ public class LinksToProductPagesTest extends BaseTest {
 
         Thumbnail thumbnail = ThumbnailProvider
                 .getFactory(ThumbnailType.PRODUCT)
-                .createThumbnail(getDriver(), category, link.linkText());
+                .createThumbnail(getDriver(), category, link.getLinkText());
 
         thumbnail.clickLink();
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.pageURL(),
-                "The page with the address \"" + link.pageURL() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
+                "The page with the address \"" + link.getPageURL() + "\" has not been found");
     }
 
     @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
     public void allBlackTops(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"ALL BLACK TOP\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"ALL BLACK TOP\" section");
 
         check(ThumbnailCategory.ALL_BLACK_TOPS, link);
     }
@@ -45,7 +45,7 @@ public class LinksToProductPagesTest extends BaseTest {
     @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
     public void highHeelShoes(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"HIGH HEEL SHOES\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"HIGH HEEL SHOES\" section");
 
         check(ThumbnailCategory.HIGH_HEEL_SHOES, link);
     }
@@ -53,7 +53,7 @@ public class LinksToProductPagesTest extends BaseTest {
     @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
     public void mostWanted(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"MOST WANTED\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"MOST WANTED\" section");
 
         check(ThumbnailCategory.MOST_WANTED, link);
     }
@@ -61,7 +61,7 @@ public class LinksToProductPagesTest extends BaseTest {
     @Test(dataProvider = "scarfsProducts", dataProviderClass = MyDataProvider.class)
     public void scarfs(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"SCARFS\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"SCARFS\" section");
 
         check(ThumbnailCategory.SCARFS, link);
     }
@@ -69,7 +69,7 @@ public class LinksToProductPagesTest extends BaseTest {
     @Test(dataProvider = "onSaleProducts", dataProviderClass = MyDataProvider.class)
     public void onSale(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"ON SALE\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"ON SALE\" section");
 
         check(ThumbnailCategory.ON_SALE, link);
     }
@@ -77,7 +77,7 @@ public class LinksToProductPagesTest extends BaseTest {
     @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
     public void featured(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"FEATURED\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"FEATURED\" section");
 
         check(ThumbnailCategory.FEATURED, link);
     }
@@ -85,7 +85,7 @@ public class LinksToProductPagesTest extends BaseTest {
     @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
     public void trends(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.linkText() + "\" link in the \"TRENDS\" section");
+        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"TRENDS\" section");
 
         check(ThumbnailCategory.TRENDS, link);
     }
