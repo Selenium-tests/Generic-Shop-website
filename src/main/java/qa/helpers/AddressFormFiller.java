@@ -7,13 +7,19 @@ import qa.records.AddressFormData;
 
 public class AddressFormFiller {
 
-    public static AddressForm get(AddressFormData data, WebDriver driver) throws IllegalAccessException {
+    public static AddressForm get(AddressFormData data, WebDriver driver, boolean pressEnterAgain) throws IllegalAccessException {
 
         AddressForm addressForm = new AddressForm(driver);
 
         addressForm.getCountryDropdownList().clickCountryButton();
         addressForm.getCountryDropdownList().setCountry(data.getCountry());
         addressForm.getCountryDropdownList().pressEnter();
+
+        if (pressEnterAgain) {
+
+            addressForm.getCountryDropdownList().pressEnter();
+        }
+
         addressForm.setFirstName(data.getFirstName());
         addressForm.setLastName(data.getLastName());
         addressForm.setCompany(data.getCompanyName());
