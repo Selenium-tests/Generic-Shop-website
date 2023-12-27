@@ -7,7 +7,8 @@ public enum URLs {
     BLACK_TOP_PRODUCT_PAGE("https://skleptest.pl/product/black-top/"),
     CHECKOUT_PAGE("https://skleptest.pl/checkout/"),
     BILLING_ADDRESS_FORM("https://skleptest.pl/my-account/edit-address/billing/"),
-    EDIT_ADDRESS_NAVIGATION("https://skleptest.pl/my-account/edit-address/");
+    EDIT_ADDRESS_NAVIGATION("https://skleptest.pl/my-account/edit-address/"),
+    ORDER_RECEIVED("https://skleptest.pl/checkout/order-received/");
 
     private final String name;
 
