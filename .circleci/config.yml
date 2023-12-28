@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/openjdk:17.0
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: mvn -B -DskipTests clean package
+      - run:
+          name: Install dependencies
+          command: mvn -U clean install
+      - run:
+          name: Test
+          command: mvn test -DsuiteXmlFile=src/test/resources/header.xml
+workflows:
+  sample: 
+    jobs:
+      - build-and-test
