@@ -16,9 +16,7 @@ jobs:
       - run:
           name: Test
           command: mvn test
-
-      - name: Save artifacts
-        uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2
         with:
           name: maven-artifacts
           path: target/
