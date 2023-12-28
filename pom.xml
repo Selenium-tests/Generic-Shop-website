@@ -106,8 +106,7 @@
         <version>2.12.4</version>
         <configuration>
           <suiteXmlFiles>
-            <!--suppress UnresolvedMavenProperty -->
-            <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+            <suiteXmlFile>src/test/resources/header.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
