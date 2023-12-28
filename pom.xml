@@ -108,8 +108,6 @@
           <suiteXmlFiles>
             <suiteXmlFile>src/test/resources/header.xml</suiteXmlFile>
           </suiteXmlFiles>
-          <redirectTestOutputToFile>true</redirectTestOutputToFile>
-          <useFile>true</useFile>
         </configuration>
       </plugin>
     </plugins>
