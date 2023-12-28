@@ -6,6 +6,7 @@ jobs:
       - image: cimg/openjdk:17.0
     steps:
       - checkout
+      
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
@@ -15,6 +16,12 @@ jobs:
       - run:
           name: Test
           command: mvn test
+
+      - name: Save artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: maven-artifacts
+          path: target/
 workflows:
   sample: 
     jobs:
