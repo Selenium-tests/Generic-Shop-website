@@ -14,7 +14,7 @@ jobs:
           command: mvn -U clean install
       - run:
           name: Test
-          command: mvn test -DsuiteXmlFile=src/test/resources/header.xml
+          command: mvn test
 workflows:
   sample: 
     jobs:
