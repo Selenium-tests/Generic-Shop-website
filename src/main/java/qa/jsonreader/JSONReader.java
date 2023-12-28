@@ -5,10 +5,10 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import qa.records.AddressFormData;
-import qa.records.Credentials;
-import qa.records.Link;
-import qa.records.Newsletter;
+import qa.data.AddressFormData;
+import qa.data.Credentials;
+import qa.data.Link;
+import qa.data.Newsletter;
 
 import java.io.*;
 import java.util.stream.IntStream;
