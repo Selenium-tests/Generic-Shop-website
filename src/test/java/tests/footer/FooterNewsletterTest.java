@@ -10,7 +10,7 @@ import qa.enums.URLs;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
 import qa.extentreports.ExtentReportsManager;
-import qa.records.Newsletter;
+import qa.data.Newsletter;
 
 
 public class FooterNewsletterTest extends BaseTest {

@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
 import qa.provider.MyDataProvider;
-import qa.records.AddressFormData;
+import qa.data.AddressFormData;
 import qa.extentreports.ExtentReportsManager;
 import java.util.function.Consumer;
 

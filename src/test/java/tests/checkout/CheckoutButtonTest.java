@@ -9,7 +9,7 @@ import qa.extentreports.ExtentReportsManager;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.provider.MyDataProvider;
-import qa.records.Link;
+import qa.data.Link;
 
 public class CheckoutButtonTest extends BaseTest {
 

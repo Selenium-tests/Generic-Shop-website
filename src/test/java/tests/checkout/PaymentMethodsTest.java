@@ -11,7 +11,7 @@ import qa.helpers.ShoppingCartActions;
 import qa.pageobject.checkoutpage.CheckoutPage;
 import qa.pageobject.checkoutpage.PaymentMethodsSection;
 import qa.provider.MyDataProvider;
-import qa.records.AddressFormData;
+import qa.data.AddressFormData;
 import qa.utils.MyConsumer;
 
 

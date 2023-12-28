@@ -8,7 +8,7 @@ import qa.enums.URLs;
 import qa.extentreports.ExtentReportsManager;
 import qa.pageobject.mainmenu.DropdownList;
 import qa.provider.MyDataProvider;
-import qa.records.Link;
+import qa.data.Link;
 
 public class MainMenuDropdownListTest extends BaseTest {
 

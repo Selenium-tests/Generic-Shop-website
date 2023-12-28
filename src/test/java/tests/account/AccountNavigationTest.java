@@ -10,7 +10,7 @@ import qa.extentreports.ExtentReportsManager;
 import qa.helpers.Authentication;
 import qa.pageobject.account.AccountPage;
 import qa.provider.MyDataProvider;
-import qa.records.Link;
+import qa.data.Link;
 
 
 public class AccountNavigationTest extends BaseTest {

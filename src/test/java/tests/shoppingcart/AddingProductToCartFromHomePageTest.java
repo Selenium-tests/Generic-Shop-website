@@ -14,7 +14,7 @@ import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.pageobject.header.Header;
 import qa.provider.MyDataProvider;
 import qa.extentreports.ExtentReportsManager;
-import qa.records.Link;
+import qa.data.Link;
 import qa.thumbnailgenerators.ThumbnailProvider;
 
 

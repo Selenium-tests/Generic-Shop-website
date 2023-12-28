@@ -10,7 +10,7 @@ import qa.pageobject.shoppingcart.Row;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.provider.MyDataProvider;
 import qa.extentreports.ExtentReportsManager;
-import qa.records.Link;
+import qa.data.Link;
 
 
 public class AddingProductToTheCartFromProductPageTest extends BaseTest {

@@ -8,8 +8,7 @@ import org.testng.annotations.Test;
 import qa.enums.URLs;
 import qa.pageobject.footer.Footer;
 import qa.provider.MyDataProvider;
-import qa.extentreports.ExtentReportsManager;
-import qa.records.Link;
+import qa.data.Link;
 
 
 public class FooterTagsTest extends BaseTest {

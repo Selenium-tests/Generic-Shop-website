@@ -8,7 +8,7 @@ import qa.enums.URLs;
 import qa.pageobject.account.AccountPage;
 import qa.pageobject.LoginPage;
 import qa.provider.MyDataProvider;
-import qa.records.Credentials;
+import qa.data.Credentials;
 import qa.extentreports.ExtentReportsManager;
 import java.util.function.Consumer;
 

@@ -10,7 +10,7 @@ import qa.enums.URLs;
 import qa.extentreports.ExtentReportsManager;
 import qa.pageobject.thumbnails.Thumbnail;
 import qa.provider.MyDataProvider;
-import qa.records.Link;
+import qa.data.Link;
 import qa.thumbnailgenerators.ThumbnailProvider;
 
 public class LinksToBlogPagesTest extends BaseTest {

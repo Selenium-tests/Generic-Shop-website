@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import qa.provider.MyDataProvider;
 import qa.extentreports.ExtentReportsManager;
-import qa.records.Link;
+import qa.data.Link;
 import qa.thumbnailgenerators.ThumbnailProvider;
 
 
