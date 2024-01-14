@@ -5,9 +5,9 @@ import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.tools.toby.ToBy;
 
 
-import java.util.List;
 
 public class AddressForm extends BasePage {
 
@@ -47,21 +47,21 @@ public class AddressForm extends BasePage {
     @FindBy(id = "billing_email")
     WebElement emailField;
 
-    @FindBy(id = "billing_state")
-    List<WebElement> additionalField;
-
-    @FindBy(xpath = ".//span[@aria-labelledby='select2-billing_state-container']")
-    List<WebElement> additionalDropdownList;
-
-
-    @FindBy(css = "label[for='billing_state']")
-    List<WebElement> billingStateLabel;
-
-    @FindBy(xpath = ".//input[@type='submit']")
+    @FindBy(css = "input[type='submit']")
     WebElement saveAddressButton;
 
-    @FindBy(xpath = "//ul[@class='woocommerce-error']")
-    List<WebElement> errorMessage;
+    @FindBy(className = "woocommerce-error")
+    WebElement errorMessage;
+
+    @FindBy(css = "label[for='billing_state']")
+    WebElement additionalLabel;
+
+    @FindBy(css = "input[id='billing_state']")
+    WebElement additionalField;
+
+    @FindBy(css = "select[id='billing_state']")
+    WebElement additionalDropdownList;
+
 
     private void clearAndFill(WebElement element, String text) {
 
@@ -127,29 +127,34 @@ public class AddressForm extends BasePage {
         saveAddressButton.click();
     }
 
-    public boolean isAdditionalFieldVisible() {
+    public void waitForAdditionalLabel() throws IllegalAccessException {
 
-        return !(additionalField.isEmpty());
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(additionalLabel)));
     }
 
-    public boolean isAdditionalDropdownListVisible() {
+    public void waitForAdditionalField() throws IllegalAccessException {
 
-        return !(additionalDropdownList.isEmpty());
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(additionalField)));
     }
 
-    public String getBillingStateLabelText() {
+    public void waitForAdditionalDropdownList() throws IllegalAccessException {
 
-        return billingStateLabel.get(0).getText();
+        getWebDriverWait().until(ExpectedConditions.presenceOfElementLocated(ToBy.get(additionalDropdownList)));
     }
 
-    public boolean isErrorMessageDisplayed() {
+    public void waitForErrorMessage() throws IllegalAccessException {
 
-        return !(errorMessage.isEmpty());
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(errorMessage)));
+    }
+
+    public String getAdditionalLabelText() {
+
+        return additionalLabel.getText();
     }
 
     public String getErrorMessageText() {
 
-        return errorMessage.get(0).getText();
+        return errorMessage.getText();
     }
 
     public String getValidationMessageText() {
