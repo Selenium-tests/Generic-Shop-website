@@ -7,17 +7,15 @@ import org.testng.annotations.Test;
 import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.CountryDropdownList;
-import qa.provider.MyDataProvider;
-import qa.extentreports.ExtentReportsManager;
+import qa.dataproviders.DataProviders;
 
-import java.awt.*;
 
 public class CountryDropdownListTest extends BaseTest {
 
     private CountryDropdownList countryDropdownList;
 
     @BeforeMethod
-    public void create() throws AWTException, IllegalAccessException {
+    public void create() throws IllegalAccessException {
 
         goToSpecificPage(URLs.LOGIN_PAGE.getName());
         Authentication.loginWithCredentials(getDriver());
@@ -26,23 +24,25 @@ public class CountryDropdownListTest extends BaseTest {
         countryDropdownList = new CountryDropdownList(getDriver());
     }
 
-    @Test(dataProvider = "correctCountryName", dataProviderClass = MyDataProvider.class)
-    public void correctCountryName(String countryName) throws IllegalAccessException {
-
-        ExtentReportsManager.setName("Searching with a correct country name");
+    private void fill(String countryName) throws IllegalAccessException {
 
         countryDropdownList.clickCountryButton();
         countryDropdownList.setCountry(countryName);
-
-        Assert.assertFalse(countryDropdownList.isAlertDisplayed(), "A country \"" + countryName + "\" has not been found");
     }
 
-    @Test(dataProvider = "incorrectCountryName", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "correctCountryName", dataProviderClass = DataProviders.class)
+    public void correctCountryName(String countryName) throws IllegalAccessException {
+
+        fill(countryName);
+
+        Assert.assertFalse(countryDropdownList.isAlertDisplayed(), "The alert is displayed");
+    }
+
+    @Test(dataProvider = "incorrectCountryName", dataProviderClass = DataProviders.class)
     public void incorrectCountryName(String countryName) throws IllegalAccessException {
 
-        countryDropdownList.clickCountryButton();
-        countryDropdownList.setCountry(countryName);
+        fill(countryName);
 
-        Assert.assertTrue(countryDropdownList.isAlertDisplayed(), "No message about an incorrect country name");
+        Assert.assertTrue(countryDropdownList.isAlertDisplayed(), "The alert is not displayed");
     }
 }
