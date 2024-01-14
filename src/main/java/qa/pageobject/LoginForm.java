@@ -7,12 +7,15 @@ import org.openqa.selenium.support.FindBy;
 import qa.tools.toby.ToBy;
 
 
-public class LoginPage extends BasePage {
+public class LoginForm extends BasePage {
 
-    public LoginPage(WebDriver driver) {
+    public LoginForm(WebDriver driver) {
 
         super(driver);
     }
+
+    @FindBy(css = ".woocommerce-form.woocommerce-form-login.login")
+    WebElement contents;
 
     @FindBy(xpath = ".//input[@id='username']")
     WebElement usernameField;
@@ -44,5 +47,12 @@ public class LoginPage extends BasePage {
     public boolean isErrorMessageDisplayed() {
 
         return errorMessage.isDisplayed();
+    }
+
+    public void waitForContentsLocatorValidAttribute() {
+
+        getWebDriverWait().until(
+                ExpectedConditions.not(ExpectedConditions.attributeToBe(contents, "style", "display: none;"))
+        );
     }
 }
