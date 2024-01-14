@@ -615,6 +615,11 @@
         ] 
     },
 
+    "orderComments": [
+
+        "Lorem ipsum"
+    ],
+
     "URLs": {
 
         "mainMenuLinks": [
