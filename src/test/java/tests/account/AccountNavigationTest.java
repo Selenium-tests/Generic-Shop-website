@@ -6,10 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.enums.URLs;
-import qa.extentreports.ExtentReportsManager;
 import qa.helpers.Authentication;
 import qa.pageobject.account.AccountPage;
-import qa.provider.MyDataProvider;
+import qa.dataproviders.DataProviders;
 import qa.data.Link;
 
 
@@ -25,10 +24,8 @@ public class AccountNavigationTest extends BaseTest {
         Authentication.loginWithCredentials(getDriver());
     }
 
-    @Test(dataProvider = "accountNavigation", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "accountNavigation", dataProviderClass = DataProviders.class)
     public void link(Link link) throws IllegalAccessException {
-
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link");
 
         accountPage.getAccountNavigation().clickLink(link.getLinkText());
 
