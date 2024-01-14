@@ -49,9 +49,9 @@ public class ShoppingCart extends BasePage {
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(updateButton)).click();
     }
 
-    public void clickCheckoutButton() throws IllegalAccessException {
+    public void clickCheckoutButton() {
 
-        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(checkoutButton));
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
     }
 
     public Table getTable() {
