@@ -7,7 +7,7 @@ import qa.base.BaseTest;
 import qa.enums.URLs;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.checkoutpage.CheckoutPage;
-import qa.provider.MyDataProvider;
+import qa.dataproviders.DataProviders;
 
 
 public class FunctionalitiesTest extends BaseTest {
@@ -18,7 +18,7 @@ public class FunctionalitiesTest extends BaseTest {
     public void create() throws IllegalAccessException {
 
         goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
-        ShoppingCartActions.addToCartAndOpen(getDriver());
+        ShoppingCartActions.addToCart(getDriver());
         goToSpecificPage(URLs.CHECKOUT_PAGE.getName());
         checkoutPage = new CheckoutPage(getDriver());
     }
@@ -59,7 +59,7 @@ public class FunctionalitiesTest extends BaseTest {
         }
     }
 
-    @Test(dataProvider = "orderComments", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "orderComments", dataProviderClass = DataProviders.class)
     public void orderCommentsField(String comment) throws IllegalAccessException {
 
         checkoutPage.getOrderCommentsField().setComment(comment);
