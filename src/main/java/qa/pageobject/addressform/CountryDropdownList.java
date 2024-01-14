@@ -17,13 +17,13 @@ public class CountryDropdownList extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//input[@class='select2-search__field']")
+    @FindBy(css = "input[class='select2-search__field']")
     WebElement searchField;
 
     @FindBy(className = "select2-selection__rendered")
     WebElement countryButton;
 
-    @FindBy(xpath = "//li[@role='alert']")
+    @FindBy(css = "li[role='alert']")
     List<WebElement> alert;
 
     public void clickCountryButton() {
@@ -41,13 +41,8 @@ public class CountryDropdownList extends BasePage {
         searchField.sendKeys(Keys.ENTER);
     }
 
-    public boolean isAlertDisplayed() {
+    public boolean isAlertDisplayed() throws IllegalAccessException {
 
-        if (!alert.isEmpty()) {
-
-            return alert.get(0).isDisplayed();
-        }
-
-        return false;
+        return !alert.isEmpty();
     }
 }
