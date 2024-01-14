@@ -9,7 +9,8 @@ public enum URLs {
     CHECKOUT_PAGE("https://skleptest.pl/checkout/"),
     BILLING_ADDRESS_FORM("https://skleptest.pl/my-account/edit-address/billing/"),
     EDIT_ADDRESS_NAVIGATION("https://skleptest.pl/my-account/edit-address/"),
-    ORDER_RECEIVED("https://skleptest.pl/checkout/order-received/");
+    ORDER_RECEIVED("https://skleptest.pl/checkout/order-received/"),
+    PAY_PAL("https://www.paypal.com/");
 
     private final String name;
 
