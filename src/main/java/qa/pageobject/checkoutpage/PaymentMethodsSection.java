@@ -36,7 +36,7 @@ public class PaymentMethodsSection extends BasePage {
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(checkPaymentsCheckbox)).click();
     }
 
-    public void clickCashOnDeliveryCheckbox() throws IllegalAccessException {
+    public void clickCashOnDeliveryCheckbox() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(cashOnDeliveryCheckbox)).click();
     }
