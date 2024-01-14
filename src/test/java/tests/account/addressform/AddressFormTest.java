@@ -8,12 +8,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
-import qa.provider.MyDataProvider;
+import qa.dataproviders.DataProviders;
 import qa.data.AddressFormData;
-import qa.extentreports.ExtentReportsManager;
-import java.util.function.Consumer;
 
 public class AddressFormTest extends BaseTest {
+
+    private AddressForm addressForm;
 
     @BeforeMethod
     public void create() throws IllegalAccessException {
@@ -23,153 +23,124 @@ public class AddressFormTest extends BaseTest {
         goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
     }
 
-    private void fill(AddressFormData data, Consumer<AddressForm> consumer) throws IllegalAccessException {
+    private void fill(AddressFormData data) throws IllegalAccessException {
 
-        AddressForm addressForm = AddressFormFiller.get(data, getDriver(), false);
+        addressForm = AddressFormFiller.get(data, getDriver(), false);
         addressForm.clickSaveAddressButton();
-
-        consumer.accept(addressForm);
     }
 
-    @Test(dataProvider = "AF_correctAddress", dataProviderClass = MyDataProvider.class)
+    private void checkUrlAddress(URLs url) {
+
+        Assert.assertEquals(getDriver().getCurrentUrl(), url.getName(),"Incorrect URL");
+    }
+
+    private void checkErrorMessageVisibility() {
+
+        try {
+            addressForm.waitForErrorMessage();
+        } catch (Exception e) {
+            Assert.fail("No error message displayed");
+        }
+    }
+
+    private void checkErrorMessageContent(AddressFormData data) {
+
+        Assert.assertEquals(addressForm.getErrorMessageText(), data.getErrorMessage(),
+                "Incorrect error message content");
+    }
+
+    private void checkValidationMessageContent(AddressFormData data) {
+
+        Assert.assertTrue(addressForm.getValidationMessageText().contains(data.getErrorMessage()),
+                "The validation message does not contain \"" + data.getErrorMessage() + "\"");
+    }
+
+    private void action(AddressFormData data) throws IllegalAccessException {
+
+        fill(data);
+        checkUrlAddress(URLs.BILLING_ADDRESS_FORM);
+        checkErrorMessageVisibility();
+        checkErrorMessageContent(data);
+    }
+
+    @Test(dataProvider = "AF_correctAddress", dataProviderClass = DataProviders.class)
     public void correctAddressData(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Filling the form with a correct address data");
-
-        AddressFormFiller.get(data, getDriver(), false).clickSaveAddressButton();
-
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.EDIT_ADDRESS_NAVIGATION.getName(),
-                "The address data has not been saved");
+        fill(data);
+        checkUrlAddress(URLs.EDIT_ADDRESS_NAVIGATION);
     }
 
-    @Test(dataProvider = "AF_incorrectFirstName", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_incorrectFirstName", dataProviderClass = DataProviders.class)
     public void incorrectFirstName(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("\"" + data.getFirstName() + "\" + as the incorrect first name");
-
-        AddressFormFiller.get(data, getDriver(), false).clickSaveAddressButton();
-
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BILLING_ADDRESS_FORM.getName(),
-                "No message about an incorrect first name");
+        action(data);
     }
 
-    @Test(dataProvider = "AF_incorrectLastName", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_incorrectLastName", dataProviderClass = DataProviders.class)
     public void incorrectLastName(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("\"" + data.getLastName() + "\" + as the incorrect last name");
-
-        AddressFormFiller.get(data, getDriver(), false).clickSaveAddressButton();
-
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BILLING_ADDRESS_FORM.getName(),
-                "No message about an incorrect last name");
+        action(data);
     }
 
-    @Test(dataProvider = "AF_incorrectPostcode", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_incorrectPostcode", dataProviderClass = DataProviders.class)
     public void incorrectPostcode(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("\"" + data.getPostcode() + "\" + as the incorrect postcode");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about an incorrect postcode");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 
-    @Test(dataProvider = "AF_incorrectPhoneNumber", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_incorrectPhoneNumber", dataProviderClass = DataProviders.class)
     public void incorrectPhoneNumber(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("\"" + data.getPhone() + "\" + as the incorrect phone number");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about an incorrect phone number");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 
-    @Test(dataProvider = "AF_incorrectEmail", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_incorrectEmail", dataProviderClass = DataProviders.class)
     public void incorrectEmail(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("\"" + data.getEmail() + "\" + as the incorrect email");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.getValidationMessageText().contains(data.getErrorMessage()),"Incorrect message content");
-        });
+        fill(data);
+        checkUrlAddress(URLs.BILLING_ADDRESS_FORM);
+        checkValidationMessageContent(data);
     }
 
-    @Test(dataProvider = "AF_withoutFirstName", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_withoutFirstName", dataProviderClass = DataProviders.class)
     public void blankFirstNameField(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Blank the first name field");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank first name field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 
-    @Test(dataProvider = "AF_withoutLastName", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_withoutLastName", dataProviderClass = DataProviders.class)
     public void blankLastNameField(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Blank the last name field");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank last name field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 
-    @Test(dataProvider = "AF_withoutAddress", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_withoutAddress", dataProviderClass = DataProviders.class)
     public void blankAddressField(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Blank the address field");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank address field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 
-    @Test(dataProvider = "AF_withoutCity", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_withoutCity", dataProviderClass = DataProviders.class)
     public void blankCityField(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Blank the city field");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank city field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 
-    @Test(dataProvider = "AF_withoutPostcode", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_withoutPostcode", dataProviderClass = DataProviders.class)
     public void blankPostcodeField(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Blank the postcode field");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank postcode field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 
-    @Test(dataProvider = "AF_withoutPhone", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_withoutPhone", dataProviderClass = DataProviders.class)
     public void blankPhoneField(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Blank the phone field");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank phone field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 
-    @Test(dataProvider = "AF_withoutEmail", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "AF_withoutEmail", dataProviderClass = DataProviders.class)
     public void blankEmailField(AddressFormData data) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Blank the email field");
-
-        fill(data, (AddressForm af)->{
-            Assert.assertTrue(af.isErrorMessageDisplayed(), "No message about the blank email field");
-            Assert.assertEquals(af.getErrorMessageText(), data.getErrorMessage(), "Incorrect message content");
-        });
+        action(data);
     }
 }
