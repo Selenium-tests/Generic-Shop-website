@@ -15,6 +15,9 @@ public class ShippingAddressForm extends BasePage {
         super(driver);
     }
 
+    @FindBy(className = "shipping_address")
+    WebElement contents;
+
     @FindBy(id = "shipping_first_name")
     List<WebElement >firstNameField;
 
@@ -93,14 +96,10 @@ public class ShippingAddressForm extends BasePage {
         return errorMessage.get(0).getText();
     }
 
-    public boolean isVisible() {
+    public void waitForContentsLocatorValidAttribute() {
 
-        return !firstNameField.isEmpty() &&
-               !lastNameField.isEmpty() &&
-               !companyField.isEmpty() &&
-               !addressField1.isEmpty() &&
-               !addressField2.isEmpty() &&
-               !postcodeField.isEmpty() &&
-               !cityField.isEmpty();
+        getWebDriverWait().until(
+                ExpectedConditions.not(ExpectedConditions.attributeToBe(contents, "style", "display: none;"))
+        );
     }
 }
