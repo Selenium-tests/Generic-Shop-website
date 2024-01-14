@@ -27,6 +27,13 @@ public class JSONReader {
         return jsonObject1.getJSONArray(node);
     }
 
+    private static String[] getStringArray(JSONArray jsonArray) {
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(jsonArray::getString)
+                .toArray(String[]::new);
+    }
+
     public static void read() throws JSONException, IOException, ParseException {
 
         JSONParser jsonParser = new JSONParser();
@@ -36,13 +43,14 @@ public class JSONReader {
         jsonObject = new JSONObject(object.toString());
     }
 
+    public static String[] get(String key) {
+
+        return getStringArray(jsonObject.getJSONArray(key));
+    }
+
     public static String[] get(String key, String node) throws JSONException {
 
-        JSONArray jsonArray = getJSONArray(key, node);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(jsonArray::getString)
-                .toArray(String[]::new);
+        return getStringArray(getJSONArray(key, node));
     }
 
     public static String[] getQuantityFieldValue(String node) {
@@ -50,9 +58,7 @@ public class JSONReader {
         JSONArray jsonArray = getJSONArray("quantityFieldValues", node);
 
         return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new String(
-                        jsonArray.getJSONObject(i).getString("value")
-                ))
+                .mapToObj(i -> jsonArray.getJSONObject(i).getString("value"))
                 .toArray(String[]::new);
     }
 
