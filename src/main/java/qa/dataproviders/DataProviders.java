@@ -1,11 +1,11 @@
-package qa.provider;
+package qa.dataproviders;
 
 import org.json.JSONException;
 import org.testng.annotations.DataProvider;
 import qa.jsonreader.JSONReader;
 
 
-public class MyDataProvider {
+public class DataProviders {
 
     @DataProvider(name = "mainMenu")
     public Object[] mainMenu() {
@@ -89,6 +89,12 @@ public class MyDataProvider {
     public Object[] blankEmailField() throws JSONException {
 
         return JSONReader.getCredentials("blankEmailField");
+    }
+
+    @DataProvider(name = "orderComments")
+    public Object[] orderComments() {
+
+        return JSONReader.get("orderComments");
     }
 
     @DataProvider(name = "incorrectPassword")
