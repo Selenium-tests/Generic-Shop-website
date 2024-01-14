@@ -7,9 +7,8 @@ import qa.base.BaseTest;
 import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
-import qa.provider.MyDataProvider;
-import qa.extentreports.ExtentReportsManager;
-import java.util.function.Consumer;
+import qa.dataproviders.DataProviders;
+import qa.utils.AccessThrowingConsumer;
 
 public class AdditionalFieldsTest extends BaseTest {
 
@@ -25,125 +24,108 @@ public class AdditionalFieldsTest extends BaseTest {
         addressForm = new AddressForm(getDriver());
     }
 
-    private void check(String country, Consumer<AddressForm> consumer, String expectedLabelText) throws IllegalAccessException {
+    private void setCountry(String country) throws IllegalAccessException {
 
         addressForm.getCountryDropdownList().clickCountryButton();
         addressForm.getCountryDropdownList().setCountry(country);
         addressForm.getCountryDropdownList().pressEnter();
-
-        consumer.accept(addressForm);
-
-        Assert.assertEquals(addressForm.getBillingStateLabelText(), expectedLabelText,
-                "Incorrect additional field name");
     }
 
-    @Test(dataProvider = "stateCountyField", dataProviderClass = MyDataProvider.class)
+    private void checkForAdditionalItemVisibility(AccessThrowingConsumer<AddressForm> consumer) {
+
+        try {
+            consumer.accept(addressForm);
+        } catch (Exception e) {
+            Assert.fail("No additional item displayed");
+        }
+    }
+
+    private void checkForAdditionalLabelVisibility() {
+
+        try {
+            addressForm.waitForAdditionalLabel();
+        } catch (Exception e) {
+            Assert.fail("No label displayed");
+        }
+    }
+
+    private void checkAdditionalLabelText(String expectedLabelText) throws IllegalAccessException {
+
+        Assert.assertEquals(addressForm.getAdditionalLabelText(), expectedLabelText,
+                    "Incorrect additional field name");
+    }
+
+    private void check(String country, AccessThrowingConsumer<AddressForm> consumer, String labelText) throws IllegalAccessException {
+
+        setCountry(country);
+        checkForAdditionalItemVisibility(consumer);
+        checkForAdditionalLabelVisibility();
+        checkAdditionalLabelText(labelText);
+    }
+
+    @Test(dataProvider = "stateCountyField", dataProviderClass = DataProviders.class)
     public void stateCountyField(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"State / County *\" field after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible(), "No additional field");},
-             "State / County *");
+        check(country, AddressForm::waitForAdditionalField, "State / County *");
     }
 
-    @Test(dataProvider = "stateCountyDropdownList", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "stateCountyDropdownList", dataProviderClass = DataProviders.class)
     public void stateCountyDropdownList(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"State / County *\" drop-down list after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
-             "State / County *");
+        check(country, AddressForm::waitForAdditionalDropdownList, "State / County *");
     }
 
-    @Test(dataProvider = "countyDropdownList", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "countyDropdownList", dataProviderClass = DataProviders.class)
     public void countyDropdownList(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"County *\" drop-down list after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
-             "County *");
+        check(country, AddressForm::waitForAdditionalDropdownList, "County *");
     }
 
-    @Test(dataProvider = "stateDropdownList", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "stateDropdownList", dataProviderClass = DataProviders.class)
     public void stateDropdownList(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"State *\" drop-down list after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
-              "State *");
+        check(country, AddressForm::waitForAdditionalDropdownList, "State *");
     }
 
-    @Test(dataProvider = "districtDropdownList", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "districtDropdownList", dataProviderClass = DataProviders.class)
     public void districtDropdownList(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"District *\" drop-down list after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
-             "District *");
+        check(country, AddressForm::waitForAdditionalDropdownList, "District *");
     }
 
-    @Test(dataProvider = "provinceDropdownList", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "provinceDropdownList", dataProviderClass = DataProviders.class)
     public void provinceDropdownList(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"Province *\" drop-down list after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
-             "Province *");
+        check(country, AddressForm::waitForAdditionalDropdownList, "Province *");
     }
 
-    @Test(dataProvider = "regionField", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "regionField", dataProviderClass = DataProviders.class)
     public void regionField(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"Region *\" field after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible(), "No additional field");},
-              "Region *");
+        check(country, AddressForm::waitForAdditionalField, "Region *");
     }
 
-    @Test(dataProvider = "regionDropdownList", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "regionDropdownList", dataProviderClass = DataProviders.class)
     public void regionDropdownList(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"Region\" drop-down list after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
-             "Region");
+        check(country, AddressForm::waitForAdditionalDropdownList, "Region");
     }
 
-    @Test(dataProvider = "prefectureDropdownList", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "prefectureDropdownList", dataProviderClass = DataProviders.class)
     public void prefectureDropdownList(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"Prefecture *\" drop-down list after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
-              "Prefecture *");
+        check(country, AddressForm::waitForAdditionalDropdownList, "Prefecture *");
     }
 
-    @Test(dataProvider = "municipalityField", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "municipalityField", dataProviderClass = DataProviders.class)
     public void municipalityField(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"Municipality\" field after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalFieldVisible(), "No additional field");},
-             "Municipality");
+        check(country, AddressForm::waitForAdditionalField, "Municipality");
     }
 
-    @Test(dataProvider = "stateZoneDropdownList", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "stateZoneDropdownList", dataProviderClass = DataProviders.class)
     public void stateZoneDropdownList(String country) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("The appearance of the \"State / Zone *\" drop-down list after entering \"" + country + "as the country name");
-
-        check(country,
-             (AddressForm af)->{Assert.assertTrue(af.isAdditionalDropdownListVisible(), "No additional drop-down list");},
-              "State / Zone *");
+        check(country, AddressForm::waitForAdditionalDropdownList, "State / Zone *");
     }
 }
