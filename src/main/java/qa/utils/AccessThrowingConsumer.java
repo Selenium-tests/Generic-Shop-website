@@ -1,6 +1,6 @@
 package qa.utils;
 
-public interface MyConsumer<T> {
+public interface AccessThrowingConsumer<T> {
 
     void accept(T t) throws IllegalAccessException;
 }
