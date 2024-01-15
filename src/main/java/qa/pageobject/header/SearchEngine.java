@@ -28,7 +28,7 @@ public class SearchEngine extends BasePage {
 
     public void clickSubmitButton() throws IllegalAccessException {
 
-        button.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(button)).click();
     }
 
     public String getPhrase() {
