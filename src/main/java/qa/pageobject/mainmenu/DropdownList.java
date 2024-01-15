@@ -23,7 +23,7 @@ public class DropdownList extends BasePage {
     @FindBy(id = "menu-item-123")
     WebElement parent;
 
-    public void hoveParent() throws IllegalAccessException {
+    public void hoverParent() throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(parent)));
         actions.moveToElement(parent).moveToElement(parent).perform();
@@ -31,7 +31,7 @@ public class DropdownList extends BasePage {
 
     public void clickElement(String id) {
 
-        parent.findElement(By.id(id)).click();
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(parent.findElement(By.id(id)))).click();
     }
 
 }
