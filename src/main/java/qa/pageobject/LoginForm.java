@@ -17,10 +17,10 @@ public class LoginForm extends BasePage {
     @FindBy(css = ".woocommerce-form.woocommerce-form-login.login")
     WebElement contents;
 
-    @FindBy(xpath = ".//input[@id='username']")
+    @FindBy(id = "username")
     WebElement usernameField;
 
-    @FindBy(xpath = ".//input[@id='password']")
+    @FindBy(id = "password")
     WebElement passwordField;
 
     @FindBy(name = "login")
@@ -44,9 +44,14 @@ public class LoginForm extends BasePage {
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(loginButton)).click();
     }
 
-    public boolean isErrorMessageDisplayed() {
+    public void waitForErrorMessage() throws IllegalAccessException {
 
-        return errorMessage.isDisplayed();
+        getWebDriverWait().until(ExpectedConditions.presenceOfElementLocated(ToBy.get(errorMessage)));
+    }
+
+    public String getErrorMessageContent() {
+
+        return errorMessage.getText();
     }
 
     public void waitForContentsLocatorValidAttribute() {
