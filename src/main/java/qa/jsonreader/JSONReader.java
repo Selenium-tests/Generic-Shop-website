@@ -93,7 +93,9 @@ public class JSONReader {
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new Newsletter(
                         jsonArray.getJSONObject(i).getString("username"),
-                        jsonArray.getJSONObject(i).getString("email")
+                        jsonArray.getJSONObject(i).getString("email"),
+                        jsonArray.getJSONObject(i).getString("message"),
+                        jsonArray.getJSONObject(i).getString("alertMessage")
                 ))
                 .toArray(Newsletter[]::new);
     }
