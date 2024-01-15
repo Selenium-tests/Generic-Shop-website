@@ -69,7 +69,8 @@ public class JSONReader {
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new Credentials(
                         jsonArray.getJSONObject(i).getString("email"),
-                        jsonArray.getJSONObject(i).getString("password")
+                        jsonArray.getJSONObject(i).getString("password"),
+                        jsonArray.getJSONObject(i).getString("errorMessage")
                 ))
                 .toArray(Credentials[]::new);
     }
