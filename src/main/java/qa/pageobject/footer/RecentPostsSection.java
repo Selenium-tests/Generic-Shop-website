@@ -1,5 +1,6 @@
 package qa.pageobject.footer;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,10 +16,10 @@ public class RecentPostsSection extends BasePage {
     }
 
     @FindBy(id = "tyche_recent-3")
-    WebElement container;
+    WebElement content;
 
     public void clickLink(String linkText) throws IllegalAccessException {
 
-        container.findElement(By.linkText(linkText)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(content.findElement(By.linkText(linkText)))).click();
     }
 }
