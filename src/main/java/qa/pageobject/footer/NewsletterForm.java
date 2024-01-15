@@ -38,12 +38,12 @@ public class NewsletterForm extends BasePage {
 
     public void clickSubscribeButton() {
 
-        subscribeButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(subscribeButton)).click();
     }
 
-    public boolean isMessageDisplayed() {
+    public void waitUntilMessageContentIs(String text) {
 
-        return message.isDisplayed();
+        getWebDriverWait().until(ExpectedConditions.textToBePresentInElement(message, text));
     }
 
     public String getMessageText() {
