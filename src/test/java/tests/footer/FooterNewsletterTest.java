@@ -8,8 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.enums.URLs;
 import qa.pageobject.footer.Footer;
-import qa.provider.MyDataProvider;
-import qa.extentreports.ExtentReportsManager;
+import qa.dataproviders.DataProviders;
 import qa.data.Newsletter;
 
 
@@ -31,64 +30,50 @@ public class FooterNewsletterTest extends BaseTest {
         footer.getNewsletterForm().clickSubscribeButton();
     }
 
-    private void check(String expectedAlertText, String message) {
+    private void checkMessageContent(String text) {
 
         try {
-
-            Alert alert = getDriver().switchTo().alert();
-            Assert.assertEquals(alert.getText(), expectedAlertText, message);
-
-        } catch (NoAlertPresentException e) {
-
+            footer.getNewsletterForm().waitUntilMessageContentIs(text);
+        } catch (Exception e) {
             Assert.fail(e.getMessage());
         }
     }
 
-    @Test(dataProvider = "newsletterCorrectCredentials", dataProviderClass = MyDataProvider.class)
-    public void correctCredentials(Newsletter newsletter) throws InterruptedException, IllegalAccessException {
+    private void checkForAlertVisibility(String expectedAlertText) {
 
-        ExtentReportsManager.setName("Signing up for the newsletter with correct credentials.");
-
-        fill(newsletter);
-
-        Thread.sleep(1000);
-
-        Assert.assertTrue(footer.getNewsletterForm().isMessageDisplayed(),
-               "No message when signing up with correct credentials");
-        Assert.assertEquals(footer.getNewsletterForm().getMessageText(), "Successfully Subscribed.",
-                "Incorrect message text when signing up with correct credentials");
+        try {
+            Alert alert = getDriver().switchTo().alert();
+            Assert.assertEquals(alert.getText(), expectedAlertText, "Incorrect the alert message content");
+        } catch (NoAlertPresentException e) {
+            Assert.fail(e.getMessage());
+        }
     }
 
-    @Test(dataProvider = "newsletterBlankUsernameField", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "newsletterCorrectCredentials", dataProviderClass = DataProviders.class)
+    public void correctCredentials(Newsletter newsletter) throws IllegalAccessException {
+
+        fill(newsletter);
+        checkMessageContent(newsletter.getMessage());
+    }
+
+    @Test(dataProvider = "newsletterBlankUsernameField", dataProviderClass = DataProviders.class)
     public void blankUsernameField(Newsletter newsletter) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Signing up for the newsletter with the blank username field.");
-
         fill(newsletter);
-
-        Assert.assertTrue(footer.getNewsletterForm().isMessageDisplayed(),
-                "No signing up with the blank username field");
+        checkMessageContent(newsletter.getMessage());
     }
 
-    @Test(dataProvider = "newsletterIncorrectEmailFormat", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "newsletterIncorrectEmailFormat", dataProviderClass = DataProviders.class)
     public void incorrectEmailFormat(Newsletter newsletter) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Signing up for the newsletter with an incorrect email format.");
-
         fill(newsletter);
-
-        check("Please enter correct email address",
-              "Incorrect message text during signing up with an incorrect email format");
+        checkForAlertVisibility(newsletter.getAlertMessage());
     }
 
-    @Test(dataProvider = "newsletterBlankEmailField", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "newsletterBlankEmailField", dataProviderClass = DataProviders.class)
     public void blankEmailField(Newsletter newsletter) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Signing up for the newsletter with the blank email field.");
-
         fill(newsletter);
-
-        check("Please enter email address",
-              "Incorrect message text during signing up with the blank email field");
+        checkForAlertVisibility(newsletter.getAlertMessage());
     }
 }
