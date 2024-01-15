@@ -1,47 +1,23 @@
 package tests.homepage;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.BaseTest;
+import qa.base.ThumbnailTest;
 import qa.enums.ThumbnailCategory;
 import qa.enums.ThumbnailType;
-import qa.enums.URLs;
-import qa.pageobject.thumbnails.Thumbnail;
 import qa.dataproviders.DataProviders;
 import qa.data.Link;
-import qa.thumbnailgenerators.ThumbnailProvider;
 
-public class LinksToBlogPagesTest extends BaseTest {
-
-    @BeforeMethod
-    public void create() {
-
-        goToSpecificPage(URLs.HOME_PAGE.getName());
-    }
-
-    private Thumbnail getThumbnail(ThumbnailCategory category, Link link) {
-
-        return ThumbnailProvider.getFactory(ThumbnailType.BLOG).createThumbnail(getDriver(), category, link.getLinkText());
-    }
-
-    private void check(ThumbnailCategory category, Link link) throws IllegalAccessException {
-
-        getThumbnail(category, link).clickLink();
-
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
-                "The page with the address \"" + link.getPageURL() + "\" has not been found");
-    }
+public class LinksToBlogPagesTest extends ThumbnailTest {
 
     @Test(dataProvider = "blogs1", dataProviderClass = DataProviders.class)
     public void group1(Link link) throws IllegalAccessException {
 
-        check(ThumbnailCategory.RECENT_1, link);
+        check(ThumbnailType.BLOG, ThumbnailCategory.RECENT_1, link);
     }
 
     @Test(dataProvider = "blogs2", dataProviderClass = DataProviders.class)
     public void group2(Link link) throws IllegalAccessException {
 
-        check(ThumbnailCategory.RECENT_2, link);
+        check(ThumbnailType.BLOG, ThumbnailCategory.RECENT_2, link);
     }
 }

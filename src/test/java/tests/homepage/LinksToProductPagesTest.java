@@ -1,92 +1,53 @@
 package tests.homepage;
 
-import org.testng.annotations.BeforeMethod;
+import qa.base.ThumbnailTest;
 import qa.enums.ThumbnailType;
-import qa.enums.URLs;
-import qa.pageobject.thumbnails.Thumbnail;
-import qa.base.BaseTest;
 import qa.enums.ThumbnailCategory;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import qa.provider.MyDataProvider;
-import qa.extentreports.ExtentReportsManager;
+import qa.dataproviders.DataProviders;
 import qa.data.Link;
-import qa.thumbnailgenerators.ThumbnailProvider;
 
+public class LinksToProductPagesTest extends ThumbnailTest {
 
-public class LinksToProductPagesTest extends BaseTest {
-
-    @BeforeMethod
-    public void create() {
-
-        goToSpecificPage(URLs.HOME_PAGE.getName());
-    }
-
-    private void check(ThumbnailCategory category, Link link) throws IllegalAccessException {
-
-        Thumbnail thumbnail = ThumbnailProvider
-                .getFactory(ThumbnailType.PRODUCT)
-                .createThumbnail(getDriver(), category, link.getLinkText());
-
-        thumbnail.clickLink();
-
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
-                "The page with the address \"" + link.getPageURL() + "\" has not been found");
-    }
-
-    @Test(dataProvider = "allBlackTops", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "allBlackTops", dataProviderClass = DataProviders.class)
     public void allBlackTops(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"ALL BLACK TOP\" section");
-
-        check(ThumbnailCategory.ALL_BLACK_TOPS, link);
+        check(ThumbnailType.PRODUCT, ThumbnailCategory.ALL_BLACK_TOPS, link);
     }
 
-    @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = DataProviders.class)
     public void highHeelShoes(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"HIGH HEEL SHOES\" section");
-
-        check(ThumbnailCategory.HIGH_HEEL_SHOES, link);
+        check(ThumbnailType.PRODUCT, ThumbnailCategory.HIGH_HEEL_SHOES, link);
     }
 
-    @Test(dataProvider = "mostWantedProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "mostWantedProducts", dataProviderClass = DataProviders.class)
     public void mostWanted(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"MOST WANTED\" section");
-
-        check(ThumbnailCategory.MOST_WANTED, link);
+        check(ThumbnailType.PRODUCT, ThumbnailCategory.MOST_WANTED, link);
     }
 
-    @Test(dataProvider = "scarfsProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "scarfsProducts", dataProviderClass = DataProviders.class)
     public void scarfs(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"SCARFS\" section");
-
-        check(ThumbnailCategory.SCARFS, link);
+        check(ThumbnailType.PRODUCT, ThumbnailCategory.SCARFS, link);
     }
 
-    @Test(dataProvider = "onSaleProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "onSaleProducts", dataProviderClass = DataProviders.class)
     public void onSale(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"ON SALE\" section");
-
-        check(ThumbnailCategory.ON_SALE, link);
+        check(ThumbnailType.PRODUCT, ThumbnailCategory.ON_SALE, link);
     }
 
-    @Test(dataProvider = "featuredProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "featuredProducts", dataProviderClass = DataProviders.class)
     public void featured(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"FEATURED\" section");
-
-        check(ThumbnailCategory.FEATURED, link);
+        check(ThumbnailType.PRODUCT, ThumbnailCategory.FEATURED, link);
     }
 
-    @Test(dataProvider = "trendsProducts", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "trendsProducts", dataProviderClass = DataProviders.class)
     public void trends(Link link) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"TRENDS\" section");
-
-        check(ThumbnailCategory.TRENDS, link);
+        check(ThumbnailType.PRODUCT, ThumbnailCategory.TRENDS, link);
     }
 }
