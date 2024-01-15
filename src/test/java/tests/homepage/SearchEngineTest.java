@@ -7,8 +7,7 @@ import org.testng.annotations.Test;
 import qa.enums.URLs;
 import qa.pageobject.header.ResultsPage;
 import qa.pageobject.header.SearchEngine;
-import qa.provider.MyDataProvider;
-import qa.extentreports.ExtentReportsManager;
+import qa.dataproviders.DataProviders;
 
 import java.util.function.Consumer;
 
@@ -34,46 +33,36 @@ public class SearchEngineTest extends BaseTest {
         consumer.accept(resultsPage);
     }
 
-    @Test(priority = 1, dataProvider = "correctPhrase", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 1, dataProvider = "correctPhrase", dataProviderClass = DataProviders.class)
     public void correctPhrase(String phrase) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Searching with correct phrase");
-
         check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults(),
                 "No results when searching with the \"" + phrase + "\" phrase"));
     }
 
-    @Test(priority = 2, dataProvider = "partOfCorrectPhrase", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 2, dataProvider = "partOfCorrectPhrase", dataProviderClass = DataProviders.class)
     public void partOfCorrectPhrase(String phrase) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Searching with part of correct phrase");
-
         check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults(),
                 "No results when searching with the \"" + phrase + "\" phrase"));
     }
 
-    @Test(priority = 3, dataProvider = "upperAndLowerCases", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 3, dataProvider = "upperAndLowerCases", dataProviderClass = DataProviders.class)
     public void upperAndLowerCases(String phrase) throws IllegalAccessException {
 
-        ExtentReportsManager.setName("Searching with phrase which has upper and lower cases");
-
         check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults(),
                 "No results when searching with the \"" + phrase + "\" phrase"));
     }
 
-    @Test(priority = 4, dataProvider = "incorrectPhrase", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 4, dataProvider = "incorrectPhrase", dataProviderClass = DataProviders.class)
     public void incorrectPhrase(String phrase) throws IllegalAccessException {
-
-        ExtentReportsManager.setName("Searching with incorrect phrase");
 
         check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
                 "Results found when searching with \"" + phrase + "\" as an incorrect phrase"));
     }
 
-    @Test(priority = 4, dataProvider = "strangePhrase", dataProviderClass = MyDataProvider.class)
+    @Test(priority = 4, dataProvider = "strangePhrase", dataProviderClass = DataProviders.class)
     public void strangePhrase(String phrase) throws IllegalAccessException {
-
-        ExtentReportsManager.setName("Searching with strange phrase");
 
         check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
                 "Results found when searching with \"" + phrase + "\" as an incorrect phrase"));
