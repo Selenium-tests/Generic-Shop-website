@@ -1,8 +1,10 @@
 package qa.pageobject.thumbnails;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import qa.tools.toby.ToBy;
 
 public class ProductThumbnail extends BasePage implements Thumbnail {
 
@@ -32,24 +34,24 @@ public class ProductThumbnail extends BasePage implements Thumbnail {
     }
 
     @Override
-    public String getLinkText() {
+    public String getLinkText() throws IllegalAccessException {
 
-        return link.getText();
+        return getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(link))).getText();
     }
 
-    public String getPrice() {
+    public String getPrice() throws IllegalAccessException {
 
-        return price.getText();
+        return getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(price))).getText();
     }
 
     @Override
     public void clickLink() {
 
-        link.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(link)).click();
     }
 
     public void clickAddToCartButton() {
 
-        addToCartButton.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
     }
 }
