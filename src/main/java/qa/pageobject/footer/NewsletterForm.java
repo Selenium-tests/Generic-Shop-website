@@ -45,9 +45,4 @@ public class NewsletterForm extends BasePage {
 
         getWebDriverWait().until(ExpectedConditions.textToBePresentInElement(message, text));
     }
-
-    public String getMessageText() {
-
-        return message.getText();
-    }
 }
