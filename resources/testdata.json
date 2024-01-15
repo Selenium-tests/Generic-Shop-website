@@ -566,7 +566,9 @@
             
             {
                 "username": "The user",
-                "email": "karen@gmail.com"
+                "email": "karen@gmail.com",
+                "message": "Successfully Subscribed.",
+                "alertMessage": ""
             }
         ],
 
@@ -574,7 +576,9 @@
             
             {
                 "username": "",
-                "email": "karen@gmail.com"
+                "email": "karen@gmail.com",
+                "message": "Successfully Subscribed.",
+                "alertMessage": ""
             }
         ],
 
@@ -582,27 +586,37 @@
             
             {
                 "username": "The user",
-                "email": "@tite.com"
+                "email": "@tite.com",
+                "message": "",
+                "alertMessage": "Please enter correct email address"
             },
 
             {
                 "username": "The user",
-                "email": ".__sara"
+                "email": ".__sara",
+                "message": "",
+                "alertMessage": "Please enter correct email address"
             },
 
             {
                 "username": "The user",
-                "email": "com.darko@"
+                "email": "com.darko@",
+                "message": "",
+                "alertMessage": "Please enter correct email address"
             },
 
             {
                 "username": "The user",
-                "email": "my@kazim@rrr__."
+                "email": "my@kazim@rrr__.",
+                "message": "",
+                "alertMessage": "Please enter correct email address"
             },
 
             {
                 "username": "The user",
-                "email": "#@$"
+                "email": "#@$",
+                "message": "",
+                "alertMessage": "Please enter correct email address"
             }
         ],
 
@@ -610,7 +624,9 @@
 
             {
                 "username": "The user",
-                "email": ""
+                "email": "",
+                "message": "",
+                "alertMessage": "Please enter email address"
             }
         ] 
     },
