@@ -1,5 +1,6 @@
 package qa.pageobject.thumbnails;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,7 +23,7 @@ public class BlogThumbnail extends BasePage implements Thumbnail {
     @Override
     public void clickLink() {
 
-        link.click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(link)).click();
     }
 
     @Override
