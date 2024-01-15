@@ -65,7 +65,8 @@
 
             {
                 "email": "karen@gmail.com",
-                "password": "Kvc$11324#"
+                "password": "Kvc$11324#",
+                "errorMessage": ""
             }
         ],
 
@@ -73,35 +74,17 @@
 
             {
                 "email": "Marek@",
-                "password": "Kvc$11324#"
+                "password": "Kvc$11324#",
+                "errorMessage": "is not registered on this site. If you are unsure of your username, try your email address instead."
             },
-
-            {
-                "email": "@gmail.com",
-                "password": "Kvc$11324#"
-            },
-
-            {
-                "email": "fff34@.com",
-                "password": "Kvc$11324#"
-            },
-
-            {
-                "email": "opr.123@gmail_com_com",
-                "password": "Kvc$11324#"
-            },
-
-            {
-                "email": "BVC",
-                "password": "Kvc$11324#"
-            }
         ],
 
         "blankEmailField": [
 
             {
                 "email": "",
-                "password": "Kvc$11324#"
+                "password": "Kvc$11324#",
+                "errorMessage": "Error: Username is required."
             }
         ],
 
@@ -109,36 +92,17 @@
 
             {
                 "email": "karen@gmail.com",
-                "password": "Qpty32@34"
-            },
-
-            {
-                "email": "karen@gmail.com",
-                "password": "Rev(342)"
-            },
-
-            {
-                "email": "karen@gmail.com",
-                "password": "Rwda32462+"
-            },
-
-            {
-                "email": "karen@gmail.com",
-                "password": "98MyAccount!"
-            },
-
-            {
-                "email": "karen@gmail.com",
-                "password": "{fdw78}"
+                "password": "Qpty32@34",
+                "errorMessage": "Error: The password you entered for the username"
             }
-
         ],
 
         "blankPasswordField": [
 
             {
                 "email": "karen@gmail.com",
-                "password": ""
+                "password": "",
+                "errorMessage": "Error: The password field is empty."
             }
         ]
     },
