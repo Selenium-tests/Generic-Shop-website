@@ -5,9 +5,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
 import qa.enums.URLs;
-import qa.extentreports.ExtentReportsManager;
 import qa.pageobject.mainmenu.MainMenu;
-import qa.provider.MyDataProvider;
+import qa.dataproviders.DataProviders;
 import qa.data.Link;
 
 public class MainMenuTest extends BaseTest {
@@ -21,10 +20,8 @@ public class MainMenuTest extends BaseTest {
         mainMenu = new MainMenu(getDriver());
     }
 
-    @Test(dataProvider = "mainMenu", dataProviderClass = MyDataProvider.class)
-    public void mainMenu(Link link) throws IllegalAccessException {
-
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the main menu");
+    @Test(dataProvider = "mainMenu", dataProviderClass = DataProviders.class)
+    public void mainMenu(Link link) {
 
         mainMenu.clickLink(link.getLinkText());
 
