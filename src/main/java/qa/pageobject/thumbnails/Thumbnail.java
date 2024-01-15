@@ -6,5 +6,5 @@ public interface Thumbnail {
 
     void setLink(WebElement link);
     void clickLink() throws IllegalAccessException;
-    String getLinkText();
+    String getLinkText() throws IllegalAccessException;
 }
