@@ -7,9 +7,8 @@ import qa.base.BaseTest;
 import qa.enums.ThumbnailCategory;
 import qa.enums.ThumbnailType;
 import qa.enums.URLs;
-import qa.extentreports.ExtentReportsManager;
 import qa.pageobject.thumbnails.Thumbnail;
-import qa.provider.MyDataProvider;
+import qa.dataproviders.DataProviders;
 import qa.data.Link;
 import qa.thumbnailgenerators.ThumbnailProvider;
 
@@ -21,30 +20,27 @@ public class LinksToBlogPagesTest extends BaseTest {
         goToSpecificPage(URLs.HOME_PAGE.getName());
     }
 
+    private Thumbnail getThumbnail(ThumbnailCategory category, Link link) {
+
+        return ThumbnailProvider.getFactory(ThumbnailType.BLOG).createThumbnail(getDriver(), category, link.getLinkText());
+    }
+
     private void check(ThumbnailCategory category, Link link) throws IllegalAccessException {
 
-        Thumbnail thumbnail = ThumbnailProvider
-                .getFactory(ThumbnailType.BLOG)
-                .createThumbnail(getDriver(), category, link.getLinkText());
-
-        thumbnail.clickLink();
+        getThumbnail(category, link).clickLink();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
                 "The page with the address \"" + link.getPageURL() + "\" has not been found");
     }
 
-    @Test(dataProvider = "blogs1", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "blogs1", dataProviderClass = DataProviders.class)
     public void group1(Link link) throws IllegalAccessException {
-
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"BLOGS\" section");
 
         check(ThumbnailCategory.RECENT_1, link);
     }
 
-    @Test(dataProvider = "blogs2", dataProviderClass = MyDataProvider.class)
+    @Test(dataProvider = "blogs2", dataProviderClass = DataProviders.class)
     public void group2(Link link) throws IllegalAccessException {
-
-        ExtentReportsManager.setName("Clicking the \"" + link.getLinkText() + "\" link in the \"BLOGS\" section");
 
         check(ThumbnailCategory.RECENT_2, link);
     }
