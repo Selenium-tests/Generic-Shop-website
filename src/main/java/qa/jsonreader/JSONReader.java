@@ -5,10 +5,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import qa.data.AddressFormData;
-import qa.data.Credentials;
-import qa.data.Link;
-import qa.data.Newsletter;
+import qa.data.*;
 
 import java.io.*;
 import java.util.stream.IntStream;
@@ -53,13 +50,16 @@ public class JSONReader {
         return getStringArray(getJSONArray(key, node));
     }
 
-    public static String[] getQuantityFieldValue(String node) {
+    public static Quantity[] getQuantities(String node) {
 
         JSONArray jsonArray = getJSONArray("quantityFieldValues", node);
 
         return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> jsonArray.getJSONObject(i).getString("value"))
-                .toArray(String[]::new);
+                .mapToObj(i -> new Quantity(
+                        jsonArray.getJSONObject(i).getString("value"),
+                        jsonArray.getJSONObject(i).getString("message")
+                        ))
+                .toArray(Quantity[]::new);
     }
 
     public static Credentials[] getCredentials(String node) {
