@@ -477,49 +477,56 @@
         "min": [
 
             {
-                "value": "1"
+                "value": "1",
+                "message": "has been added to your cart."
             }
         ],
 
         "aboveMin": [
 
             {
-                "value": "2"
+                "value": "2",
+                "message": "has been added to your cart."
             }
         ],
 
         "nominal": [
 
             {
-                "value": "10"
+                "value": "10",
+                "message": "has been added to your cart."
             }
         ],
 
         "belowMax": [
 
             {
-                "value": "9223372036854775806"
+                "value": "9223372036854775806",
+                "message": "has been added to your cart."
             }
         ],
 
         "max": [
 
             {
-                "value": "9223372036854775807"
+                "value": "9223372036854775807",
+                "message": "has been added to your cart."
             }
         ],
 
         "belowZero": [
 
             {
-                "value": "-1"
+                "value": "-1",
+                "message": "Cannot add product with"
             }
         ],
 
         "aboveMax": [
 
             {
-                "value": "9223372036854775808"
+                "value": "9223372036854775808",
+                "message": "Cannot add product with"
             }
         ]
     },
