@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.tools.toby.ToBy;
 
 
 public class AccountNavigation extends BasePage {
@@ -16,10 +17,16 @@ public class AccountNavigation extends BasePage {
     }
 
     @FindBy(className = "woocommerce-MyAccount-navigation")
-    WebElement navigation;
+    WebElement content;
+
+
+    public void waitForContent() throws IllegalAccessException {
+
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(content)));
+    }
 
     public void clickLink(String linkText) throws IllegalAccessException {
 
-        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(navigation.findElement(By.linkText(linkText)))).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(content.findElement(By.linkText(linkText)))).click();
     }
 }
