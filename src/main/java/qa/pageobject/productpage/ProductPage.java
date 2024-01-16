@@ -1,11 +1,12 @@
 package qa.pageobject.productpage;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.tools.toby.ToBy;
 
-import java.util.List;
 
 public class ProductPage extends BasePage {
 
@@ -28,20 +29,20 @@ public class ProductPage extends BasePage {
     WebElement addToCartButton;
 
     @FindBy(className = "woocommerce-message")
-    List<WebElement> message;
+    WebElement message;
 
-    public void clickAddToCart() {
+    public void clickAddToCart() throws IllegalAccessException {
 
-        addToCartButton.click();
+        getWebDriverWait().until(ExpectedConditions.presenceOfElementLocated(ToBy.get(addToCartButton))).click();
     }
-    public String getProductTitle() {
+    public String getProductTitle() throws IllegalAccessException {
 
-        return productTitle.getText();
+        return getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(productTitle))).getText();
     }
 
-    public String getPrice() {
+    public String getPrice() throws IllegalAccessException {
 
-        return price.getText();
+        return getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(price))).getText();
     }
 
     public QuantityField getQuantityField() {
@@ -49,13 +50,13 @@ public class ProductPage extends BasePage {
         return quantityField;
     }
 
-    public boolean isMessageVisible() {
+    public void waitForMessage() throws IllegalAccessException {
 
-        return !(message.isEmpty());
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(message)));
     }
 
     public String getMessageText() {
 
-        return message.get(0).getText();
+        return message.getText();
     }
 }
