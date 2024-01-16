@@ -304,43 +304,43 @@ public class DataProviders {
     @DataProvider(name = "QF_min")
     public Object[] QF_min() {
 
-        return JSONReader.getQuantityFieldValue("min");
+        return JSONReader.getQuantities("min");
     }
 
     @DataProvider(name = "QF_aboveMin")
     public Object[] QF_aboveMin() {
 
-        return JSONReader.getQuantityFieldValue("aboveMin");
+        return JSONReader.getQuantities("aboveMin");
     }
 
     @DataProvider(name = "QF_nominal")
     public Object[] QF_nominal() {
 
-        return JSONReader.getQuantityFieldValue("nominal");
+        return JSONReader.getQuantities("nominal");
     }
 
     @DataProvider(name = "QF_belowMax")
     public Object[] QF_belowMax() {
 
-        return JSONReader.getQuantityFieldValue("belowMax");
+        return JSONReader.getQuantities("belowMax");
     }
 
     @DataProvider(name = "QF_max")
     public Object[] QF_max() {
 
-        return JSONReader.getQuantityFieldValue("max");
+        return JSONReader.getQuantities("max");
     }
 
     @DataProvider(name = "QF_belowZero")
     public Object[] QF_belowZero() {
 
-        return JSONReader.getQuantityFieldValue("belowZero");
+        return JSONReader.getQuantities("belowZero");
     }
 
     @DataProvider(name = "QF_aboveMax")
     public Object[] QF_aboveMax() {
 
-        return JSONReader.getQuantityFieldValue("aboveMax");
+        return JSONReader.getQuantities("aboveMax");
     }
 
     @DataProvider(name = "QF_characters1")
