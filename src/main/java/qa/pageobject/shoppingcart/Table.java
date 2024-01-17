@@ -20,10 +20,6 @@ public class Table extends BasePage {
     @FindBy(xpath = ".//table[@class='shop_table shop_table_responsive cart woocommerce-cart-form__contents']")
     WebElement contents;
 
-    public boolean hasContents() {
-
-        return !(contents.findElements(By.xpath(".//tr[@class='woocommerce-cart-form__cart-item cart_item']")).isEmpty());
-    }
 
     public Row getRow(int index) {
 
