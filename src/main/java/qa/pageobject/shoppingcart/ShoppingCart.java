@@ -2,7 +2,6 @@ package qa.pageobject.shoppingcart;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,9 +24,6 @@ public class ShoppingCart extends BasePage {
     @FindBy(xpath = "//form[@class='woocommerce-cart-form']")
     List<WebElement> contents;
 
-    @FindBy(className = "woocommerce")
-    WebElement woocommerce;
-
     @FindBy(name = "update_cart")
     WebElement updateButton;
 
@@ -37,11 +33,6 @@ public class ShoppingCart extends BasePage {
     public List<WebElement> getContentsLocator() {
 
         return contents;
-    }
-
-    public boolean hasContents() {
-
-        return !(woocommerce.findElements(By.xpath("//table[@class='shop_table shop_table_responsive cart woocommerce-cart-form__contents']")).isEmpty());
     }
 
     public void clickUpdateButton() {
