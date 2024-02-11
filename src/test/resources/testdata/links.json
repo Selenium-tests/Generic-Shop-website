@@ -1,0 +1,252 @@
+{
+    "sliderSection": [
+        {
+            "link": "Shop Now",
+            "url": "https://skleptest.pl/shop/"
+        },
+        {
+            "link": "Learn More",
+            "url": "https://skleptest.pl/test-contact-blablabla/"
+        }
+    ],
+    "mainMenu": [
+        {
+            "link": "menu-item-142",
+            "url": "https://skleptest.pl/"
+        },
+        {
+            "link": "menu-item-128",
+            "url": "https://skleptest.pl/product-category/most-wanted/"
+        },
+        {
+            "link": "menu-item-118",
+            "url": "https://skleptest.pl/test-contact-blablabla/"
+        },
+        {
+            "link": "menu-item-108",
+            "url": "https://skleptest.pl/tag/contact/"
+        },
+        {
+            "link": "menu-item-163",
+            "url": "https://skleptest.pl/tag/all/"
+        }
+    ],
+    "mainMenuDropdownList": [
+        {
+            "link": "menu-item-138",
+            "url": "https://skleptest.pl/shop/"
+        },
+        {
+            "link": "menu-item-125",
+            "url": "https://skleptest.pl/product-category/shirts/"
+        },
+        {
+            "link": "menu-item-126",
+            "url": "https://skleptest.pl/product-category/featured/"
+        },
+        {
+            "link": "menu-item-127",
+            "url": "https://skleptest.pl/product-category/trends/"
+        },
+        {
+            "link": "menu-item-129",
+            "url": "https://skleptest.pl/product-category/scarfs/"
+        },
+        {
+            "link": "menu-item-130",
+            "url": "https://skleptest.pl/product-category/shoes/"
+        },
+        {
+            "link": "menu-item-131",
+            "url": "https://skleptest.pl/product-category/tops/"
+        },
+        {
+            "link": "menu-item-132",
+            "url": "https://skleptest.pl/product-category/blouse/"
+        },
+        {
+            "link": "menu-item-133",
+            "url": "https://skleptest.pl/product-category/jeans/"
+        },
+        {
+            "link": "menu-item-134",
+            "url": "https://skleptest.pl/product-category/dresses/"
+        }
+    ],
+    "accountPage": [
+        {
+            "link": "",
+            "url": "https://skleptest.pl/my-account/"
+        }
+    ],
+    "shoppingCartPage": [
+        {
+            "link": "",
+            "url": "https://skleptest.pl/cart/"
+        }
+    ],
+    "allBlackTops": [
+        {
+            "link": "Black Top",
+            "url": "https://skleptest.pl/product/black-top/"
+        },
+        {
+            "link": "Little Black Top",
+            "url": "https://skleptest.pl/product/little-black-top/"
+        },
+        {
+            "link": "Little Black Shirt",
+            "url": "https://skleptest.pl/product/little-black-shirt/"
+        }
+    ],
+    "highHeelShoes": [
+        {
+            "link": "Amari Shirt",
+            "url": "https://skleptest.pl/product/amari-shirt/"
+        },
+        {
+            "link": "Manago Shirt",
+            "url": "https://skleptest.pl/product/manago-shirt/"
+        },
+        {
+            "link": "Blue Sweater",
+            "url": "https://skleptest.pl/product/blue-sweater/"
+        }
+    ],
+    "mostWanted": [
+        {
+            "link": "FITT Belts",
+            "url": "https://skleptest.pl/product/fitt-belts/"
+        },
+        {
+            "link": "Magnolia Dress",
+            "url": "https://skleptest.pl/product/magnolia-dress/"
+        },
+        {
+            "link": "Rocadi Jeans",
+            "url": "https://skleptest.pl/product/rocadi-jeans/"
+        }
+    ],
+    "scarfs": [
+        {
+            "link": "Istwic Scarf",
+            "url": "https://skleptest.pl/product/istwic-scarf/"
+        },
+        {
+            "link": "Jennifer Scarf",
+            "url": "https://skleptest.pl/product/jennifer-scarf/"
+        },
+        {
+            "link": "Andora Scarf",
+            "url": "https://skleptest.pl/product/andora-scarf/"
+        }
+    ],
+    "onSale": [
+        {
+            "link": "Marina Style",
+            "url": "https://skleptest.pl/product/marina-style/"
+        },
+        {
+            "link": "Amari Shirt",
+            "url": "https://skleptest.pl/product/amari-shirt/"
+        },
+        {
+            "link": "Manago Shirt",
+            "url": "https://skleptest.pl/product/manago-shirt/"
+        }
+    ],
+    "featured": [
+        {
+            "link": "Manago Shirt",
+            "url": "https://skleptest.pl/product/manago-shirt/"
+        },
+        {
+            "link": "Blue Sweater",
+            "url": "https://skleptest.pl/product/blue-sweater/"
+        },
+        {
+            "link": "Asabi – Jeans",
+            "url": "https://skleptest.pl/product/asabi-jeans/"
+        },
+        {
+            "link": "Merchantile – Blouse",
+            "url": "https://skleptest.pl/product/merchantile-blouse/"
+        }
+    ],
+    "trends": [
+        {
+            "link": "Marina Style",
+            "url": "https://skleptest.pl/product/marina-style/"
+        },
+        {
+            "link": "Amari Shirt",
+            "url": "https://skleptest.pl/product/amari-shirt/"
+        },
+        {
+            "link": "Marcara Sleeveless Dress",
+            "url": "https://skleptest.pl/product/marcara-sleeveless-dress/"
+        },
+        {
+            "link": "Black Top",
+            "url": "https://skleptest.pl/product/black-top/"
+        }
+    ],
+    "blogs_1": [
+        {
+            "link": "Best Fabrics For Your Dream…",
+            "url": "https://skleptest.pl/best-fabrics-dream-dress-dare-try/"
+        },
+        {
+            "link": "Latest Trends For Autumn Are…",
+            "url": "https://skleptest.pl/latest-trends-autumn/"
+        }
+    ],
+    "blogs_2": [
+        {
+            "link": "Long Legs? No Longer A…",
+            "url": "https://skleptest.pl/long-legs-no-longer-myth-check/"
+        },
+        {
+            "link": "Jackets For The Soul. What…",
+            "url": "https://skleptest.pl/jackets-soul-color/"
+        }
+    ],
+    "accountNavigation": [
+        {
+            "link": "Dashboard",
+            "url": "https://skleptest.pl/my-account/"
+        },
+        {
+            "link": "Orders",
+            "url": "https://skleptest.pl/my-account/orders/"
+        },
+        {
+            "link": "Downloads",
+            "url": "https://skleptest.pl/my-account/downloads/"
+        },
+        {
+            "link": "Addresses",
+            "url": "https://skleptest.pl/my-account/edit-address/"
+        },
+        {
+            "link": "Account details",
+            "url": "https://skleptest.pl/my-account/details/"
+        },
+        {
+            "link": "Logout",
+            "url": "https://skleptest.pl/my-account/customer-logout/"
+        }
+    ],
+    "billingAddressForm": [
+        {
+            "link": "",
+            "url": "https://skleptest.pl/my-account/edit-address/billing/"
+        }
+    ],
+    "shippingAddressForm": [
+        {
+            "link": "",
+            "url": "https://skleptest.pl/my-account/edit-address/shipping/"
+        }
+    ]
+}

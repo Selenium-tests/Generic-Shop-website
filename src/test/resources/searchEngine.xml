@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Search engine">
+
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <test name="Searching products">
+        <parameter name="fileName" value="GSS_Phrases"/>
+
+        <classes>
+            <class name="tests.homepage.SearchEngineTest">
+                <methods>
+                    <exclude name="naughtyStrings"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
