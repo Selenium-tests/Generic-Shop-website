@@ -4,6 +4,12 @@ public class DataProviderNames {
 
     public static final String CORRECT = "correct";
     public static final String INCORRECT = "incorrect";
+    public static final String INCORRECT_USERNAME = "incorrectUsername";
+    public static final String INCORRECT_PASSWORD = "incorrectPassword";
+    public static final String BLANK_USERNAME_FIELD = "blankUsernameField";
+    public static final String BLANK_PASSWORD_FIELD = "blankPasswordField";
+    public static final String INCORRECT_EMAIL = "incorrectEmail";
+    public static final String BLANK_EMAIL_FIELD = "blankEmailField";
     public static final String PARTIAL = "partial";
     public static final String NAUGHTY_STRINGS = "naughtyStrings";
     public static final String SLIDER_SECTION = "sliderSection";
