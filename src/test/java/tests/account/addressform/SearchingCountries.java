@@ -4,13 +4,14 @@ import qa.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.dataproviders.CountriesDataProviders;
 import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.CountryDropdownList;
-import qa.dataproviders.DataProviders;
+import qa.support.dataprovidernames.DataProviderNames;
 
 
-public class CountryDropdownListTest extends BaseTest {
+public class SearchingCountries extends BaseTest {
 
     private CountryDropdownList countryDropdownList;
 
@@ -30,7 +31,7 @@ public class CountryDropdownListTest extends BaseTest {
         countryDropdownList.setCountry(countryName);
     }
 
-    @Test(dataProvider = "correctCountryName", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = CountriesDataProviders.class)
     public void correctCountryName(String countryName) throws IllegalAccessException {
 
         fill(countryName);
@@ -38,7 +39,7 @@ public class CountryDropdownListTest extends BaseTest {
         Assert.assertFalse(countryDropdownList.isAlertDisplayed(), "The alert is displayed");
     }
 
-    @Test(dataProvider = "incorrectCountryName", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.INCORRECT, dataProviderClass = CountriesDataProviders.class)
     public void incorrectCountryName(String countryName) throws IllegalAccessException {
 
         fill(countryName);
