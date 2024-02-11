@@ -4,10 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.dataproviders.LinksDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.mainmenu.MainMenu;
-import qa.dataproviders.DataProviders;
-import qa.data.Link;
+import qa.data.LinkData;
+import qa.support.dataprovidernames.DataProviderNames;
 
 public class MainMenuTest extends BaseTest {
 
@@ -20,11 +21,11 @@ public class MainMenuTest extends BaseTest {
         mainMenu = new MainMenu(getDriver());
     }
 
-    @Test(dataProvider = "mainMenu", dataProviderClass = DataProviders.class)
-    public void mainMenu(Link link) {
+    @Test(dataProvider = DataProviderNames.MAIN_MENU, dataProviderClass = LinksDataProviders.class)
+    public void mainMenu(LinkData linkData) {
 
-        mainMenu.clickLink(link.getLinkText());
+        mainMenu.clickLink(linkData.getLink());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL());
+        Assert.assertEquals(getDriver().getCurrentUrl(), linkData.getUrl());
     }
 }

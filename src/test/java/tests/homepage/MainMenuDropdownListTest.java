@@ -4,10 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.dataproviders.LinksDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.mainmenu.DropdownList;
-import qa.dataproviders.DataProviders;
-import qa.data.Link;
+import qa.data.LinkData;
+import qa.support.dataprovidernames.DataProviderNames;
 
 public class MainMenuDropdownListTest extends BaseTest {
 
@@ -20,12 +21,12 @@ public class MainMenuDropdownListTest extends BaseTest {
         dropdownList = new DropdownList(getDriver());
     }
 
-    @Test(dataProvider = "mainMenuDropdownList", dataProviderClass = DataProviders.class)
-    void link(Link link) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.MAIN_MENU_DROPDOWN_LIST, dataProviderClass = LinksDataProviders.class)
+    void link(LinkData linkData) throws IllegalAccessException {
 
         dropdownList.hoverParent();
-        dropdownList.clickElement(link.getLinkText());
+        dropdownList.clickElement(linkData.getLink());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL());
+        Assert.assertEquals(getDriver().getCurrentUrl(), linkData.getUrl());
     }
 }
