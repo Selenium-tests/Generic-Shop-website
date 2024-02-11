@@ -3,13 +3,12 @@ package qa.base;
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import qa.browsermanager.BrowserManager;
 import qa.driver.WebDriverProvider;
 import qa.enums.Browser;
-import qa.jsonreader.JSONReader;
+import qa.testdataloader.TestdataLoader;
+
 import java.io.IOException;
 
 
@@ -17,10 +16,14 @@ public class BaseTest {
 
     private static WebDriver driver;
 
+    @Parameters({"fileName"})
     @BeforeClass
-    public void readJSONFile() throws JSONException, IOException, ParseException {
+    public void readJSONFile(@Optional("noFileName") String fileName) throws JSONException, IOException, ParseException {
 
-        JSONReader.read();
+        if (!fileName.equals("noFileName")) {
+
+            TestdataLoader.load(fileName);
+        }
     }
 
     @BeforeMethod
