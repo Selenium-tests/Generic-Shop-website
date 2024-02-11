@@ -4,11 +4,12 @@ import qa.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.dataproviders.CredentialsDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.account.AccountNavigation;
 import qa.pageobject.LoginForm;
-import qa.dataproviders.DataProviders;
 import qa.data.Credentials;
+import qa.support.dataprovidernames.DataProviderNames;
 
 public class LoginTest extends BaseTest {
 
@@ -23,7 +24,7 @@ public class LoginTest extends BaseTest {
 
     private void fill(Credentials credentials) throws IllegalAccessException {
 
-        loginForm.setUsername(credentials.getEmail());
+        loginForm.setUsername(credentials.getEmailOrUsername());
         loginForm.setPassword(credentials.getPassword());
         loginForm.clickLoginButton();
     }
@@ -56,35 +57,35 @@ public class LoginTest extends BaseTest {
 
         fill(credentials);
         waitForErrorMessage();
-        checkErrorMessageContent(credentials.getErrorMessage());
+        checkErrorMessageContent(credentials.getMessage());
     }
 
-    @Test(priority = 1, dataProvider = "incorrectEmailFormat", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.INCORRECT_USERNAME, dataProviderClass = CredentialsDataProviders.class)
     public void incorrectUsername(Credentials credentials) throws IllegalAccessException {
 
         actionsForIncorrectCredentials(credentials);
     }
 
-    @Test(priority = 3, dataProvider = "blankEmailField", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = CredentialsDataProviders.class)
     public void blankUsernameField(Credentials credentials) throws IllegalAccessException {
 
         actionsForIncorrectCredentials(credentials);
     }
 
-    @Test(priority = 2, dataProvider = "incorrectPassword", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.INCORRECT_PASSWORD, dataProviderClass = CredentialsDataProviders.class)
     public void incorrectPassword(Credentials credentials) throws IllegalAccessException {
 
         actionsForIncorrectCredentials(credentials);
     }
 
-    @Test(priority = 4, dataProvider = "blankPasswordField", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.BLANK_PASSWORD_FIELD, dataProviderClass = CredentialsDataProviders.class)
     public void blankPasswordField(Credentials credentials) throws IllegalAccessException {
 
         actionsForIncorrectCredentials(credentials);
     }
 
-    @Test(priority = 5, dataProvider = "correctCredentials", dataProviderClass = DataProviders.class)
-    public void correctCredentials(Credentials credentials) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    public void correct(Credentials credentials) throws IllegalAccessException {
 
         fill(credentials);
         waitForAccountPage();
