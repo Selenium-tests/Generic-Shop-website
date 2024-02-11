@@ -1,4 +1,4 @@
-package qa.tools.jsfocus;
+package qa.support.jsfocus;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

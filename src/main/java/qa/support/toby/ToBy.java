@@ -1,10 +1,9 @@
-package qa.tools.toby;
+package qa.support.toby;
 
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
-import org.xml.sax.Locator;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;

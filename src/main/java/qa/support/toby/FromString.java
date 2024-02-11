@@ -1,4 +1,4 @@
-package qa.tools.toby;
+package qa.support.toby;
 
 import org.openqa.selenium.By;
 
