@@ -54,10 +54,15 @@ public class LinksDataProviders {
         return ModelsBuilder.getLinkData(DataProviderNames.FEATURED);
     }
 
-    @DataProvider(name = "trendsProducts")
+    @DataProvider(name = DataProviderNames.TRENDS)
     public Object[] trends() {
 
-        return ModelsBuilder.getLinkData("trendsProducts");
+        return ModelsBuilder.getLinkData(DataProviderNames.TRENDS);
     }
 
+    @DataProvider(name = DataProviderNames.ACCOUNT_NAVIGATION)
+    public Object[] accountNavigation() {
+
+        return ModelsBuilder.getLinkData(DataProviderNames.ACCOUNT_NAVIGATION);
+    }
 }
