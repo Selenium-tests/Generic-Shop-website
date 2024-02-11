@@ -5,12 +5,12 @@ import org.json.JSONException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.dataproviders.LinksDataProviders;
 import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.account.AccountPage;
-import qa.dataproviders.DataProviders;
-import qa.data.Link;
-
+import qa.data.LinkData;
+import qa.support.dataprovidernames.DataProviderNames;
 
 public class AccountNavigationTest extends BaseTest {
 
@@ -24,12 +24,12 @@ public class AccountNavigationTest extends BaseTest {
         Authentication.loginWithCredentials(getDriver());
     }
 
-    @Test(dataProvider = "accountNavigation", dataProviderClass = DataProviders.class)
-    public void link(Link link) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.ACCOUNT_NAVIGATION, dataProviderClass = LinksDataProviders.class)
+    public void link(LinkData linkData) throws IllegalAccessException {
 
-        accountPage.getAccountNavigation().clickLink(link.getLinkText());
+        accountPage.getAccountNavigation().clickLink(linkData.getLink());
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
-                "The page with the address \"" + link.getPageURL() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), linkData.getUrl(),
+                "The page with the address \"" + linkData.getUrl() + "\" has not been found");
     }
 }
