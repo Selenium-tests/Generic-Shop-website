@@ -5,7 +5,7 @@ import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import qa.tools.toby.ToBy;
+import qa.support.toby.ToBy;
 
 public class SearchEngine extends BasePage {
 
