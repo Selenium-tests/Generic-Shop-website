@@ -11,7 +11,7 @@ import qa.pageobject.addressform.CountryDropdownList;
 import qa.support.dataprovidernames.DataProviderNames;
 
 
-public class SearchingCountries extends BaseTest {
+public class SearchingCountriesTest extends BaseTest {
 
     private CountryDropdownList countryDropdownList;
 
@@ -28,7 +28,7 @@ public class SearchingCountries extends BaseTest {
     private void fill(String countryName) throws IllegalAccessException {
 
         countryDropdownList.clickCountryButton();
-        countryDropdownList.setCountry(countryName);
+        countryDropdownList.typeCountry(countryName);
     }
 
     @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = CountriesDataProviders.class)
