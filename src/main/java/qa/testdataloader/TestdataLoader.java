@@ -29,4 +29,9 @@ public class TestdataLoader {
 
         source = fetch(filename);
     }
+
+    public static String loadQuickly(String filename) {
+
+        return fetch(filename);
+    }
 }
