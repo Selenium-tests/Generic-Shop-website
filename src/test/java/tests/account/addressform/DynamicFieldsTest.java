@@ -4,13 +4,14 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.BaseTest;
+import qa.dataproviders.DynamicFieldsDataProviders;
 import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
-import qa.dataproviders.DataProviders;
+import qa.support.dataprovidernames.DataProviderNames;
 import qa.utils.AccessThrowingConsumer;
 
-public class AdditionalFieldsTest extends BaseTest {
+public class DynamicFieldsTest extends BaseTest {
 
     private AddressForm addressForm;
 
@@ -26,9 +27,9 @@ public class AdditionalFieldsTest extends BaseTest {
 
     private void setCountry(String country) throws IllegalAccessException {
 
-        addressForm.getCountryDropdownList().clickCountryButton();
+        //addressForm.getCountryDropdownList().clickCountryButton();
         addressForm.getCountryDropdownList().setCountry(country);
-        addressForm.getCountryDropdownList().pressEnter();
+        //addressForm.getCountryDropdownList().pressEnter();
     }
 
     private void checkForAdditionalItemVisibility(AccessThrowingConsumer<AddressForm> consumer) {
@@ -49,7 +50,7 @@ public class AdditionalFieldsTest extends BaseTest {
         }
     }
 
-    private void checkAdditionalLabelText(String expectedLabelText) throws IllegalAccessException {
+    private void checkAdditionalLabelText(String expectedLabelText) {
 
         Assert.assertEquals(addressForm.getAdditionalLabelText(), expectedLabelText,
                     "Incorrect additional field name");
@@ -63,67 +64,67 @@ public class AdditionalFieldsTest extends BaseTest {
         checkAdditionalLabelText(labelText);
     }
 
-    @Test(dataProvider = "stateCountyField", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.STATE_COUNTY_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
     public void stateCountyField(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalField, "State / County *");
     }
 
-    @Test(dataProvider = "stateCountyDropdownList", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.STATE_COUNTY_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
     public void stateCountyDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State / County *");
     }
 
-    @Test(dataProvider = "countyDropdownList", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.COUNTY_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
     public void countyDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "County *");
     }
 
-    @Test(dataProvider = "stateDropdownList", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.STATE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
     public void stateDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State *");
     }
 
-    @Test(dataProvider = "districtDropdownList", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.DISTRICT_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
     public void districtDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "District *");
     }
 
-    @Test(dataProvider = "provinceDropdownList", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.PROVINCE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
     public void provinceDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Province *");
     }
 
-    @Test(dataProvider = "regionField", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.REGION_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
     public void regionField(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalField, "Region *");
     }
 
-    @Test(dataProvider = "regionDropdownList", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.REGION_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
     public void regionDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Region");
     }
 
-    @Test(dataProvider = "prefectureDropdownList", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.PREFECTURE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
     public void prefectureDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Prefecture *");
     }
 
-    @Test(dataProvider = "municipalityField", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.MUNICIPALITY_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
     public void municipalityField(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalField, "Municipality");
     }
 
-    @Test(dataProvider = "stateZoneDropdownList", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = DataProviderNames.STATE_ZONE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
     public void stateZoneDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State / Zone *");
