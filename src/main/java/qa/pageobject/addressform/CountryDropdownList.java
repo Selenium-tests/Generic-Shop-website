@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.support.toby.ToBy;
 
 import java.util.List;
 
@@ -31,13 +32,18 @@ public class CountryDropdownList extends BasePage {
 
     public void clickCountryButton() {
 
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(countryButton)).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(countryButton)).click();
     }
 
-    public void setCountry(String countryName) throws IllegalAccessException {
+    public void setCountry(String country) throws IllegalAccessException {
 
         Select select = new Select(selectList);
-        select.selectByVisibleText(countryName);
+        select.selectByVisibleText(country);
+    }
+
+    public void typeCountry(String country) throws IllegalAccessException {
+
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(searchField))).sendKeys(country);
     }
 
     public String getCountry() {
