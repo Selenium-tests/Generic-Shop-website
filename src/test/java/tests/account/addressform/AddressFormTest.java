@@ -2,14 +2,15 @@ package tests.account.addressform;
 
 import org.testng.Assert;
 import qa.base.BaseTest;
+import qa.dataproviders.AddressDataProviders;
 import qa.enums.URLs;
 import qa.helpers.AddressFormFiller;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
-import qa.dataproviders.DataProviders;
-import qa.data.AddressFormData;
+import qa.data.AddressData;
+import qa.support.dataprovidernames.DataProviderNames;
 
 public class AddressFormTest extends BaseTest {
 
@@ -23,9 +24,9 @@ public class AddressFormTest extends BaseTest {
         goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
     }
 
-    private void fill(AddressFormData data) throws IllegalAccessException {
+    private void fill(AddressData data) throws IllegalAccessException {
 
-        addressForm = AddressFormFiller.get(data, getDriver(), false);
+        addressForm = AddressFormFiller.get(data, getDriver());
         addressForm.clickSaveAddressButton();
     }
 
@@ -43,19 +44,19 @@ public class AddressFormTest extends BaseTest {
         }
     }
 
-    private void checkErrorMessageContent(AddressFormData data) {
+    private void checkErrorMessageContent(AddressData data) {
 
         Assert.assertEquals(addressForm.getErrorMessageText(), data.getErrorMessage(),
                 "Incorrect error message content");
     }
 
-    private void checkValidationMessageContent(AddressFormData data) {
+    private void checkValidationMessageContent(AddressData data) {
 
         Assert.assertTrue(addressForm.getValidationMessageText().contains(data.getErrorMessage()),
                 "The validation message does not contain \"" + data.getErrorMessage() + "\"");
     }
 
-    private void action(AddressFormData data) throws IllegalAccessException {
+    private void action(AddressData data) throws IllegalAccessException {
 
         fill(data);
         checkUrlAddress(URLs.BILLING_ADDRESS_FORM);
@@ -63,83 +64,97 @@ public class AddressFormTest extends BaseTest {
         checkErrorMessageContent(data);
     }
 
-    @Test(dataProvider = "AF_correctAddress", dataProviderClass = DataProviders.class)
-    public void correctAddressData(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = AddressDataProviders.class)
+    public void correct(AddressData data) throws IllegalAccessException {
 
         fill(data);
         checkUrlAddress(URLs.EDIT_ADDRESS_NAVIGATION);
     }
 
-    @Test(dataProvider = "AF_incorrectFirstName", dataProviderClass = DataProviders.class)
-    public void incorrectFirstName(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.BLANK_COMPANY_FIELD, dataProviderClass = AddressDataProviders.class)
+    public void blankCompanyField(AddressData data) throws IllegalAccessException {
+
+        fill(data);
+        checkUrlAddress(URLs.EDIT_ADDRESS_NAVIGATION);
+    }
+
+    @Test(dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = AddressDataProviders.class)
+    public void incorrectFirstName(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_incorrectLastName", dataProviderClass = DataProviders.class)
-    public void incorrectLastName(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = AddressDataProviders.class)
+    public void incorrectLastName(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_incorrectPostcode", dataProviderClass = DataProviders.class)
-    public void incorrectPostcode(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.INCORRECT_POSTCODE, dataProviderClass = AddressDataProviders.class)
+    public void incorrectPostcode(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_incorrectPhoneNumber", dataProviderClass = DataProviders.class)
-    public void incorrectPhoneNumber(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = AddressDataProviders.class)
+    public void incorrectPhone(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_incorrectEmail", dataProviderClass = DataProviders.class)
-    public void incorrectEmail(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.INCORRECT_EMAIL, dataProviderClass = AddressDataProviders.class)
+    public void incorrectEmail(AddressData data) throws IllegalAccessException {
 
         fill(data);
         checkUrlAddress(URLs.BILLING_ADDRESS_FORM);
         checkValidationMessageContent(data);
     }
 
-    @Test(dataProvider = "AF_withoutFirstName", dataProviderClass = DataProviders.class)
-    public void blankFirstNameField(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.BLANK_FIRST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
+    public void blankFirstNameField(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_withoutLastName", dataProviderClass = DataProviders.class)
-    public void blankLastNameField(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.BLANK_LAST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
+    public void blankLastNameField(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_withoutAddress", dataProviderClass = DataProviders.class)
-    public void blankAddressField(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD, dataProviderClass = AddressDataProviders.class)
+    public void blankAddressField(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_withoutCity", dataProviderClass = DataProviders.class)
-    public void blankCityField(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD_LINE_2, dataProviderClass = AddressDataProviders.class)
+    public void blankAddressFieldLine2(AddressData data) throws IllegalAccessException {
+
+        fill(data);
+        checkUrlAddress(URLs.EDIT_ADDRESS_NAVIGATION);
+    }
+
+    @Test(dataProvider = DataProviderNames.BLANK_CITY_FIELD, dataProviderClass = AddressDataProviders.class)
+    public void blankCityField(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_withoutPostcode", dataProviderClass = DataProviders.class)
-    public void blankPostcodeField(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.BLANK_POSTCODE_FIELD, dataProviderClass = AddressDataProviders.class)
+    public void blankPostcodeField(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_withoutPhone", dataProviderClass = DataProviders.class)
-    public void blankPhoneField(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.BLANK_PHONE_FIELD, dataProviderClass = AddressDataProviders.class)
+    public void blankPhoneField(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
 
-    @Test(dataProvider = "AF_withoutEmail", dataProviderClass = DataProviders.class)
-    public void blankEmailField(AddressFormData data) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.BLANK_EMAIL_FIELD, dataProviderClass = AddressDataProviders.class)
+    public void blankEmailField(AddressData data) throws IllegalAccessException {
 
         action(data);
     }
