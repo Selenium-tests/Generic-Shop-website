@@ -5,7 +5,7 @@ import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import qa.tools.toby.ToBy;
+import qa.support.toby.ToBy;
 
 
 
@@ -145,6 +145,51 @@ public class AddressForm extends BasePage {
     public void waitForErrorMessage() throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(errorMessage)));
+    }
+
+    public String getFirstName() {
+
+        return firstNameField.getText();
+    }
+
+    public String getLastName() {
+
+        return lastNameField.getText();
+    }
+
+    public String getCompany() {
+
+        return companyField.getText();
+    }
+
+    public String getAddress() {
+
+        return addressField1.getText();
+    }
+
+    public String getAddressLine2() {
+
+        return addressField2.getText();
+    }
+
+    public String getCity() {
+
+        return cityField.getText();
+    }
+
+    public String getPostcode() {
+
+        return postcodeField.getText();
+    }
+
+    public String getPhone() {
+
+        return phoneField.getText();
+    }
+
+    public String getEmail() {
+
+        return emailField.getText();
     }
 
     public String getAdditionalLabelText() {
