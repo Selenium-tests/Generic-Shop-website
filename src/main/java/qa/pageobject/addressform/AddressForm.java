@@ -71,47 +71,47 @@ public class AddressForm extends BasePage {
         element.sendKeys(text);
     }
 
-    public void setFirstName(String firstName) throws IllegalAccessException {
+    public void setFirstName(String firstName) {
 
         clearAndFill(firstNameField, firstName);
     }
 
-    public void setLastName(String lastName) throws IllegalAccessException {
+    public void setLastName(String lastName) {
 
         clearAndFill(lastNameField, lastName);
     }
 
-    public void setCompany(String company) throws IllegalAccessException {
+    public void setCompany(String company) {
 
         clearAndFill(companyField, company);
     }
 
-    public void setAddress_1(String address) throws IllegalAccessException {
+    public void setAddress_1(String address) {
 
         clearAndFill(addressField1, address);
     }
 
-    public void setAddress_2(String address) throws IllegalAccessException {
+    public void setAddress_2(String address) {
 
         clearAndFill(addressField2, address);
     }
 
-    public void setCity(String city) throws IllegalAccessException {
+    public void setCity(String city) {
 
         clearAndFill(cityField, city);
     }
 
-    public void setPostcode(String postcode) throws IllegalAccessException {
+    public void setPostcode(String postcode) {
 
         clearAndFill(postcodeField, postcode);
     }
 
-    public void setPhone(String phone) throws IllegalAccessException {
+    public void setPhone(String phone) {
 
         clearAndFill(phoneField, phone);
     }
 
-    public void setEmail(String email) throws IllegalAccessException {
+    public void setEmail(String email) {
 
         clearAndFill(emailField, email);
     }
@@ -149,47 +149,47 @@ public class AddressForm extends BasePage {
 
     public String getFirstName() {
 
-        return firstNameField.getText();
+        return firstNameField.getAttribute("value");
     }
 
     public String getLastName() {
 
-        return lastNameField.getText();
+        return lastNameField.getAttribute("value");
     }
 
     public String getCompany() {
 
-        return companyField.getText();
+        return companyField.getAttribute("value");
     }
 
     public String getAddress() {
 
-        return addressField1.getText();
+        return addressField1.getAttribute("value");
     }
 
     public String getAddressLine2() {
 
-        return addressField2.getText();
+        return addressField2.getAttribute("value");
     }
 
     public String getCity() {
 
-        return cityField.getText();
+        return cityField.getAttribute("value");
     }
 
     public String getPostcode() {
 
-        return postcodeField.getText();
+        return postcodeField.getAttribute("value");
     }
 
     public String getPhone() {
 
-        return phoneField.getText();
+        return phoneField.getAttribute("value");
     }
 
     public String getEmail() {
 
-        return emailField.getText();
+        return emailField.getAttribute("value");
     }
 
     public String getAdditionalLabelText() {
