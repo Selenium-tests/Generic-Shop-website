@@ -29,6 +29,7 @@ public class AddressFormTest extends BaseTest {
 
         SoftAssert softAssert = new SoftAssert();
 
+        softAssert.assertEquals(addressForm.getCountryDropdownList().getCountry(), data.getCountry(), "Incorrect country");
         softAssert.assertEquals(addressForm.getFirstName(), data.getFirstName(), "Incorrect first name");
         softAssert.assertEquals(addressForm.getLastName(), data.getLastName(), "Incorrect last name");
         softAssert.assertEquals(addressForm.getCompany(), data.getCompanyName(), "Incorrect company");
