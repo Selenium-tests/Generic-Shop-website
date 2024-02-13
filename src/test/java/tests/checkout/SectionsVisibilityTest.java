@@ -7,10 +7,8 @@ import qa.base.BaseTest;
 import qa.enums.URLs;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.checkoutpage.CheckoutPage;
-import qa.dataproviders.DataProviders;
 
-
-public class FunctionalitiesTest extends BaseTest {
+public class SectionsVisibilityTest extends BaseTest {
 
     private CheckoutPage checkoutPage;
 
@@ -59,9 +57,10 @@ public class FunctionalitiesTest extends BaseTest {
         }
     }
 
-    @Test(dataProvider = "orderComments", dataProviderClass = DataProviders.class)
-    public void orderCommentsField(String comment) throws IllegalAccessException {
+    @Test
+    public void orderCommentsField() throws IllegalAccessException {
 
+        String comment = "This is the comment";
         checkoutPage.getOrderCommentsField().setComment(comment);
 
         Assert.assertEquals(checkoutPage.getOrderCommentsField().getComment(), comment,
