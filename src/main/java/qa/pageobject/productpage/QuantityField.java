@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
-import qa.tools.toby.ToBy;
+import qa.support.toby.ToBy;
 
 
 public class QuantityField extends BasePage {
@@ -23,6 +23,16 @@ public class QuantityField extends BasePage {
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(field)));
         field.clear();
         field.sendKeys(quantity);
+    }
+
+    public String getMin() {
+
+        return field.getAttribute("min");
+    }
+
+    public String getMax() {
+
+        return field.getAttribute("max");
     }
 
     public String getValidationMessage() {
