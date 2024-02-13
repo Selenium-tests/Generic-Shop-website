@@ -1,4 +1,4 @@
-package tests.checkout;
+package tests.shoppingcart;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -7,8 +7,6 @@ import qa.base.BaseTest;
 import qa.enums.URLs;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.shoppingcart.ShoppingCart;
-import qa.dataproviders.DataProviders;
-import qa.data.Link;
 
 public class CheckoutButtonTest extends BaseTest {
 
@@ -20,13 +18,13 @@ public class CheckoutButtonTest extends BaseTest {
         goToSpecificPage(URLs.SHOPPING_CART.getName());
     }
 
-    @Test(dataProvider = "checkoutPage", dataProviderClass = DataProviders.class)
-    public void clickingCheckoutButton(Link link) throws IllegalAccessException {
+    @Test
+    public void clickingCheckoutButton() {
 
         ShoppingCart shoppingCart = new ShoppingCart(getDriver());
         shoppingCart.clickCheckoutButton();
 
-        Assert.assertEquals(getDriver().getCurrentUrl(), link.getPageURL(),
-                "The page with the address \"" + link.getPageURL() + "\" has not been found");
+        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.CHECKOUT_PAGE.getName(),
+                "The page with the address \"" + URLs.CHECKOUT_PAGE.getName() + "\" has not been found");
     }
 }
