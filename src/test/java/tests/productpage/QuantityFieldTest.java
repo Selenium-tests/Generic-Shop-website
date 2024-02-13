@@ -4,10 +4,12 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.base.ValidationMessageTest;
-import qa.data.Quantity;
+import qa.dataproviders.SpecialCharactersDataProvider;
 import qa.enums.URLs;
 import qa.pageobject.productpage.ProductPage;
-import qa.dataproviders.DataProviders;
+import qa.support.dataprovidernames.DataProviderNames;
+
+import java.math.BigInteger;
 
 
 public class QuantityFieldTest extends ValidationMessageTest {
@@ -24,6 +26,7 @@ public class QuantityFieldTest extends ValidationMessageTest {
     private void fill(String quantity) throws IllegalAccessException {
 
         productPage.getQuantityField().setQuantity(quantity);
+        productPage.clickAddToCart();
     }
 
     private void checkMessageVisibility() {
@@ -37,72 +40,69 @@ public class QuantityFieldTest extends ValidationMessageTest {
 
     private void checkMessageContent(String expectedMessageContent) {
 
-        Assert.assertTrue(productPage.getMessageText().contains(expectedMessageContent),
+        Assert.assertEquals(productPage.getMessageText(), expectedMessageContent,
                 "The message does not contain the \"" + expectedMessageContent + "\"");
     }
 
-    private void actions(Quantity quantity) throws IllegalAccessException {
+    private void actions(String value, String expectedMessage) throws IllegalAccessException {
 
-        fill(quantity.getValue());
+        fill(value);
         checkMessageVisibility();
-        checkMessageContent(quantity.getMessage());
+        checkMessageContent(expectedMessage);
     }
 
-    @Test(dataProvider = "QF_min", dataProviderClass = DataProviders.class)
-    public void minimumValue(Quantity quantity) throws IllegalAccessException {
+    @Test
+    public void belowMin() throws IllegalAccessException {
 
-        actions(quantity);
-    }
-
-    @Test(dataProvider = "QF_aboveMin", dataProviderClass = DataProviders.class)
-    public void aboveMinimum(Quantity quantity) throws IllegalAccessException {
-
-        actions(quantity);
-    }
-
-    @Test(dataProvider = "QF_nominal", dataProviderClass = DataProviders.class)
-    public void nominal(Quantity quantity) throws IllegalAccessException {
-
-        actions(quantity);
-    }
-
-    @Test(dataProvider = "QF_belowMax", dataProviderClass = DataProviders.class)
-    public void belowMaximum(Quantity quantity) throws IllegalAccessException {
-
-        actions(quantity);
-    }
-
-    @Test(dataProvider = "QF_max", dataProviderClass = DataProviders.class)
-    public void maximum(Quantity quantity) throws IllegalAccessException {
-
-        actions(quantity);
-    }
-
-    @Test(dataProvider = "QF_belowZero", dataProviderClass = DataProviders.class)
-    public void belowZero(Quantity quantity) throws IllegalAccessException {
-
-        actions(quantity);
-    }
-
-    @Test(dataProvider = "QF_aboveMax", dataProviderClass = DataProviders.class)
-    public void aboveMaximum(Quantity quantity) throws IllegalAccessException {
-
-        actions(quantity);
-    }
-
-    @Test(dataProvider = "QF_characters1", dataProviderClass = DataProviders.class)
-    public void specialCharacters1(String value) throws IllegalAccessException {
-
+        String value = String.valueOf(Long.parseLong(productPage.getQuantityField().getMin()) - 1);
         fill(value);
         checkValidationMessageVisibility(productPage.getQuantityField());
-        checkValidationMessageContent( productPage.getQuantityField(), "Wpisz liczbę");
     }
 
-    @Test(dataProvider = "QF_characters2", dataProviderClass = DataProviders.class)
-    public void specialCharacters2(String value) throws IllegalAccessException {
+    @Test
+    public void min() throws IllegalAccessException {
 
-        fill(value);
+        actions(productPage.getQuantityField().getMin(), "Please enter valid quantity");
+    }
+
+    @Test
+    public void aboveMin() throws IllegalAccessException {
+
+        String value = String.valueOf(Long.parseLong(productPage.getQuantityField().getMin()) + 1);
+        actions(value, "Please enter valid quantity");
+    }
+
+    @Test
+    public void belowMax() throws IllegalAccessException {
+
+        String value = String.valueOf(Long.MAX_VALUE - 1);
+        actions(value, value + " × “" + productPage.getProductTitle() + "” have been added to your cart.");
+    }
+
+    @Test
+    public void max() throws IllegalAccessException {
+
+        String value = String.valueOf(Long.MAX_VALUE);
+        actions(value, value + " × “" + productPage.getProductTitle() + "” have been added to your cart.");
+    }
+
+    @Test
+    public void aboveMax() throws IllegalAccessException {
+
+        String value = String.valueOf(BigInteger.valueOf(Long.MAX_VALUE).add(BigInteger.ONE));
+        actions(value, String.valueOf(Long.MAX_VALUE) + " × “" + productPage.getProductTitle() + "” have been added to your cart.");
+    }
+
+    @Test(dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
+    public void specialCharacters(String character) throws IllegalAccessException {
+
+        fill(character);
         checkValidationMessageVisibility(productPage.getQuantityField());
-        checkValidationMessageContent(productPage.getQuantityField(), "Podaj prawidłową wartość. Dwie najbliższe prawidłowe wartości");
+    }
+
+    @Test
+    public void blankQuantityField() throws IllegalAccessException {
+
+        actions("", "Please enter a quantity");
     }
 }

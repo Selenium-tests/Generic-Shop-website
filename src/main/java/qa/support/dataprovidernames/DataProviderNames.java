@@ -54,5 +54,6 @@ public class DataProviderNames {
     public static final String PREFECTURE_DROPDOWN_LIST = "prefectureDropdownList";
     public static final String MUNICIPALITY_FIELD = "municipalityField";
     public static final String STATE_ZONE_DROPDOWN_LIST = "stateZoneDropdownList";
+    public static final String SPECIAL_CHARACTERS = "specialCharacters";
 
 }
