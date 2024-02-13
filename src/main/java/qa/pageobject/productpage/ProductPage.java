@@ -5,7 +5,7 @@ import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import qa.tools.toby.ToBy;
+import qa.support.toby.ToBy;
 
 
 public class ProductPage extends BasePage {
@@ -57,6 +57,6 @@ public class ProductPage extends BasePage {
 
     public String getMessageText() {
 
-        return message.getText();
+        return message.getText().replace("View cart", "").trim();
     }
 }
