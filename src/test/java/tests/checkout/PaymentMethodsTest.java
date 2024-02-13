@@ -7,11 +7,13 @@ import qa.base.BaseTest;
 import qa.enums.URLs;
 import qa.helpers.AddressFormFiller;
 import qa.helpers.ShoppingCartActions;
+import qa.jsonreader.ModelsBuilder;
 import qa.pageobject.checkoutpage.CheckoutPage;
 import qa.pageobject.checkoutpage.PaymentMethodsSection;
-import qa.dataproviders.DataProviders;
-import qa.data.AddressFormData;
+import qa.data.AddressData;
 import qa.pageobject.orderreceivedpage.OrderPage;
+import qa.support.dataprovidernames.DataProviderNames;
+import qa.testdataloader.TestdataLoader;
 import qa.utils.AccessThrowingConsumer;
 
 
@@ -28,8 +30,9 @@ public class PaymentMethodsTest extends BaseTest {
 
         checkoutPage = new CheckoutPage(getDriver());
 
-        AddressFormData addressFormData = (AddressFormData) new DataProviders().AF_correctAddress()[0];
-        AddressFormFiller.get(addressFormData, getDriver(), true);
+        String source = TestdataLoader.loadQuickly("GSP_Address");
+        AddressData addressData = ModelsBuilder.getAddressFormData(DataProviderNames.CORRECT, source)[0];
+        AddressFormFiller.get(addressData, getDriver());
     }
 
     public void waitForOrderPage(URLs url) {
