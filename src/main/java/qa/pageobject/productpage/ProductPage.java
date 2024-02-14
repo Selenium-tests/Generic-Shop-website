@@ -5,18 +5,15 @@ import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import qa.quantityfield.QuantityField;
 import qa.support.toby.ToBy;
 
 
 public class ProductPage extends BasePage {
 
-    private final QuantityField quantityField;
-
     public ProductPage(WebDriver driver) {
 
         super(driver);
-
-        quantityField = new QuantityField(driver);
     }
 
     @FindBy(className = "product_title")
@@ -24,6 +21,9 @@ public class ProductPage extends BasePage {
 
     @FindBy(xpath = ".//span[@class='woocommerce-Price-amount amount']")
     WebElement price;
+
+    @FindBy(css = "div.quantity")
+    WebElement quantity;
 
     @FindBy(xpath = "//button[@name='add-to-cart']")
     WebElement addToCartButton;
@@ -47,7 +47,7 @@ public class ProductPage extends BasePage {
 
     public QuantityField getQuantityField() {
 
-        return quantityField;
+        return new QuantityField(getDriver(), quantity);
     }
 
     public void waitForMessage() throws IllegalAccessException {
