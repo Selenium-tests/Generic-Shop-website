@@ -76,21 +76,21 @@ public class QuantityFieldTest extends ValidationMessageTest {
     public void belowMax() throws IllegalAccessException {
 
         String value = String.valueOf(Long.MAX_VALUE - 1);
-        actions(value, value + " × “" + productPage.getProductTitle() + "” have been added to your cart.");
+        actions(value, value + " × “" + productPage.getProductName() + "” have been added to your cart.");
     }
 
     @Test
     public void max() throws IllegalAccessException {
 
         String value = String.valueOf(Long.MAX_VALUE);
-        actions(value, value + " × “" + productPage.getProductTitle() + "” have been added to your cart.");
+        actions(value, value + " × “" + productPage.getProductName() + "” have been added to your cart.");
     }
 
     @Test
     public void aboveMax() throws IllegalAccessException {
 
         String value = String.valueOf(BigInteger.valueOf(Long.MAX_VALUE).add(BigInteger.ONE));
-        actions(value, String.valueOf(Long.MAX_VALUE) + " × “" + productPage.getProductTitle() + "” have been added to your cart.");
+        actions(value, String.valueOf(Long.MAX_VALUE) + " × “" + productPage.getProductName() + "” have been added to your cart.");
     }
 
     @Test(dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
