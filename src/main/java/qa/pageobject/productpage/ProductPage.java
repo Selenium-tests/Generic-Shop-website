@@ -17,7 +17,7 @@ public class ProductPage extends BasePage {
     }
 
     @FindBy(className = "product_title")
-    WebElement productTitle;
+    WebElement productName;
 
     @FindBy(xpath = ".//span[@class='woocommerce-Price-amount amount']")
     WebElement price;
@@ -35,9 +35,9 @@ public class ProductPage extends BasePage {
 
         getWebDriverWait().until(ExpectedConditions.presenceOfElementLocated(ToBy.get(addToCartButton))).click();
     }
-    public String getProductTitle() throws IllegalAccessException {
+    public String getProductName() throws IllegalAccessException {
 
-        return getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(productTitle))).getText();
+        return getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(productName))).getText();
     }
 
     public String getPrice() throws IllegalAccessException {
