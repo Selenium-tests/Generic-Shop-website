@@ -19,12 +19,17 @@ public class QuantityField extends BasePage {
         this.parent = parent;
     }
 
-    public void setQuantity(String quantity) throws IllegalAccessException {
+    public void setQuantity(String quantity) {
 
         WebElement element = getWebDriverWait().until(ExpectedConditions.elementToBeClickable(
                 parent.findElement(By.cssSelector(inputFieldSelector))));
         element.clear();
         element.sendKeys(quantity);
+    }
+
+    public String getValue() {
+
+        return parent.findElement(By.cssSelector(inputFieldSelector)).getAttribute("value");
     }
 
     public String getMin() {
