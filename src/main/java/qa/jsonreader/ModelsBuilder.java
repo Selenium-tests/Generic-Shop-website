@@ -90,4 +90,18 @@ public class ModelsBuilder {
                 ))
                 .toArray(AddressData[]::new);
     }
+
+    public static ProductToCart[] getProductsToCart() {
+
+        String source = TestdataLoader.getSource();
+        JSONObject jsonObject = new JSONObject(source);
+        JSONArray jsonArray = jsonObject.getJSONArray("products");
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new ProductToCart(
+                        jsonArray.getJSONObject(i).getString("url"),
+                        jsonArray.getJSONObject(i).getString("quantity")
+                ))
+                .toArray(ProductToCart[]::new);
+    }
 }
