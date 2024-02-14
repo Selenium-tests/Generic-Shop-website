@@ -10,11 +10,13 @@ import java.time.Duration;
 
 public abstract class BasePage {
 
-        protected final WebDriverWait webDriverWait;
+        private final WebDriver driver;
+        private final WebDriverWait webDriverWait;
         private final FocusExecutor focusExecutor;
 
         protected BasePage(WebDriver driver) {
 
+                this.driver = driver;
                 PageFactory.initElements(driver, this);
                 webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
                 focusExecutor = new FocusExecutor(driver);
@@ -23,6 +25,11 @@ public abstract class BasePage {
         protected void focus(WebElement element) {
 
                 focusExecutor.perform(element);
+        }
+
+        protected WebDriver getDriver() {
+
+                return driver;
         }
 
         protected WebDriverWait getWebDriverWait() {
