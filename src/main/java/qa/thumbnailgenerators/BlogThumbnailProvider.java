@@ -3,16 +3,15 @@ package qa.thumbnailgenerators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import qa.enums.ThumbnailCategory;
+import qa.enums.TycheProduct;
 import qa.pageobject.thumbnails.BlogThumbnail;
 
 
-public class BlogThumbnailGenerator implements ThumbnailFactory {
+public class BlogThumbnailProvider {
 
-    @Override
-    public BlogThumbnail createThumbnail(WebDriver driver, ThumbnailCategory category, String name) {
+    public static BlogThumbnail create(WebDriver driver, TycheProduct tycheProduct, String name) {
 
-        WebElement parent = driver.findElement(By.id("tyche_recent-" + category.getName()));
+        WebElement parent = driver.findElement(By.id("tyche_recent-" + tycheProduct.getName()));
         WebElement link = parent.findElement(By.linkText(name));
 
         BlogThumbnail blogThumbnail = new BlogThumbnail(driver);

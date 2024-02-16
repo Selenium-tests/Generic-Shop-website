@@ -3,13 +3,12 @@ package qa.thumbnailgenerators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import qa.enums.ThumbnailCategory;
+import qa.enums.TycheProduct;
 import qa.pageobject.thumbnails.ProductThumbnail;
 
-public class ProductThumbnailGenerator implements ThumbnailFactory {
+public class ProductThumbnailProvider {
 
-    @Override
-    public ProductThumbnail createThumbnail(WebDriver driver, ThumbnailCategory category, String name) {
+    public static ProductThumbnail create(WebDriver driver, TycheProduct category, String name) {
 
         WebElement tycheProducts = driver.findElement(By.id("tyche_products-" + category.getName()));
         WebElement link = tycheProducts.findElement(By.linkText(name));
@@ -18,9 +17,11 @@ public class ProductThumbnailGenerator implements ThumbnailFactory {
         WebElement addToCartButton = parent.findElement(By.className("ajax_add_to_cart"));
 
         ProductThumbnail productThumbnail = new ProductThumbnail(driver);
-        productThumbnail.setLink(link);
-        productThumbnail.setPrice(price);
-        productThumbnail.setAddToCartButton(addToCartButton);
+
+        productThumbnail
+                .setLink(link)
+                .setPrice(price)
+                .setAddToCartButton(addToCartButton);
 
         return productThumbnail;
     }
