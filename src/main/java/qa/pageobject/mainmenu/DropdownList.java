@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
-import qa.tools.toby.ToBy;
+import qa.support.toby.ToBy;
 
 public class DropdownList extends BasePage {
 
