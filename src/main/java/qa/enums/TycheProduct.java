@@ -1,6 +1,6 @@
 package qa.enums;
 
-public enum ThumbnailCategory {
+public enum TycheProduct {
 
     ALL_BLACK_TOPS("1"),
     HIGH_HEEL_SHOES("2"),
@@ -14,7 +14,7 @@ public enum ThumbnailCategory {
 
     private final String name;
 
-    ThumbnailCategory(String name) {
+    TycheProduct(String name) {
 
         this.name = name;
     }
