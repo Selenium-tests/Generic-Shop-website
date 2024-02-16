@@ -65,4 +65,16 @@ public class LinksDataProviders {
 
         return ModelsBuilder.getLinkData(DataProviderNames.ACCOUNT_NAVIGATION);
     }
+
+    @DataProvider(name = DataProviderNames.BLOGS_1)
+    public Object[] blogs_1() {
+
+        return ModelsBuilder.getLinkData(DataProviderNames.BLOGS_1);
+    }
+
+    @DataProvider(name = DataProviderNames.BLOGS_2)
+    public Object[] blogs_2() {
+
+        return ModelsBuilder.getLinkData(DataProviderNames.BLOGS_2);
+    }
 }
