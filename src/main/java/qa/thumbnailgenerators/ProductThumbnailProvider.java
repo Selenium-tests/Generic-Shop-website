@@ -3,14 +3,13 @@ package qa.thumbnailgenerators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import qa.enums.TycheProduct;
 import qa.pageobject.thumbnails.ProductThumbnail;
 
 public class ProductThumbnailProvider {
 
-    public static ProductThumbnail create(WebDriver driver, TycheProduct category, String name) {
+    public static ProductThumbnail create(WebDriver driver, String tycheProduct, String name) {
 
-        WebElement tycheProducts = driver.findElement(By.id("tyche_products-" + category.getName()));
+        WebElement tycheProducts = driver.findElement(By.id("tyche_products-" + tycheProduct));
         WebElement link = tycheProducts.findElement(By.linkText(name));
         WebElement parent = link.findElement(By.xpath("./..")).findElement(By.xpath("./.."));
         WebElement price = parent.findElement(By.className("price"));
@@ -19,6 +18,7 @@ public class ProductThumbnailProvider {
         ProductThumbnail productThumbnail = new ProductThumbnail(driver);
 
         productThumbnail
+                .setParent(parent)
                 .setLink(link)
                 .setPrice(price)
                 .setAddToCartButton(addToCartButton);
