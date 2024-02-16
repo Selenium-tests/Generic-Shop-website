@@ -12,42 +12,41 @@ import java.time.Duration;
 
 public class BasePage {
 
-        private final WebDriver driver;
-        private final WebDriverWait webDriverWait;
-        private final FluentWait<WebDriver> fluentWait;
-        private final FocusExecutor focusExecutor;
+    private final WebDriver driver;
+    private final WebDriverWait webDriverWait;
+    private final FluentWait<WebDriver> fluentWait;
+    private final FocusExecutor focusExecutor;
 
-        protected BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver) {
 
-                this.driver = driver;
-                PageFactory.initElements(driver, this);
-                webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        PageFactory.initElements(driver, this);
 
-                fluentWait = new FluentWait<>(driver)
-                        .withTimeout(Duration.ofSeconds(30))
-                        .pollingEvery(Duration.ofSeconds(5))
-                        .ignoring(NoSuchElementException.class);
+        this.driver = driver;
+        focusExecutor = new FocusExecutor(driver);
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        fluentWait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(NoSuchElementException.class);
+    }
 
-                focusExecutor = new FocusExecutor(driver);
-        }
+    protected void focus(WebElement element) {
 
-        protected void focus(WebElement element) {
+        focusExecutor.perform(element);
+    }
 
-                focusExecutor.perform(element);
-        }
+    protected WebDriver getDriver() {
 
-        protected WebDriver getDriver() {
+        return driver;
+    }
 
-                return driver;
-        }
+    protected WebDriverWait getWebDriverWait() {
 
-        protected WebDriverWait getWebDriverWait() {
+        return webDriverWait;
+    }
 
-                return webDriverWait;
-        }
+    protected FluentWait<WebDriver> getFluentWait() {
 
-        protected FluentWait<WebDriver> getFluentWait() {
-
-                return fluentWait;
-        }
+        return fluentWait;
+    }
 }
