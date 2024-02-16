@@ -1,23 +1,38 @@
 package tests.homepage;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.ThumbnailTest;
-import qa.enums.ThumbnailCategory;
-import qa.enums.ThumbnailType;
-import qa.dataproviders.DataProviders;
-import qa.data.Link;
+import qa.base.BaseTest;
+import qa.data.LinkData;
+import qa.dataproviders.LinksDataProviders;
+import qa.enums.TycheProduct;
+import qa.enums.URLs;
+import qa.support.dataprovidernames.DataProviderNames;
+import qa.thumbnailgenerators.BlogThumbnailProvider;
 
-public class LinksToBlogPagesTest extends ThumbnailTest {
 
-    @Test(dataProvider = "blogs1", dataProviderClass = DataProviders.class)
-    public void group1(Link link) throws IllegalAccessException {
+public class LinksToBlogPagesTest extends BaseTest {
 
-        check(ThumbnailType.BLOG, ThumbnailCategory.RECENT_1, link);
+    @BeforeMethod
+    public void create() {
+
+        goToSpecificPage(URLs.HOME_PAGE.getName());
     }
 
-    @Test(dataProvider = "blogs2", dataProviderClass = DataProviders.class)
-    public void group2(Link link) throws IllegalAccessException {
+    private void actions(LinkData linkData, TycheProduct tycheProduct) {
 
-        check(ThumbnailType.BLOG, ThumbnailCategory.RECENT_2, link);
+        BlogThumbnailProvider.create(getDriver(), tycheProduct, linkData.getLink());
+    }
+
+    @Test(dataProvider = DataProviderNames.BLOGS_1, dataProviderClass = LinksDataProviders.class)
+    public void group1(LinkData linkData) {
+
+        actions(linkData, TycheProduct.RECENT_1);
+    }
+
+    @Test(dataProvider = DataProviderNames.BLOGS_2, dataProviderClass = LinksDataProviders.class)
+    public void group2(LinkData linkData) {
+
+        actions(linkData, TycheProduct.RECENT_2);
     }
 }

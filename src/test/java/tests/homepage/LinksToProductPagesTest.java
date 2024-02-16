@@ -1,53 +1,70 @@
 package tests.homepage;
 
-import qa.base.ThumbnailTest;
-import qa.enums.ThumbnailType;
-import qa.enums.ThumbnailCategory;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import qa.base.BaseTest;
+import qa.dataproviders.LinksDataProviders;
+import qa.enums.TycheProduct;
 import org.testng.annotations.Test;
-import qa.dataproviders.DataProviders;
-import qa.data.Link;
+import qa.data.LinkData;
+import qa.enums.URLs;
+import qa.support.dataprovidernames.DataProviderNames;
+import qa.thumbnailgenerators.ProductThumbnailProvider;
 
-public class LinksToProductPagesTest extends ThumbnailTest {
+public class LinksToProductPagesTest extends BaseTest {
 
-    @Test(dataProvider = "allBlackTops", dataProviderClass = DataProviders.class)
-    public void allBlackTops(Link link) throws IllegalAccessException {
+    @BeforeMethod
+    public void create() {
 
-        check(ThumbnailType.PRODUCT, ThumbnailCategory.ALL_BLACK_TOPS, link);
+        goToSpecificPage(URLs.HOME_PAGE.getName());
     }
 
-    @Test(dataProvider = "highHeelShoesProducts", dataProviderClass = DataProviders.class)
-    public void highHeelShoes(Link link) throws IllegalAccessException {
+    private void actions(LinkData linkData, TycheProduct tycheProduct) {
 
-        check(ThumbnailType.PRODUCT, ThumbnailCategory.HIGH_HEEL_SHOES, link);
+        ProductThumbnailProvider.create(getDriver(), tycheProduct, linkData.getLink()).clickLink();
+
+        Assert.assertEquals(getDriver().getCurrentUrl(), linkData.getUrl(),
+                "The page with the address \"" + linkData.getUrl() + "\" has not been found");
+    }
+    @Test(dataProvider = DataProviderNames.ALL_BLACK_TOPS, dataProviderClass = LinksDataProviders.class)
+    public void allBlackTops(LinkData linkData) throws IllegalAccessException {
+
+        actions(linkData, TycheProduct.ALL_BLACK_TOPS);
     }
 
-    @Test(dataProvider = "mostWantedProducts", dataProviderClass = DataProviders.class)
-    public void mostWanted(Link link) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.HIGH_HEEL_SHOES, dataProviderClass = LinksDataProviders.class)
+    public void highHeelShoes(LinkData linkData) throws IllegalAccessException {
 
-        check(ThumbnailType.PRODUCT, ThumbnailCategory.MOST_WANTED, link);
+        actions(linkData, TycheProduct.HIGH_HEEL_SHOES);
     }
 
-    @Test(dataProvider = "scarfsProducts", dataProviderClass = DataProviders.class)
-    public void scarfs(Link link) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.MOST_WANTED, dataProviderClass = LinksDataProviders.class)
+    public void mostWanted(LinkData linkData) throws IllegalAccessException {
 
-        check(ThumbnailType.PRODUCT, ThumbnailCategory.SCARFS, link);
+        actions(linkData, TycheProduct.MOST_WANTED);
     }
 
-    @Test(dataProvider = "onSaleProducts", dataProviderClass = DataProviders.class)
-    public void onSale(Link link) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.SCARFS, dataProviderClass = LinksDataProviders.class)
+    public void scarfs(LinkData linkData) throws IllegalAccessException {
 
-        check(ThumbnailType.PRODUCT, ThumbnailCategory.ON_SALE, link);
+        actions(linkData, TycheProduct.SCARFS);
     }
 
-    @Test(dataProvider = "featuredProducts", dataProviderClass = DataProviders.class)
-    public void featured(Link link) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.ON_SALE, dataProviderClass = LinksDataProviders.class)
+    public void onSale(LinkData linkData) throws IllegalAccessException {
 
-        check(ThumbnailType.PRODUCT, ThumbnailCategory.FEATURED, link);
+        actions(linkData, TycheProduct.ON_SALE);
     }
 
-    @Test(dataProvider = "trendsProducts", dataProviderClass = DataProviders.class)
-    public void trends(Link link) throws IllegalAccessException {
+    @Test(dataProvider = DataProviderNames.FEATURED, dataProviderClass = LinksDataProviders.class)
+    public void featured(LinkData linkData) throws IllegalAccessException {
 
-        check(ThumbnailType.PRODUCT, ThumbnailCategory.TRENDS, link);
+        actions(linkData, TycheProduct.FEATURED);
+    }
+
+    @Test(dataProvider = DataProviderNames.TRENDS, dataProviderClass = LinksDataProviders.class)
+    public void trends(LinkData linkData) throws IllegalAccessException {
+
+        actions(linkData, TycheProduct.TRENDS);
     }
 }
