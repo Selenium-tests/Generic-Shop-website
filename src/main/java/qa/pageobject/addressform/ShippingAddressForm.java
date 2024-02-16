@@ -46,7 +46,7 @@ public class ShippingAddressForm extends BasePage {
     protected void fill(WebElement element, String data) {
 
         element.clear();
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(element));
         focus(element);
         element.sendKeys(data);
     }
