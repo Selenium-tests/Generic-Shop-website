@@ -5,7 +5,7 @@ import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class BlogThumbnail extends BasePage implements Thumbnail {
+public class BlogThumbnail extends BasePage {
 
     WebElement link;
 
@@ -14,19 +14,16 @@ public class BlogThumbnail extends BasePage implements Thumbnail {
         super(driver);
     }
 
-    @Override
     public void setLink(WebElement link) {
 
         this.link = link;
     }
 
-    @Override
     public void clickLink() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(link)).click();
     }
 
-    @Override
     public String getLinkText() {
 
         return link.getText();

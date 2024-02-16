@@ -1,13 +1,14 @@
 package qa.pageobject.thumbnails;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import qa.tools.toby.ToBy;
 
-public class ProductThumbnail extends BasePage implements Thumbnail {
+public class ProductThumbnail extends BasePage {
 
+    private WebElement parent;
     private WebElement link;
     private WebElement price;
     private WebElement addToCartButton;
@@ -17,15 +18,22 @@ public class ProductThumbnail extends BasePage implements Thumbnail {
         super(driver);
     }
 
-    @Override
-    public void setLink(WebElement link) {
+    public ProductThumbnail setParent(WebElement parent) {
 
-        this.link = link;
+        this.parent = parent;
+        return this;
     }
 
-    public void setPrice(WebElement price) {
+    public ProductThumbnail setLink(WebElement link) {
+
+        this.link = link;
+        return this;
+    }
+
+    public ProductThumbnail setPrice(WebElement price) {
 
         this.price = price;
+        return this;
     }
 
     public void setAddToCartButton(WebElement addToCartButton) {
@@ -33,18 +41,16 @@ public class ProductThumbnail extends BasePage implements Thumbnail {
         this.addToCartButton = addToCartButton;
     }
 
-    @Override
     public String getLinkText() throws IllegalAccessException {
 
-        return getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(link))).getText();
+        return link.getText();
     }
 
     public String getPrice() throws IllegalAccessException {
 
-        return getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(price))).getText();
+        return price.getText();
     }
 
-    @Override
     public void clickLink() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(link)).click();
@@ -53,5 +59,11 @@ public class ProductThumbnail extends BasePage implements Thumbnail {
     public void clickAddToCartButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
+    }
+
+    public void waitForViewCartButton() throws IllegalAccessException {
+
+        getWebDriverWait().until(ExpectedConditions
+                .elementToBeClickable(parent.findElement(By.xpath(".//a[@class='added_to_cart wc-forward']"))));
     }
 }
