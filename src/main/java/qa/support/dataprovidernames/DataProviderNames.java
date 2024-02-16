@@ -56,5 +56,4 @@ public class DataProviderNames {
     public static final String STATE_ZONE_DROPDOWN_LIST = "stateZoneDropdownList";
     public static final String SPECIAL_CHARACTERS = "specialCharacters";
     public static final String PRODUCTS_TO_CART = "productsToCart";
-
 }
