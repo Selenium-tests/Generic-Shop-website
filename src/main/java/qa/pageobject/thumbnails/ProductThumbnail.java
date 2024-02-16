@@ -12,6 +12,7 @@ public class ProductThumbnail extends BasePage {
     private WebElement link;
     private WebElement price;
     private WebElement addToCartButton;
+    private WebElement viewCartButton;
 
     public ProductThumbnail(WebDriver driver) {
 
@@ -41,11 +42,6 @@ public class ProductThumbnail extends BasePage {
         this.addToCartButton = addToCartButton;
     }
 
-    public String getLinkText() throws IllegalAccessException {
-
-        return link.getText();
-    }
-
     public String getPrice() throws IllegalAccessException {
 
         return price.getText();
@@ -61,9 +57,13 @@ public class ProductThumbnail extends BasePage {
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
     }
 
-    public void waitForViewCartButton() throws IllegalAccessException {
+    public void clickViewCartButton() {
 
-        getWebDriverWait().until(ExpectedConditions
-                .elementToBeClickable(parent.findElement(By.xpath(".//a[@class='added_to_cart wc-forward']"))));
+        viewCartButton.click();
+    }
+
+    public void waitForViewCartButton() {
+
+        viewCartButton = getFluentWait().until(driver -> parent.findElement(By.xpath(".//a[@class='added_to_cart wc-forward']")));
     }
 }
