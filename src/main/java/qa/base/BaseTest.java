@@ -1,7 +1,6 @@
 package qa.base;
 
 import org.json.JSONException;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import qa.browsermanager.BrowserManager;
@@ -9,16 +8,13 @@ import qa.driver.WebDriverProvider;
 import qa.enums.Browser;
 import qa.testdataloader.TestdataLoader;
 
-import java.io.IOException;
-
-
 public class BaseTest {
 
     private static WebDriver driver;
 
     @Parameters({"fileName"})
     @BeforeClass
-    public void readJSONFile(@Optional("noFileName") String fileName) throws JSONException, IOException, ParseException {
+    public void readJSONFile(@Optional("noFileName") String fileName) throws JSONException {
 
         if (!fileName.equals("noFileName")) {
 
@@ -30,6 +26,7 @@ public class BaseTest {
     public void startDriver() {
 
         driver = WebDriverProvider.getDriver(Browser.CHROME).createDriver();
+        BrowserManager.start(driver);
     }
 
     @AfterMethod
