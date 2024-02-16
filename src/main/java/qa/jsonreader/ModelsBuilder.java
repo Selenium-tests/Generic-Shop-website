@@ -104,4 +104,18 @@ public class ModelsBuilder {
                 ))
                 .toArray(ProductToCart[]::new);
     }
+
+    public static ThumbnailData[] getThumbnailsData() {
+
+        String source = TestdataLoader.getSource();
+        JSONObject jsonObject = new JSONObject(source);
+        JSONArray jsonArray = jsonObject.getJSONArray("thumbnails");
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new ThumbnailData(
+                        String.valueOf(jsonArray.getJSONObject(i).getInt("tycheProduct")),
+                        jsonArray.getJSONObject(i).getString("link")
+                ))
+                .toArray(ThumbnailData[]::new);
+    }
 }
