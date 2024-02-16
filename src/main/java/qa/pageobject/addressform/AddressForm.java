@@ -7,8 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import qa.support.toby.ToBy;
 
-
-
 public class AddressForm extends BasePage {
 
     private final CountryDropdownList countryDropdownList;
@@ -123,7 +121,7 @@ public class AddressForm extends BasePage {
 
     public void clickSaveAddressButton() {
 
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(saveAddressButton));
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveAddressButton));
         saveAddressButton.click();
     }
 
