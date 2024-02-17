@@ -1,6 +1,5 @@
 package tests.productpage;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.SpecialCharactersDataProvider;
@@ -20,25 +19,10 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         productPage = new ProductPage(getDriver());
     }
 
-    private void checkMessageVisibility() {
-
-        try {
-            productPage.waitForMessage();
-        } catch (Exception e) {
-            Assert.fail("No message displayed");
-        }
-    }
-
-    private void checkMessageContent(String expectedMessageContent) {
-
-        Assert.assertTrue(productPage.getMessageText().contains(expectedMessageContent),
-                "The message does not contain the \"" + expectedMessageContent + "\"");
-    }
-
     private void checkMessage(String expectedMessage) {
 
-        checkMessageVisibility();
-        checkMessageContent(expectedMessage);
+        checkMessageVisibility(ProductPage::waitForMessage, productPage);
+        checkMessageContent(productPage.getMessage(), expectedMessage);
     }
 
     @Test
@@ -86,7 +70,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
         setAboveMax(productPage.getQuantityField());
         productPage.clickAddToCart();
-        checkMessage(Long.MAX_VALUE + " × “" + productPage.getProductName() + "” have been added to your cart.");
+        checkMessage("Please enter valid quantity");
     }
 
     @Test(dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
