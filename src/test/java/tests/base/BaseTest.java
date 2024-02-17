@@ -1,4 +1,4 @@
-package qa.base;
+package tests.base;
 
 import org.json.JSONException;
 import org.openqa.selenium.WebDriver;
