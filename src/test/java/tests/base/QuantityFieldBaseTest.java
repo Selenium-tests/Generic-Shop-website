@@ -2,11 +2,27 @@ package tests.base;
 
 import org.testng.Assert;
 import qa.base.BaseTest;
-import qa.quantityfield.QuantityField;
+import qa.pageobject.quantityfield.QuantityField;
 
 import java.math.BigInteger;
+import java.util.function.Consumer;
 
 public class QuantityFieldBaseTest extends BaseTest {
+
+    protected<T> void checkMessageVisibility(Consumer<T> consumer, T object) {
+
+        try {
+            consumer.accept(object);
+        } catch (Exception e) {
+            Assert.fail("No message was displayed");
+        }
+    }
+
+    protected void checkMessageContent(String actual, String expected) {
+
+        Assert.assertTrue(actual.contains(expected),
+                "The message does not contain the \"" + expected + "\"");
+    }
 
     protected void checkValidationMessageVisibility(QuantityField quantityField) {
 
