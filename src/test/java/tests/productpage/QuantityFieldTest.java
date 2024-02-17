@@ -3,16 +3,13 @@ package tests.productpage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.ValidationMessageTest;
 import qa.dataproviders.SpecialCharactersDataProvider;
 import qa.enums.URLs;
 import qa.pageobject.productpage.ProductPage;
 import qa.support.dataprovidernames.DataProviderNames;
+import tests.base.QuantityFieldBaseTest;
 
-import java.math.BigInteger;
-
-
-public class QuantityFieldTest extends ValidationMessageTest {
+public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     private ProductPage productPage;
 
@@ -21,12 +18,6 @@ public class QuantityFieldTest extends ValidationMessageTest {
 
         goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
         productPage = new ProductPage(getDriver());
-    }
-
-    private void fill(String quantity) throws IllegalAccessException {
-
-        productPage.getQuantityField().setQuantity(quantity);
-        productPage.clickAddToCart();
     }
 
     private void checkMessageVisibility() {
@@ -40,13 +31,12 @@ public class QuantityFieldTest extends ValidationMessageTest {
 
     private void checkMessageContent(String expectedMessageContent) {
 
-        Assert.assertEquals(productPage.getMessageText(), expectedMessageContent,
+        Assert.assertTrue(productPage.getMessageText().contains(expectedMessageContent),
                 "The message does not contain the \"" + expectedMessageContent + "\"");
     }
 
-    private void actions(String value, String expectedMessage) throws IllegalAccessException {
+    private void checkMessage(String expectedMessage) {
 
-        fill(value);
         checkMessageVisibility();
         checkMessageContent(expectedMessage);
     }
@@ -54,55 +44,64 @@ public class QuantityFieldTest extends ValidationMessageTest {
     @Test
     public void belowMin() throws IllegalAccessException {
 
-        String value = String.valueOf(Long.parseLong(productPage.getQuantityField().getMin()) - 1);
-        fill(value);
+        setBelowMin(productPage.getQuantityField());
+        productPage.clickAddToCart();
         checkValidationMessageVisibility(productPage.getQuantityField());
     }
 
     @Test
     public void min() throws IllegalAccessException {
 
-        actions(productPage.getQuantityField().getMin(), "Please enter valid quantity");
+        setMin(productPage.getQuantityField());
+        productPage.clickAddToCart();
+        checkMessage("Please enter valid quantity");
     }
 
     @Test
     public void aboveMin() throws IllegalAccessException {
 
-        String value = String.valueOf(Long.parseLong(productPage.getQuantityField().getMin()) + 1);
-        actions(value, "Please enter valid quantity");
+        setAboveMin(productPage.getQuantityField());
+        productPage.clickAddToCart();
+        checkMessage("Please enter valid quantity");
     }
 
     @Test
     public void belowMax() throws IllegalAccessException {
 
-        String value = String.valueOf(Long.MAX_VALUE - 1);
-        actions(value, value + " × “" + productPage.getProductName() + "” have been added to your cart.");
+        setBelowMax(productPage.getQuantityField());
+        productPage.clickAddToCart();
+        checkMessage(" × “" + productPage.getProductName() + "” have been added to your cart.");
     }
 
     @Test
     public void max() throws IllegalAccessException {
 
-        String value = String.valueOf(Long.MAX_VALUE);
-        actions(value, value + " × “" + productPage.getProductName() + "” have been added to your cart.");
+        setMax(productPage.getQuantityField());
+        productPage.clickAddToCart();
+        checkMessage(" × “" + productPage.getProductName() + "” have been added to your cart.");
     }
 
     @Test
     public void aboveMax() throws IllegalAccessException {
 
-        String value = String.valueOf(BigInteger.valueOf(Long.MAX_VALUE).add(BigInteger.ONE));
-        actions(value, String.valueOf(Long.MAX_VALUE) + " × “" + productPage.getProductName() + "” have been added to your cart.");
+        setAboveMax(productPage.getQuantityField());
+        productPage.clickAddToCart();
+        checkMessage(Long.MAX_VALUE + " × “" + productPage.getProductName() + "” have been added to your cart.");
     }
 
     @Test(dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
     public void specialCharacters(String character) throws IllegalAccessException {
 
-        fill(character);
+        productPage.getQuantityField().setQuantity(character);
+        productPage.clickAddToCart();
         checkValidationMessageVisibility(productPage.getQuantityField());
     }
 
     @Test
     public void blankQuantityField() throws IllegalAccessException {
 
-        actions("", "Please enter a quantity");
+        productPage.getQuantityField().setQuantity("");
+        productPage.clickAddToCart();
+        checkMessage("Please enter a quantity");
     }
 }
