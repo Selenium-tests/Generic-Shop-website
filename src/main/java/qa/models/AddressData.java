@@ -1,8 +1,7 @@
-package qa.data;
+package qa.models;
 
 
 import lombok.Getter;
-import qa.pageobject.addressform.AddressForm;
 
 @Getter
 public class AddressData {

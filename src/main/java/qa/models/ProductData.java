@@ -1,4 +1,4 @@
-package qa.data;
+package qa.models;
 
 import lombok.Getter;
 
