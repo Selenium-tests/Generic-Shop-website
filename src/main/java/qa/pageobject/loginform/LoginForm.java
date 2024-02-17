@@ -1,4 +1,4 @@
-package qa.pageobject;
+package qa.pageobject.loginform;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
