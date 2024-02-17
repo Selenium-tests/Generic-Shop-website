@@ -1,4 +1,4 @@
-package qa.quantityfield;
+package qa.pageobject.quantityfield;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
