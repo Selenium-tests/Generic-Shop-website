@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Newsletter form">
+
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <test name="Input text validation">
+        <classes>
+            <class name="tests.newsletter.InputTextValidationTest"/>
+        </classes>
+    </test>
+
+    <test name="Subscription to the newsletter">
+        <parameter name="fileName" value="GSS_Newsletter"/>
+
+        <classes>
+            <class name="tests.newsletter.SubscriptionToNewsletterTest"/>
+        </classes>
+    </test>
+
+</suite>
