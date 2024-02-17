@@ -1,4 +1,4 @@
-package tests.footer;
+package tests.newsletter;
 
 import tests.base.BaseTest;
 import org.openqa.selenium.Alert;
@@ -13,7 +13,7 @@ import qa.models.NewsletterData;
 import qa.support.dataprovidernames.DataProviderNames;
 
 
-public class NewsletterFormTest extends BaseTest {
+public class SubscriptionToNewsletterTest extends BaseTest {
 
     private Footer footer;
 
