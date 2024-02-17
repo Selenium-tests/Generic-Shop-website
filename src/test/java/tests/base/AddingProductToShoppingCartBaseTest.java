@@ -2,7 +2,6 @@ package tests.base;
 
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-import qa.base.BaseTest;
 import qa.data.ProductData;
 import qa.enums.URLs;
 import qa.pageobject.shoppingcart.ShoppingCart;

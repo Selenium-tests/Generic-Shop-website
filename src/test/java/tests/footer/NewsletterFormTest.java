@@ -1,6 +1,6 @@
 package tests.footer;
 
-import qa.base.BaseTest;
+import tests.base.BaseTest;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 import org.testng.Assert;

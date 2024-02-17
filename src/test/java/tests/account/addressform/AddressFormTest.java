@@ -2,7 +2,7 @@ package tests.account.addressform;
 
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-import qa.base.BaseTest;
+import tests.base.BaseTest;
 import qa.dataproviders.AddressDataProviders;
 import qa.enums.URLs;
 import qa.helpers.AddressFormFiller;

@@ -1,6 +1,6 @@
 package tests.homepage;
 
-import qa.base.BaseTest;
+import tests.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

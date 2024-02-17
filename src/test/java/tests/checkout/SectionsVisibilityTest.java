@@ -3,7 +3,7 @@ package tests.checkout;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.base.BaseTest;
+import tests.base.BaseTest;
 import qa.enums.URLs;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.checkoutpage.CheckoutPage;

@@ -1,7 +1,6 @@
 package tests.base;
 
 import org.testng.Assert;
-import qa.base.BaseTest;
 import qa.pageobject.quantityfield.QuantityField;
 
 import java.math.BigInteger;

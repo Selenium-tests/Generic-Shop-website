@@ -2,7 +2,7 @@ package tests.homepage;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import qa.base.BaseTest;
+import tests.base.BaseTest;
 import qa.dataproviders.LinksDataProviders;
 import qa.enums.TycheProduct;
 import org.testng.annotations.Test;
