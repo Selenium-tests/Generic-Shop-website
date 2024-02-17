@@ -24,9 +24,9 @@ public class AddingProductToShoppingCartBaseTest extends BaseTest {
 
         for (int i = 0; i < shoppingCart.getTable().getRowsCount(); i++) {
 
-            softAssert.assertEquals(shoppingCart.getTable().getRow(i).getName(), productData.get(i).getName(),
+            softAssert.assertEquals(shoppingCart.getTable().getProductName(i), productData.get(i).getName(),
                     "Incorrect product name");
-            softAssert.assertEquals(shoppingCart.getTable().getRow(i).getPrice(), productData.get(i).getPrice(),
+            softAssert.assertEquals(shoppingCart.getTable().getPrice(i), productData.get(i).getPrice(),
                     "Incorrect price");
             softAssert.assertEquals(shoppingCart.getTable().getQuantityField(i).getValue(), productData.get(i).getQuantity(),
                     "Incorrect quantity");
