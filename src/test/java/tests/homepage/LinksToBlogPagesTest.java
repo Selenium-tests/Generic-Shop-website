@@ -3,7 +3,7 @@ package tests.homepage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
-import qa.data.LinkData;
+import qa.models.LinkData;
 import qa.dataproviders.LinksDataProviders;
 import qa.enums.TycheProduct;
 import qa.enums.URLs;

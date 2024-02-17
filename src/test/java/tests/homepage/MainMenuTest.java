@@ -7,7 +7,7 @@ import tests.base.BaseTest;
 import qa.dataproviders.LinksDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.mainmenu.MainMenu;
-import qa.data.LinkData;
+import qa.models.LinkData;
 import qa.support.dataprovidernames.DataProviderNames;
 
 public class MainMenuTest extends BaseTest {

@@ -2,8 +2,8 @@ package tests.shoppingcart;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.data.ProductData;
-import qa.data.ProductToCart;
+import qa.models.ProductData;
+import qa.models.ProductToCart;
 import qa.dataproviders.ProductsToCartDataProvider;
 import qa.pageobject.productpage.ProductPage;
 import qa.pageobject.shoppingcart.ShoppingCart;

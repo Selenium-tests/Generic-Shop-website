@@ -9,7 +9,7 @@ import qa.dataproviders.LinksDataProviders;
 import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.account.AccountPage;
-import qa.data.LinkData;
+import qa.models.LinkData;
 import qa.support.dataprovidernames.DataProviderNames;
 
 public class AccountNavigationTest extends BaseTest {

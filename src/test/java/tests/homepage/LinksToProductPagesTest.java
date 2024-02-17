@@ -6,7 +6,7 @@ import tests.base.BaseTest;
 import qa.dataproviders.LinksDataProviders;
 import qa.enums.TycheProduct;
 import org.testng.annotations.Test;
-import qa.data.LinkData;
+import qa.models.LinkData;
 import qa.enums.URLs;
 import qa.support.dataprovidernames.DataProviderNames;
 import qa.thumbnailgenerators.ProductThumbnailProvider;

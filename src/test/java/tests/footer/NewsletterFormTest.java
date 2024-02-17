@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import qa.dataproviders.NewsletterDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.footer.Footer;
-import qa.data.NewsletterData;
+import qa.models.NewsletterData;
 import qa.support.dataprovidernames.DataProviderNames;
 
 

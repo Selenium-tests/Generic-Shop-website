@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
-import qa.data.AddressData;
+import qa.models.AddressData;
 import qa.support.dataprovidernames.DataProviderNames;
 
 public class AddressFormTest extends BaseTest {

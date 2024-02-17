@@ -2,7 +2,7 @@ package qa.jsonreader;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qa.data.*;
+import qa.models.*;
 import qa.testdataloader.TestdataLoader;
 
 import java.util.stream.IntStream;

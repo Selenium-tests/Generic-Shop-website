@@ -2,7 +2,7 @@ package qa.helpers;
 
 import org.openqa.selenium.WebDriver;
 import qa.pageobject.addressform.AddressForm;
-import qa.data.AddressData;
+import qa.models.AddressData;
 
 
 public class AddressFormFiller {

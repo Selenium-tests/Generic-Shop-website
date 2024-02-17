@@ -10,7 +10,7 @@ import qa.helpers.ShoppingCartActions;
 import qa.jsonreader.ModelsBuilder;
 import qa.pageobject.checkoutpage.CheckoutPage;
 import qa.pageobject.checkoutpage.PaymentMethodsSection;
-import qa.data.AddressData;
+import qa.models.AddressData;
 import qa.pageobject.orderreceivedpage.OrderPage;
 import qa.support.dataprovidernames.DataProviderNames;
 import qa.testdataloader.TestdataLoader;
