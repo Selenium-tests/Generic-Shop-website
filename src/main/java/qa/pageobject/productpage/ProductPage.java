@@ -5,7 +5,7 @@ import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import qa.quantityfield.QuantityField;
+import qa.pageobject.quantityfield.QuantityField;
 import qa.support.toby.ToBy;
 
 
@@ -50,12 +50,12 @@ public class ProductPage extends BasePage {
         return new QuantityField(getDriver(), quantity);
     }
 
-    public void waitForMessage() throws IllegalAccessException {
+    public void waitForMessage() {
 
-        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(message)));
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(message));
     }
 
-    public String getMessageText() {
+    public String getMessage() {
 
         return message.getText().replace("View cart", "").trim();
     }
