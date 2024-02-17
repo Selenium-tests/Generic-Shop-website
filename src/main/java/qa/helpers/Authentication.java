@@ -1,7 +1,7 @@
 package qa.helpers;
 
 import org.openqa.selenium.WebDriver;
-import qa.pageobject.LoginForm;
+import qa.pageobject.loginform.LoginForm;
 
 
 public class Authentication {

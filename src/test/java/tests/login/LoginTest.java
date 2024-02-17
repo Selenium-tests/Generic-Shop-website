@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import qa.dataproviders.CredentialsDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.account.AccountNavigation;
-import qa.pageobject.LoginForm;
+import qa.pageobject.loginform.LoginForm;
 import qa.models.Credentials;
 import qa.support.dataprovidernames.DataProviderNames;
 

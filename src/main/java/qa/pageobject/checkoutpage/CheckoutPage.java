@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
-import qa.pageobject.LoginForm;
+import qa.pageobject.loginform.LoginForm;
 import qa.pageobject.addressform.ShippingAddressForm;
 import qa.pageobject.shoppingcart.CouponCodeForm;
 
