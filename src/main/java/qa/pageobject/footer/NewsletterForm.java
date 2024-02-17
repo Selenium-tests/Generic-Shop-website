@@ -36,6 +36,16 @@ public class NewsletterForm extends BasePage {
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(emailField))).sendKeys(email);
     }
 
+    public String getUsername() {
+
+        return usernameField.getAttribute("value");
+    }
+
+    public String getEmail() {
+
+        return emailField.getAttribute("value");
+    }
+
     public void clickSubscribeButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(subscribeButton)).click();
