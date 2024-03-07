@@ -27,8 +27,8 @@ public class LogoTest extends BaseTest {
 
     @Test
     @QaseId(2)
-    @QaseTitle("The logo")
-    @Description("The logo")
+    @QaseTitle("Clicking the logo")
+    @Description("Clicking the logo")
     public void clickingLogo() {
 
         header.clickLogo();
