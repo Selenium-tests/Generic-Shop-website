@@ -6,11 +6,9 @@
         <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
-    <test verbose="2" name="Header elements">
+    <test verbose="2" name="The header buttons">
         <classes>
-            <class name="tests.homepage.SearchEngineTest"/>
-            <class name="tests.homepage.MainMenuTest"/>
-            <class name="tests.homepage.MainMenuDropdownListTest"/>
+            <class name="tests.headerbuttons.HeaderButtonsTest"/>
         </classes>
     </test>
 </suite>
