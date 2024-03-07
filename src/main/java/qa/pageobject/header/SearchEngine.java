@@ -20,19 +20,23 @@ public class SearchEngine extends BasePage {
     @FindBy(id = "search-top-bar-submit")
     WebElement button;
 
+    @io.qameta.allure.Step("Enter a phrase")
+    @io.qase.api.annotation.Step("Enter a phrase")
     public void setPhrase(String phrase) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(field)));
         field.sendKeys(phrase);
     }
 
-    public void clickSubmitButton() throws IllegalAccessException {
+    @io.qameta.allure.Step("Click the search button")
+    @io.qase.api.annotation.Step("Click the search button")
+    public void clickSubmitButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(button)).click();
     }
 
     public String getPhrase() {
 
-        return field.getText();
+        return field.getAttribute("value");
     }
 }
