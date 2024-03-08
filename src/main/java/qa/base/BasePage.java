@@ -1,5 +1,6 @@
 package qa.base;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ public class BasePage {
     private final WebDriverWait webDriverWait;
     private final FluentWait<WebDriver> fluentWait;
     private final FocusExecutor focusExecutor;
+    private final JavascriptExecutor javascriptExecutor;
 
     protected BasePage(WebDriver driver) {
 
@@ -23,6 +25,7 @@ public class BasePage {
 
         this.driver = driver;
         focusExecutor = new FocusExecutor(driver);
+        javascriptExecutor = (JavascriptExecutor) driver;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
         fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))
@@ -33,6 +36,11 @@ public class BasePage {
     protected void focus(WebElement element) {
 
         focusExecutor.perform(element);
+    }
+
+    protected JavascriptExecutor getJavascriptExecutor() {
+
+        return javascriptExecutor;
     }
 
     protected WebDriver getDriver() {
