@@ -19,7 +19,6 @@ public class ProductThumbnailProvider {
 
         productThumbnail
                 .setParent(parent)
-                .setLink(link)
                 .setPrice(price)
                 .setAddToCartButton(addToCartButton);
 
