@@ -64,6 +64,17 @@ public class ModelsBuilder {
                 .toArray(NewsletterData[]::new);
     }
 
+    public static String[] getNewsletterFieldText(String fieldType, String key) {
+
+        JSONObject jsonObject = new JSONObject(TestdataLoader.getSource());
+        JSONObject field = jsonObject.getJSONObject(fieldType);
+        JSONArray jsonArray = field.getJSONArray(key);
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(jsonArray::getString)
+                .toArray(String[]::new);
+    }
+
     public static AddressData[] getAddressFormData(String key) {
 
         return getAddressFormData(key, TestdataLoader.getSource());
