@@ -11,7 +11,7 @@ import qa.dataproviders.ThumbnailsDataProviders;
 import qa.enums.URLs;
 import qa.models.ThumbnailData;
 import qa.pageobject.thumbnails.ProductThumbnail;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 import qa.thumbnailgenerators.ProductThumbnailProvider;
 import tests.base.BaseTest;
 
