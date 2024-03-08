@@ -8,8 +8,8 @@
 
     <test verbose="2" name="Links on the home page">
         <classes>
-            <class name="tests.homepage.LinksToProductPagesTest"/>
-            <class name="tests.homepage.LinksToBlogPagesTest"/>
+            <class name="tests.mainmenu.MainMenuTest"/>
+            <class name="tests.mainmenu.MainMenuDropdownListTest"/>
         </classes>
     </test>
 </suite>
