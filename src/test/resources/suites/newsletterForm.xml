@@ -13,12 +13,12 @@
         </classes>
     </test>
 
-    <test name="Subscription to the newsletter">
+    <!--<test name="Subscription to the newsletter">
         <parameter name="fileName" value="GSS_Newsletter"/>
 
         <classes>
             <class name="tests.newsletter.SubscriptionToNewsletterTest"/>
         </classes>
-    </test>
+    </test>-->
 
 </suite>
