@@ -39,6 +39,16 @@ public class LoginForm extends BasePage {
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(passwordField))).sendKeys(password);
     }
 
+    public String getUsername() {
+
+        return usernameField.getAttribute("value");
+    }
+
+    public String getPassword() {
+
+        return passwordField.getAttribute("value");
+    }
+
     public void clickLoginButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(loginButton)).click();
