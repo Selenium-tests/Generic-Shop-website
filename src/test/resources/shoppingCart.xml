@@ -7,10 +7,12 @@
     </listeners>
 
     <test verbose="2" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
+        <parameter name="fileName" value="GSS_Thumbnails"/>
         <classes>
-            <class name="tests.shoppingcart.AddingProductToCartFromHomePageTest"/>
-            <class name="tests.shoppingcart.AddingProductToTheCartFromProductPageTest"/>
-            <class name="tests.shoppingcart.QuantityFieldTest"/>
+
+            <class name="tests.shoppingcart.AddingFromProductThumbnailTest">
+
+            </class>
         </classes>
     </test>
 </suite>

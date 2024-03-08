@@ -7,8 +7,14 @@
     </listeners>
 
     <test verbose="2" name="C:/Projekty/Testowanie/Generic-Shop-tests-master">
+        <parameter name="fileName" value="specialCharacters"/>
+
         <classes>
-            <class name="tests.productpage.QuantityFieldTest"/>
+            <class name="tests.productpage.QuantityFieldTest">
+                <methods>
+                    <include name="blankQuantityField"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
