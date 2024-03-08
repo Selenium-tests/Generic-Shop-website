@@ -15,7 +15,7 @@ public class NewsletterForm extends BasePage {
     }
 
     @FindBy(id = "es_txt_name")
-    WebElement usernameField;
+    WebElement nameField;
 
     @FindBy(id = "es_txt_email")
     WebElement emailField;
@@ -26,19 +26,23 @@ public class NewsletterForm extends BasePage {
     @FindBy(id = "es_widget_msg")
     WebElement message;
 
-    public void setUsername(String name) throws IllegalAccessException {
+    @io.qameta.allure.Step("Enter a name")
+    @io.qase.api.annotation.Step("Enter a name")
+    public void setName(String name) throws IllegalAccessException {
 
-        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(usernameField))).sendKeys(name);
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(nameField))).sendKeys(name);
     }
 
+    @io.qameta.allure.Step("Enter an email")
+    @io.qase.api.annotation.Step("Enter an email")
     public void setEmail(String email) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(emailField))).sendKeys(email);
     }
 
-    public String getUsername() {
+    public String getName() {
 
-        return usernameField.getAttribute("value");
+        return nameField.getAttribute("value");
     }
 
     public String getEmail() {
