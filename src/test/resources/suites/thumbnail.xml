@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Product thumbnail">
+
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <test name="The 'View Cart' button visibility">
+        <parameter name="fileName" value="GSS_Thumbnails"/>
+
+        <classes>
+            <class name="tests.thumbnail.ViewCartButtonTest"/>
+        </classes>
+    </test>
+
+</suite>
