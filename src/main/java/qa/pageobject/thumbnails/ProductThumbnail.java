@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 public class ProductThumbnail extends BasePage {
 
     private WebElement parent;
-    private WebElement link;
     private WebElement price;
     @Setter
     private WebElement addToCartButton;
@@ -24,12 +23,6 @@ public class ProductThumbnail extends BasePage {
     public ProductThumbnail setParent(WebElement parent) {
 
         this.parent = parent;
-        return this;
-    }
-
-    public ProductThumbnail setLink(WebElement link) {
-
-        this.link = link;
         return this;
     }
 
