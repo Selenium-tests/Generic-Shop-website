@@ -1,16 +1,23 @@
 package tests.base;
 
+import lombok.Getter;
 import org.json.JSONException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import qa.browsermanager.BrowserManager;
 import qa.driver.WebDriverProvider;
 import qa.enums.Browser;
 import qa.testdataloader.TestdataLoader;
 
+import java.time.Duration;
+
 public class BaseTest {
 
+    @Getter
     private static WebDriver driver;
+    @Getter
+    private WebDriverWait webDriverWait;
 
     @Parameters({"fileName"})
     @BeforeClass
@@ -26,6 +33,7 @@ public class BaseTest {
     public void startDriver() {
 
         driver = WebDriverProvider.getDriver(Browser.CHROME).createDriver();
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         BrowserManager.start(driver);
     }
 
@@ -38,15 +46,5 @@ public class BaseTest {
     protected void goToSpecificPage(String url) {
 
         BrowserManager.goToPage(driver, url);
-    }
-
-    public void setDriver(WebDriver driver) {
-
-        BaseTest.driver = driver;
-    }
-
-    public static WebDriver getDriver() {
-
-        return driver;
     }
 }
