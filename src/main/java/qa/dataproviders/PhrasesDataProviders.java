@@ -3,7 +3,7 @@ package qa.dataproviders;
 import org.json.JSONException;
 import org.testng.annotations.DataProvider;
 import qa.jsonreader.ModelsBuilder;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 
 public class PhrasesDataProviders {
 

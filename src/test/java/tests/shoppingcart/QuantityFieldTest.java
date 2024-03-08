@@ -6,7 +6,7 @@ import qa.dataproviders.SpecialCharactersDataProvider;
 import qa.enums.URLs;
 import qa.helpers.ShoppingCartActions;
 import qa.pageobject.shoppingcart.ShoppingCart;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 import tests.base.QuantityFieldBaseTest;
 
 public class QuantityFieldTest extends QuantityFieldBaseTest {

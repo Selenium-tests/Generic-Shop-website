@@ -9,7 +9,7 @@ import qa.enums.URLs;
 import qa.pageobject.account.AccountNavigation;
 import qa.pageobject.loginform.LoginForm;
 import qa.models.Credentials;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 
 public class LoginTest extends BaseTest {
 

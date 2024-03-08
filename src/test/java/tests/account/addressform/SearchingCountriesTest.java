@@ -8,7 +8,7 @@ import qa.dataproviders.CountriesDataProviders;
 import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.CountryDropdownList;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 
 
 public class SearchingCountriesTest extends BaseTest {

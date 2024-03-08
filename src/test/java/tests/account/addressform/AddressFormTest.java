@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
 import qa.models.AddressData;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 
 public class AddressFormTest extends BaseTest {
 

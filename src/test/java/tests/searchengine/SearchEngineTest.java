@@ -13,7 +13,7 @@ import qa.dataproviders.PhrasesDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.header.ResultsPage;
 import qa.pageobject.header.SearchEngine;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 
 import java.util.function.Consumer;
 

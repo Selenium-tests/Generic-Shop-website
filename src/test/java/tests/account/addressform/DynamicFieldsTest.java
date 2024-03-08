@@ -8,7 +8,7 @@ import qa.dataproviders.DynamicFieldsDataProviders;
 import qa.enums.URLs;
 import qa.helpers.Authentication;
 import qa.pageobject.addressform.AddressForm;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 import qa.utils.AccessThrowingConsumer;
 
 public class DynamicFieldsTest extends BaseTest {

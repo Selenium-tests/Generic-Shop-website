@@ -10,7 +10,7 @@ import qa.dataproviders.NewsletterDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.footer.Footer;
 import qa.models.NewsletterData;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 
 
 public class SubscriptionToNewsletterTest extends BaseTest {

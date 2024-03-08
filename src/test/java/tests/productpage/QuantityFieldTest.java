@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import qa.dataproviders.SpecialCharactersDataProvider;
 import qa.enums.URLs;
 import qa.pageobject.productpage.ProductPage;
-import qa.support.dataprovidernames.DataProviderNames;
+import qa.support.constans.DataProviderNames;
 import tests.base.QuantityFieldBaseTest;
 
 public class QuantityFieldTest extends QuantityFieldBaseTest {
