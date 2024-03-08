@@ -1,4 +1,4 @@
-package qa.support.dataprovidernames;
+package qa.support.constans;
 
 public class DataProviderNames {
 
@@ -57,4 +57,10 @@ public class DataProviderNames {
     public static final String SPECIAL_CHARACTERS = "specialCharacters";
     public static final String PRODUCTS_TO_CART = "productsToCart";
     public static final String THUMBNAILS = "thumbnails";
+    public static final String NAME_FIELD_BELOW_MAX = "nameFieldBelowMax";
+    public static final String NAME_FIELD_MAX = "nameFieldMax";
+    public static final String NAME_FIELD_ABOVE_MAX = "nameFieldAboveMax";
+    public static final String EMAIL_FIELD_BELOW_MAX = "emailFieldBelowMax";
+    public static final String EMAIL_FIELD_MAX = "emailFieldMax";
+    public static final String EMAIL_FIELD_ABOVE_MAX = "emailFieldAboveMax";
 }
