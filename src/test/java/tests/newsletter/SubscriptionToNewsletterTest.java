@@ -26,7 +26,7 @@ public class SubscriptionToNewsletterTest extends BaseTest {
 
     private void fill(NewsletterData newsletterData) throws IllegalAccessException {
 
-        footer.getNewsletterForm().setUsername(newsletterData.getUsername());
+        footer.getNewsletterForm().setName(newsletterData.getUsername());
         footer.getNewsletterForm().setEmail(newsletterData.getEmail());
         footer.getNewsletterForm().clickSubscribeButton();
     }
