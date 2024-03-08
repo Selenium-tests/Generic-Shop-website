@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Slider section">
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <test name="The slider section buttons">
+        <classes>
+            <class name="tests.slidersection.SliderSectionTest"/>
+        </classes>
+    </test>
+
+</suite>
