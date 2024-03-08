@@ -13,7 +13,7 @@ public class ChromeBrowser extends WebDriverFactory {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
+        //options.addArguments("--headless=new");
         options.merge(getCapabilities(ChromeOptions.CAPABILITY, options));
 
         return new ChromeDriver(options);
