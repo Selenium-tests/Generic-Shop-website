@@ -40,6 +40,16 @@ public class NewsletterForm extends BasePage {
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(emailField))).sendKeys(email);
     }
 
+    public int getNameFieldMaxLength() {
+
+        return Integer.parseInt(nameField.getAttribute("maxlength"));
+    }
+
+    public int getEmailFieldMaxLength() {
+
+        return Integer.parseInt(emailField.getAttribute("maxlength"));
+    }
+
     public String getName() {
 
         return nameField.getAttribute("value");
