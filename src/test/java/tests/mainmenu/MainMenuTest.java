@@ -10,6 +10,8 @@ import tests.base.BaseTest;
 import qa.enums.URLs;
 import qa.pageobject.mainmenu.MainMenu;
 
+import java.util.function.Consumer;
+
 @Epic("E2E")
 @Feature("Main menu")
 public class MainMenuTest extends BaseTest {
@@ -23,6 +25,12 @@ public class MainMenuTest extends BaseTest {
         mainMenu = new MainMenu(getDriver());
     }
 
+    private void actions(Consumer<MainMenu> consumer, String expectedUrl) {
+
+        consumer.accept(mainMenu);
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The page " + expectedUrl + " has not been opened");
+    }
+
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(9)
@@ -30,8 +38,7 @@ public class MainMenuTest extends BaseTest {
     @Description("The \"Shop\" link")
     public void shopLink() {
 
-        mainMenu.clickShopLink();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.HOME_PAGE.getName());
+        actions(MainMenu::clickShopLink, URLs.HOME_PAGE.getName());
     }
 
     @Test
@@ -41,8 +48,7 @@ public class MainMenuTest extends BaseTest {
     @Description("The \"Most Wanted\" link")
     public void mostWantedLink() {
 
-        mainMenu.clickMostWantedLink();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.MOST_WANTED_PAGE.getName());
+        actions(MainMenu::clickMostWantedLink, URLs.MOST_WANTED_PAGE.getName());
     }
 
     @Test
@@ -52,8 +58,7 @@ public class MainMenuTest extends BaseTest {
     @Description("The \"About Us\" link")
     public void aboutUsLink() {
 
-        mainMenu.clickAboutUsLink();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.ABOUT_US_PAGE.getName());
+        actions(MainMenu::clickAboutUsLink, URLs.ABOUT_US_PAGE.getName());
     }
 
     @Test
@@ -63,8 +68,7 @@ public class MainMenuTest extends BaseTest {
     @Description("The \"Contact\" link")
     public void contactMenu() {
 
-        mainMenu.clickContactLink();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.CONTACT_PAGE.getName());
+        actions(MainMenu::clickContactLink, URLs.CONTACT_PAGE.getName());
     }
 
     @Test
@@ -74,8 +78,9 @@ public class MainMenuTest extends BaseTest {
     @Description("The \"Blog\" link")
     public void blogLink() {
 
+        actions(MainMenu::clickBlogLink, URLs.BLOG_PAGE.getName());
         mainMenu.clickBlogLink();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BLOG_LINK.getName());
+        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BLOG_PAGE.getName());
     }
 
     @Test
@@ -85,7 +90,6 @@ public class MainMenuTest extends BaseTest {
     @Description("The \"Categories\" link")
     public void categoriesLink() {
 
-        mainMenu.clickCategoriesLink();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.CATEGORIES_PAGE.getName());
+        actions(MainMenu::clickCategoriesLink, URLs.CATEGORIES_PAGE.getName());
     }
 }
