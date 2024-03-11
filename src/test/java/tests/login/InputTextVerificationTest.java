@@ -32,7 +32,7 @@ public class InputTextVerificationTest extends BaseTest {
     public void usernameField() throws IllegalAccessException {
 
         loginForm.setUsername(TEXT);
-        Assert.assertEquals(loginForm.getUsername(), TEXT, "Incorrect username");
+        Assert.assertEquals(loginForm.getUsername(), TEXT, "Incorrect the \"Username or email address\" field output");
     }
 
     @Test(priority = 2)
@@ -43,6 +43,6 @@ public class InputTextVerificationTest extends BaseTest {
     public void emailField() throws IllegalAccessException {
 
         loginForm.setPassword(TEXT);
-        Assert.assertEquals(loginForm.getPassword(), TEXT, "Incorrect email");
+        Assert.assertEquals(loginForm.getPassword(), TEXT, "Incorrect the \"Password\" field output");
     }
 }
