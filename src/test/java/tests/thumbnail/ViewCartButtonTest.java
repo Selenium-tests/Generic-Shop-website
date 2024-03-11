@@ -1,6 +1,8 @@
 package tests.thumbnail;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +26,7 @@ public class ViewCartButtonTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = DataProviderNames.THUMBNAILS, dataProviderClass = ThumbnailsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(31)
     @QaseTitle("The \"View Cart\" button visibility")
     @Description("The \"View Cart\" button visibility")
@@ -40,6 +43,7 @@ public class ViewCartButtonTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = DataProviderNames.THUMBNAILS, dataProviderClass = ThumbnailsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(32)
     @QaseTitle("Clicking the \"View Cart\" button")
     @Description("Clicking the \"View Cart\" button")
