@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
 
     private void checkErrorMessageContent(String errorMessageContent) {
 
-        Assert.assertTrue(loginForm.getErrorMessageContent().contains(errorMessageContent));
+        Assert.assertTrue(loginForm.getErrorMessageContent().contains(errorMessageContent), "Incorrect the error message content");
     }
 
     private void waitForAccountPage() {
