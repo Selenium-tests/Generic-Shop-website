@@ -1,8 +1,6 @@
 package tests.mainmenu;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -26,6 +24,7 @@ public class MainMenuTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(9)
     @QaseTitle("The \"Shop\" link")
     @Description("The \"Shop\" link")
@@ -36,6 +35,7 @@ public class MainMenuTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(10)
     @QaseTitle("The \"Most Wanted\" link")
     @Description("The \"Most Wanted\" link")
@@ -46,6 +46,7 @@ public class MainMenuTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
     @QaseId(11)
     @QaseTitle("The \"About Us\" link")
     @Description("The \"About Us\" link")
@@ -56,6 +57,7 @@ public class MainMenuTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(12)
     @QaseTitle("The \"Contact\" link")
     @Description("The \"Contact\" link")
@@ -66,6 +68,7 @@ public class MainMenuTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
     @QaseId(13)
     @QaseTitle("The \"Blog\" link")
     @Description("The \"Blog\" link")
@@ -73,5 +76,16 @@ public class MainMenuTest extends BaseTest {
 
         mainMenu.clickBlogLink();
         Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BLOG_LINK.getName());
+    }
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(14)
+    @QaseTitle("The \"Categories\" link")
+    @Description("The \"Categories\" link")
+    public void categoriesLink() {
+
+        mainMenu.clickCategoriesLink();
+        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.CATEGORIES_PAGE.getName());
     }
 }
