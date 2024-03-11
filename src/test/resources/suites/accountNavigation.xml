@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="The account navigation">
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <test name="The account navigation links">
+        <classes>
+            <class name="tests.account.AccountNavigationTest"/>
+        </classes>
+    </test>
+</suite>
