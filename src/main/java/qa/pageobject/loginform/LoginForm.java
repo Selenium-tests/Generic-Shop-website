@@ -29,11 +29,15 @@ public class LoginForm extends BasePage {
     @FindBy(className = "woocommerce-error")
     WebElement errorMessage;
 
+    @io.qameta.allure.Step("Enter an username or email address")
+    @io.qase.api.annotation.Step("Enter an username or email address")
     public void setUsername(String username) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(usernameField))).sendKeys(username);
     }
 
+    @io.qameta.allure.Step("Enter a password")
+    @io.qase.api.annotation.Step("Enter a password")
     public void setPassword(String password) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(passwordField))).sendKeys(password);
@@ -49,6 +53,8 @@ public class LoginForm extends BasePage {
         return passwordField.getAttribute("value");
     }
 
+    @io.qameta.allure.Step("Click the \"Login\" button")
+    @io.qase.api.annotation.Step("Click the \"Login\" button")
     public void clickLoginButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(loginButton)).click();
