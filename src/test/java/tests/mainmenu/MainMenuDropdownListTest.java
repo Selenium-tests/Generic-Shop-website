@@ -1,8 +1,6 @@
 package tests.mainmenu;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -35,7 +33,8 @@ public class MainMenuDropdownListTest extends BaseTest {
                 "The page \"" + expectedUrl + "\" has not been opened");
     }
 
-    @Test
+    @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(15)
     @QaseTitle("Expanding the dropdown list")
     @Description("Expanding the dropdown list")
@@ -50,7 +49,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 2)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(16)
     @QaseTitle("Collapsing the dropdown list")
     @Description("Collapsing the dropdown list")
@@ -66,7 +66,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         }
     }
 
-    @Test
+    @Test(priority = 3)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(17)
     @QaseTitle("The \"All\" link")
     @Description("The \"All\" link")
@@ -75,7 +76,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickAllLink, URLs.ALL_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 4)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(18)
     @QaseTitle("The \"Shirts\" link")
     @Description("The \"Shirts\" link")
@@ -84,7 +86,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickShirtsLink, URLs.SHIRTS_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 5)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(19)
     @QaseTitle("The \"Featured\" link")
     @Description("The \"Featured\" link")
@@ -93,7 +96,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickFeaturedLink, URLs.FEATURED_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 6)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(20)
     @QaseTitle("The \"Trends\" link")
     @Description("The \"Trends\" link")
@@ -102,7 +106,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickTrendsLink, URLs.TRENDS_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 7)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(21)
     @QaseTitle("The \"Scarfs\" link")
     @Description("The \"Scarfs\" link")
@@ -111,7 +116,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickScarfsLink, URLs.SCARFS_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 8)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(22)
     @QaseTitle("The \"Shoes\" link")
     @Description("The \"Shoes\" link")
@@ -120,7 +126,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickShoesLink, URLs.SHOES_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 9)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(23)
     @QaseTitle("The \"Tops\" link")
     @Description("The \"Tops\" link")
@@ -129,7 +136,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickTopsLink, URLs.TOPS_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 10)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(24)
     @QaseTitle("The \"Blouse\" link")
     @Description("The \"Blouse\" link")
@@ -138,7 +146,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickBlouseLink, URLs.BLOUSE_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 11)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(25)
     @QaseTitle("The \"Dresses\" link")
     @Description("The \"Dresses\" link")
@@ -147,7 +156,8 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickDressesLink, URLs.DRESSES_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 12)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(26)
     @QaseTitle("The \"Jeans\" link")
     @Description("The \"Jeans\" link")
