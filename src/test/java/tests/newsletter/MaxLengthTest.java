@@ -1,8 +1,6 @@
 package tests.newsletter;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -27,7 +25,8 @@ public class MaxLengthTest extends BaseTest {
         newsletterForm = new NewsletterForm(getDriver());
     }
 
-    @Test(dataProvider = DataProviderNames.NAME_FIELD_BELOW_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.NAME_FIELD_BELOW_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(42)
     @QaseTitle("The \"Name\" field - shorter than maximum (maxLength - 1)")
     @Description("The \"Name\" field - shorter than maximum (maxLength - 1)")
@@ -37,7 +36,8 @@ public class MaxLengthTest extends BaseTest {
         Assert.assertEquals(text.length(), newsletterForm.getName().length(), "The output text is not equals to the expected");
     }
 
-    @Test(dataProvider = DataProviderNames.NAME_FIELD_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.NAME_FIELD_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(43)
     @QaseTitle("The \"Name\" field - maximum (maxLength)")
     @Description("The \"Name\" field - maximum (maxLength)")
@@ -47,7 +47,8 @@ public class MaxLengthTest extends BaseTest {
         Assert.assertEquals(text.length(), newsletterForm.getName().length(), "The output text is not equals to the expected");
     }
 
-    @Test(dataProvider = DataProviderNames.NAME_FIELD_ABOVE_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.NAME_FIELD_ABOVE_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(44)
     @QaseTitle("The \"Name\" field - exceeding maximum (maxLength + 1)")
     @Description("The \"Name\" field - exceeding maximum (maxLength + 1)")
@@ -57,7 +58,8 @@ public class MaxLengthTest extends BaseTest {
         Assert.assertEquals(text.length() - 1, newsletterForm.getName().length(), "The output text is not equals to the expected");
     }
 
-    @Test(dataProvider = DataProviderNames.EMAIL_FIELD_BELOW_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.EMAIL_FIELD_BELOW_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(45)
     @QaseTitle("The \"Email\" field - shorter than maximum (maxLength - 1)")
     @Description("The \"Email\" field - shorter than maximum (maxLength - 1)")
@@ -67,7 +69,8 @@ public class MaxLengthTest extends BaseTest {
         Assert.assertEquals(text.length(), newsletterForm.getEmail().length(), "The output text is not equals to the expected");
     }
 
-    @Test(dataProvider = DataProviderNames.EMAIL_FIELD_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.EMAIL_FIELD_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(46)
     @QaseTitle("The \"Email\" field - maximum (maxLength)")
     @Description("The \"Email\" field - maximum (maxLength)")
@@ -77,7 +80,8 @@ public class MaxLengthTest extends BaseTest {
         Assert.assertEquals(text.length(), newsletterForm.getEmail().length(), "The output text is not equals to the expected");
     }
 
-    @Test(dataProvider = DataProviderNames.EMAIL_FIELD_ABOVE_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.EMAIL_FIELD_ABOVE_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(47)
     @QaseTitle("The \"Email\" field - exceeding maximum (maxLength + 1)")
     @Description("The \"Email\" field - exceeding maximum (maxLength + 1)")
