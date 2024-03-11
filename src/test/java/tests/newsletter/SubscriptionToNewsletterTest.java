@@ -1,5 +1,8 @@
 package tests.newsletter;
 
+import io.qameta.allure.*;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import tests.base.BaseTest;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
@@ -12,7 +15,8 @@ import qa.pageobject.footer.Footer;
 import qa.models.NewsletterData;
 import qa.support.constans.DataProviderNames;
 
-
+@Epic("E2E")
+@Feature("Subscription to the newsletter")
 public class SubscriptionToNewsletterTest extends BaseTest {
 
     private Footer footer;
@@ -22,13 +26,6 @@ public class SubscriptionToNewsletterTest extends BaseTest {
 
         goToSpecificPage(URLs.HOME_PAGE.getName());
         footer = new Footer(getDriver());
-    }
-
-    private void fill(NewsletterData newsletterData) throws IllegalAccessException {
-
-        footer.getNewsletterForm().setName(newsletterData.getUsername());
-        footer.getNewsletterForm().setEmail(newsletterData.getEmail());
-        footer.getNewsletterForm().clickSubscribeButton();
     }
 
     private void checkMessageContent(String text) {
@@ -50,31 +47,51 @@ public class SubscriptionToNewsletterTest extends BaseTest {
         }
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(48)
+    @QaseTitle("Subscribing to the newsletter using correct credentials")
+    @Description("Subscribing to the newsletter using correct credentials")
     public void correct(NewsletterData newsletterData) throws IllegalAccessException {
 
-        fill(newsletterData);
+        footer.getNewsletterForm().setName(newsletterData.getUsername());
+        footer.getNewsletterForm().setEmail(newsletterData.getEmail());
+        footer.getNewsletterForm().clickSubscribeButton();
         checkMessageContent(newsletterData.getMessage());
     }
 
-    @Test(dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(49)
+    @QaseTitle("Subscribing to the newsletter leaving the \"Name\" field")
+    @Description("Subscribing to the newsletter leaving the \"Name\" field")
     public void blankUsernameField(NewsletterData newsletterData) throws IllegalAccessException {
 
-        fill(newsletterData);
+        footer.getNewsletterForm().setEmail(newsletterData.getEmail());
+        footer.getNewsletterForm().clickSubscribeButton();
         checkMessageContent(newsletterData.getMessage());
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_EMAIL, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT_EMAIL, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(50)
+    @QaseTitle("Attempting to subscribe to the newsletter using an incorrect email format")
+    @Description("Attempting to subscribe to the newsletter using an incorrect email format")
     public void incorrectEmail(NewsletterData newsletterData) throws IllegalAccessException {
 
-        fill(newsletterData);
+        footer.getNewsletterForm().setEmail(newsletterData.getEmail());
+        footer.getNewsletterForm().clickSubscribeButton();
         checkForAlertVisibility(newsletterData.getMessage());
     }
 
-    @Test(dataProvider = DataProviderNames.BLANK_EMAIL_FIELD, dataProviderClass = NewsletterDataProviders.class)
-    public void blankEmailField(NewsletterData newsletterData) throws IllegalAccessException {
+    @Test(priority = 4, dataProvider = DataProviderNames.BLANK_EMAIL_FIELD, dataProviderClass = NewsletterDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(51)
+    @QaseTitle("Attempting to subscribe to the newsletter without providing input for the \"Email\" field")
+    @Description("Attempting to subscribe to the newsletter without providing input for the \"Email\" field")
+    public void blankEmailField(NewsletterData newsletterData) {
 
-        fill(newsletterData);
+        footer.getNewsletterForm().clickSubscribeButton();
         checkForAlertVisibility(newsletterData.getMessage());
     }
 }
