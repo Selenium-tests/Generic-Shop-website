@@ -1,5 +1,8 @@
 package qa.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum URLs {
 
     HOME_PAGE("https://skleptest.pl/"),
@@ -11,7 +14,7 @@ public enum URLs {
     CATEGORIES_PAGE("https://skleptest.pl/catergries/"),
     ABOUT_US_PAGE("https://skleptest.pl/about-us/"),
     CONTACT_PAGE("https://skleptest.pl/test-contact-blablabla/"),
-    BLOG_LINK("https://skleptest.pl/blog/"),
+    BLOG_PAGE("https://skleptest.pl/blog/"),
     ALL_PAGE("https://skleptest.pl/shop/"),
     SHIRTS_PAGE("https://skleptest.pl/product-category/shirts/"),
     FEATURED_PAGE("https://skleptest.pl/product-category/featured/"),
@@ -25,7 +28,13 @@ public enum URLs {
     BILLING_ADDRESS_FORM("https://skleptest.pl/my-account/edit-address/billing/"),
     EDIT_ADDRESS_NAVIGATION("https://skleptest.pl/my-account/edit-address/"),
     ORDER_RECEIVED("https://skleptest.pl/checkout/order-received/"),
-    PAY_PAL("https://www.paypal.com/");
+    PAY_PAL("https://www.paypal.com/"),
+    ORDERS_PAGE("https://skleptest.pl/my-account/orders/"),
+    DASHBOARD_PAGE("https://skleptest.pl/my-account/"),
+    DOWNLOADS_PAGE("https://skleptest.pl/my-account/downloads/"),
+    ADDRESSES_PAGE("https://skleptest.pl/my-account/edit-address/"),
+    ACCOUNT_DETAILS_PAGE("https://skleptest.pl/my-account/account-details/"),
+    LOGOUT_PAGE("https://skleptest.pl/my-account/customer-logout/");
 
     private final String name;
 
@@ -34,8 +43,4 @@ public enum URLs {
         this.name = name;
     }
 
-    public String getName() {
-
-        return name;
-    }
 }
