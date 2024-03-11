@@ -1,6 +1,5 @@
 package qa.pageobject.mainmenu;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,9 +12,6 @@ public class MainMenu extends BasePage {
 
         super(driver);
     }
-
-    @FindBy(id = "desktop-menu")
-    WebElement siteNavigation;
 
     @FindBy(id = "menu-item-142")
     WebElement shopLink;
@@ -80,10 +76,5 @@ public class MainMenu extends BasePage {
     public void clickCategoriesLink() {
 
         clickLink(categoriesLink);
-    }
-
-    public void clickLink(String id) {
-
-        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(siteNavigation.findElement(By.id(id)))).click();
     }
 }
