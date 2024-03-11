@@ -1,5 +1,10 @@
 package tests.login;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import tests.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -20,13 +25,6 @@ public class LoginTest extends BaseTest {
 
         goToSpecificPage(URLs.LOGIN_PAGE.getName());
         loginForm = new LoginForm(getDriver());
-    }
-
-    private void fill(Credentials credentials) throws IllegalAccessException {
-
-        loginForm.setUsername(credentials.getEmailOrUsername());
-        loginForm.setPassword(credentials.getPassword());
-        loginForm.clickLoginButton();
     }
 
     private void waitForErrorMessage() {
@@ -53,41 +51,70 @@ public class LoginTest extends BaseTest {
         }
     }
 
-    private void actionsForIncorrectCredentials(Credentials credentials) throws IllegalAccessException {
+    @Test(priority = 1, dataProvider = DataProviderNames.INCORRECT_USERNAME, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(63)
+    @QaseTitle("Attempting to log in using an incorrect username or email address")
+    @Description("Attempting to log in using an incorrect username or email address")
+    public void incorrectUsername(Credentials credentials) throws IllegalAccessException {
 
-        fill(credentials);
+        loginForm.setUsername(credentials.getEmailOrUsername());
+        loginForm.setPassword(credentials.getPassword());
+        loginForm.clickLoginButton();
         waitForErrorMessage();
         checkErrorMessageContent(credentials.getMessage());
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_USERNAME, dataProviderClass = CredentialsDataProviders.class)
-    public void incorrectUsername(Credentials credentials) throws IllegalAccessException {
-
-        actionsForIncorrectCredentials(credentials);
-    }
-
-    @Test(dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(64)
+    @QaseTitle("Attempting to log in without providing input for the \"Username or email address\" field")
+    @Description("Attempting to log in without providing input for the \"Username or email address\" field")
     public void blankUsernameField(Credentials credentials) throws IllegalAccessException {
 
-        actionsForIncorrectCredentials(credentials);
+        loginForm.setPassword(credentials.getPassword());
+        loginForm.clickLoginButton();
+        waitForErrorMessage();
+        checkErrorMessageContent(credentials.getMessage());
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_PASSWORD, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT_PASSWORD, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(65)
+    @QaseTitle("Attempting to log in using an incorrect password")
+    @Description("Attempting to log in using an incorrect password")
     public void incorrectPassword(Credentials credentials) throws IllegalAccessException {
 
-        actionsForIncorrectCredentials(credentials);
+        loginForm.setUsername(credentials.getEmailOrUsername());
+        loginForm.setPassword(credentials.getPassword());
+        loginForm.clickLoginButton();
+        waitForErrorMessage();
+        checkErrorMessageContent(credentials.getMessage());
     }
 
-    @Test(dataProvider = DataProviderNames.BLANK_PASSWORD_FIELD, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.BLANK_PASSWORD_FIELD, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(66)
+    @QaseTitle("Attempting to log in without providing input for the \"Password\" field")
+    @Description("Attempting to log in without providing input for the \"Password\" field")
     public void blankPasswordField(Credentials credentials) throws IllegalAccessException {
 
-        actionsForIncorrectCredentials(credentials);
+        loginForm.setUsername(credentials.getEmailOrUsername());
+        loginForm.clickLoginButton();
+        waitForErrorMessage();
+        checkErrorMessageContent(credentials.getMessage());
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(67)
+    @QaseTitle("Logging in using correct credentials")
+    @Description("Logging in using correct credentials")
     public void correct(Credentials credentials) throws IllegalAccessException {
 
-        fill(credentials);
+        loginForm.setUsername(credentials.getEmailOrUsername());
+        loginForm.setPassword(credentials.getPassword());
+        loginForm.clickLoginButton();
         waitForAccountPage();
     }
 }

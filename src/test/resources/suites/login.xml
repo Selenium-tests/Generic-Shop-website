@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Footer">
+
+    <test name="Login">
+        <parameter name="fileName" value="GSS_Credentials"/>
+        <classes>
+            <class name="tests.login.LoginTest">
+                <methods>
+                    <include name="correct"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
