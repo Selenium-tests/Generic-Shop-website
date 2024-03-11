@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Footer">
+<suite name="Login form">
+
+    <test name="Input text verification">
+        <classes>
+            <class name="tests.login.InputTextVerificationTest"/>
+        </classes>
+    </test>
 
     <test name="Login">
         <parameter name="fileName" value="GSS_Credentials"/>
