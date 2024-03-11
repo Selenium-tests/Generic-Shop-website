@@ -1,8 +1,6 @@
 package tests.newsletter;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -14,7 +12,7 @@ import tests.base.BaseTest;
 
 @Epic("E2E")
 @Feature("The newsletter form fields")
-public class InputTextValidationTest extends BaseTest {
+public class InputTextVerificationTest extends BaseTest {
 
     private NewsletterForm newsletterForm;
     private final String TEXT = "This is the text";
@@ -26,7 +24,8 @@ public class InputTextValidationTest extends BaseTest {
         newsletterForm = new NewsletterForm(getDriver());
     }
 
-    @Test
+    @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(40)
     @QaseTitle("Verification of the \"Name\" field text input")
     @Description("Verification of the \"Name\" field text input")
@@ -37,7 +36,8 @@ public class InputTextValidationTest extends BaseTest {
         Assert.assertEquals(newsletterForm.getName(), TEXT, "Incorrect the \"Name\" field output");
     }
 
-    @Test
+    @Test(priority = 2)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(41)
     @QaseTitle("Verification of the \"Email\" field text input")
     @Description("Verification of the \"Email\" field text input")
