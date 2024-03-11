@@ -1,8 +1,6 @@
 package tests.headerbuttons;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -25,6 +23,7 @@ public class HeaderButtonsTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(2)
     @QaseTitle("The logo")
     @Description("The logo")
@@ -36,6 +35,7 @@ public class HeaderButtonsTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(3)
     @QaseTitle("The \"Account\" button")
     @Description("The \"Account\" button")
@@ -47,6 +47,7 @@ public class HeaderButtonsTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(4)
     @QaseTitle("The \"My Cart\" button")
     @Description("The \"My Cart\" button")
