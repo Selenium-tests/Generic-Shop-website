@@ -1,8 +1,6 @@
 package tests.searchengine;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import tests.base.BaseTest;
@@ -41,6 +39,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(5)
     @QaseTitle("Text input verification")
     @Description("Text input verification")
@@ -52,6 +51,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = PhrasesDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(6)
     @QaseTitle("Searching with a correct phrase")
     @Description("Searching with a correct phrase")
@@ -62,6 +62,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = DataProviderNames.PARTIAL, dataProviderClass = PhrasesDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(7)
     @QaseTitle("Searching with an incorrect phrase")
     @Description("Searching with an incorrect phrase")
@@ -72,6 +73,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT, dataProviderClass = PhrasesDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     public void incorrect(String phrase) throws IllegalAccessException {
 
         check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
@@ -79,6 +81,7 @@ public class SearchEngineTest extends BaseTest {
     }
 
     @Test(priority = 4, dataProvider = DataProviderNames.NAUGHTY_STRINGS, dataProviderClass = PhrasesDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
     public void naughtyStrings(String phrase) throws IllegalAccessException {
 
         check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
