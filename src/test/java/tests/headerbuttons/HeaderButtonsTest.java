@@ -10,6 +10,8 @@ import qa.enums.URLs;
 import tests.base.BaseTest;
 import qa.pageobject.header.Header;
 
+import java.util.function.Consumer;
+
 @Epic("E2E")
 @Feature("The header buttons")
 public class HeaderButtonsTest extends BaseTest {
@@ -22,6 +24,12 @@ public class HeaderButtonsTest extends BaseTest {
         header = new Header(getDriver());
     }
 
+    private void actions(Consumer<Header> consumer, String expectedUrl) {
+
+        consumer.accept(header);
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The page " + expectedUrl + " has not been opened");
+    }
+
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(2)
@@ -30,8 +38,7 @@ public class HeaderButtonsTest extends BaseTest {
     public void logo() {
 
         goToSpecificPage(URLs.LOGIN_PAGE.getName());
-        header.clickLogo();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.HOME_PAGE.getName());
+        actions(Header::clickLogo, URLs.HOME_PAGE.getName());
     }
 
     @Test
@@ -42,8 +49,7 @@ public class HeaderButtonsTest extends BaseTest {
     public void accountButton() {
 
         goToSpecificPage(URLs.HOME_PAGE.getName());
-        header.clickAccountButton();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.LOGIN_PAGE.getName());
+        actions(Header::clickAccountButton, URLs.LOGIN_PAGE.getName());
     }
 
     @Test
@@ -54,7 +60,6 @@ public class HeaderButtonsTest extends BaseTest {
     public void cartButton() {
 
         goToSpecificPage(URLs.HOME_PAGE.getName());
-        header.clickCartButton();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.SHOPPING_CART.getName());
+        actions(Header::clickCartButton, URLs.SHOPPING_CART.getName());
     }
 }
