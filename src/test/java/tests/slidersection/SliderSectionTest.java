@@ -1,8 +1,6 @@
 package tests.slidersection;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -25,7 +23,8 @@ public class SliderSectionTest extends BaseTest {
         sliderSection = new SliderSection(getDriver());
     }
 
-    @Test
+    @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(27)
     @QaseTitle("The \"Shop Now\" button")
     @Description("The \"Shop Now\" button")
@@ -36,7 +35,8 @@ public class SliderSectionTest extends BaseTest {
                 "The page \"" + URLs.MOST_WANTED_PAGE.getName() + "\" has not been opened");
     }
 
-    @Test
+    @Test(priority = 2)
+    @Severity(SeverityLevel.CRITICAL)
     @QaseId(28)
     @QaseTitle("The \"Learn More\" button")
     @Description("The \"Learn More\" button")
