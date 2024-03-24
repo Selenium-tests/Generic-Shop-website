@@ -8,7 +8,7 @@ import org.testng.annotations.*;
 import qa.browsermanager.BrowserManager;
 import qa.driver.WebDriverProvider;
 import qa.enums.Browser;
-import qa.testdataloader.TestdataLoader;
+import qa.support.testdataloader.TestdataLoader;
 
 import java.time.Duration;
 
@@ -43,7 +43,7 @@ public class BaseTest {
         BrowserManager.closeBrowser(driver);
     }
 
-    protected void goToSpecificPage(String url) {
+    protected void goToPage(String url) {
 
         BrowserManager.goToPage(driver, url);
     }
