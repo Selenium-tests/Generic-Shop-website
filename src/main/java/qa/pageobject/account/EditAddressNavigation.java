@@ -15,18 +15,22 @@ public class EditAddressNavigation extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = ".//div[@class='u-column1 col-1 woocommerce-Address']")
+    @FindBy(css = ".u-column1.col-1.woocommerce-Address")
     WebElement billingAddress;
 
-    @FindBy(xpath = ".//div[@class='u-column2 col-2 woocommerce-Address']")
+    @FindBy(css = "..u-column2.col-2.woocommerce-Address']")
     WebElement shippingAddress;
 
 
+    @io.qameta.allure.Step("Click the \"Edit\" link in the billing address section")
+    @io.qase.api.annotation.Step("Click the \"Edit\" link in the billing address section")
     public void clickBillingAddressLink() {
 
-        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(By.xpath(".//a[@href]"))).click();
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(billingAddress.findElement(By.xpath(".//a[@href]")))).click();
     }
 
+    @io.qameta.allure.Step("Click the \"Edit\" link in the shipping address section")
+    @io.qase.api.annotation.Step("Click the \"Edit\" link in the shipping address section")
     public void clickShippingAddressLink() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(shippingAddress.findElement(By.xpath(".//a[@href]")))).click();
