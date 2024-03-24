@@ -1,4 +1,4 @@
-package qa.utils;
+package qa.support.consumer;
 
 public interface AccessThrowingConsumer<T> {
 

@@ -1,4 +1,4 @@
-package qa.helpers;
+package qa.support.addressformfiller;
 
 import org.openqa.selenium.WebDriver;
 import qa.pageobject.addressform.AddressForm;

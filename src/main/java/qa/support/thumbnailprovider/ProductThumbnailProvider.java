@@ -1,4 +1,4 @@
-package qa.thumbnailgenerators;
+package qa.support.thumbnailprovider;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

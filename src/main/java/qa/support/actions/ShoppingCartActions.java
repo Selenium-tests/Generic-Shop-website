@@ -1,4 +1,4 @@
-package qa.helpers;
+package qa.support.actions;
 
 import org.openqa.selenium.WebDriver;
 import qa.pageobject.productpage.ProductPage;

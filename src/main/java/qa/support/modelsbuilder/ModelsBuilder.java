@@ -1,9 +1,10 @@
-package qa.jsonreader;
+package qa.support.modelsbuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import qa.models.*;
-import qa.testdataloader.TestdataLoader;
+import qa.support.constans.DataProviderNames;
+import qa.support.testdataloader.TestdataLoader;
 
 import java.util.stream.IntStream;
 
@@ -14,6 +15,21 @@ public class ModelsBuilder {
         String source = TestdataLoader.getSource();
         JSONObject jsonObject = new JSONObject(source);
         JSONArray jsonArray = jsonObject.getJSONArray(key);
+
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(i -> new Credentials(
+                        jsonArray.getJSONObject(i).getString("emailOrUsername"),
+                        jsonArray.getJSONObject(i).getString("password"),
+                        jsonArray.getJSONObject(i).getString("message")
+                ))
+                .toArray(Credentials[]::new);
+    }
+
+    public static Credentials[] getCorrectCredentials() {
+
+        String source = TestdataLoader.loadQuickly("GSS_Credentials");
+        JSONObject jsonObject = new JSONObject(source);
+        JSONArray jsonArray = jsonObject.getJSONArray(DataProviderNames.CORRECT);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new Credentials(

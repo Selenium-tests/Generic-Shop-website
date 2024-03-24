@@ -1,4 +1,4 @@
-package qa.testdataloader;
+package qa.support.testdataloader;
 
 import lombok.Getter;
 import org.json.simple.parser.JSONParser;
