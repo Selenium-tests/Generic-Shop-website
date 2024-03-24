@@ -3,16 +3,21 @@ package qa.support.modelsbuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import qa.models.*;
-import qa.support.constans.DataProviderNames;
 import qa.support.testdataloader.TestdataLoader;
 
 import java.util.stream.IntStream;
 
 
 public class ModelsBuilder {
-    public static Credentials[] getCredentials(String key) {
 
-        String source = TestdataLoader.getSource();
+    private static JSONArray getJSONArray(String source, String key) {
+
+        JSONObject jsonObject = new JSONObject(source);
+        return jsonObject.getJSONArray(key);
+    }
+
+    public static Credentials[] getCredentials(String source, String key) {
+
         JSONObject jsonObject = new JSONObject(source);
         JSONArray jsonArray = jsonObject.getJSONArray(key);
 
@@ -25,26 +30,14 @@ public class ModelsBuilder {
                 .toArray(Credentials[]::new);
     }
 
-    public static Credentials[] getCorrectCredentials() {
+    public static Credentials[] getCredentials(String key) {
 
-        String source = TestdataLoader.loadQuickly("GSS_Credentials");
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray(DataProviderNames.CORRECT);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new Credentials(
-                        jsonArray.getJSONObject(i).getString("emailOrUsername"),
-                        jsonArray.getJSONObject(i).getString("password"),
-                        jsonArray.getJSONObject(i).getString("message")
-                ))
-                .toArray(Credentials[]::new);
+        return getCredentials(TestdataLoader.getSource(), key);
     }
 
     public static String[] getStrings(String key) {
 
-        String source = TestdataLoader.getSource();
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(), key);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(jsonArray::getString)
@@ -53,9 +46,7 @@ public class ModelsBuilder {
 
     public static LinkData[] getLinkData(String key) {
 
-        String source = TestdataLoader.getSource();
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(), key);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new LinkData(
@@ -67,9 +58,7 @@ public class ModelsBuilder {
 
     public static NewsletterData[] getNewsletterData(String key) {
 
-        String source = TestdataLoader.getSource();
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(), key);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new NewsletterData(
@@ -91,15 +80,9 @@ public class ModelsBuilder {
                 .toArray(String[]::new);
     }
 
-    public static AddressData[] getAddressFormData(String key) {
-
-        return getAddressFormData(key, TestdataLoader.getSource());
-    }
-
     public static AddressData[] getAddressFormData(String key, String source) {
 
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        JSONArray jsonArray = getJSONArray(source, key);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new AddressData(
@@ -118,11 +101,14 @@ public class ModelsBuilder {
                 .toArray(AddressData[]::new);
     }
 
+    public static AddressData[] getAddressFormData(String key) {
+
+        return getAddressFormData(key, TestdataLoader.getSource());
+    }
+
     public static ProductToCart[] getProductsToCart() {
 
-        String source = TestdataLoader.getSource();
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray("products");
+        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(), "products");
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new ProductToCart(
@@ -134,9 +120,7 @@ public class ModelsBuilder {
 
     public static ThumbnailData[] getThumbnailsData() {
 
-        String source = TestdataLoader.getSource();
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray("thumbnails");
+        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(),"thumbnails");
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new ThumbnailData(
