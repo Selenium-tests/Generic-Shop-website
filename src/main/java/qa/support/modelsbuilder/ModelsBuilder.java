@@ -18,8 +18,7 @@ public class ModelsBuilder {
 
     public static Credentials[] getCredentials(String source, String key) {
 
-        JSONObject jsonObject = new JSONObject(source);
-        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        JSONArray jsonArray = getJSONArray(source, key);
 
         return IntStream.range(0, jsonArray.length())
                 .mapToObj(i -> new Credentials(
