@@ -1,7 +1,7 @@
 package qa.dataproviders;
 
 import org.testng.annotations.DataProvider;
-import qa.jsonreader.ModelsBuilder;
+import qa.support.modelsbuilder.ModelsBuilder;
 import qa.support.constans.DataProviderNames;
 
 public class CountriesDataProviders {

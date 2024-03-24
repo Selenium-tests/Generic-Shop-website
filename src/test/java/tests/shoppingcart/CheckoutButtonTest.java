@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 import qa.enums.URLs;
-import qa.helpers.ShoppingCartActions;
+import qa.support.actions.ShoppingCartActions;
 import qa.pageobject.shoppingcart.ShoppingCart;
 
 public class CheckoutButtonTest extends BaseTest {
@@ -13,9 +13,9 @@ public class CheckoutButtonTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
         ShoppingCartActions.addToCart(getDriver());
-        goToSpecificPage(URLs.SHOPPING_CART.getName());
+        goToPage(URLs.SHOPPING_CART.getName());
     }
 
     @Test

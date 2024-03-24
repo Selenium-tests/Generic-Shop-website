@@ -12,7 +12,7 @@ public class AddingProductToShoppingCartBaseTest extends BaseTest {
 
     protected void checkShoppingCartRowsCount(ShoppingCart shoppingCart, int expectedRowsCount) {
 
-        goToSpecificPage(URLs.SHOPPING_CART.getName());
+        goToPage(URLs.SHOPPING_CART.getName());
         shoppingCart.getTable().findRows();
 
         Assert.assertEquals(shoppingCart.getTable().getRowsCount(), expectedRowsCount);

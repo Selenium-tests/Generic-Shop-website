@@ -5,10 +5,10 @@ import org.testng.asserts.SoftAssert;
 import tests.base.BaseTest;
 import qa.dataproviders.AddressDataProviders;
 import qa.enums.URLs;
-import qa.helpers.AddressFormFiller;
+import qa.support.addressformfiller.AddressFormFiller;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.helpers.Authentication;
+import qa.support.actions.Authentication;
 import qa.pageobject.addressform.AddressForm;
 import qa.models.AddressData;
 import qa.support.constans.DataProviderNames;
@@ -20,9 +20,9 @@ public class AddressFormTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToSpecificPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE.getName());
         Authentication.loginWithCredentials(getDriver());
-        goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
+        goToPage(URLs.BILLING_ADDRESS_FORM.getName());
     }
 
     private void compare(AddressData data) {
@@ -79,7 +79,7 @@ public class AddressFormTest extends BaseTest {
 
         fill(data);
         checkUrlAddress(URLs.EDIT_ADDRESS_NAVIGATION);
-        goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
+        goToPage(URLs.BILLING_ADDRESS_FORM.getName());
         compare(data);
     }
 

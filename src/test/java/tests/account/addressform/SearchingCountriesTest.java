@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.CountriesDataProviders;
 import qa.enums.URLs;
-import qa.helpers.Authentication;
+import qa.support.actions.Authentication;
 import qa.pageobject.addressform.CountryDropdownList;
 import qa.support.constans.DataProviderNames;
 
@@ -18,9 +18,9 @@ public class SearchingCountriesTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToSpecificPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE.getName());
         Authentication.loginWithCredentials(getDriver());
-        goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
+        goToPage(URLs.BILLING_ADDRESS_FORM.getName());
 
         countryDropdownList = new CountryDropdownList(getDriver());
     }

@@ -25,7 +25,7 @@ public class SearchEngineTest extends BaseTest {
     @BeforeMethod
     private void create() {
 
-        goToSpecificPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE.getName());
         searchEngine = new SearchEngine(getDriver());
         resultsPage = new ResultsPage(getDriver());
     }

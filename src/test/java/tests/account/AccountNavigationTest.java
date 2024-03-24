@@ -12,7 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.enums.URLs;
-import qa.helpers.Authentication;
+import qa.support.actions.Authentication;
 
 import java.util.function.Consumer;
 
@@ -23,7 +23,7 @@ public class AccountNavigationTest extends BaseTest {
     @BeforeMethod
     private void init() throws JSONException, IllegalAccessException {
 
-        goToSpecificPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE.getName());
         accountNavigation = new AccountNavigation(getDriver());
         Authentication.loginWithCredentials(getDriver());
     }
@@ -51,7 +51,7 @@ public class AccountNavigationTest extends BaseTest {
     @Description("The \"Dashboard\" link")
     public void dashboardLink() {
 
-        goToSpecificPage(URLs.ORDERS_PAGE.getName());
+        goToPage(URLs.ORDERS_PAGE.getName());
         actions(AccountNavigation::clickDashboardLink, URLs.DASHBOARD_PAGE.getName());
     }
 

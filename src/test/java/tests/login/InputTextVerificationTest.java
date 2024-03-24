@@ -20,7 +20,7 @@ public class InputTextVerificationTest extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        goToSpecificPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE.getName());
         loginForm = new LoginForm(getDriver());
     }
 

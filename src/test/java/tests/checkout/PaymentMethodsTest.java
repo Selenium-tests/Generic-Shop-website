@@ -5,16 +5,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 import qa.enums.URLs;
-import qa.helpers.AddressFormFiller;
-import qa.helpers.ShoppingCartActions;
-import qa.jsonreader.ModelsBuilder;
+import qa.support.addressformfiller.AddressFormFiller;
+import qa.support.actions.ShoppingCartActions;
+import qa.support.modelsbuilder.ModelsBuilder;
 import qa.pageobject.checkoutpage.CheckoutPage;
 import qa.pageobject.checkoutpage.PaymentMethodsSection;
 import qa.models.AddressData;
 import qa.pageobject.orderreceivedpage.OrderPage;
 import qa.support.constans.DataProviderNames;
-import qa.testdataloader.TestdataLoader;
-import qa.utils.AccessThrowingConsumer;
+import qa.support.testdataloader.TestdataLoader;
+import qa.support.consumer.AccessThrowingConsumer;
 
 
 public class PaymentMethodsTest extends BaseTest {
@@ -24,9 +24,9 @@ public class PaymentMethodsTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
         ShoppingCartActions.addToCart(getDriver());
-        goToSpecificPage(URLs.CHECKOUT_PAGE.getName());
+        goToPage(URLs.CHECKOUT_PAGE.getName());
 
         checkoutPage = new CheckoutPage(getDriver());
 

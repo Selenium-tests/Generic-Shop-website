@@ -8,7 +8,7 @@ import qa.dataproviders.ThumbnailsDataProviders;
 import qa.enums.URLs;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.pageobject.thumbnails.ProductThumbnail;
-import qa.thumbnailgenerators.ProductThumbnailProvider;
+import qa.support.thumbnailprovider.ProductThumbnailProvider;
 import tests.base.AddingProductToShoppingCartBaseTest;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class AddingFromProductThumbnailTest extends AddingProductToShoppingCartB
     @BeforeMethod
     private void create() {
 
-        goToSpecificPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE.getName());
         shoppingCart = new ShoppingCart(getDriver());
         ThumbnailsDataProviders thumbnailsDataProviders = new ThumbnailsDataProviders();
         thumbnailData = (ThumbnailData[]) thumbnailsDataProviders.thumbnails();

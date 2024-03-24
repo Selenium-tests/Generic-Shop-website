@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 import qa.enums.URLs;
-import qa.helpers.ShoppingCartActions;
+import qa.support.actions.ShoppingCartActions;
 import qa.pageobject.checkoutpage.CheckoutPage;
 
 public class SectionsVisibilityTest extends BaseTest {
@@ -15,9 +15,9 @@ public class SectionsVisibilityTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
         ShoppingCartActions.addToCart(getDriver());
-        goToSpecificPage(URLs.CHECKOUT_PAGE.getName());
+        goToPage(URLs.CHECKOUT_PAGE.getName());
         checkoutPage = new CheckoutPage(getDriver());
     }
 

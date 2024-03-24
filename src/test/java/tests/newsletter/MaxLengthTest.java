@@ -21,7 +21,7 @@ public class MaxLengthTest extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        goToSpecificPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE.getName());
         newsletterForm = new NewsletterForm(getDriver());
     }
 

@@ -40,7 +40,7 @@ public class AddingFromProductPageTest extends AddingProductToShoppingCartBaseTe
     private void actions(ProductToCart data) throws IllegalAccessException {
 
         String baseUrl = "https://skleptest.pl/product/";
-        goToSpecificPage(baseUrl + data.getUrl());
+        goToPage(baseUrl + data.getUrl());
         addToCart(data);
     }
 

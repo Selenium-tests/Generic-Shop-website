@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
     @BeforeMethod
     private void create() {
 
-        goToSpecificPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE.getName());
         loginForm = new LoginForm(getDriver());
     }
 

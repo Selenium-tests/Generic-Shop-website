@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.SpecialCharactersDataProvider;
 import qa.enums.URLs;
-import qa.helpers.ShoppingCartActions;
+import qa.support.actions.ShoppingCartActions;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.support.constans.DataProviderNames;
 import tests.base.QuantityFieldBaseTest;
@@ -16,9 +16,9 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToSpecificPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
         ShoppingCartActions.addToCart(getDriver());
-        goToSpecificPage(URLs.SHOPPING_CART.getName());
+        goToPage(URLs.SHOPPING_CART.getName());
         shoppingCart = new ShoppingCart(getDriver());
         shoppingCart.getTable().findRows();
     }

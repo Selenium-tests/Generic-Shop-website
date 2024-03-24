@@ -6,10 +6,10 @@ import org.testng.annotations.Test;
 import tests.base.BaseTest;
 import qa.dataproviders.DynamicFieldsDataProviders;
 import qa.enums.URLs;
-import qa.helpers.Authentication;
+import qa.support.actions.Authentication;
 import qa.pageobject.addressform.AddressForm;
 import qa.support.constans.DataProviderNames;
-import qa.utils.AccessThrowingConsumer;
+import qa.support.consumer.AccessThrowingConsumer;
 
 public class DynamicFieldsTest extends BaseTest {
 
@@ -18,9 +18,9 @@ public class DynamicFieldsTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToSpecificPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE.getName());
         Authentication.loginWithCredentials(getDriver());
-        goToSpecificPage(URLs.BILLING_ADDRESS_FORM.getName());
+        goToPage(URLs.BILLING_ADDRESS_FORM.getName());
 
         addressForm = new AddressForm(getDriver());
     }

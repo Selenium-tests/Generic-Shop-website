@@ -14,7 +14,7 @@ import qa.enums.URLs;
 import qa.models.ThumbnailData;
 import qa.pageobject.thumbnails.ProductThumbnail;
 import qa.support.constans.DataProviderNames;
-import qa.thumbnailgenerators.ProductThumbnailProvider;
+import qa.support.thumbnailprovider.ProductThumbnailProvider;
 import tests.base.BaseTest;
 
 public class ViewCartButtonTest extends BaseTest {
@@ -22,7 +22,7 @@ public class ViewCartButtonTest extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        goToSpecificPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE.getName());
     }
 
     @Test(priority = 1, dataProvider = DataProviderNames.THUMBNAILS, dataProviderClass = ThumbnailsDataProviders.class)

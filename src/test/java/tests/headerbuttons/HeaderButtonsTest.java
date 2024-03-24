@@ -37,7 +37,7 @@ public class HeaderButtonsTest extends BaseTest {
     @Description("The logo")
     public void logo() {
 
-        goToSpecificPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE.getName());
         actions(Header::clickLogo, URLs.HOME_PAGE.getName());
     }
 
@@ -48,7 +48,7 @@ public class HeaderButtonsTest extends BaseTest {
     @Description("The \"Account\" button")
     public void accountButton() {
 
-        goToSpecificPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE.getName());
         actions(Header::clickAccountButton, URLs.LOGIN_PAGE.getName());
     }
 
@@ -59,7 +59,7 @@ public class HeaderButtonsTest extends BaseTest {
     @Description("The \"My Cart\" button")
     public void cartButton() {
 
-        goToSpecificPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE.getName());
         actions(Header::clickCartButton, URLs.SHOPPING_CART.getName());
     }
 }
