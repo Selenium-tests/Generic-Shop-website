@@ -1,4 +1,4 @@
-package qa.slidersection;
+package qa.pageobject.slidersection;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
