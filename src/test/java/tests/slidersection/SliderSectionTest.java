@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.enums.URLs;
-import qa.slidersection.SliderSection;
+import qa.pageobject.slidersection.SliderSection;
 import tests.base.BaseTest;
 
 @Epic("E2E")
