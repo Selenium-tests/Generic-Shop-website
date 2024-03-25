@@ -1,9 +1,9 @@
 package qa.pageobject.addressform;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import qa.base.BasePage;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,22 +25,31 @@ public class CountryDropdownList extends BasePage {
     WebElement selectList;
 
     @FindBy(className = "select2-selection__rendered")
-    WebElement countryButton;
+    WebElement triggerElement;
 
-    @FindBy(css = "li[role='alert']")
-    List<WebElement> alert;
+    @FindBy(className = "select2-results__options")
+    WebElement contents;
 
-    public void clickCountryButton() {
+    @FindBy(className = "select2-results")
+    WebElement results;
 
-        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(countryButton)).click();
+    @io.qameta.allure.Step("Click the trigger element")
+    @io.qase.api.annotation.Step("Click the trigger element")
+    public void clickTriggerElement() {
+
+        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerElement)).click();
     }
 
-    public void setCountry(String country) throws IllegalAccessException {
+    @io.qameta.allure.Step("Enter a country")
+    @io.qase.api.annotation.Step("Enter a country")
+    public void setCountry(String country) {
 
         Select select = new Select(selectList);
         select.selectByVisibleText(country);
     }
 
+    @io.qameta.allure.Step("Enter a country")
+    @io.qase.api.annotation.Step("Enter a country")
     public void typeCountry(String country) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(searchField))).sendKeys(country);
@@ -53,13 +62,18 @@ public class CountryDropdownList extends BasePage {
         return select.getAllSelectedOptions().get(0).getText();
     }
 
-    public void pressEnter() {
+    public String getSearchFieldContent() {
 
-        searchField.sendKeys(Keys.ENTER);
+        return searchField.getAttribute("value");
     }
 
-    public boolean isAlertDisplayed() throws IllegalAccessException {
+    public List<String> getResults() {
 
-        return !alert.isEmpty();
+        return results.findElements(By.tagName("li")).stream().map(WebElement::getText).toList();
+    }
+
+    public void waitForContentsVisibility() {
+
+        getWebDriverWait().until(ExpectedConditions.visibilityOf(contents));
     }
 }
