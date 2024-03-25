@@ -1,1 +1,29 @@
-{"correct":["South Korea","Poland","Ireland","Portugal","Japan","Portugal","Canada","Canada","Portugal"],"partial":["Uni","Nig","Kor","Ita","Bra"],"incorrect":["483-dSw&ZVEAmy_coune7","fi9-Z5b&DHGYmy_coun5i","6y8-cby&UBNXmy_counJY","kx7-Hal&GGTTmy_counEa","ym1-Bcd&BDPMmy_coun1Q","993-50q&NAXLmy_countY","l34-8Ts&PZOYmy_counaM"]}
+{
+    "correct": [
+        "South Korea",
+        "Poland",
+        "Ireland",
+        "Portugal",
+        "Japan",
+        "Portugal",
+        "Canada",
+        "Canada",
+        "Portugal"
+    ],
+    "partial": [
+        "Uni",
+        "Nig",
+        "Kor",
+        "Ita",
+        "Bra"
+    ],
+    "incorrect": [
+        "483-dSw&ZVEAmy_coune7",
+        "fi9-Z5b&DHGYmy_coun5i",
+        "6y8-cby&UBNXmy_counJY",
+        "kx7-Hal&GGTTmy_counEa",
+        "ym1-Bcd&BDPMmy_coun1Q",
+        "993-50q&NAXLmy_countY",
+        "l34-8Ts&PZOYmy_counaM"
+    ]
+}
