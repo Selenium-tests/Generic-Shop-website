@@ -26,7 +26,7 @@ public class BasePage {
         this.driver = driver;
         focusExecutor = new FocusExecutor(driver);
         javascriptExecutor = (JavascriptExecutor) driver;
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(5))
