@@ -11,15 +11,16 @@ public class AddressFormFiller {
 
         AddressForm addressForm = new AddressForm(driver);
         addressForm.getCountryDropdownList().setCountry(data.getCountry());
-        addressForm.setFirstName(data.getFirstName());
-        addressForm.setLastName(data.getLastName());
-        addressForm.setCompany(data.getCompanyName());
-        addressForm.setAddress_1(data.getAddress());
-        addressForm.setAddress_2(data.getAddressLine2());
-        addressForm.setCity(data.getCity());
-        addressForm.setPostcode(data.getPostcode());
-        addressForm.setPhone(data.getPhone());
-        addressForm.setEmail(data.getEmail());
+        addressForm
+                .setFirstName(data.getFirstName())
+                .setLastName(data.getLastName())
+                .setCompany(data.getCompanyName())
+                .setAddress_1(data.getAddress())
+                .setAddress_2(data.getAddressLine2())
+                .setCity(data.getCity())
+                .setPostcode(data.getPostcode())
+                .setPhone(data.getPhone())
+                .setEmail(data.getEmail());
 
         return addressForm;
     }
