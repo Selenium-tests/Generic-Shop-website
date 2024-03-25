@@ -1,5 +1,6 @@
 package qa.pageobject.addressform;
 
+import lombok.Getter;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import qa.support.toby.ToBy;
 
 public class AddressForm extends BasePage {
 
+    @Getter
     private final CountryDropdownList countryDropdownList;
 
     public AddressForm(WebDriver driver) {
@@ -69,54 +71,58 @@ public class AddressForm extends BasePage {
         element.sendKeys(text);
     }
 
-    public void setFirstName(String firstName) {
+    public AddressForm setFirstName(String firstName) {
 
         clearAndFill(firstNameField, firstName);
+        return this;
     }
 
-    public void setLastName(String lastName) {
+    public AddressForm setLastName(String lastName) {
 
         clearAndFill(lastNameField, lastName);
+        return this;
     }
 
-    public void setCompany(String company) {
+    public AddressForm setCompany(String company) {
 
         clearAndFill(companyField, company);
+        return this;
     }
 
-    public void setAddress_1(String address) {
+    public AddressForm setAddress_1(String address) {
 
         clearAndFill(addressField1, address);
+        return this;
     }
 
-    public void setAddress_2(String address) {
+    public AddressForm setAddress_2(String address) {
 
         clearAndFill(addressField2, address);
+        return this;
     }
 
-    public void setCity(String city) {
+    public AddressForm setCity(String city) {
 
         clearAndFill(cityField, city);
+        return this;
     }
 
-    public void setPostcode(String postcode) {
+    public AddressForm setPostcode(String postcode) {
 
         clearAndFill(postcodeField, postcode);
+        return this;
     }
 
-    public void setPhone(String phone) {
+    public AddressForm setPhone(String phone) {
 
         clearAndFill(phoneField, phone);
+        return this;
     }
 
-    public void setEmail(String email) {
+    public AddressForm setEmail(String email) {
 
         clearAndFill(emailField, email);
-    }
-
-    public CountryDropdownList getCountryDropdownList() {
-
-        return countryDropdownList;
+        return this;
     }
 
     public void clickSaveAddressButton() {
