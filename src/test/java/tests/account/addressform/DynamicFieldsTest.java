@@ -30,7 +30,7 @@ public class DynamicFieldsTest extends BaseTest {
         addressForm = new AddressForm(getDriver());
     }
 
-    private void setCountry(String country) throws IllegalAccessException {
+    private void setCountry(String country) {
 
         addressForm.getCountryDropdownList().setCountry(country);
     }
@@ -59,7 +59,7 @@ public class DynamicFieldsTest extends BaseTest {
                     "Incorrect additional field name");
     }
 
-    private void check(String country, AccessThrowingConsumer<AddressForm> consumer, String labelText) throws IllegalAccessException {
+    private void check(String country, AccessThrowingConsumer<AddressForm> consumer, String labelText) {
 
         setCountry(country);
         checkForAdditionalItemVisibility(consumer);
@@ -72,7 +72,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(80)
     @QaseTitle("The \"State / County\" field visibility")
     @Description("The \"State / County\" field visibility")
-    public void stateCountyField(String country) throws IllegalAccessException {
+    public void stateCountyField(String country) {
 
         check(country, AddressForm::waitForAdditionalField, "State / County *");
     }
@@ -82,7 +82,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(81)
     @QaseTitle("The \"State / County\" dropdown list visibility")
     @Description("The \"State / County\" dropdown list visibility")
-    public void stateCountyDropdownList(String country) throws IllegalAccessException {
+    public void stateCountyDropdownList(String country) {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State / County *");
     }
@@ -92,7 +92,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(82)
     @QaseTitle("The \"County\" dropdown list visibility")
     @Description("The \"County\" dropdown list visibility")
-    public void countyDropdownList(String country) throws IllegalAccessException {
+    public void countyDropdownList(String country) {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "County *");
     }
@@ -102,7 +102,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(83)
     @QaseTitle("The \"State\" dropdown list visibility")
     @Description("The \"State\" dropdown list visibility")
-    public void stateDropdownList(String country) throws IllegalAccessException {
+    public void stateDropdownList(String country) {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State *");
     }
@@ -112,7 +112,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(84)
     @QaseTitle("The \"District\" dropdown list visibility")
     @Description("The \"District\" dropdown list visibility")
-    public void districtDropdownList(String country) throws IllegalAccessException {
+    public void districtDropdownList(String country) {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "District *");
     }
@@ -122,7 +122,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(85)
     @QaseTitle("The \"Province\" dropdown list visibility")
     @Description("The \"Province\" dropdown list visibility")
-    public void provinceDropdownList(String country) throws IllegalAccessException {
+    public void provinceDropdownList(String country) {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Province *");
     }
@@ -132,7 +132,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(86)
     @QaseTitle("The \"Region\" field visibility")
     @Description("The \"Region\" field visibility")
-    public void regionField(String country) throws IllegalAccessException {
+    public void regionField(String country) {
 
         check(country, AddressForm::waitForAdditionalField, "Region *");
     }
@@ -142,7 +142,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(87)
     @QaseTitle("The \"Region\" dropdown list visibility")
     @Description("The \"Region\" dropdown list visibility")
-    public void regionDropdownList(String country) throws IllegalAccessException {
+    public void regionDropdownList(String country) {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Region");
     }
@@ -152,7 +152,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(88)
     @QaseTitle("The \"Prefecture\" dropdown list visibility")
     @Description("The \"Prefecture\" dropdown list visibility")
-    public void prefectureDropdownList(String country) throws IllegalAccessException {
+    public void prefectureDropdownList(String country) {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Prefecture *");
     }
@@ -162,7 +162,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(89)
     @QaseTitle("The \"Municipality\" field visibility")
     @Description("The \"Municipality\" field visibility")
-    public void municipalityField(String country) throws IllegalAccessException {
+    public void municipalityField(String country) {
 
         check(country, AddressForm::waitForAdditionalField, "Municipality");
     }
@@ -172,7 +172,7 @@ public class DynamicFieldsTest extends BaseTest {
     @QaseId(90)
     @QaseTitle("The \"State / Zone\" dropdown list visibility")
     @Description("The \"State / Zone\" dropdown list visibility")
-    public void stateZoneDropdownList(String country) throws IllegalAccessException {
+    public void stateZoneDropdownList(String country) {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State / Zone *");
     }
