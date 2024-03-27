@@ -1,5 +1,8 @@
 package tests.account.addressform;
 
+import io.qameta.allure.*;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,6 +14,8 @@ import qa.pageobject.addressform.AddressForm;
 import qa.support.constans.DataProviderNames;
 import qa.support.consumer.AccessThrowingConsumer;
 
+@Epic("E2E")
+@Feature("The billing address form dynamic fields")
 public class DynamicFieldsTest extends BaseTest {
 
     private AddressForm addressForm;
@@ -27,9 +32,7 @@ public class DynamicFieldsTest extends BaseTest {
 
     private void setCountry(String country) throws IllegalAccessException {
 
-        //addressForm.getCountryDropdownList().clickCountryButton();
         addressForm.getCountryDropdownList().setCountry(country);
-        //addressForm.getCountryDropdownList().pressEnter();
     }
 
     private void checkForAdditionalItemVisibility(AccessThrowingConsumer<AddressForm> consumer) {
@@ -64,67 +67,111 @@ public class DynamicFieldsTest extends BaseTest {
         checkAdditionalLabelText(labelText);
     }
 
-    @Test(dataProvider = DataProviderNames.STATE_COUNTY_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.STATE_COUNTY_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(80)
+    @QaseTitle("The \"State / County\" field visibility")
+    @Description("The \"State / County\" field visibility")
     public void stateCountyField(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalField, "State / County *");
     }
 
-    @Test(dataProvider = DataProviderNames.STATE_COUNTY_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.STATE_COUNTY_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(81)
+    @QaseTitle("The \"State / County\" dropdown list visibility")
+    @Description("The \"State / County\" dropdown list visibility")
     public void stateCountyDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State / County *");
     }
 
-    @Test(dataProvider = DataProviderNames.COUNTY_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.COUNTY_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(82)
+    @QaseTitle("The \"County\" dropdown list visibility")
+    @Description("The \"County\" dropdown list visibility")
     public void countyDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "County *");
     }
 
-    @Test(dataProvider = DataProviderNames.STATE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.STATE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(83)
+    @QaseTitle("The \"State\" dropdown list visibility")
+    @Description("The \"State\" dropdown list visibility")
     public void stateDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State *");
     }
 
-    @Test(dataProvider = DataProviderNames.DISTRICT_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.DISTRICT_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(84)
+    @QaseTitle("The \"District\" dropdown list visibility")
+    @Description("The \"District\" dropdown list visibility")
     public void districtDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "District *");
     }
 
-    @Test(dataProvider = DataProviderNames.PROVINCE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.PROVINCE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(85)
+    @QaseTitle("The \"Province\" dropdown list visibility")
+    @Description("The \"Province\" dropdown list visibility")
     public void provinceDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Province *");
     }
 
-    @Test(dataProvider = DataProviderNames.REGION_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 7, dataProvider = DataProviderNames.REGION_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(86)
+    @QaseTitle("The \"Region\" field visibility")
+    @Description("The \"Region\" field visibility")
     public void regionField(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalField, "Region *");
     }
 
-    @Test(dataProvider = DataProviderNames.REGION_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 8, dataProvider = DataProviderNames.REGION_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(87)
+    @QaseTitle("The \"Region\" dropdown list visibility")
+    @Description("The \"Region\" dropdown list visibility")
     public void regionDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Region");
     }
 
-    @Test(dataProvider = DataProviderNames.PREFECTURE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 9, dataProvider = DataProviderNames.PREFECTURE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(88)
+    @QaseTitle("The \"Prefecture\" dropdown list visibility")
+    @Description("The \"Prefecture\" dropdown list visibility")
     public void prefectureDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "Prefecture *");
     }
 
-    @Test(dataProvider = DataProviderNames.MUNICIPALITY_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 10, dataProvider = DataProviderNames.MUNICIPALITY_FIELD, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(89)
+    @QaseTitle("The \"Municipality\" field visibility")
+    @Description("The \"Municipality\" field visibility")
     public void municipalityField(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalField, "Municipality");
     }
 
-    @Test(dataProvider = DataProviderNames.STATE_ZONE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Test(priority = 11, dataProvider = DataProviderNames.STATE_ZONE_DROPDOWN_LIST, dataProviderClass = DynamicFieldsDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(90)
+    @QaseTitle("The \"State / Zone\" dropdown list visibility")
+    @Description("The \"State / Zone\" dropdown list visibility")
     public void stateZoneDropdownList(String country) throws IllegalAccessException {
 
         check(country, AddressForm::waitForAdditionalDropdownList, "State / Zone *");
