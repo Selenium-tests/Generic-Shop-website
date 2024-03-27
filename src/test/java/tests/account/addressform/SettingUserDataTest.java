@@ -13,7 +13,7 @@ import qa.pageobject.addressform.AddressForm;
 import qa.models.AddressData;
 import qa.support.constans.DataProviderNames;
 
-public class AddressFormTest extends BaseTest {
+public class SettingUserDataTest extends BaseTest {
 
     private AddressForm addressForm;
 
