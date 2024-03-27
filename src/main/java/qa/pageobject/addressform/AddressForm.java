@@ -71,60 +71,80 @@ public class AddressForm extends BasePage {
         element.sendKeys(text);
     }
 
+    @io.qameta.allure.Step("Enter a first name")
+    @io.qase.api.annotation.Step("Enter a first name")
     public AddressForm setFirstName(String firstName) {
 
         clearAndFill(firstNameField, firstName);
         return this;
     }
 
+    @io.qameta.allure.Step("Enter a last name")
+    @io.qase.api.annotation.Step("Enter a last name")
     public AddressForm setLastName(String lastName) {
 
         clearAndFill(lastNameField, lastName);
         return this;
     }
 
+    @io.qameta.allure.Step("Enter a company")
+    @io.qase.api.annotation.Step("Enter a company")
     public AddressForm setCompany(String company) {
 
         clearAndFill(companyField, company);
         return this;
     }
 
+    @io.qameta.allure.Step("Enter an address")
+    @io.qase.api.annotation.Step("Enter an address")
     public AddressForm setAddress_1(String address) {
 
         clearAndFill(addressField1, address);
         return this;
     }
 
+    @io.qameta.allure.Step("Enter an optional address")
+    @io.qase.api.annotation.Step("Enter an optional address")
     public AddressForm setAddress_2(String address) {
 
         clearAndFill(addressField2, address);
         return this;
     }
 
+    @io.qameta.allure.Step("Enter a city")
+    @io.qase.api.annotation.Step("Enter a city")
     public AddressForm setCity(String city) {
 
         clearAndFill(cityField, city);
         return this;
     }
 
+    @io.qameta.allure.Step("Enter a postcode")
+    @io.qase.api.annotation.Step("Enter a postcode")
     public AddressForm setPostcode(String postcode) {
 
         clearAndFill(postcodeField, postcode);
         return this;
     }
 
+    @io.qameta.allure.Step("Enter a phone")
+    @io.qase.api.annotation.Step("Enter a phone")
     public AddressForm setPhone(String phone) {
 
         clearAndFill(phoneField, phone);
         return this;
     }
 
+    @io.qameta.allure.Step("Enter an email")
+    @io.qase.api.annotation.Step("Enter an email")
     public AddressForm setEmail(String email) {
 
         clearAndFill(emailField, email);
         return this;
     }
 
+    @io.qameta.allure.Step("Click the \"Save address\" button")
+    @io.qase.api.annotation.Step("Click the \"Save address\" button")
     public void clickSaveAddressButton() {
 
         getWebDriverWait().until(ExpectedConditions.elementToBeClickable(saveAddressButton));
