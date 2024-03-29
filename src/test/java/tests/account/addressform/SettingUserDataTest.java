@@ -1,5 +1,8 @@
 package tests.account.addressform;
 
+import io.qameta.allure.*;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import tests.base.BaseTest;
@@ -13,6 +16,8 @@ import qa.pageobject.addressform.AddressForm;
 import qa.models.AddressData;
 import qa.support.constans.DataProviderNames;
 
+@Epic("E2E")
+@Feature("Setting user billing address information")
 public class SettingUserDataTest extends BaseTest {
 
     private AddressForm addressForm;
@@ -91,49 +96,151 @@ public class SettingUserDataTest extends BaseTest {
         checkErrorMessageContent(data);
     }
 
-    @Test(dataProvider = DataProviderNames.CORRECT, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(100)
+    @QaseTitle("Setting user billing address information with correct data")
+    @Description("Setting user billing address information with correct data")
     public void correct(AddressData data) throws IllegalAccessException {
 
         positiveTestActions(data);
     }
 
-    @Test(dataProvider = DataProviderNames.BLANK_COMPANY_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.BLANK_COMPANY_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(101)
+    @QaseTitle("Blank the \"Company name\" field")
+    @Description("Blank the \"Company name\" field")
     public void blankCompanyField(AddressData data) throws IllegalAccessException {
 
         positiveTestActions(data);
     }
 
-    @Test(dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD_LINE_2, dataProviderClass = AddressDataProviders.class)
-    public void blankAddressFieldLine2(AddressData data) throws IllegalAccessException {
-
-        positiveTestActions(data);
-    }
-
-    @Test(dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(102)
+    @QaseTitle("Incorrect first name")
+    @Description("Incorrect first name")
     public void incorrectFirstName(AddressData data) throws IllegalAccessException {
 
         negativeTestActions(data);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.BLANK_FIRST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(103)
+    @QaseTitle("Blank the \"First name\" field")
+    @Description("Blank the \"First name\" field")
+    public void blankFirstNameField(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
+    @Test(priority = 5, dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(104)
+    @QaseTitle("Incorrect last name")
+    @Description("Incorrect last name")
     public void incorrectLastName(AddressData data) throws IllegalAccessException {
 
         negativeTestActions(data);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_POSTCODE, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.BLANK_LAST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(105)
+    @QaseTitle("Blank the \"Last name\" field")
+    @Description("Blank the \"Last name\" field")
+    public void blankLastNameField(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
+    @Test(priority = 8, dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(107)
+    @QaseTitle("Blank the \"Street address\" field")
+    @Description("Blank the \"Street address\" field")
+    public void blankAddressField(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
+    @Test(priority = 10, dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD_LINE_2, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(109)
+    @QaseTitle("Blank the \"Street address\" optional field")
+    @Description("Blank the \"Street address\" optional field")
+    public void blankAddressFieldLine2(AddressData data) throws IllegalAccessException {
+
+        positiveTestActions(data);
+    }
+
+    @Test(priority = 11, dataProvider = DataProviderNames.INCORRECT_POSTCODE, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(110)
+    @QaseTitle("Incorrect postcode")
+    @Description("Incorrect postcode")
     public void incorrectPostcode(AddressData data) throws IllegalAccessException {
 
         negativeTestActions(data);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 12, dataProvider = DataProviderNames.BLANK_POSTCODE_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(111)
+    @QaseTitle("Blank the \"Postcode / ZIP\" field")
+    @Description("Blank the \"Postcode / ZIP\" field")
+    public void blankPostcodeField(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
+    @Test(priority = 13, dataProvider = DataProviderNames.INCORRECT_CITY, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(112)
+    @QaseTitle("Incorrect city")
+    @Description("Incorrect city")
+    public void incorrectCity(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
+    @Test(priority = 14, dataProvider = DataProviderNames.BLANK_CITY_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(113)
+    @QaseTitle("Blank the \"Town / City\" field")
+    @Description("Blank the \"Postcode / City\" field")
+    public void blankCityField(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
+    @Test(priority = 15, dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(114)
+    @QaseTitle("Incorrect phone")
+    @Description("Incorrect phone")
     public void incorrectPhone(AddressData data) throws IllegalAccessException {
 
         negativeTestActions(data);
     }
 
-    @Test(dataProvider = DataProviderNames.INCORRECT_EMAIL, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 16, dataProvider = DataProviderNames.BLANK_PHONE_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(115)
+    @QaseTitle("Blank the \"Phone\" field")
+    @Description("Blank the \"Phone\" field")
+    public void blankPhoneField(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
+    @Test(priority = 17, dataProvider = DataProviderNames.INCORRECT_EMAIL, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(116)
+    @QaseTitle("Incorrect email")
+    @Description("Incorrect email")
     public void incorrectEmail(AddressData data) throws IllegalAccessException {
 
         fill(data);
@@ -141,43 +248,11 @@ public class SettingUserDataTest extends BaseTest {
         checkValidationMessageContent(data);
     }
 
-    @Test(dataProvider = DataProviderNames.BLANK_FIRST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
-    public void blankFirstNameField(AddressData data) throws IllegalAccessException {
-
-        negativeTestActions(data);
-    }
-
-    @Test(dataProvider = DataProviderNames.BLANK_LAST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
-    public void blankLastNameField(AddressData data) throws IllegalAccessException {
-
-        negativeTestActions(data);
-    }
-
-    @Test(dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD, dataProviderClass = AddressDataProviders.class)
-    public void blankAddressField(AddressData data) throws IllegalAccessException {
-
-        negativeTestActions(data);
-    }
-
-    @Test(dataProvider = DataProviderNames.BLANK_CITY_FIELD, dataProviderClass = AddressDataProviders.class)
-    public void blankCityField(AddressData data) throws IllegalAccessException {
-
-        negativeTestActions(data);
-    }
-
-    @Test(dataProvider = DataProviderNames.BLANK_POSTCODE_FIELD, dataProviderClass = AddressDataProviders.class)
-    public void blankPostcodeField(AddressData data) throws IllegalAccessException {
-
-        negativeTestActions(data);
-    }
-
-    @Test(dataProvider = DataProviderNames.BLANK_PHONE_FIELD, dataProviderClass = AddressDataProviders.class)
-    public void blankPhoneField(AddressData data) throws IllegalAccessException {
-
-        negativeTestActions(data);
-    }
-
-    @Test(dataProvider = DataProviderNames.BLANK_EMAIL_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 18, dataProvider = DataProviderNames.BLANK_EMAIL_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(117)
+    @QaseTitle("Blank the \"Email address\" field")
+    @Description("Blank the \"Email address\" field")
     public void blankEmailField(AddressData data) throws IllegalAccessException {
 
         negativeTestActions(data);
