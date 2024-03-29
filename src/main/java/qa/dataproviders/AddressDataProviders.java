@@ -37,6 +37,12 @@ public class AddressDataProviders {
         return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_POSTCODE);
     }
 
+    @DataProvider(name = DataProviderNames.INCORRECT_CITY)
+    public Object[] incorrectCity() {
+
+        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_CITY);
+    }
+
     @DataProvider(name = DataProviderNames.INCORRECT_PHONE)
     public Object[] incorrectPhone() throws JSONException {
 
