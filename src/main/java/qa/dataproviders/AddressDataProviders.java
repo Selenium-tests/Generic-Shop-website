@@ -25,40 +25,16 @@ public class AddressDataProviders {
         return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_FIRST_NAME);
     }
 
-    @DataProvider(name = DataProviderNames.INCORRECT_LAST_NAME)
-    public Object[] incorrectLastName() throws JSONException {
-
-        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_LAST_NAME);
-    }
-
-    @DataProvider(name = DataProviderNames.INCORRECT_POSTCODE)
-    public Object[] incorrectPostcode() throws JSONException {
-
-        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_POSTCODE);
-    }
-
-    @DataProvider(name = DataProviderNames.INCORRECT_CITY)
-    public Object[] incorrectCity() {
-
-        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_CITY);
-    }
-
-    @DataProvider(name = DataProviderNames.INCORRECT_PHONE)
-    public Object[] incorrectPhone() throws JSONException {
-
-        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_PHONE);
-    }
-
-    @DataProvider(name = DataProviderNames.INCORRECT_EMAIL)
-    public Object[] incorrectEmail() throws JSONException {
-
-        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_EMAIL);
-    }
-
     @DataProvider(name = DataProviderNames.BLANK_FIRST_NAME_FIELD)
     public Object[] blankFirstNameField() {
 
         return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_FIRST_NAME_FIELD);
+    }
+
+    @DataProvider(name = DataProviderNames.INCORRECT_LAST_NAME)
+    public Object[] incorrectLastName() throws JSONException {
+
+        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_LAST_NAME);
     }
 
     @DataProvider(name = DataProviderNames.BLANK_LAST_NAME_FIELD)
@@ -67,22 +43,34 @@ public class AddressDataProviders {
         return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_LAST_NAME_FIELD);
     }
 
+    @DataProvider(name = DataProviderNames.INCORRECT_ADDRESS)
+    public Object[] incorrectAddress() {
+
+        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_ADDRESS);
+    }
+
     @DataProvider(name = DataProviderNames.BLANK_ADDRESS_FIELD)
     public Object[] blankAddressField() {
 
         return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_ADDRESS_FIELD);
     }
 
-    @DataProvider(name = DataProviderNames.BLANK_ADDRESS_FIELD_LINE_2)
-    public Object[] blankAddressFieldLine2() {
+    @DataProvider(name = DataProviderNames.INCORRECT_OPTIONAL_ADDRESS)
+    public Object[] incorrectOptionalAddress() {
 
-        return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_ADDRESS_FIELD_LINE_2);
+        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_OPTIONAL_ADDRESS);
     }
 
-    @DataProvider(name = DataProviderNames.BLANK_CITY_FIELD)
-    public Object[] blankCityField() {
+    @DataProvider(name = DataProviderNames.BLANK_OPTIONAL_ADDRESS)
+    public Object[] blankOptionalAddress() {
 
-        return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_CITY_FIELD);
+        return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_OPTIONAL_ADDRESS);
+    }
+
+    @DataProvider(name = DataProviderNames.INCORRECT_POSTCODE)
+    public Object[] incorrectPostcode() throws JSONException {
+
+        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_POSTCODE);
     }
 
     @DataProvider(name = DataProviderNames.BLANK_POSTCODE_FIELD)
@@ -91,10 +79,34 @@ public class AddressDataProviders {
         return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_POSTCODE_FIELD);
     }
 
+    @DataProvider(name = DataProviderNames.INCORRECT_CITY)
+    public Object[] incorrectCity() {
+
+        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_CITY);
+    }
+
+    @DataProvider(name = DataProviderNames.BLANK_CITY_FIELD)
+    public Object[] blankCityField() {
+
+        return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_CITY_FIELD);
+    }
+
+    @DataProvider(name = DataProviderNames.INCORRECT_PHONE)
+    public Object[] incorrectPhone() throws JSONException {
+
+        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_PHONE);
+    }
+
     @DataProvider(name = DataProviderNames.BLANK_PHONE_FIELD)
     public Object[] blankPhoneField() {
 
         return ModelsBuilder.getAddressFormData(DataProviderNames.BLANK_PHONE_FIELD);
+    }
+
+    @DataProvider(name = DataProviderNames.INCORRECT_EMAIL)
+    public Object[] incorrectEmail() throws JSONException {
+
+        return ModelsBuilder.getAddressFormData(DataProviderNames.INCORRECT_EMAIL);
     }
 
     @DataProvider(name = DataProviderNames.BLANK_EMAIL_FIELD)
