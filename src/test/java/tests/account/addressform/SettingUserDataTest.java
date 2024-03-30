@@ -156,6 +156,16 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
+    @Test(priority = 7, dataProvider = DataProviderNames.INCORRECT_ADDRESS, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(106)
+    @QaseTitle("Incorrect address")
+    @Description("Incorrect address")
+    public void incorrectAddress(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
     @Test(priority = 8, dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(107)
@@ -166,12 +176,22 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
+    @Test(priority = 9, dataProvider = DataProviderNames.BLANK_LAST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(108)
+    @QaseTitle("Incorrect optional address")
+    @Description("Incorrect optional address")
+    public void incorrectOptionalAddress(AddressData data) throws IllegalAccessException {
+
+        negativeTestActions(data);
+    }
+
     @Test(priority = 10, dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD_LINE_2, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(109)
     @QaseTitle("Blank the \"Street address\" optional field")
     @Description("Blank the \"Street address\" optional field")
-    public void blankAddressFieldLine2(AddressData data) throws IllegalAccessException {
+    public void blankOptionalAddressField(AddressData data) throws IllegalAccessException {
 
         positiveTestActions(data);
     }
