@@ -35,6 +35,7 @@ public class DataProviderNames {
     public static final String INCORRECT_PHONE = "incorrectPhone";
     public static final String INCORRECT_CITY = "incorrectCity";
     public static final String INCORRECT_ADDRESS = "incorrectAddress";
+    public static final String INCORRECT_OPTIONAL_ADDRESS = "incorrectOptionalAddress";
     public static final String BLANK_FIRST_NAME_FIELD = "blankFirstNameField";
     public static final String BLANK_LAST_NAME_FIELD = "blankLastNameField";
     public static final String BLANK_COMPANY_FIELD = "blankCompanyField";
