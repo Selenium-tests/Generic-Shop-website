@@ -176,7 +176,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 9, dataProvider = DataProviderNames.BLANK_LAST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 9, dataProvider = DataProviderNames.INCORRECT_OPTIONAL_ADDRESS, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(108)
     @QaseTitle("Incorrect optional address")
@@ -186,7 +186,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 10, dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD_LINE_2, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 10, dataProvider = DataProviderNames.BLANK_OPTIONAL_ADDRESS, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(109)
     @QaseTitle("Blank the \"Street address\" optional field")
