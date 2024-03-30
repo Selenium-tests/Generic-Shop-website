@@ -202,5 +202,17 @@
         "postcode": "612 80",
         "phone": "147-904-7740",
         "email": ""
+    },
+    "incorrectOptionalAddress": {
+        "country": "Portugal",
+        "firstName": "Vally",
+        "lastName": "Quixley",
+        "company": "Jabberstorm",
+        "address": "31989 Butternut Avenue",
+        "addressLine2": "!@#%$%$^&^(*&)",
+        "city": "Finspång",
+        "postcode": "612 80",
+        "phone": "147-904-7740",
+        "email": "bquixley0@twitpic.com"
     }
 }
