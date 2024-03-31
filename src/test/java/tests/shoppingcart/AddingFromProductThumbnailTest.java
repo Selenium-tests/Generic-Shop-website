@@ -1,5 +1,8 @@
 package tests.shoppingcart;
 
+import io.qameta.allure.*;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.models.ProductData;
@@ -14,6 +17,8 @@ import tests.base.AddingProductToShoppingCartBaseTest;
 import java.util.ArrayList;
 import java.util.List;
 
+@Epic("E2E")
+@Feature("Adding a product to the shopping cart")
 public class AddingFromProductThumbnailTest extends AddingProductToShoppingCartBaseTest {
 
     private ShoppingCart shoppingCart;
@@ -30,7 +35,7 @@ public class AddingFromProductThumbnailTest extends AddingProductToShoppingCartB
         productData = new ArrayList<>();
     }
 
-    private void addToCart(ThumbnailData thumbnailData) throws IllegalAccessException {
+    private void addToCart(ThumbnailData thumbnailData) {
 
         ProductThumbnail productThumbnail = ProductThumbnailProvider.create(getDriver(), thumbnailData.getTycheProduct(), thumbnailData.getLink());
 
@@ -40,7 +45,11 @@ public class AddingFromProductThumbnailTest extends AddingProductToShoppingCartB
     }
 
     @Test
-    public void adding() throws IllegalAccessException {
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(119)
+    @QaseTitle("Adding product from a product thumbnail")
+    @Description("Adding product from a product thumbnail")
+    public void addingProduct() {
 
         for (ThumbnailData td : thumbnailData) {
             addToCart(td);
