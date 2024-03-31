@@ -1,5 +1,8 @@
 package tests.shoppingcart;
 
+import io.qameta.allure.*;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.models.ProductData;
@@ -12,7 +15,8 @@ import tests.base.AddingProductToShoppingCartBaseTest;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Epic("E2E")
+@Feature("Adding a product to the shopping cart from a product page")
 public class AddingFromProductPageTest extends AddingProductToShoppingCartBaseTest {
 
     private ProductPage productPage;
@@ -45,6 +49,10 @@ public class AddingFromProductPageTest extends AddingProductToShoppingCartBaseTe
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(118)
+    @QaseTitle("Adding product from a product page")
+    @Description("Adding product from a product page")
     public void adding() throws IllegalAccessException {
 
         for (ProductToCart pc : productsToCart) {
