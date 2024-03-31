@@ -19,6 +19,8 @@ public class QuantityField extends BasePage {
         this.parent = parent;
     }
 
+    @io.qameta.allure.Step("Enter a quantity")
+    @io.qase.api.annotation.Step("Enter a quantity")
     public void setQuantity(String quantity) {
 
         WebElement element = getWebDriverWait().until(ExpectedConditions.elementToBeClickable(

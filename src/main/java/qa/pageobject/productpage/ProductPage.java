@@ -31,6 +31,8 @@ public class ProductPage extends BasePage {
     @FindBy(className = "woocommerce-message")
     WebElement message;
 
+    @io.qameta.allure.Step("Click the \"Add to cart\" button")
+    @io.qase.api.annotation.Step("Click the \"Add to cart\" button")
     public void clickAddToCart() throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.presenceOfElementLocated(ToBy.get(addToCartButton))).click();
