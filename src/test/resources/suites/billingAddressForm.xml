@@ -3,12 +3,32 @@
 
 <suite name="The billing address form">
 
-    <test name="Country dropdown list">
-        <parameter name="fileName" value="GSS_Countries"/>
-
+    <test name="Opening the billing address form">
         <classes>
-            <class name="tests.account.addressform.countrydropdownlist.SearchingCountriesTest"/>
+            <class name="tests.account.addressform.BillingAddressFormLinkTest"/>
         </classes>
     </test>
+
+    <test name="Input text verification">
+        <classes>
+            <class name="tests.account.addressform.TextInputValidationTest"/>
+        </classes>
+    </test>
+
+    <test name="Dynamic fields">
+        <classes>
+            <class name="tests.account.addressform.DynamicFieldsTest"/>
+        </classes>
+    </test>
+
+    <test name="Country dropdown list">
+        <parameter name="fileName" value="GSS_Address"/>
+
+        <classes>
+            <class name="tests.account.addressform.SettingUserDataTest"/>
+        </classes>
+    </test>
+
+
 
 </suite>
