@@ -3,6 +3,10 @@
 
 <suite name="Shopping cart">
 
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
     <test name="Adding product from a product page">
         <parameter name="fileName" value="GSS_ProductsToCart"/>
 
