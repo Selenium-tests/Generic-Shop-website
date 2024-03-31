@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Product page">
+
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <test name="The quantity field">
+        <parameter name="fileName" value="specialCharacters"/>
+
+        <classes>
+            <class name="tests.productpage.QuantityFieldTest"/>
+        </classes>
+    </test>
+</suite>
