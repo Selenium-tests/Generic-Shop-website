@@ -8,16 +8,11 @@
         <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
-    <test name="Input text validation">
-        <classes>
-            <class name="tests.newsletter.InputTextVerificationTest"/>
-        </classes>
-    </test>
-    
-    <test name="Validation of user input">
+    <test name="Input text verification">
         <parameter name="fileName" value="GSS_NewsletterFields"/>
 
         <classes>
+            <class name="tests.newsletter.InputTextVerificationTest"/>
             <class name="tests.newsletter.MaxLengthTest"/>
         </classes>
     </test>
