@@ -7,7 +7,7 @@
         <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
-    <test name="The 'View Cart' button visibility">
+    <test name="The 'View Cart' button">
         <parameter name="fileName" value="GSS_Thumbnails"/>
 
         <classes>
