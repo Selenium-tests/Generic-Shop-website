@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Epic("E2E")
-@Feature("Adding a product to the shopping cart from a product page")
+@Feature("Adding a product to the shopping cart")
 public class AddingFromProductPageTest extends AddingProductToShoppingCartBaseTest {
 
     private ProductPage productPage;
