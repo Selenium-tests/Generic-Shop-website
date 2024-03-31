@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Shopping cart">
+
+    <test name="Adding product from a product page">
+        <parameter name="fileName" value="GSS_ProductsToCart"/>
+
+        <classes>
+            <class name="tests.shoppingcart.AddingFromProductThumbnailTest"/>
+        </classes>
+    </test>
+
+    <test name="Adding a product from a product thumbnail">
+        <parameter name="fileName" value="GSS_Thumbnails"/>
+
+        <classes>
+            <class name="tests.shoppingcart.AddingFromProductThumbnailTest"/>
+        </classes>
+    </test>
+
+    <test name="The shopping cart quantity field">
+        <classes>
+            <class name="tests.shoppingcart.QuantityFieldTest"/>
+        </classes>
+    </test>
+
+    <test name="The 'Proceed to checkout button'">
+        <classes>
+            <class name="tests.shoppingcart.QuantityFieldTest"/>
+        </classes>
+    </test>
+</suite>
