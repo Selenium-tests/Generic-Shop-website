@@ -11,7 +11,7 @@
 
     <test name="Input text verification">
         <classes>
-            <class name="tests.account.addressform.TextInputValidationTest"/>
+            <class name="tests.account.addressform.InputTextVerificationTest"/>
         </classes>
     </test>
 
