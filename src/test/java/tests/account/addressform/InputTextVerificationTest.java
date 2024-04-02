@@ -11,7 +11,7 @@ import qa.pageobject.addressform.AddressForm;
 import qa.support.actions.Authentication;
 import tests.base.BaseTest;
 
-public class TextInputValidationTest extends BaseTest {
+public class InputTextVerificationTest extends BaseTest {
 
     private AddressForm addressForm;
     private final String FIRST_NAME = "John";
