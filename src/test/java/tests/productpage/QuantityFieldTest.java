@@ -3,6 +3,7 @@ package tests.productpage;
 import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.SpecialCharactersDataProvider;
@@ -33,6 +34,18 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(118)
+    @QaseTitle("Verification of the quantity field text input\"")
+    @Description("Verification of the quantity field text input\"")
+    public void inputTextVerification() {
+
+        String quantity = "50";
+        productPage.getQuantityField().setQuantity(quantity);
+        Assert.assertEquals(productPage.getQuantityField().getValue(), quantity, "Incorrect the quantity field output");
+    }
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(119)
     @QaseTitle("MIN - 1")
     @Description("MIN - 1")
     public void belowMin() throws IllegalAccessException {
@@ -44,7 +57,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(119)
+    @QaseId(120)
     @QaseTitle("MIN")
     @Description("MIN")
     public void min() throws IllegalAccessException {
@@ -56,7 +69,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(120)
+    @QaseId(121)
     @QaseTitle("MIN + 1")
     @Description("MIN + 1")
     public void aboveMin() throws IllegalAccessException {
@@ -68,7 +81,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(121)
+    @QaseId(122)
     @QaseTitle("MAX - 1")
     @Description("MAX - 1")
     public void belowMax() throws IllegalAccessException {
@@ -80,7 +93,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(122)
+    @QaseId(123)
     @QaseTitle("MAX")
     @Description("MAX")
     public void max() throws IllegalAccessException {
@@ -92,7 +105,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(123)
+    @QaseId(124)
     @QaseTitle("MAX + 1")
     @Description("MAX + 1")
     public void aboveMax() throws IllegalAccessException {
@@ -104,7 +117,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test(dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(124)
+    @QaseId(125)
     @QaseTitle("Entering a special character")
     @Description("Entering a special character")
     public void specialCharacters(String character) throws IllegalAccessException {
@@ -116,7 +129,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(125)
+    @QaseId(126)
     @QaseTitle("Blank the quantity field")
     @Description("Blank the quantity field")
     public void blankQuantityField() throws IllegalAccessException {
