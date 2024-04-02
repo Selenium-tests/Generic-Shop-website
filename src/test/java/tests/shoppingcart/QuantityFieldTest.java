@@ -3,6 +3,7 @@ package tests.shoppingcart;
 import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.SpecialCharactersDataProvider;
@@ -36,7 +37,19 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(128)
+    @QaseId(129)
+    @QaseTitle("Text input verification")
+    @Description("Text input verification")
+    public void inputTextVerification() {
+
+        String quantity = "25";
+        shoppingCart.getTable().getQuantityField(0).setQuantity(quantity);
+        Assert.assertEquals(shoppingCart.getTable().getQuantityField(0).getValue(), quantity, "Incorrect the quantity field output");
+    }
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(130)
     @QaseTitle("MIN - 1")
     @Description("MIN - 1")
     public void belowMin() {
@@ -47,7 +60,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(129)
+    @QaseId(131)
     @QaseTitle("MIN")
     @Description("MIN")
     public void min() {
@@ -59,7 +72,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(130)
+    @QaseId(132)
     @QaseTitle("MIN + 1")
     @Description("MIN + 1")
     public void aboveMin() {
@@ -71,7 +84,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(131)
+    @QaseId(133)
     @QaseTitle("MAX - 1")
     @Description("MAX - 1")
     public void belowMax() {
@@ -83,7 +96,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(132)
+    @QaseId(134)
     @QaseTitle("MAX")
     @Description("MAX")
     public void max() {
@@ -95,7 +108,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(133)
+    @QaseId(135)
     @QaseTitle("MAX + 1")
     @Description("MAX + 1")
     public void aboveMax() {
@@ -107,7 +120,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test(dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(134)
+    @QaseId(136)
     @QaseTitle("Entering a special character")
     @Description("Entering a special character")
     public void specialCharacters(String character) {
@@ -118,7 +131,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(135)
+    @QaseId(137)
     @QaseTitle("Blank the quantity field")
     @Description("Blank the quantity field")
     public void blankQuantityField() {
