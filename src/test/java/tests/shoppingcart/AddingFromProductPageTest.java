@@ -50,7 +50,7 @@ public class AddingFromProductPageTest extends AddingProductToShoppingCartBaseTe
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(126)
+    @QaseId(127)
     @QaseTitle("Adding product from a product page")
     @Description("Adding product from a product page")
     public void adding() throws IllegalAccessException {

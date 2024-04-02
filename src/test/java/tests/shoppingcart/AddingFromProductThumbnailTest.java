@@ -46,7 +46,7 @@ public class AddingFromProductThumbnailTest extends AddingProductToShoppingCartB
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(127)
+    @QaseId(128)
     @QaseTitle("Adding product from a product thumbnail")
     @Description("Adding product from a product thumbnail")
     public void addingProduct() {
