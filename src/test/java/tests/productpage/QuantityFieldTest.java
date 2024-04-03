@@ -31,11 +31,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessageContent(productPage.getMessage(), expectedMessage);
     }
 
-    @Test
+    @Test(priority = 1)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(118)
-    @QaseTitle("Verification of the quantity field text input\"")
-    @Description("Verification of the quantity field text input\"")
+    @QaseTitle("Verification of the quantity field text input")
+    @Description("Verification of the quantity field text input")
     public void inputTextVerification() {
 
         String quantity = "50";
@@ -43,11 +43,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         Assert.assertEquals(productPage.getQuantityField().getValue(), quantity, "Incorrect the quantity field output");
     }
 
-    @Test
+    @Test(priority = 2)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(119)
-    @QaseTitle("MIN - 1")
-    @Description("MIN - 1")
+    @QaseTitle("Quantity- shorter than minimum (min - 1)")
+    @Description("Quantity- shorter than minimum (min - 1)")
     public void belowMin() throws IllegalAccessException {
 
         setBelowMin(productPage.getQuantityField());
@@ -55,11 +55,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkValidationMessageVisibility(productPage.getQuantityField());
     }
 
-    @Test
+    @Test(priority = 3)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(120)
-    @QaseTitle("MIN")
-    @Description("MIN")
+    @QaseTitle("Quantity- minimum")
+    @Description("Quantity- minimum")
     public void min() throws IllegalAccessException {
 
         setMin(productPage.getQuantityField());
@@ -67,11 +67,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage("Please enter valid quantity");
     }
 
-    @Test
+    @Test(priority = 4)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(121)
-    @QaseTitle("MIN + 1")
-    @Description("MIN + 1")
+    @QaseTitle("Quantity- exceeding minimum (min + 1)")
+    @Description("Quantity- exceeding minimum (min + 1)")
     public void aboveMin() throws IllegalAccessException {
 
         setAboveMin(productPage.getQuantityField());
@@ -79,11 +79,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage("Please enter valid quantity");
     }
 
-    @Test
+    @Test(priority = 5)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(122)
-    @QaseTitle("MAX - 1")
-    @Description("MAX - 1")
+    @QaseTitle("Quantity- shorter than maximum (max - 1)")
+    @Description("Quantity- shorter than maximum (max - 1)")
     public void belowMax() throws IllegalAccessException {
 
         setBelowMax(productPage.getQuantityField());
@@ -91,11 +91,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage(" × “" + productPage.getProductName() + "” have been added to your cart.");
     }
 
-    @Test
+    @Test(priority = 6)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(123)
-    @QaseTitle("MAX")
-    @Description("MAX")
+    @QaseTitle("Quantity- maximum")
+    @Description("Quantity- maximum")
     public void max() throws IllegalAccessException {
 
         setMax(productPage.getQuantityField());
@@ -103,11 +103,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage(" × “" + productPage.getProductName() + "” have been added to your cart.");
     }
 
-    @Test
+    @Test(priority = 7)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(124)
-    @QaseTitle("MAX + 1")
-    @Description("MAX + 1")
+    @QaseTitle("Quantity- exceeding maximum (max + 1)")
+    @Description("Quantity- exceeding maximum (max + 1)")
     public void aboveMax() throws IllegalAccessException {
 
         setAboveMax(productPage.getQuantityField());
@@ -115,7 +115,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage("Please enter valid quantity");
     }
 
-    @Test(dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
+    @Test(priority = 8, dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(125)
     @QaseTitle("Entering a special character")
@@ -127,7 +127,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkValidationMessageVisibility(productPage.getQuantityField());
     }
 
-    @Test
+    @Test(priority = 9)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(126)
     @QaseTitle("Blank the quantity field")
