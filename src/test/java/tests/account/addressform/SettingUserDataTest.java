@@ -96,7 +96,7 @@ public class SettingUserDataTest extends BaseTest {
         checkErrorMessageContent(data);
     }
 
-    @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.CORRECT, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(100)
     @QaseTitle("Setting user billing address information with correct data")
@@ -106,7 +106,7 @@ public class SettingUserDataTest extends BaseTest {
         positiveTestActions(data);
     }
 
-    @Test(priority = 2, dataProvider = DataProviderNames.BLANK_COMPANY_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 7, dataProvider = DataProviderNames.BLANK_COMPANY_FIELD, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(101)
     @QaseTitle("Blank the \"Company name\" field")
@@ -116,7 +116,7 @@ public class SettingUserDataTest extends BaseTest {
         positiveTestActions(data);
     }
 
-    @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 1, dataProvider = DataProviderNames.INCORRECT_FIRST_NAME, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(102)
     @QaseTitle("Incorrect first name")
@@ -126,7 +126,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 4, dataProvider = DataProviderNames.BLANK_FIRST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 12, dataProvider = DataProviderNames.BLANK_FIRST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(103)
     @QaseTitle("Blank the \"First name\" field")
@@ -136,7 +136,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 5, dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.INCORRECT_LAST_NAME, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(104)
     @QaseTitle("Incorrect last name")
@@ -146,7 +146,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 6, dataProvider = DataProviderNames.BLANK_LAST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 13, dataProvider = DataProviderNames.BLANK_LAST_NAME_FIELD, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(105)
     @QaseTitle("Blank the \"Last name\" field")
@@ -156,7 +156,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 7, dataProvider = DataProviderNames.INCORRECT_ADDRESS, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT_ADDRESS, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(106)
     @QaseTitle("Incorrect address")
@@ -166,7 +166,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 8, dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 14, dataProvider = DataProviderNames.BLANK_ADDRESS_FIELD, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(107)
     @QaseTitle("Blank the \"Street address\" field")
@@ -176,7 +176,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 9, dataProvider = DataProviderNames.INCORRECT_OPTIONAL_ADDRESS, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.INCORRECT_OPTIONAL_ADDRESS, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(108)
     @QaseTitle("Incorrect optional address")
@@ -186,7 +186,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 10, dataProvider = DataProviderNames.BLANK_OPTIONAL_ADDRESS, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 8, dataProvider = DataProviderNames.BLANK_OPTIONAL_ADDRESS, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(109)
     @QaseTitle("Blank the \"Street address\" optional field")
@@ -196,7 +196,7 @@ public class SettingUserDataTest extends BaseTest {
         positiveTestActions(data);
     }
 
-    @Test(priority = 11, dataProvider = DataProviderNames.INCORRECT_POSTCODE, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 9, dataProvider = DataProviderNames.INCORRECT_POSTCODE, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(110)
     @QaseTitle("Incorrect postcode")
@@ -206,7 +206,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 12, dataProvider = DataProviderNames.BLANK_POSTCODE_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 15, dataProvider = DataProviderNames.BLANK_POSTCODE_FIELD, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(111)
     @QaseTitle("Blank the \"Postcode / ZIP\" field")
@@ -216,7 +216,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 13, dataProvider = DataProviderNames.INCORRECT_CITY, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.INCORRECT_CITY, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(112)
     @QaseTitle("Incorrect city")
@@ -226,7 +226,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 14, dataProvider = DataProviderNames.BLANK_CITY_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 16, dataProvider = DataProviderNames.BLANK_CITY_FIELD, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(113)
     @QaseTitle("Blank the \"Town / City\" field")
@@ -236,7 +236,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 15, dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 10, dataProvider = DataProviderNames.INCORRECT_PHONE, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(114)
     @QaseTitle("Incorrect phone")
@@ -246,7 +246,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 16, dataProvider = DataProviderNames.BLANK_PHONE_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 17, dataProvider = DataProviderNames.BLANK_PHONE_FIELD, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(115)
     @QaseTitle("Blank the \"Phone\" field")
@@ -256,7 +256,7 @@ public class SettingUserDataTest extends BaseTest {
         negativeTestActions(data);
     }
 
-    @Test(priority = 17, dataProvider = DataProviderNames.INCORRECT_EMAIL, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 11, dataProvider = DataProviderNames.INCORRECT_EMAIL, dataProviderClass = AddressDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(116)
     @QaseTitle("Incorrect email")
