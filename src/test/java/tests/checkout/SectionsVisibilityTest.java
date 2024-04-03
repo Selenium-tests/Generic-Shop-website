@@ -1,8 +1,6 @@
 package tests.checkout;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -13,6 +11,8 @@ import qa.enums.URLs;
 import qa.support.actions.ShoppingCartActions;
 import qa.pageobject.checkoutpage.CheckoutPage;
 
+@Epic("E2E")
+@Feature("Expanding and collapsing forms")
 public class SectionsVisibilityTest extends BaseTest {
 
     private CheckoutPage checkoutPage;
