@@ -28,9 +28,9 @@ public class OrderCommentsTextAreaTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(140)
-    @QaseTitle("Input text verification")
-    @Description("Input text verification")
+    @QaseId(142)
+    @QaseTitle("Verification of the order comments text area text input")
+    @Description("Verification of the order comments text area text input")
     public void inputTextVerification() throws IllegalAccessException {
 
         String comment = "This is the comment";
