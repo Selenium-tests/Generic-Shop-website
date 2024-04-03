@@ -1,24 +1,30 @@
 package qa.driver;
 
-import qa.enums.Browser;
 import org.reflections.Reflections;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
 public class WebDriverProvider {
 
-    public static WebDriverFactory getDriver(Browser browser) {
+    public static WebDriverFactory getDriver() {
+
+        String browser = System.getenv("BROWSER_TYPE");
+
+        if (browser == null || browser.isEmpty()) {
+            browser = "chrome";
+        }
 
         String packages = WebDriverFactory.class.getPackage().getName();
         Reflections reflections = new Reflections(packages);
 
         Set<Class<? extends WebDriverFactory>> factories = reflections.getSubTypesOf(WebDriverFactory.class);
 
+        String finalBrowser = browser;
         Class<? extends WebDriverFactory> inherited = factories
                 .stream()
-                .filter(driver -> driver.getName().toLowerCase().contains(browser.getName().toLowerCase()))
+                .filter(driver -> driver.getName().toLowerCase().contains(finalBrowser.toLowerCase()))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("Could not find driver with name " + browser.getName()));
+                .orElseThrow(() -> new IllegalStateException("Could not find driver with name " + finalBrowser));
 
         String inheritedClassName = inherited.getName();
 
