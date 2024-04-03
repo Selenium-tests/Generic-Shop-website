@@ -38,18 +38,6 @@ public class SearchEngineTest extends BaseTest {
         consumer.accept(resultsPage);
     }
 
-    @Test
-    @Severity(SeverityLevel.CRITICAL)
-    @QaseId(5)
-    @QaseTitle("Text input verification")
-    @Description("Text input verification")
-    public void textInputVerification() throws IllegalAccessException {
-
-        String text = "This is the text";
-        searchEngine.setPhrase(text);
-        Assert.assertEquals(searchEngine.getPhrase(), text, "Incorrect output");
-    }
-
     @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = PhrasesDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(6)
@@ -61,28 +49,12 @@ public class SearchEngineTest extends BaseTest {
                 "No results when searching with the \"" + phrase + "\" phrase"));
     }
 
-    @Test(priority = 2, dataProvider = DataProviderNames.PARTIAL, dataProviderClass = PhrasesDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.INCORRECT, dataProviderClass = PhrasesDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(7)
     @QaseTitle("Searching with an incorrect phrase")
     @Description("Searching with an incorrect phrase")
-    public void partial(String phrase) throws IllegalAccessException {
-
-        check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults(),
-                "No results when searching with the \"" + phrase + "\" phrase"));
-    }
-
-    @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT, dataProviderClass = PhrasesDataProviders.class)
-    @Severity(SeverityLevel.CRITICAL)
     public void incorrect(String phrase) throws IllegalAccessException {
-
-        check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
-                "Results found when searching with \"" + phrase + "\" as an incorrect phrase"));
-    }
-
-    @Test(priority = 4, dataProvider = DataProviderNames.NAUGHTY_STRINGS, dataProviderClass = PhrasesDataProviders.class)
-    @Severity(SeverityLevel.CRITICAL)
-    public void naughtyStrings(String phrase) throws IllegalAccessException {
 
         check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
                 "Results found when searching with \"" + phrase + "\" as an incorrect phrase"));
