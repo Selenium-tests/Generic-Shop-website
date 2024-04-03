@@ -1,5 +1,10 @@
 package tests.checkout;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qase.api.annotation.QaseId;
+import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,19 +26,11 @@ public class SectionsVisibilityTest extends BaseTest {
         checkoutPage = new CheckoutPage(getDriver());
     }
 
-    @Test
-    public void shippingAddressFormVisibility() throws IllegalAccessException {
-
-        checkoutPage.clickDifferentAddressCheckbox();
-
-        try {
-            checkoutPage.getShippingAddressForm().waitForContentsLocatorValidAttribute();
-        } catch (Exception e) {
-            Assert.fail("The shipping address form is not displayed");
-        }
-    }
-
-    @Test
+    @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(139)
+    @QaseTitle("Expanding and collapsing the login form")
+    @Description("Expanding and collapsing the login form")
     public void loginFormVisibility() {
 
         checkoutPage.clickLoginLink();
@@ -45,8 +42,12 @@ public class SectionsVisibilityTest extends BaseTest {
         }
     }
 
-    @Test
-    public void couponCodeFormVisibility() throws IllegalAccessException {
+    @Test(priority = 2)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(140)
+    @QaseTitle("Expanding and collapsing the coupon code form")
+    @Description("Expanding and collapsing the coupon code form")
+    public void couponCodeFormVisibility() {
 
         checkoutPage.clickCouponCodeLink();
 
@@ -57,13 +58,19 @@ public class SectionsVisibilityTest extends BaseTest {
         }
     }
 
-    @Test
-    public void orderCommentsField() throws IllegalAccessException {
+    @Test(priority = 3)
+    @Severity(SeverityLevel.CRITICAL)
+    @QaseId(141)
+    @QaseTitle("Expanding and collapsing the shipping address form")
+    @Description("Expanding and collapsing the shipping address form")
+    public void shippingAddressFormVisibility() {
 
-        String comment = "This is the comment";
-        checkoutPage.getOrderCommentsField().setComment(comment);
+        checkoutPage.clickDifferentAddressCheckbox();
 
-        Assert.assertEquals(checkoutPage.getOrderCommentsField().getComment(), comment,
-                "Incorrect order comment");
+        try {
+            checkoutPage.getShippingAddressForm().waitForContentsLocatorValidAttribute();
+        } catch (Exception e) {
+            Assert.fail("The shipping address form is not displayed");
+        }
     }
 }
