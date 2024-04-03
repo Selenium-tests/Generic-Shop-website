@@ -1,8 +1,6 @@
 package tests.account;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import qa.pageobject.account.AccountNavigation;
@@ -16,6 +14,8 @@ import qa.support.actions.Authentication;
 
 import java.util.function.Consumer;
 
+@Epic("E2E")
+@Feature("The account navigation")
 public class AccountNavigationTest extends BaseTest {
 
     private AccountNavigation accountNavigation;
@@ -34,7 +34,7 @@ public class AccountNavigationTest extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The page " + expectedUrl + " has not been opened");
     }
 
-    @Test(priority = 1)
+    @Test(priority = 5)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(68)
     @QaseTitle("The \"Orders\" link")
@@ -44,7 +44,7 @@ public class AccountNavigationTest extends BaseTest {
         actions(AccountNavigation::clickOrdersLink, URLs.ORDERS_PAGE.getName());
     }
 
-    @Test(priority = 2)
+    @Test(priority = 4)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(69)
     @QaseTitle("The \"Dashboard\" link")
@@ -55,7 +55,7 @@ public class AccountNavigationTest extends BaseTest {
         actions(AccountNavigation::clickDashboardLink, URLs.DASHBOARD_PAGE.getName());
     }
 
-    @Test(priority = 3)
+    @Test(priority = 6)
     @Severity(SeverityLevel.NORMAL)
     @QaseId(70)
     @QaseTitle("The \"Downloads\" link")
@@ -65,7 +65,7 @@ public class AccountNavigationTest extends BaseTest {
         actions(AccountNavigation::clickDownloadsLink, URLs.DOWNLOADS_PAGE.getName());
     }
 
-    @Test(priority = 4)
+    @Test(priority = 2)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(71)
     @QaseTitle("The \"Addresses\" link")
@@ -75,7 +75,7 @@ public class AccountNavigationTest extends BaseTest {
         actions(AccountNavigation::clickAddressesLink, URLs.ADDRESSES_PAGE.getName());
     }
 
-    @Test(priority = 5)
+    @Test(priority = 1)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(72)
     @QaseTitle("The \"Account details\" link")
