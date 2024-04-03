@@ -52,7 +52,7 @@ public class MainMenuTest extends BaseTest {
     }
 
     @Test(priority = 5)
-    @Severity(SeverityLevel.MINOR)
+    @Severity(SeverityLevel.NORMAL)
     @QaseId(11)
     @QaseTitle("The \"About Us\" link")
     @Description("The \"About Us\" link")
@@ -72,7 +72,7 @@ public class MainMenuTest extends BaseTest {
     }
 
     @Test(priority = 6)
-    @Severity(SeverityLevel.MINOR)
+    @Severity(SeverityLevel.NORMAL)
     @QaseId(13)
     @QaseTitle("The \"Blog\" link")
     @Description("The \"Blog\" link")
