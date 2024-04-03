@@ -65,7 +65,7 @@ public class LoginTest extends BaseTest {
         checkErrorMessageContent(credentials.getMessage());
     }
 
-    @Test(priority = 2, dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 4, dataProvider = DataProviderNames.BLANK_USERNAME_FIELD, dataProviderClass = CredentialsDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(64)
     @QaseTitle("Attempting to log in without providing input for the \"Username or email address\" field")
@@ -92,7 +92,7 @@ public class LoginTest extends BaseTest {
         checkErrorMessageContent(credentials.getMessage());
     }
 
-    @Test(priority = 4, dataProvider = DataProviderNames.BLANK_PASSWORD_FIELD, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 5, dataProvider = DataProviderNames.BLANK_PASSWORD_FIELD, dataProviderClass = CredentialsDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(66)
     @QaseTitle("Attempting to log in without providing input for the \"Password\" field")
@@ -105,7 +105,7 @@ public class LoginTest extends BaseTest {
         checkErrorMessageContent(credentials.getMessage());
     }
 
-    @Test(priority = 5, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
+    @Test(priority = 2, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CredentialsDataProviders.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(67)
     @QaseTitle("Logging in using correct credentials")
