@@ -29,8 +29,8 @@ public class FunctionalitiesTest extends BaseTest {
     @Test(priority = 1)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(75)
-    @QaseTitle("Expanding the dropdown list")
-    @Description("Expanding the dropdown list")
+    @QaseTitle("Expanding the list")
+    @Description("Expanding the list")
     public void expandingDropdownList() {
 
         countryDropdownList.clickTriggerElement();
