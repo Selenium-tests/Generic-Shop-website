@@ -3,6 +3,10 @@
 
 <suite name="Login form">
 
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
     <test name="Input text verification">
         <classes>
             <class name="tests.login.InputTextVerificationTest"/>
