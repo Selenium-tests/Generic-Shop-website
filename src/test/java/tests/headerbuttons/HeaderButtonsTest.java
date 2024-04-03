@@ -13,7 +13,7 @@ import qa.pageobject.header.Header;
 import java.util.function.Consumer;
 
 @Epic("E2E")
-@Feature("The header buttons")
+@Feature("Header")
 public class HeaderButtonsTest extends BaseTest {
 
     private Header header;
