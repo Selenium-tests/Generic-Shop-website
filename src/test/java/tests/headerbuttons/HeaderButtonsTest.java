@@ -30,7 +30,7 @@ public class HeaderButtonsTest extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The page " + expectedUrl + " has not been opened");
     }
 
-    @Test
+    @Test(priority = 1)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(2)
     @QaseTitle("The logo")
@@ -41,7 +41,7 @@ public class HeaderButtonsTest extends BaseTest {
         actions(Header::clickLogo, URLs.HOME_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 2)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(3)
     @QaseTitle("The \"Account\" button")
@@ -52,7 +52,7 @@ public class HeaderButtonsTest extends BaseTest {
         actions(Header::clickAccountButton, URLs.LOGIN_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 3)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(4)
     @QaseTitle("The \"My Cart\" button")
