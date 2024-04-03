@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import qa.browsermanager.BrowserManager;
 import qa.driver.WebDriverProvider;
-import qa.enums.Browser;
 import qa.support.testdataloader.TestdataLoader;
 
 import java.time.Duration;
@@ -32,7 +31,7 @@ public class BaseTest {
     @BeforeMethod
     public void startDriver() {
 
-        driver = WebDriverProvider.getDriver(Browser.CHROME).createDriver();
+        driver = WebDriverProvider.getDriver().createDriver();
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         BrowserManager.start(driver);
     }
