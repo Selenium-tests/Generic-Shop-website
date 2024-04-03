@@ -24,7 +24,7 @@ public class SliderSectionTest extends BaseTest {
     }
 
     @Test(priority = 1)
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.NORMAL)
     @QaseId(27)
     @QaseTitle("The \"Shop Now\" button")
     @Description("The \"Shop Now\" button")
@@ -36,7 +36,7 @@ public class SliderSectionTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.MINOR)
     @QaseId(28)
     @QaseTitle("The \"Learn More\" button")
     @Description("The \"Learn More\" button")
