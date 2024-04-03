@@ -3,9 +3,21 @@
 
 <suite name="The billing address form">
 
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
     <test name="Opening the billing address form">
         <classes>
             <class name="tests.account.addressform.BillingAddressFormLinkTest"/>
+        </classes>
+    </test>
+
+    <test name="Country dropdown list">
+        <parameter name="fileName" value="GSS_Address"/>
+
+        <classes>
+            <class name="tests.account.addressform.SettingUserDataTest"/>
         </classes>
     </test>
 
@@ -20,15 +32,5 @@
             <class name="tests.account.addressform.DynamicFieldsTest"/>
         </classes>
     </test>
-
-    <test name="Country dropdown list">
-        <parameter name="fileName" value="GSS_Address"/>
-
-        <classes>
-            <class name="tests.account.addressform.SettingUserDataTest"/>
-        </classes>
-    </test>
-
-
 
 </suite>
