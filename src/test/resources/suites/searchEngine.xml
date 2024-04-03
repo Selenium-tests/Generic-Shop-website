@@ -7,6 +7,12 @@
         <listener class-name="qa.listener.TestListener"/>
     </listeners>
 
+    <test name="Input text verification">
+        <classes>
+            <class name="tests.searchengine.InputTextVerificationTest"/>
+        </classes>
+    </test>
+
     <test name="Searching products">
         <parameter name="fileName" value="GSS_Phrases"/>
 
