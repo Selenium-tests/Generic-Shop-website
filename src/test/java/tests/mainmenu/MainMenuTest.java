@@ -31,7 +31,7 @@ public class MainMenuTest extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The page " + expectedUrl + " has not been opened");
     }
 
-    @Test
+    @Test(priority = 1)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(9)
     @QaseTitle("The \"Shop\" link")
@@ -41,7 +41,7 @@ public class MainMenuTest extends BaseTest {
         actions(MainMenu::clickShopLink, URLs.HOME_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 2)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(10)
     @QaseTitle("The \"Most Wanted\" link")
@@ -51,7 +51,7 @@ public class MainMenuTest extends BaseTest {
         actions(MainMenu::clickMostWantedLink, URLs.MOST_WANTED_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 5)
     @Severity(SeverityLevel.MINOR)
     @QaseId(11)
     @QaseTitle("The \"About Us\" link")
@@ -61,7 +61,7 @@ public class MainMenuTest extends BaseTest {
         actions(MainMenu::clickAboutUsLink, URLs.ABOUT_US_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 3)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(12)
     @QaseTitle("The \"Contact\" link")
@@ -71,7 +71,7 @@ public class MainMenuTest extends BaseTest {
         actions(MainMenu::clickContactLink, URLs.CONTACT_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 6)
     @Severity(SeverityLevel.MINOR)
     @QaseId(13)
     @QaseTitle("The \"Blog\" link")
@@ -83,7 +83,7 @@ public class MainMenuTest extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BLOG_PAGE.getName());
     }
 
-    @Test
+    @Test(priority = 4)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(14)
     @QaseTitle("The \"Categories\" link")
