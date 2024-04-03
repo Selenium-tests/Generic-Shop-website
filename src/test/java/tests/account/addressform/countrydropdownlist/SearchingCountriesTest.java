@@ -69,7 +69,7 @@ public class SearchingCountriesTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = DataProviderNames.PARTIAL, dataProviderClass = CountriesDataProviders.class)
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.NORMAL)
     @QaseId(78)
     @QaseTitle("Searching with a partial country name")
     @Description("Searching with a partial country name")
@@ -81,7 +81,7 @@ public class SearchingCountriesTest extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT, dataProviderClass = CountriesDataProviders.class)
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.MINOR)
     @QaseId(79)
     @QaseTitle("Searching with an incorrect country name")
     @Description("Searching with an incorrect country name")
