@@ -28,7 +28,7 @@ public class CheckoutButtonTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @QaseId(136)
+    @QaseId(138)
     @QaseTitle("The\"Proceed to checkout\" button")
     @Description("The \"Proceed to checkout\" button")
     public void clickingCheckoutButton() {
