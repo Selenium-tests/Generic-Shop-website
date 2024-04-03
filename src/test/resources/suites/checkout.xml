@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="The checkout page">
+
+    <listeners>
+        <listener class-name="qa.listener.TestListener"/>
+    </listeners>
+
+    <test name="Expanding and collapsing forms">
+        <classes>
+            <class name="tests.checkout.SectionsVisibilityTest"/>
+        </classes>
+    </test>
+
+    <test name="Payment methods">
+        <classes>
+            <class name="tests.checkout.PaymentMethodsTest"/>
+        </classes>
+    </test>
+
+    <test name="Order comments text area">
+        <classes>
+            <class name="tests.checkout.OrderCommentsTextAreaTest"/>
+        </classes>
+    </test>
+
+</suite>
