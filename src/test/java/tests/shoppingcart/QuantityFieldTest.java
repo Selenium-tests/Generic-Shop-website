@@ -14,7 +14,7 @@ import qa.support.constans.DataProviderNames;
 import tests.base.QuantityFieldBaseTest;
 
 @Epic("E2E")
-@Feature("The quantity field")
+@Feature("The shopping cart quantity field")
 public class QuantityFieldTest extends QuantityFieldBaseTest {
 
     private ShoppingCart shoppingCart;
@@ -35,11 +35,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessageContent(shoppingCart.getMessage(), expectedMessage);
     }
 
-    @Test
+    @Test(priority = 1)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(129)
-    @QaseTitle("Text input verification")
-    @Description("Text input verification")
+    @QaseTitle("Verification of the quantity field text input")
+    @Description("Verification of the quantity field text input")
     public void inputTextVerification() {
 
         String quantity = "25";
@@ -47,22 +47,22 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         Assert.assertEquals(shoppingCart.getTable().getQuantityField(0).getValue(), quantity, "Incorrect the quantity field output");
     }
 
-    @Test
+    @Test(priority = 2)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(130)
-    @QaseTitle("MIN - 1")
-    @Description("MIN - 1")
+    @QaseTitle("Quantity- shorter than minimum (min - 1)")
+    @Description("Quantity- shorter than minimum (min - 1)")
     public void belowMin() {
 
         setBelowMin(shoppingCart.getTable().getQuantityField(0));
         checkValidationMessageVisibility(shoppingCart.getTable().getQuantityField(0));
     }
 
-    @Test
+    @Test(priority = 3)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(131)
-    @QaseTitle("MIN")
-    @Description("MIN")
+    @QaseTitle("Quantity- minimum")
+    @Description("Quantity- minimum")
     public void min() {
 
         setMin(shoppingCart.getTable().getQuantityField(0));
@@ -70,11 +70,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage("Please enter valid quantity");
     }
 
-    @Test
+    @Test(priority = 4)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(132)
-    @QaseTitle("MIN + 1")
-    @Description("MIN + 1")
+    @QaseTitle("Quantity- exceeding minimum (min + 1)")
+    @Description("Quantity- exceeding minimum (min + 1)")
     public void aboveMin() {
 
         setAboveMin(shoppingCart.getTable().getQuantityField(0));
@@ -82,11 +82,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage("Please enter valid quantity");
     }
 
-    @Test
+    @Test(priority = 5)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(133)
-    @QaseTitle("MAX - 1")
-    @Description("MAX - 1")
+    @QaseTitle("Quantity- shorter than maximum (max - 1)")
+    @Description("Quantity- shorter than maximum (max - 1)")
     public void belowMax() {
 
         setBelowMax(shoppingCart.getTable().getQuantityField(0));
@@ -94,11 +94,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage("Cart updated");
     }
 
-    @Test
+    @Test(priority = 6)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(134)
-    @QaseTitle("MAX")
-    @Description("MAX")
+    @QaseTitle("Quantity- maximum")
+    @Description("Quantity- maximum")
     public void max() {
 
         setMax(shoppingCart.getTable().getQuantityField(0));
@@ -106,11 +106,11 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage("Cart updated");
     }
 
-    @Test
+    @Test(priority = 7)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(135)
-    @QaseTitle("MAX + 1")
-    @Description("MAX + 1")
+    @QaseTitle("Quantity- exceeding maximum (max + 1)")
+    @Description("Quantity- exceeding maximum (max + 1)")
     public void aboveMax() {
 
         setAboveMax(shoppingCart.getTable().getQuantityField(0));
@@ -118,7 +118,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkMessage("Please enter valid quantity");
     }
 
-    @Test(dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
+    @Test(priority = 8, dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(136)
     @QaseTitle("Entering a special character")
@@ -129,7 +129,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
         checkValidationMessageVisibility(shoppingCart.getTable().getQuantityField(0));
     }
 
-    @Test
+    @Test(priority = 9)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(137)
     @QaseTitle("Blank the quantity field")
