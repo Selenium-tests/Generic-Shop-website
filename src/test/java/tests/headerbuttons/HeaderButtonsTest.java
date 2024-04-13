@@ -1,6 +1,7 @@
 package tests.headerbuttons;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -31,35 +32,47 @@ public class HeaderButtonsTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Owner("Paweł Aksman")
+    @Tag("Header")
+    @Tag("Buttons")
+    @Link(name = "Home page", value = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
+    @Description("The logo")
     @QaseId(2)
     @QaseTitle("The logo")
-    @Description("The logo")
     public void logo() {
 
-        goToPage(URLs.LOGIN_PAGE.getName());
-        actions(Header::clickLogo, URLs.HOME_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE);
+        actions(Header::clickLogo, URLs.HOME_PAGE);
     }
 
     @Test(priority = 2)
+    @Owner("Paweł Aksman")
+    @Tag("Header")
+    @Tag("Buttons")
+    @Link(name = "Home page", value = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
+    @Description("The \"Account\" button")
     @QaseId(3)
     @QaseTitle("The \"Account\" button")
-    @Description("The \"Account\" button")
     public void accountButton() {
 
-        goToPage(URLs.HOME_PAGE.getName());
-        actions(Header::clickAccountButton, URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.HOME_PAGE);
+        actions(Header::clickAccountButton, URLs.LOGIN_PAGE);
     }
 
     @Test(priority = 3)
+    @Owner("Paweł Aksman")
+    @Tag("Header")
+    @Tag("Buttons")
+    @Link(name = "Home page", value = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
+    @Description("The \"My Cart\" button")
     @QaseId(4)
     @QaseTitle("The \"My Cart\" button")
-    @Description("The \"My Cart\" button")
     public void cartButton() {
 
-        goToPage(URLs.HOME_PAGE.getName());
-        actions(Header::clickCartButton, URLs.SHOPPING_CART.getName());
+        goToPage(URLs.HOME_PAGE);
+        actions(Header::clickCartButton, URLs.SHOPPING_CART_PAGE);
     }
 }
