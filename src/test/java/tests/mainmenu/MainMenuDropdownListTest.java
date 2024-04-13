@@ -22,7 +22,7 @@ public class MainMenuDropdownListTest extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        goToPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE);
         dropdownList = new DropdownList(getDriver());
     }
 
