@@ -1,6 +1,7 @@
 package tests.searchengine;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
@@ -20,11 +21,15 @@ public class InputTextVerificationTest extends BaseTest {
     @BeforeMethod
     private void create() {
 
-        goToPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE);
         searchEngine = new SearchEngine(getDriver());
     }
 
     @Test
+    @Owner("Paweł Aksman")
+    @Tag("Header")
+    @Tag("Search engine")
+    @Link(name = "Home page", value = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(5)
     @QaseTitle("Verification of the search field text input")
