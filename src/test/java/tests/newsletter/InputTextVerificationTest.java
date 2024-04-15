@@ -47,6 +47,7 @@ public class InputTextVerificationTest extends BaseTest {
     @Tag("Footer")
     @Tag("Newsletter")
     @Tag("Fields")
+    @Link(name = "Home page", value = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(41)
     @QaseTitle("Verification of the \"Email\" field text input")
