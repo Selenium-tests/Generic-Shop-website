@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.mainmenu.DropdownList;
 
 import java.util.function.Consumer;
