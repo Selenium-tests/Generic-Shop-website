@@ -29,6 +29,12 @@ public class SubscriptionToNewsletterTest extends BaseTest {
         newsletterForm = new NewsletterForm(getDriver());
     }
 
+    private void setAllureParameters(NewsletterData newsletterData) {
+
+        Allure.parameter("Username", newsletterData.getUsername());
+        Allure.parameter("Email", newsletterData.getEmail());
+    }
+
     private void checkMessageContent(String text) {
 
         try {
@@ -61,6 +67,8 @@ public class SubscriptionToNewsletterTest extends BaseTest {
     @Description("Subscribing to the newsletter using correct credentials")
     public void correct(NewsletterData newsletterData) throws IllegalAccessException {
 
+        setAllureParameters(newsletterData);
+
         newsletterForm.setName(newsletterData.getUsername())
                 .setEmail(newsletterData.getEmail())
                 .clickSubscribeButton();
@@ -80,6 +88,8 @@ public class SubscriptionToNewsletterTest extends BaseTest {
     @QaseTitle("Subscribing to the newsletter leaving the \"Name\" field")
     @Description("Subscribing to the newsletter leaving the \"Name\" field")
     public void blankUsernameField(NewsletterData newsletterData) throws IllegalAccessException {
+
+        setAllureParameters(newsletterData);
 
         newsletterForm
                 .setEmail(newsletterData.getEmail())
@@ -101,6 +111,8 @@ public class SubscriptionToNewsletterTest extends BaseTest {
     @Description("Attempting to subscribe to the newsletter using an incorrect email format")
     public void incorrectEmail(NewsletterData newsletterData) throws IllegalAccessException {
 
+        setAllureParameters(newsletterData);
+
         newsletterForm
                 .setEmail(newsletterData.getEmail())
                 .clickSubscribeButton();
@@ -120,6 +132,8 @@ public class SubscriptionToNewsletterTest extends BaseTest {
     @QaseTitle("Attempting to subscribe to the newsletter without providing input for the \"Email\" field")
     @Description("Attempting to subscribe to the newsletter without providing input for the \"Email\" field")
     public void blankEmailField(NewsletterData newsletterData) {
+
+        setAllureParameters(newsletterData);
 
         newsletterForm.clickSubscribeButton();
         checkForAlertVisibility(newsletterData.getMessage());
