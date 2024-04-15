@@ -1,12 +1,13 @@
 package tests.slidersection;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.slidersection.SliderSection;
 import tests.base.BaseTest;
 
@@ -19,11 +20,14 @@ public class SliderSectionTest extends BaseTest {
     @BeforeMethod
     public void create() {
 
-        goToPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE);
         sliderSection = new SliderSection(getDriver());
     }
 
     @Test(priority = 1)
+    @Owner("Paweł Aksman")
+    @Tag("Buttons")
+    @Link(name = "Home page", value = URLs.HOME_PAGE)
     @Severity(SeverityLevel.NORMAL)
     @QaseId(27)
     @QaseTitle("The \"Shop Now\" button")
@@ -31,11 +35,14 @@ public class SliderSectionTest extends BaseTest {
     public void shopNowButton() {
 
         sliderSection.clickShopNowLink();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.MOST_WANTED_PAGE.getName(),
-                "The page \"" + URLs.MOST_WANTED_PAGE.getName() + "\" has not been opened");
+        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.MOST_WANTED_PAGE,
+                "The page \"" + URLs.MOST_WANTED_PAGE + "\" has not been opened");
     }
 
     @Test(priority = 2)
+    @Owner("Paweł Aksman")
+    @Tag("Buttons")
+    @Link(name = "Home page", value = URLs.HOME_PAGE)
     @Severity(SeverityLevel.MINOR)
     @QaseId(28)
     @QaseTitle("The \"Learn More\" button")
@@ -43,7 +50,7 @@ public class SliderSectionTest extends BaseTest {
     public void learnMoreNowButton() {
 
         sliderSection.clickLearnMoreLinkText();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.CONTACT_PAGE.getName(),
-                "The page \"" + URLs.CONTACT_PAGE.getName() + "\" has not been opened");
+        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.CONTACT_PAGE,
+                "The page \"" + URLs.CONTACT_PAGE + "\" has not been opened");
     }
 }
