@@ -7,7 +7,7 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.header.SearchEngine;
 import tests.base.BaseTest;
 
@@ -29,6 +29,7 @@ public class InputTextVerificationTest extends BaseTest {
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Search engine")
+    @Tag("Field")
     @Link(name = "Home page", value = URLs.HOME_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(5)
