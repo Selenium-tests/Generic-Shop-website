@@ -28,16 +28,18 @@ public class NewsletterForm extends BasePage {
 
     @io.qameta.allure.Step("Enter a name")
     @io.qase.api.annotation.Step("Enter a name")
-    public void setName(String name) throws IllegalAccessException {
+    public NewsletterForm setName(String name) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(nameField))).sendKeys(name);
+        return this;
     }
 
     @io.qameta.allure.Step("Enter an email")
     @io.qase.api.annotation.Step("Enter an email")
-    public void setEmail(String email) throws IllegalAccessException {
+    public NewsletterForm setEmail(String email) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(emailField))).sendKeys(email);
+        return this;
     }
 
     public int getNameFieldMaxLength() {
