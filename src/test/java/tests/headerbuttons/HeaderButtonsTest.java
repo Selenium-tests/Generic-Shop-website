@@ -7,7 +7,7 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import tests.base.BaseTest;
 import qa.pageobject.header.Header;
 
