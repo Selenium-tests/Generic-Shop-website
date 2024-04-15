@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.PhrasesDataProviders;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.header.ResultsPage;
 import qa.pageobject.header.SearchEngine;
 import qa.support.constans.DataProviderNames;
@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 
 @Epic("E2E")
 @Feature("Searching products")
-public class SearchEngineTest extends BaseTest {
+public class SearchingProductsTest extends BaseTest {
 
     private SearchEngine searchEngine;
     private ResultsPage resultsPage;
@@ -51,6 +51,8 @@ public class SearchEngineTest extends BaseTest {
     @QaseTitle("Searching with a correct phrase")
     public void correct(String phrase) throws IllegalAccessException {
 
+        Allure.parameter("Phrase", phrase);
+
         check(phrase, (ResultsPage rp)-> Assert.assertFalse(rp.hasNoResults(),
                 "No results when searching with the \"" + phrase + "\" phrase"));
     }
@@ -65,6 +67,8 @@ public class SearchEngineTest extends BaseTest {
     @QaseId(7)
     @QaseTitle("Searching with an incorrect phrase")
     public void incorrect(String phrase) throws IllegalAccessException {
+
+        Allure.parameter("Phrase", phrase);
 
         check(phrase, (ResultsPage rp)-> Assert.assertTrue(rp.hasNoResults(),
                 "Results found when searching with \"" + phrase + "\" as an incorrect phrase"));
