@@ -31,7 +31,7 @@ public class HeaderButtonsTest extends BaseTest {
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl, "The page " + expectedUrl + " has not been opened");
     }
 
-    @Test(priority = 1)
+    @Test(priority = 3)
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Buttons")
@@ -46,7 +46,7 @@ public class HeaderButtonsTest extends BaseTest {
         actions(Header::clickLogo, URLs.HOME_PAGE);
     }
 
-    @Test(priority = 2)
+    @Test(priority = 1)
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Buttons")
@@ -61,7 +61,7 @@ public class HeaderButtonsTest extends BaseTest {
         actions(Header::clickAccountButton, URLs.LOGIN_PAGE);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 2)
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Buttons")
