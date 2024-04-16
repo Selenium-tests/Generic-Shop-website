@@ -24,10 +24,10 @@ public class ViewCartButtonTest extends BaseTest {
         goToPage(URLs.HOME_PAGE);
     }
 
-    private void setAllureAttachments(ThumbnailData thumbnailData) {
+    private void setAllureParameters(ThumbnailData thumbnailData) {
 
-        Allure.attachment("Thumbnail link", thumbnailData.getLink());
-        Allure.attachment("Tyche product", thumbnailData.getTycheProduct());
+        Allure.parameter("Thumbnail link", thumbnailData.getLink());
+        Allure.parameter("Tyche product", thumbnailData.getTycheProduct());
     }
 
     @Test(priority = 1, dataProvider = DataProviderNames.THUMBNAILS, dataProviderClass = ThumbnailsDataProviders.class)
@@ -41,7 +41,7 @@ public class ViewCartButtonTest extends BaseTest {
     @Description("The \"View Cart\" button visibility")
     public void viewCartButtonVisibility(ThumbnailData thumbnailData) {
 
-        setAllureAttachments(thumbnailData);
+        setAllureParameters(thumbnailData);
         ProductThumbnail productThumbnail = ProductThumbnailProvider.create(getDriver(), thumbnailData.getTycheProduct(), thumbnailData.getLink());
         productThumbnail.clickAddToCartButton();
 
@@ -63,7 +63,7 @@ public class ViewCartButtonTest extends BaseTest {
     @Description("Clicking the \"View Cart\" button")
     public void clickingViewCartButton(ThumbnailData thumbnailData) {
 
-        setAllureAttachments(thumbnailData);
+        setAllureParameters(thumbnailData);
         ProductThumbnail productThumbnail = ProductThumbnailProvider.create(getDriver(), thumbnailData.getTycheProduct(), thumbnailData.getLink());
         productThumbnail.clickAddToCartButton();
         productThumbnail.waitForViewCartButton();
