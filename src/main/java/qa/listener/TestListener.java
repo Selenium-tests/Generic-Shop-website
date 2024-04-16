@@ -42,7 +42,7 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {
 
-        logger.info("Starting test on method: " + iTestResult.getMethod().getMethodName());
+        logger.info("Starting test on method: {}", iTestResult.getMethod().getMethodName());
     }
 
     @Override
@@ -56,7 +56,7 @@ public class TestListener implements ITestListener {
 
         takeScreenshot();
         saveTextLog(iTestResult.getThrowable().getMessage());
-        logger.error("Test FAILED: " + iTestResult.getThrowable().getMessage());
+        logger.error("Test FAILED: {}", iTestResult.getThrowable().getMessage());
     }
 
     @Override
