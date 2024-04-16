@@ -1,12 +1,13 @@
 package tests.checkout;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.checkoutpage.CheckoutPage;
 import qa.support.actions.ShoppingCartActions;
 import tests.base.BaseTest;
@@ -20,13 +21,17 @@ public class OrderCommentsTextAreaTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         ShoppingCartActions.addToCart(getDriver());
-        goToPage(URLs.CHECKOUT_PAGE.getName());
+        goToPage(URLs.CHECKOUT_PAGE);
         checkoutPage = new CheckoutPage(getDriver());
     }
 
     @Test
+    @Owner("Paweł Aksman")
+    @Tag("Checkout")
+    @Tag("Text area")
+    @Link(name = "Home page", value = URLs.CHECKOUT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(142)
     @QaseTitle("Verification of the order comments text area text input")
