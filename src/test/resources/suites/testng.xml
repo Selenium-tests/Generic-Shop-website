@@ -3,9 +3,9 @@
 
 <suite name="Generic Shop tests">
     <suite-files>
-       <!--<suite-file path="header.xml"/>-->
+        <suite-file path="header.xml"/>
         <suite-file path="searchEngine.xml"/>
-        <!--<suite-file path="mainmenu.xml"/>
+        <suite-file path="mainmenu.xml"/>
         <suite-file path="sliderSection.xml"/>
         <suite-file path="thumbnail.xml"/>
         <suite-file path="newsletterForm.xml"/>
@@ -14,6 +14,6 @@
         <suite-file path="billingAddressForm.xml"/>
         <suite-file path="productPage.xml"/>
         <suite-file path="shoppingCart.xml"/>
-        <suite-file path="checkout.xml"/>-->
+        <suite-file path="checkout.xml"/>
     </suite-files>
 </suite>
