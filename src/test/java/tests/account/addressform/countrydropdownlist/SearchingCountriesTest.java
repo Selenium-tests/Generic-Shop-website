@@ -1,6 +1,7 @@
 package tests.account.addressform.countrydropdownlist;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.asserts.SoftAssert;
@@ -9,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.CountriesDataProviders;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.support.actions.Authentication;
 import qa.pageobject.addressform.CountryDropdownList;
 import qa.support.constans.DataProviderNames;
@@ -25,9 +26,9 @@ public class SearchingCountriesTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE);
         Authentication.loginWithCredentials(getDriver());
-        goToPage(URLs.BILLING_ADDRESS_FORM.getName());
+        goToPage(URLs.BILLING_ADDRESS_FORM);
 
         countryDropdownList = new CountryDropdownList(getDriver());
     }
@@ -57,11 +58,19 @@ public class SearchingCountriesTest extends BaseTest {
     }
 
     @Test(priority = 1, dataProvider = DataProviderNames.CORRECT, dataProviderClass = CountriesDataProviders.class)
+    @Owner("Paweł Aksman")
+    @Tag("Account")
+    @Tag("Address form")
+    @Tag("Dropdown list")
+    @Tag("Fields")
+    @Link(name = "Billing address form page", value = URLs.BILLING_ADDRESS_FORM)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(77)
     @QaseTitle("Searching with a correct country name")
     @Description("Searching with a correct country name")
     public void correct(String countryName) throws IllegalAccessException {
+
+        Allure.parameter("Country", countryName);
 
         fill(countryName);
         checkResultsListSize();
@@ -69,11 +78,19 @@ public class SearchingCountriesTest extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = DataProviderNames.PARTIAL, dataProviderClass = CountriesDataProviders.class)
+    @Owner("Paweł Aksman")
+    @Tag("Account")
+    @Tag("Address form")
+    @Tag("Dropdown list")
+    @Tag("Fields")
+    @Link(name = "Billing address form page", value = URLs.BILLING_ADDRESS_FORM)
     @Severity(SeverityLevel.NORMAL)
     @QaseId(78)
     @QaseTitle("Searching with a partial country name")
     @Description("Searching with a partial country name")
     public void partial(String countryName) throws IllegalAccessException {
+
+        Allure.parameter("country", countryName);
 
         fill(countryName);
         checkResultsListSize();
@@ -81,11 +98,19 @@ public class SearchingCountriesTest extends BaseTest {
     }
 
     @Test(priority = 3, dataProvider = DataProviderNames.INCORRECT, dataProviderClass = CountriesDataProviders.class)
+    @Owner("Paweł Aksman")
+    @Tag("Account")
+    @Tag("Address form")
+    @Tag("Dropdown list")
+    @Tag("Fields")
+    @Link(name = "Billing address form page", value = URLs.BILLING_ADDRESS_FORM)
     @Severity(SeverityLevel.MINOR)
     @QaseId(79)
     @QaseTitle("Searching with an incorrect country name")
     @Description("Searching with an incorrect country name")
     public void incorrect(String countryName) throws IllegalAccessException {
+
+        Allure.parameter("Country", countryName);
 
         fill(countryName);
         checkResultsListSize();
