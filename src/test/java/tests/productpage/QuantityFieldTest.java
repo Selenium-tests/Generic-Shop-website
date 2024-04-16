@@ -1,13 +1,14 @@
 package tests.productpage;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import qa.dataproviders.SpecialCharactersDataProvider;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.productpage.ProductPage;
 import qa.support.constans.DataProviderNames;
 import tests.base.QuantityFieldBaseTest;
@@ -21,7 +22,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         productPage = new ProductPage(getDriver());
     }
 
@@ -32,6 +33,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 1)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(118)
     @QaseTitle("Verification of the quantity field text input")
@@ -44,6 +52,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 2)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(119)
     @QaseTitle("Quantity- shorter than minimum (min - 1)")
@@ -56,6 +71,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 3)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(120)
     @QaseTitle("Quantity- minimum")
@@ -68,6 +90,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 4)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(121)
     @QaseTitle("Quantity- exceeding minimum (min + 1)")
@@ -80,6 +109,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 5)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(122)
     @QaseTitle("Quantity- shorter than maximum (max - 1)")
@@ -92,6 +128,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 6)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(123)
     @QaseTitle("Quantity- maximum")
@@ -104,6 +147,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 7)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(124)
     @QaseTitle("Quantity- exceeding maximum (max + 1)")
@@ -116,6 +166,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 8, dataProvider = DataProviderNames.SPECIAL_CHARACTERS, dataProviderClass = SpecialCharactersDataProvider.class)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(125)
     @QaseTitle("Entering a special character")
@@ -128,6 +185,13 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     }
 
     @Test(priority = 9)
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Fields")
+    @Tag("Quantity fields")
+    @Tag("Quantity")
+    @Tag("Boundary value analysis")
+    @Link(name = "Home page", value = URLs.BLACK_TOP_PRODUCT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(126)
     @QaseTitle("Blank the quantity field")
