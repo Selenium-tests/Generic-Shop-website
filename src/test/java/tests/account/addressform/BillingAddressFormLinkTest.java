@@ -1,14 +1,13 @@
 package tests.account.addressform;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.support.actions.Authentication;
 import qa.pageobject.account.EditAddressNavigation;
 import tests.base.BaseTest;
@@ -20,20 +19,24 @@ public class BillingAddressFormLinkTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE);
         Authentication.loginWithCredentials(getDriver());
-        goToPage(URLs.ADDRESSES_PAGE.getName());
+        goToPage(URLs.ADDRESSES_PAGE);
         editAddressNavigation = new EditAddressNavigation(getDriver());
     }
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
+    @Owner("Paweł Aksman")
+    @Tag("Account")
+    @Tag("Links")
+    @Link(name = "Addresses page", value = URLs.ADDRESSES_PAGE)
     @QaseId(74)
     @QaseTitle("Opening the billing address form page")
     @Description("Opening the billing address form page")
     public void editLink() {
 
         editAddressNavigation.clickBillingAddressLink();
-        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BILLING_ADDRESS_FORM.getName());
+        Assert.assertEquals(getDriver().getCurrentUrl(), URLs.BILLING_ADDRESS_FORM);
     }
 }

@@ -1,12 +1,13 @@
 package tests.account.addressform.countrydropdownlist;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.addressform.CountryDropdownList;
 import qa.support.actions.Authentication;
 import tests.base.BaseTest;
@@ -20,13 +21,18 @@ public class FunctionalitiesTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToPage(URLs.LOGIN_PAGE.getName());
+        goToPage(URLs.LOGIN_PAGE);
         Authentication.loginWithCredentials(getDriver());
-        goToPage(URLs.BILLING_ADDRESS_FORM.getName());
+        goToPage(URLs.BILLING_ADDRESS_FORM);
         countryDropdownList = new CountryDropdownList(getDriver());
     }
 
     @Test(priority = 1)
+    @Owner("Paweł Aksman")
+    @Tag("Account")
+    @Tag("Address form")
+    @Tag("Dropdown list")
+    @Link(name = "Billing address form page", value = URLs.BILLING_ADDRESS_FORM)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(75)
     @QaseTitle("Expanding the list")
@@ -43,6 +49,12 @@ public class FunctionalitiesTest extends BaseTest {
     }
 
     @Test(priority = 2)
+    @Owner("Paweł Aksman")
+    @Tag("Account")
+    @Tag("Address form")
+    @Tag("Dropdown list")
+    @Tag("Fields")
+    @Link(name = "Billing address form page", value = URLs.BILLING_ADDRESS_FORM)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(76)
     @QaseTitle("Verification of the search field text input")
@@ -50,6 +62,8 @@ public class FunctionalitiesTest extends BaseTest {
     public void searchField() throws IllegalAccessException {
 
         String country = "New Zealand";
+        Allure.parameter("Text", country);
+
         countryDropdownList.clickTriggerElement();
         countryDropdownList.typeCountry(country);
         Assert.assertEquals(countryDropdownList.getSearchFieldContent(), country, "Incorrect the search field output");
