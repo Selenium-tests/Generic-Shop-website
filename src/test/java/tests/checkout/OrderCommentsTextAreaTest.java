@@ -17,6 +17,7 @@ import tests.base.BaseTest;
 public class OrderCommentsTextAreaTest extends BaseTest {
 
     private CheckoutPage checkoutPage;
+    private final String comment = "This is the comment";
 
     @BeforeMethod
     public void create() throws IllegalAccessException {
@@ -38,7 +39,7 @@ public class OrderCommentsTextAreaTest extends BaseTest {
     @Description("Verification of the order comments text area text input")
     public void inputTextVerification() throws IllegalAccessException {
 
-        String comment = "This is the comment";
+        Allure.parameter("Text", comment);
         checkoutPage.getOrderCommentsField().setComment(comment);
 
         Assert.assertEquals(checkoutPage.getOrderCommentsField().getComment(), comment,
