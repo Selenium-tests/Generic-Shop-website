@@ -16,7 +16,7 @@ import tests.base.BaseTest;
 public class InputTextVerificationTest extends BaseTest {
 
     private NewsletterForm newsletterForm;
-    private final String TEXT = "This is the text";
+    private final String text = "This is the text";
 
     @BeforeMethod
     public void create() {
@@ -37,9 +37,9 @@ public class InputTextVerificationTest extends BaseTest {
     @Description("Verification of the \"Name\" field text input")
     public void nameField() throws IllegalAccessException {
 
-        newsletterForm.setName(TEXT);
-
-        Assert.assertEquals(newsletterForm.getName(), TEXT, "Incorrect the \"Name\" field output");
+        Allure.parameter("Text", text);
+        newsletterForm.setName(text);
+        Assert.assertEquals(newsletterForm.getName(), text, "Incorrect the \"Name\" field output");
     }
 
     @Test(priority = 2)
@@ -54,8 +54,8 @@ public class InputTextVerificationTest extends BaseTest {
     @Description("Verification of the \"Email\" field text input")
     public void emailField() throws IllegalAccessException {
 
-        newsletterForm.setEmail(TEXT);
+        newsletterForm.setEmail(text);
 
-        Assert.assertEquals(newsletterForm.getEmail(), TEXT, "Incorrect the \"Email\" field output");
+        Assert.assertEquals(newsletterForm.getEmail(), text, "Incorrect the \"Email\" field output");
     }
 }
