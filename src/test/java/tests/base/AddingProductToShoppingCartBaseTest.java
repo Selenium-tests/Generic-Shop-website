@@ -3,7 +3,7 @@ package tests.base;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import qa.models.ProductData;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.shoppingcart.ShoppingCart;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public class AddingProductToShoppingCartBaseTest extends BaseTest {
 
     protected void checkShoppingCartRowsCount(ShoppingCart shoppingCart, int expectedRowsCount) {
 
-        goToPage(URLs.SHOPPING_CART.getName());
+        goToPage(URLs.SHOPPING_CART_PAGE);
         shoppingCart.getTable().findRows();
 
         Assert.assertEquals(shoppingCart.getTable().getRowsCount(), expectedRowsCount);

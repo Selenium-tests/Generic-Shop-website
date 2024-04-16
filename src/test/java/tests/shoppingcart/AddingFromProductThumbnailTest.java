@@ -1,6 +1,7 @@
 package tests.shoppingcart;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.annotations.BeforeMethod;
@@ -8,7 +9,7 @@ import org.testng.annotations.Test;
 import qa.models.ProductData;
 import qa.models.ThumbnailData;
 import qa.dataproviders.ThumbnailsDataProviders;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.pageobject.shoppingcart.ShoppingCart;
 import qa.pageobject.thumbnails.ProductThumbnail;
 import qa.support.thumbnailprovider.ProductThumbnailProvider;
@@ -28,7 +29,7 @@ public class AddingFromProductThumbnailTest extends AddingProductToShoppingCartB
     @BeforeMethod
     private void create() {
 
-        goToPage(URLs.HOME_PAGE.getName());
+        goToPage(URLs.HOME_PAGE);
         shoppingCart = new ShoppingCart(getDriver());
         ThumbnailsDataProviders thumbnailsDataProviders = new ThumbnailsDataProviders();
         thumbnailData = (ThumbnailData[]) thumbnailsDataProviders.thumbnails();
@@ -45,6 +46,10 @@ public class AddingFromProductThumbnailTest extends AddingProductToShoppingCartB
     }
 
     @Test
+    @Owner("Paweł Aksman")
+    @Tag("Thumbnails")
+    @Tag("Shopping cart")
+    @Tag("Products")
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(128)
     @QaseTitle("Adding product from a product thumbnail")
