@@ -179,6 +179,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     @Description("Entering a special character")
     public void specialCharacters(String character) throws IllegalAccessException {
 
+        Allure.parameter("Character", character);
         productPage.getQuantityField().setQuantity(character);
         productPage.clickAddToCart();
         checkValidationMessageVisibility(productPage.getQuantityField());
