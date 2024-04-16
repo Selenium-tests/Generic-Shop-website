@@ -182,6 +182,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     @Description("Entering a special character")
     public void specialCharacters(String character) {
 
+        Allure.parameter("Character", character);
         shoppingCart.getTable().getQuantityField(0).setQuantity(character);
         checkValidationMessageVisibility(shoppingCart.getTable().getQuantityField(0));
     }
