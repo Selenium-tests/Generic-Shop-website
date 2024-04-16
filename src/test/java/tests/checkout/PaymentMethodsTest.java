@@ -1,13 +1,14 @@
 package tests.checkout;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
-import qa.enums.URLs;
+import qa.support.constans.URLs;
 import qa.support.addressformfiller.AddressFormFiller;
 import qa.support.actions.ShoppingCartActions;
 import qa.support.modelsbuilder.ModelsBuilder;
@@ -28,9 +29,9 @@ public class PaymentMethodsTest extends BaseTest {
     @BeforeMethod
     public void create() throws IllegalAccessException {
 
-        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE.getName());
+        goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         ShoppingCartActions.addToCart(getDriver());
-        goToPage(URLs.CHECKOUT_PAGE.getName());
+        goToPage(URLs.CHECKOUT_PAGE);
 
         checkoutPage = new CheckoutPage(getDriver());
 
@@ -39,14 +40,14 @@ public class PaymentMethodsTest extends BaseTest {
         AddressFormFiller.get(addressData, getDriver());
     }
 
-    public void waitForOrderPage(URLs url) {
+    public void waitForOrderPage(String url) {
 
         OrderPage orderPage = new OrderPage(getDriver());
 
         try {
-            orderPage.waitUntilThePageIsOpen(url.getName());
+            orderPage.waitUntilThePageIsOpen(url);
         } catch (Exception e) {
-            Assert.fail("The \"" + url.getName() + "\" received page is not open");
+            Assert.fail("The \"" + url + "\" received page is not open");
         }
     }
 
@@ -57,6 +58,10 @@ public class PaymentMethodsTest extends BaseTest {
     }
 
     @Test(priority = 1)
+    @Owner("Paweł Aksman")
+    @Tag("Checkout")
+    @Tag("Payment")
+    @Link(name = "Home page", value = URLs.CHECKOUT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(143)
     @QaseTitle("The \"Direct bank transfer\" method")
@@ -64,10 +69,14 @@ public class PaymentMethodsTest extends BaseTest {
     public void directBankTransfer() throws IllegalAccessException {
 
         check(PaymentMethodsSection::clickDirectBankTransferCheckbox);
-        waitForOrderPage(URLs.ORDER_RECEIVED);
+        waitForOrderPage(URLs.ORDER_RECEIVED_PAGE);
     }
 
     @Test(priority = 2)
+    @Owner("Paweł Aksman")
+    @Tag("Checkout")
+    @Tag("Payment")
+    @Link(name = "Home page", value = URLs.CHECKOUT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(144)
     @QaseTitle("The \"Check payments\" method")
@@ -75,10 +84,14 @@ public class PaymentMethodsTest extends BaseTest {
     public void checkPayments() throws IllegalAccessException {
 
         check(PaymentMethodsSection::clickCheckPaymentsCheckbox);
-        waitForOrderPage(URLs.ORDER_RECEIVED);
+        waitForOrderPage(URLs.ORDER_RECEIVED_PAGE);
     }
 
     @Test(priority = 3)
+    @Owner("Paweł Aksman")
+    @Tag("Checkout")
+    @Tag("Payment")
+    @Link(name = "Home page", value = URLs.CHECKOUT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(145)
     @QaseTitle("The \"Cash on delivery\" method")
@@ -86,10 +99,14 @@ public class PaymentMethodsTest extends BaseTest {
     public void cashOnDelivery() throws IllegalAccessException {
 
         check(PaymentMethodsSection::clickCashOnDeliveryCheckbox);
-        waitForOrderPage(URLs.ORDER_RECEIVED);
+        waitForOrderPage(URLs.ORDER_RECEIVED_PAGE);
     }
 
     @Test(priority = 4)
+    @Owner("Paweł Aksman")
+    @Tag("Checkout")
+    @Tag("Payment")
+    @Link(name = "Home page", value = URLs.CHECKOUT_PAGE)
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(146)
     @QaseTitle("The \"PayPal\" method")
@@ -97,6 +114,6 @@ public class PaymentMethodsTest extends BaseTest {
     public void payPal() throws IllegalAccessException {
 
         check(PaymentMethodsSection::clickPayPalCheckbox);
-        waitForOrderPage(URLs.PAY_PAL);
+        waitForOrderPage(URLs.PAY_PAL_PAGE);
     }
 }
