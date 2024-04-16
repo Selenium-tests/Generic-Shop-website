@@ -17,7 +17,7 @@
         <parameter name="fileName" value="GSS_Phrases"/>
 
         <classes>
-            <class name="tests.searchengine.SearchEngineTest">
+            <class name="tests.searchengine.SearchingProductsTest">
                 <methods>
                     <exclude name="naughtyStrings"/>
                 </methods>

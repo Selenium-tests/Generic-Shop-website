@@ -21,15 +21,15 @@
         </classes>
     </test>
 
-    <test name="Input text verification">
-        <classes>
-            <class name="tests.account.addressform.InputTextVerificationTest"/>
-        </classes>
-    </test>
-
     <test name="Dynamic fields">
         <classes>
             <class name="tests.account.addressform.DynamicFieldsTest"/>
+        </classes>
+    </test>
+
+    <test name="Input text verification">
+        <classes>
+            <class name="tests.account.addressform.InputTextVerificationTest"/>
         </classes>
     </test>
     
@@ -39,7 +39,6 @@
         <classes>
             <class name="tests.account.addressform.SettingUserDataTest"/>
         </classes>
-
     </test>
 
 </suite>

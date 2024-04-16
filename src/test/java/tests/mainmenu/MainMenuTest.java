@@ -14,7 +14,7 @@ import qa.pageobject.mainmenu.MainMenu;
 import java.util.function.Consumer;
 
 @Epic("E2E")
-@Feature("Main menu")
+@Feature("Main menu links")
 public class MainMenuTest extends BaseTest {
 
     private MainMenu mainMenu;

@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 import qa.browsermanager.BrowserManager;
 import qa.driver.WebDriverGlobal;
 import qa.driver.WebDriverProvider;
+import qa.support.allureenvironment.AllureEnvironment;
 import qa.support.testdataloader.TestdataLoader;
 
 import java.time.Duration;
@@ -24,7 +25,6 @@ public class BaseTest {
     public void readJSONFile(@Optional("noFileName") String fileName) throws JSONException {
 
         if (!fileName.equals("noFileName")) {
-
             TestdataLoader.load(fileName);
         }
     }
@@ -36,6 +36,7 @@ public class BaseTest {
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebDriverGlobal.setDriver(driver);
         BrowserManager.start(driver);
+        AllureEnvironment.setEnvironment(driver);
     }
 
     @AfterMethod

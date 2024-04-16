@@ -14,7 +14,7 @@ import qa.pageobject.mainmenu.DropdownList;
 import java.util.function.Consumer;
 
 @Epic("E2E")
-@Feature("Dropdown list")
+@Feature("Main menu dropdown list links")
 public class MainMenuDropdownListTest extends BaseTest {
 
     private DropdownList dropdownList;

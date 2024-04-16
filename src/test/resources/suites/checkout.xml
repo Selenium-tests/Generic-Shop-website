@@ -9,19 +9,19 @@
 
     <test name="Expanding and collapsing forms">
         <classes>
-            <class name="tests.checkout.SectionsVisibilityTest"/>
-        </classes>
-    </test>
-
-    <test name="Payment methods">
-        <classes>
-            <class name="tests.checkout.PaymentMethodsTest"/>
+            <class name="tests.checkout.ExpandingAndCollapsingFormsTest"/>
         </classes>
     </test>
 
     <test name="Order comments text area">
         <classes>
             <class name="tests.checkout.OrderCommentsTextAreaTest"/>
+        </classes>
+    </test>
+
+    <test name="Payment methods">
+        <classes>
+            <class name="tests.checkout.PaymentMethodsTest"/>
         </classes>
     </test>
 
