@@ -1,6 +1,7 @@
 package tests.shoppingcart;
 
 import io.qameta.allure.*;
+import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
 import io.qase.api.annotation.QaseTitle;
 import org.testng.annotations.BeforeMethod;
@@ -49,6 +50,10 @@ public class AddingFromProductPageTest extends AddingProductToShoppingCartBaseTe
     }
 
     @Test
+    @Owner("Paweł Aksman")
+    @Tag("Product page")
+    @Tag("Shopping cart")
+    @Tag("Products")
     @Severity(SeverityLevel.CRITICAL)
     @QaseId(127)
     @QaseTitle("Adding product from a product page")
