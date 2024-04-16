@@ -31,16 +31,18 @@ public class LoginForm extends BasePage {
 
     @io.qameta.allure.Step("Enter an username or email address")
     @io.qase.api.annotation.Step("Enter an username or email address")
-    public void setUsername(String username) throws IllegalAccessException {
+    public LoginForm setUsername(String username) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(usernameField))).sendKeys(username);
+        return this;
     }
 
     @io.qameta.allure.Step("Enter a password")
     @io.qase.api.annotation.Step("Enter a password")
-    public void setPassword(String password) throws IllegalAccessException {
+    public LoginForm setPassword(String password) throws IllegalAccessException {
 
         getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(passwordField))).sendKeys(password);
+        return this;
     }
 
     public String getUsername() {
