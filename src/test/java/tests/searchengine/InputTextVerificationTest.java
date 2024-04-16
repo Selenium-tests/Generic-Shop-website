@@ -16,7 +16,7 @@ import tests.base.BaseTest;
 public class InputTextVerificationTest extends BaseTest {
 
     private SearchEngine searchEngine;
-    private final String TEXT = "This is the text!!!";
+    private final String text = "This is the text!!!";
 
     @BeforeMethod
     private void create() {
@@ -37,7 +37,8 @@ public class InputTextVerificationTest extends BaseTest {
     @Description("Verification of the search field text input")
     public void textInputVerification() throws IllegalAccessException {
 
-        searchEngine.setPhrase(TEXT);
-        Assert.assertEquals(searchEngine.getPhrase(), TEXT, "Incorrect output");
+        Allure.parameter("Text", text);
+        searchEngine.setPhrase(text);
+        Assert.assertEquals(searchEngine.getPhrase(), text, "Incorrect output");
     }
 }
