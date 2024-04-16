@@ -1,5 +1,6 @@
 package qa.pageobject.account;
 
+import lombok.Getter;
 import qa.base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class AccountPage extends BasePage {
 
+    @Getter
     private final AccountNavigation accountNavigation;
 
     public AccountPage(WebDriver driver) {
@@ -22,10 +24,5 @@ public class AccountPage extends BasePage {
     public boolean isDashboardLinkDisplayed() {
 
         return dashboard.isDisplayed();
-    }
-
-    public AccountNavigation getAccountNavigation() {
-
-        return accountNavigation;
     }
 }
