@@ -20,7 +20,7 @@ public class AllureEnvironment {
                         .put("Java runtime version", System.getProperty("java.runtime.version"))
                         .put("Browser", ((RemoteWebDriver) driver).getCapabilities().getBrowserName() + " " +
                                                    ((RemoteWebDriver)driver).getCapabilities().getBrowserVersion())
-                        .build(), System.getProperty("user.dir") + "/allure-results/");
+                        .build(), System.getProperty("user.dir") + "/allure-results/"
         );
     }
 }
