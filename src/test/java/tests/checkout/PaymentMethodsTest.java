@@ -35,7 +35,7 @@ public class PaymentMethodsTest extends BaseTest {
 
         checkoutPage = new CheckoutPage(getDriver());
 
-        String source = TestdataLoader.loadQuickly("GSP_Address");
+        String source = TestdataLoader.loadQuickly("GSS_Address");
         AddressData addressData = ModelsBuilder.getAddressFormData(DataProviderNames.CORRECT, source)[0];
         AddressFormFiller.get(addressData, getDriver());
     }
