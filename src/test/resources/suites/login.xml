@@ -16,11 +16,7 @@
     <test name="Login">
         <parameter name="fileName" value="GSS_Credentials"/>
         <classes>
-            <class name="tests.login.LoginTest">
-                <methods>
-                    <include name="correct"/>
-                </methods>
-            </class>
+            <class name="tests.login.LoginTest"/>
         </classes>
     </test>
 

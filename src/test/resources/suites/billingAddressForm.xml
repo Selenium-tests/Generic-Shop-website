@@ -17,11 +17,13 @@
         <parameter name="fileName" value="GSS_Countries"/>
 
         <classes>
-            <class name="tests.account.addressform.SettingUserDataTest"/>
+            <class name="tests.account.addressform.countrydropdownlist.FunctionalitiesTest"/>
+            <class name="tests.account.addressform.countrydropdownlist.SearchingCountriesTest"/>
         </classes>
     </test>
 
     <test name="Dynamic fields">
+        <parameter name="fileName" value="GSS_DynamicFields"/>
         <classes>
             <class name="tests.account.addressform.DynamicFieldsTest"/>
         </classes>
@@ -34,7 +36,7 @@
     </test>
     
     <test name="Setting user billing address information">
-        <parameter name="fileName" value="GSS.Address"/>
+        <parameter name="fileName" value="GSS_Address"/>
 
         <classes>
             <class name="tests.account.addressform.SettingUserDataTest"/>
