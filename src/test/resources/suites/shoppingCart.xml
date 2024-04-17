@@ -11,7 +11,7 @@
         <parameter name="fileName" value="GSS_ProductsToCart"/>
 
         <classes>
-            <class name="tests.shoppingcart.AddingFromProductThumbnailTest"/>
+            <class name="tests.shoppingcart.AddingFromProductPageTest"/>
         </classes>
     </test>
 
