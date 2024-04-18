@@ -11,7 +11,7 @@ public class FirefoxBrowser extends WebDriverFactory {
 
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--headless=new");
+        //options.addArguments("--headless=new");
         options.merge(getCapabilities(FirefoxOptions.FIREFOX_OPTIONS, options));
 
         return new FirefoxDriver(options);
