@@ -4,7 +4,12 @@
 <suite name="Login form">
 
     <listeners>
-        <listener class-name="qa.listener.TestListener"/>
+        <listener class-name="qa.listeners.SuiteListener"/>
+        <listener class-name="qa.listeners.ConfigurationListener"/>
+        <listener class-name="qa.listeners.DataProviderListener"/>
+        <listener class-name="qa.listeners.ExecutionListener"/>
+        <listener class-name="qa.listeners.TestListener"/>
+        <listener class-name="qa.listeners.RetryListener"/>
     </listeners>
 
     <test name="Input text verification">

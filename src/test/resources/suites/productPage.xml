@@ -4,7 +4,7 @@
 <suite name="Product page">
 
     <listeners>
-        <listener class-name="qa.listener.TestListener"/>
+        <listener class-name="qa.listeners.TestListener"/>
     </listeners>
 
     <test name="The quantity field">
