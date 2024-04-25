@@ -1,11 +1,10 @@
-package qa.listener;
+package qa.listeners;
 
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import qa.driver.WebDriverGlobal;
@@ -25,18 +24,6 @@ public class TestListener implements ITestListener {
     public byte[] takeScreenshot() {
 
         return ((TakesScreenshot) WebDriverGlobal.getDriver()).getScreenshotAs(OutputType.BYTES);
-    }
-
-    @Override
-    public void onStart(ITestContext iTestContext) {
-
-        logger.info("Suite: " + iTestContext.getSuite());
-    }
-
-    @Override
-    public void onFinish(ITestContext iTestContext) {
-
-        logger.info("Test finish");
     }
 
     @Override
