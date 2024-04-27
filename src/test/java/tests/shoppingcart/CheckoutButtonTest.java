@@ -17,7 +17,7 @@ import qa.pageobject.shoppingcart.ShoppingCart;
 public class CheckoutButtonTest extends BaseTest {
 
     @BeforeMethod
-    public void create() throws IllegalAccessException {
+    public void prepare() throws IllegalAccessException {
 
         goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         ShoppingCartActions.addToCart(getDriver());

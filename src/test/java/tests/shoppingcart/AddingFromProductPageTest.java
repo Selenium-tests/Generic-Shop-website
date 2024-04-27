@@ -1,5 +1,6 @@
 package tests.shoppingcart;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -26,7 +27,7 @@ public class AddingFromProductPageTest extends AddingProductToShoppingCartBaseTe
     private List<ProductData> productData;
 
     @BeforeMethod
-    public void create() {
+    public void prepare() throws JsonProcessingException {
 
         productPage = new ProductPage(getDriver());
         shoppingCart = new ShoppingCart(getDriver());

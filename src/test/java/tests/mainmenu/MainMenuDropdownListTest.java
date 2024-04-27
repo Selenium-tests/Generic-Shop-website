@@ -20,7 +20,7 @@ public class MainMenuDropdownListTest extends BaseTest {
     private DropdownList dropdownList;
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         goToPage(URLs.HOME_PAGE);
         dropdownList = new DropdownList(getDriver());

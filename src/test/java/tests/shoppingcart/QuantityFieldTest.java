@@ -21,7 +21,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     private ShoppingCart shoppingCart;
 
     @BeforeMethod
-    public void create() throws IllegalAccessException {
+    public void prepare() throws IllegalAccessException {
 
         goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         ShoppingCartActions.addToCart(getDriver());

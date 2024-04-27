@@ -19,7 +19,7 @@ public class InputTextVerificationTest extends BaseTest {
     private final String text = "This is the text!!!";
 
     @BeforeMethod
-    private void create() {
+    private void prepare() {
 
         goToPage(URLs.HOME_PAGE);
         searchEngine = new SearchEngine(getDriver());

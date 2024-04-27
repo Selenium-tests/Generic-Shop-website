@@ -20,7 +20,7 @@ public class OrderCommentsTextAreaTest extends BaseTest {
     private final String comment = "This is the comment";
 
     @BeforeMethod
-    public void create() throws IllegalAccessException {
+    public void prepare() throws IllegalAccessException {
 
         goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         ShoppingCartActions.addToCart(getDriver());

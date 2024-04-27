@@ -20,7 +20,7 @@ public class QuantityFieldTest extends QuantityFieldBaseTest {
     private ProductPage productPage;
 
     @BeforeMethod
-    public void create() throws IllegalAccessException {
+    public void prepare() throws IllegalAccessException {
 
         goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         productPage = new ProductPage(getDriver());

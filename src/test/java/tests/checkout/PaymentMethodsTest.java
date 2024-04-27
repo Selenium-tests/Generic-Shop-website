@@ -1,5 +1,6 @@
 package tests.checkout;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -27,7 +28,7 @@ public class PaymentMethodsTest extends BaseTest {
     private CheckoutPage checkoutPage;
 
     @BeforeMethod
-    public void create() throws IllegalAccessException {
+    public void prepare() throws IllegalAccessException, JsonProcessingException {
 
         goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         ShoppingCartActions.addToCart(getDriver());

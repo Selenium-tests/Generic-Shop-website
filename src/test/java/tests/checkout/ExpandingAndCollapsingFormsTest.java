@@ -19,7 +19,7 @@ public class ExpandingAndCollapsingFormsTest extends BaseTest {
     private CheckoutPage checkoutPage;
 
     @BeforeMethod
-    public void create() throws IllegalAccessException {
+    public void prepare() throws IllegalAccessException {
 
         goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         ShoppingCartActions.addToCart(getDriver());

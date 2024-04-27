@@ -23,7 +23,7 @@ public class SubscriptionToNewsletterTest extends BaseTest {
     private NewsletterForm newsletterForm;
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         goToPage(URLs.HOME_PAGE);
         newsletterForm = new NewsletterForm(getDriver());

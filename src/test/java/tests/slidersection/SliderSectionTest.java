@@ -18,7 +18,7 @@ public class SliderSectionTest extends BaseTest {
     private SliderSection sliderSection;
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         goToPage(URLs.HOME_PAGE);
         sliderSection = new SliderSection(getDriver());

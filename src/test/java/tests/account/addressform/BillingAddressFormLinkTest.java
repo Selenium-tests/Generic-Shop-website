@@ -1,5 +1,6 @@
 package tests.account.addressform;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -17,7 +18,7 @@ public class BillingAddressFormLinkTest extends BaseTest {
     private EditAddressNavigation editAddressNavigation;
 
     @BeforeMethod
-    public void create() throws IllegalAccessException {
+    public void prepare() throws IllegalAccessException, JsonProcessingException {
 
         goToPage(URLs.LOGIN_PAGE);
         Authentication.loginWithCredentials(getDriver());

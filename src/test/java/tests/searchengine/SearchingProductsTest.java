@@ -24,7 +24,7 @@ public class SearchingProductsTest extends BaseTest {
     private ResultsPage resultsPage;
 
     @BeforeMethod
-    private void create() {
+    private void prepare() {
 
         goToPage(URLs.HOME_PAGE);
         searchEngine = new SearchEngine(getDriver());

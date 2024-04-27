@@ -1,5 +1,6 @@
 package tests.account;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -22,7 +23,7 @@ public class AccountNavigationTest extends BaseTest {
     private AccountNavigation accountNavigation;
 
     @BeforeMethod
-    private void init() throws JSONException, IllegalAccessException {
+    private void prepare() throws JSONException, IllegalAccessException, JsonProcessingException {
 
         goToPage(URLs.LOGIN_PAGE);
         accountNavigation = new AccountNavigation(getDriver());

@@ -20,7 +20,7 @@ public class HeaderButtonsTest extends BaseTest {
     private Header header;
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         header = new Header(getDriver());
     }

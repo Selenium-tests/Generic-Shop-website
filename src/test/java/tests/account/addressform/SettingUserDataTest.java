@@ -1,5 +1,6 @@
 package tests.account.addressform;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -24,7 +25,7 @@ public class SettingUserDataTest extends BaseTest {
     private AddressForm addressForm;
 
     @BeforeMethod
-    public void create() throws IllegalAccessException {
+    public void prepare() throws IllegalAccessException, JsonProcessingException {
 
         goToPage(URLs.LOGIN_PAGE);
         Authentication.loginWithCredentials(getDriver());
@@ -35,7 +36,7 @@ public class SettingUserDataTest extends BaseTest {
 
         Allure.parameter("First name", addressData.getFirstName());
         Allure.parameter("Last name", addressData.getLastName());
-        Allure.parameter("Company", addressData.getCompanyName());
+        Allure.parameter("Company", addressData.getCompany());
         Allure.parameter("Address 1", addressData.getAddress());
         Allure.parameter("Address 2", addressData.getAddressLine2());
         Allure.parameter("Postcode", addressData.getPostcode());
@@ -51,7 +52,7 @@ public class SettingUserDataTest extends BaseTest {
         softAssert.assertEquals(addressForm.getCountryDropdownList().getCountry(), data.getCountry(), "Incorrect country");
         softAssert.assertEquals(addressForm.getFirstName(), data.getFirstName(), "Incorrect first name");
         softAssert.assertEquals(addressForm.getLastName(), data.getLastName(), "Incorrect last name");
-        softAssert.assertEquals(addressForm.getCompany(), data.getCompanyName(), "Incorrect company");
+        softAssert.assertEquals(addressForm.getCompany(), data.getCompany(), "Incorrect company");
         softAssert.assertEquals(addressForm.getAddress(), data.getAddress(), "Incorrect address");
         softAssert.assertEquals(addressForm.getAddressLine2(), data.getAddressLine2(), "Incorrect optional address");
         softAssert.assertEquals(addressForm.getCity(), data.getCity(), "Incorrect city");
@@ -84,14 +85,14 @@ public class SettingUserDataTest extends BaseTest {
 
     private void checkErrorMessageContent(AddressData data) {
 
-        Assert.assertEquals(addressForm.getErrorMessageText(), data.getErrorMessage(),
+        Assert.assertEquals(addressForm.getErrorMessageText(), data.getMessage(),
                 "Incorrect error message content");
     }
 
     private void checkValidationMessageContent(AddressData data) {
 
-        Assert.assertTrue(addressForm.getValidationMessageText().contains(data.getErrorMessage()),
-                "The validation message does not contain \"" + data.getErrorMessage() + "\"");
+        Assert.assertTrue(addressForm.getValidationMessageText().contains(data.getMessage()),
+                "The validation message does not contain \"" + data.getMessage() + "\"");
     }
 
     private void positiveTestActions(AddressData data) throws IllegalAccessException {

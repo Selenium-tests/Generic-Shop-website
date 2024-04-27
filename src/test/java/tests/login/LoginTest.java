@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
     private LoginForm loginForm;
 
     @BeforeMethod
-    private void create() {
+    private void prepare() {
 
         goToPage(URLs.LOGIN_PAGE);
         loginForm = new LoginForm(getDriver());

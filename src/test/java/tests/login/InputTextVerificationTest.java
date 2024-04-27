@@ -17,7 +17,7 @@ public class InputTextVerificationTest extends BaseTest {
     private final String text = "This is the text!";
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         goToPage(URLs.LOGIN_PAGE);
         loginForm = new LoginForm(getDriver());

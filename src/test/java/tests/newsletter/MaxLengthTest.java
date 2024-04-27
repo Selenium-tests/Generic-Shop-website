@@ -1,5 +1,6 @@
 package tests.newsletter;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import io.qameta.allure.*;
 import io.qameta.allure.testng.Tag;
 import io.qase.api.annotation.QaseId;
@@ -7,10 +8,8 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import qa.dataproviders.NewsletterDataProviders;
 import qa.support.constans.URLs;
 import qa.pageobject.footer.NewsletterForm;
-import qa.support.constans.DataProviderNames;
 import tests.base.BaseTest;
 
 @Epic("E2E")
@@ -20,13 +19,13 @@ public class MaxLengthTest extends BaseTest {
     private NewsletterForm newsletterForm;
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         goToPage(URLs.HOME_PAGE);
         newsletterForm = new NewsletterForm(getDriver());
     }
 
-    @Test(priority = 1, dataProvider = DataProviderNames.NAME_FIELD_BELOW_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 1)
     @Owner("Paweł Aksman")
     @Tag("Footer")
     @Tag("Newsletter")
@@ -37,15 +36,14 @@ public class MaxLengthTest extends BaseTest {
     @QaseId(42)
     @QaseTitle("The \"Name\" field - shorter than maximum (maxLength - 1)")
     @Description("The \"Name\" field - shorter than maximum (maxLength - 1)")
-    public void nameFieldBelowMax(String text) throws IllegalAccessException {
+    public void nameFieldBelowMax() throws IllegalAccessException {
 
-        Allure.parameter("Text", text);
-
-        newsletterForm.setName(text);
-        Assert.assertEquals(text.length(), newsletterForm.getName().length(), "The output text is not equals to the expected");
+        String name = RandomStringUtils.randomAlphabetic(newsletterForm.getNameFieldMaxLength() - 1);
+        newsletterForm.setName(name);
+        Assert.assertEquals(name.length(), newsletterForm.getName().length(), "The output text is not equals to the expected");
     }
 
-    @Test(priority = 2, dataProvider = DataProviderNames.NAME_FIELD_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 2)
     @Owner("Paweł Aksman")
     @Tag("Footer")
     @Tag("Newsletter")
@@ -56,15 +54,14 @@ public class MaxLengthTest extends BaseTest {
     @QaseId(43)
     @QaseTitle("The \"Name\" field - maximum (maxLength)")
     @Description("The \"Name\" field - maximum (maxLength)")
-    public void nameFieldMax(String text) throws IllegalAccessException {
+    public void nameFieldMax() throws IllegalAccessException {
 
-        Allure.parameter("Text", text);
-
-        newsletterForm.setName(text);
-        Assert.assertEquals(text.length(), newsletterForm.getName().length(), "The output text is not equals to the expected");
+        String name = RandomStringUtils.randomAlphabetic(newsletterForm.getNameFieldMaxLength());
+        newsletterForm.setName(name);
+        Assert.assertEquals(name.length(), newsletterForm.getName().length(), "The output text is not equals to the expected");
     }
 
-    @Test(priority = 3, dataProvider = DataProviderNames.NAME_FIELD_ABOVE_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 3)
     @Owner("Paweł Aksman")
     @Tag("Footer")
     @Tag("Newsletter")
@@ -75,15 +72,14 @@ public class MaxLengthTest extends BaseTest {
     @QaseId(44)
     @QaseTitle("The \"Name\" field - exceeding maximum (maxLength + 1)")
     @Description("The \"Name\" field - exceeding maximum (maxLength + 1)")
-    public void nameFieldAboveMax(String text) throws IllegalAccessException {
+    public void nameFieldAboveMax() throws IllegalAccessException {
 
-        Allure.parameter("Text", text);
-
-        newsletterForm.setName(text);
-        Assert.assertEquals(text.length() - 1, newsletterForm.getName().length(), "The output text is not equals to the expected");
+        String name = RandomStringUtils.randomAlphabetic(newsletterForm.getNameFieldMaxLength() + 1);
+        newsletterForm.setName(name);
+        Assert.assertEquals(name.length() - 1, newsletterForm.getName().length(), "The output text is not equals to the expected");
     }
 
-    @Test(priority = 4, dataProvider = DataProviderNames.EMAIL_FIELD_BELOW_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 4)
     @Owner("Paweł Aksman")
     @Tag("Footer")
     @Tag("Newsletter")
@@ -94,15 +90,14 @@ public class MaxLengthTest extends BaseTest {
     @QaseId(45)
     @QaseTitle("The \"Email\" field - shorter than maximum (maxLength - 1)")
     @Description("The \"Email\" field - shorter than maximum (maxLength - 1)")
-    public void emailFieldBelowMax(String text) throws IllegalAccessException {
+    public void emailFieldBelowMax() throws IllegalAccessException {
 
-        Allure.parameter("Text", text);
-
-        newsletterForm.setEmail(text);
-        Assert.assertEquals(text.length(), newsletterForm.getEmail().length(), "The output text is not equals to the expected");
+        String email = RandomStringUtils.randomAlphabetic(newsletterForm.getNameFieldMaxLength() - 1);
+        newsletterForm.setEmail(email);
+        Assert.assertEquals(email.length(), newsletterForm.getEmail().length(), "The output text is not equals to the expected");
     }
 
-    @Test(priority = 5, dataProvider = DataProviderNames.EMAIL_FIELD_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 5)
     @Owner("Paweł Aksman")
     @Tag("Footer")
     @Tag("Newsletter")
@@ -113,15 +108,14 @@ public class MaxLengthTest extends BaseTest {
     @QaseId(46)
     @QaseTitle("The \"Email\" field - maximum (maxLength)")
     @Description("The \"Email\" field - maximum (maxLength)")
-    public void emailFieldMax(String text) throws IllegalAccessException {
+    public void emailFieldMax() throws IllegalAccessException {
 
-        Allure.parameter("Text", text);
-
-        newsletterForm.setEmail(text);
-        Assert.assertEquals(text.length(), newsletterForm.getEmail().length(), "The output text is not equals to the expected");
+        String email = RandomStringUtils.randomAlphabetic(newsletterForm.getNameFieldMaxLength());
+        newsletterForm.setEmail(email);
+        Assert.assertEquals(email.length(), newsletterForm.getEmail().length(), "The output text is not equals to the expected");
     }
 
-    @Test(priority = 6, dataProvider = DataProviderNames.EMAIL_FIELD_ABOVE_MAX, dataProviderClass = NewsletterDataProviders.class)
+    @Test(priority = 6)
     @Owner("Paweł Aksman")
     @Tag("Footer")
     @Tag("Newsletter")
@@ -132,11 +126,10 @@ public class MaxLengthTest extends BaseTest {
     @QaseId(47)
     @QaseTitle("The \"Email\" field - exceeding maximum (maxLength + 1)")
     @Description("The \"Email\" field - exceeding maximum (maxLength + 1)")
-    public void emailFieldAboveMax(String text) throws IllegalAccessException {
+    public void emailFieldAboveMax() throws IllegalAccessException {
 
-        Allure.parameter("Text", text);
-
-        newsletterForm.setEmail(text);
-        Assert.assertEquals(text.length() - 1, newsletterForm.getEmail().length(), "The output text is not equals to the expected");
+        String email = RandomStringUtils.randomAlphabetic(newsletterForm.getNameFieldMaxLength() + 1);
+        newsletterForm.setEmail(email);
+        Assert.assertEquals(email.length() - 1, newsletterForm.getEmail().length(), "The output text is not equals to the expected");
     }
 }

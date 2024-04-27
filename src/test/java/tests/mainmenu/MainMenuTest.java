@@ -20,7 +20,7 @@ public class MainMenuTest extends BaseTest {
     private MainMenu mainMenu;
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         goToPage(URLs.HOME_PAGE);
         mainMenu = new MainMenu(getDriver());

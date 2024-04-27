@@ -19,7 +19,7 @@ import tests.base.BaseTest;
 public class ViewCartButtonTest extends BaseTest {
 
     @BeforeMethod
-    public void create() {
+    public void prepare() {
 
         goToPage(URLs.HOME_PAGE);
     }
