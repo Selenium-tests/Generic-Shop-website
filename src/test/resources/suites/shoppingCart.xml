@@ -38,7 +38,7 @@
 
     <test name="The 'Proceed to checkout' button'">
         <classes>
-            <class name="tests.shoppingcart.QuantityFieldTest"/>
+            <class name="tests.shoppingcart.CheckoutButtonTest"/>
         </classes>
     </test>
 </suite>
