@@ -1,1 +1,40 @@
-{"correct":["FITT","jeans","Marina","style","JeAnS"],"partial":["sty","bel","blo","SHO","swe","Mari","jea","DrE"],"incorrect":["Land Rover","BMW","Ford","Lotus","Porsche","Ford","Lexus","Jeep","Cadillac","Infiniti"],"naughtyStrings":["../../../../../../../../../../../etc/hosts","1.00","-1E+02","(╯°□°）╯︵ ┻━┻)  ","👩🏽","1/2","ﾟ･✿ヾ╲(｡◕‿◕｡)╱✿･ﾟ"]}
+{
+    "correct": [
+        "FITT",
+        "jeans",
+        "Marina",
+        "style",
+        "JeAnS"
+    ],
+    "partial": [
+        "sty",
+        "bel",
+        "blo",
+        "SHO",
+        "swe",
+        "Mari",
+        "jea",
+        "DrE"
+    ],
+    "incorrect": [
+        "Land Rover",
+        "BMW",
+        "Ford",
+        "Lotus",
+        "Porsche",
+        "Ford",
+        "Lexus",
+        "Jeep",
+        "Cadillac",
+        "Infiniti"
+    ],
+    "naughtyStrings": [
+        "../../../../../../../../../../../etc/hosts",
+        "1.00",
+        "-1E+02",
+        "(╯°□°）╯︵ ┻━┻)  ",
+        "👩🏽",
+        "1/2",
+        "ﾟ･✿ヾ╲(｡◕‿◕｡)╱✿･ﾟ"
+    ]
+}
