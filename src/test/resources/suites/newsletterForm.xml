@@ -13,8 +13,6 @@
     </listeners>
 
     <test name="Input text verification">
-        <parameter name="fileName" value="GSS_NewsletterFields"/>
-
         <classes>
             <class name="tests.newsletter.InputTextVerificationTest"/>
             <class name="tests.newsletter.MaxLengthTest"/>
