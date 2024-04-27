@@ -14,7 +14,7 @@ public class AddressFormFiller {
         addressForm
                 .setFirstName(data.getFirstName())
                 .setLastName(data.getLastName())
-                .setCompany(data.getCompanyName())
+                .setCompany(data.getCompany())
                 .setAddress_1(data.getAddress())
                 .setAddress_2(data.getAddressLine2())
                 .setCity(data.getCity())
