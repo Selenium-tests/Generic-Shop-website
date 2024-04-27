@@ -19,8 +19,20 @@ public class MainMenuDropdownListTest extends BaseTest {
 
     private DropdownList dropdownList;
 
-    @BeforeMethod
-    public void prepare() {
+    @BeforeMethod(onlyForGroups = "withoutExpandedDropdownList")
+    public void prepareWithoutExpandedDropdownList() {
+
+        initialize();
+    }
+
+    @BeforeMethod(onlyForGroups = "withExpandedDropdownList")
+    public void prepareWithExpandedDropdownList() throws IllegalAccessException {
+
+        initialize();
+        dropdownList.hoverOverCategoriesLink();
+    }
+
+    private void initialize() {
 
         goToPage(URLs.HOME_PAGE);
         dropdownList = new DropdownList(getDriver());
@@ -28,13 +40,12 @@ public class MainMenuDropdownListTest extends BaseTest {
 
     private void actions(Consumer<DropdownList> consumer, String expectedUrl) throws IllegalAccessException {
 
-        dropdownList.hoverOverCategoriesLink();
         consumer.accept(dropdownList);
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedUrl,
                 "The page \"" + expectedUrl + "\" has not been opened");
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "withoutExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -56,7 +67,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         }
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -69,7 +80,6 @@ public class MainMenuDropdownListTest extends BaseTest {
     @Description("Collapsing the dropdown list")
     public void collapsingDropdownList() throws IllegalAccessException {
 
-        dropdownList.hoverOverCategoriesLink();
         dropdownList.leaveCategoriesLinkArea();
 
         try {
@@ -79,7 +89,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         }
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -95,7 +105,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickAllLink, URLs.ALL_PAGE);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -111,7 +121,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickShirtsLink, URLs.SHIRTS_PAGE);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -127,7 +137,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickFeaturedLink, URLs.FEATURED_PAGE);
     }
 
-    @Test(priority = 6)
+    @Test(priority = 6, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -143,7 +153,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickTrendsLink, URLs.TRENDS_PAGE);
     }
 
-    @Test(priority = 7)
+    @Test(priority = 7, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -159,7 +169,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickScarfsLink, URLs.SCARFS_PAGE);
     }
 
-    @Test(priority = 8)
+    @Test(priority = 8, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -175,7 +185,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickShoesLink, URLs.SHOES_PAGE);
     }
 
-    @Test(priority = 9)
+    @Test(priority = 9, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -191,7 +201,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickTopsLink, URLs.TOPS_PAGE);
     }
 
-    @Test(priority = 10)
+    @Test(priority = 10, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -207,7 +217,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickBlouseLink, URLs.BLOUSE_PAGE);
     }
 
-    @Test(priority = 11)
+    @Test(priority = 11, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
@@ -223,7 +233,7 @@ public class MainMenuDropdownListTest extends BaseTest {
         actions(DropdownList::clickDressesLink, URLs.DRESSES_PAGE);
     }
 
-    @Test(priority = 12)
+    @Test(priority = 12, groups = "withExpandedDropdownList")
     @Owner("Paweł Aksman")
     @Tag("Header")
     @Tag("Main menu")
