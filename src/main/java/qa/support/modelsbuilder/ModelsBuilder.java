@@ -1,14 +1,18 @@
 package qa.support.modelsbuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import qa.models.*;
 import qa.support.testdataloader.TestdataLoader;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.stream.IntStream;
 
 
 public class ModelsBuilder {
+
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     private static JSONArray getJSONArray(String source, String key) {
 
@@ -16,22 +20,17 @@ public class ModelsBuilder {
         return jsonObject.getJSONArray(key);
     }
 
-    public static Credentials[] getCredentials(String source, String key) {
+    private static  <T> T[] getObjectArray(String source, String key, Class<T> clazz) throws JsonProcessingException {
 
         JSONArray jsonArray = getJSONArray(source, key);
+        T[] object = (T[]) java.lang.reflect.Array.newInstance(clazz, jsonArray.length());
 
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new Credentials(
-                        jsonArray.getJSONObject(i).getString("emailOrUsername"),
-                        jsonArray.getJSONObject(i).getString("password"),
-                        jsonArray.getJSONObject(i).getString("message")
-                ))
-                .toArray(Credentials[]::new);
-    }
+        for (int i = 0; i < jsonArray.length(); i++) {
 
-    public static Credentials[] getCredentials(String key) {
+            object[i] = objectMapper.readValue(jsonArray.getJSONObject(i).toString(), clazz);
+        }
 
-        return getCredentials(TestdataLoader.getSource(), key);
+        return object;
     }
 
     public static String[] getStrings(String key) {
@@ -43,89 +42,38 @@ public class ModelsBuilder {
                 .toArray(String[]::new);
     }
 
-    public static LinkData[] getLinkData(String key) {
+    public static Credentials[] getCredentials(String source, String key) throws JsonProcessingException {
 
-        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(), key);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new LinkData(
-                        jsonArray.getJSONObject(i).getString("link"),
-                        jsonArray.getJSONObject(i).getString("url")
-                ))
-                .toArray(LinkData[]::new);
+        return getObjectArray(source, key, Credentials.class);
     }
 
-    public static NewsletterData[] getNewsletterData(String key) {
+    public static Credentials[] getCredentials(String key) throws JsonProcessingException {
 
-        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(), key);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new NewsletterData(
-                        jsonArray.getJSONObject(i).getString("username"),
-                        jsonArray.getJSONObject(i).getString("email"),
-                        jsonArray.getJSONObject(i).getString("message")
-                ))
-                .toArray(NewsletterData[]::new);
+        return getCredentials(TestdataLoader.getSource(), key);
     }
 
-    public static String[] getNewsletterFieldText(String fieldType, String key) {
+    public static NewsletterData[] getNewsletterData(String key) throws JsonProcessingException {
 
-        JSONObject jsonObject = new JSONObject(TestdataLoader.getSource());
-        JSONObject field = jsonObject.getJSONObject(fieldType);
-        JSONArray jsonArray = field.getJSONArray(key);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(jsonArray::getString)
-                .toArray(String[]::new);
+        return getObjectArray(TestdataLoader.getSource(), key, NewsletterData.class);
     }
 
-    public static AddressData[] getAddressFormData(String key, String source) {
+    public static AddressData[] getAddressFormData(String key, String source) throws JsonProcessingException {
 
-        JSONArray jsonArray = getJSONArray(source, key);
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new AddressData(
-                        jsonArray.getJSONObject(i).getString("country"),
-                        jsonArray.getJSONObject(i).getString("firstName"),
-                        jsonArray.getJSONObject(i).getString("lastName"),
-                        jsonArray.getJSONObject(i).getString("company"),
-                        jsonArray.getJSONObject(i).getString("address"),
-                        jsonArray.getJSONObject(i).getString("addressLine2"),
-                        jsonArray.getJSONObject(i).getString("city"),
-                        jsonArray.getJSONObject(i).getString("postcode"),
-                        jsonArray.getJSONObject(i).getString("phone"),
-                        jsonArray.getJSONObject(i).getString("email"),
-                        jsonArray.getJSONObject(i).getString("message")
-                ))
-                .toArray(AddressData[]::new);
+        return getObjectArray(source, key, AddressData.class);
     }
 
-    public static AddressData[] getAddressFormData(String key) {
+    public static AddressData[] getAddressFormData(String key) throws JsonProcessingException {
 
         return getAddressFormData(key, TestdataLoader.getSource());
     }
 
-    public static ProductToCart[] getProductsToCart() {
+    public static ProductToCart[] getProductsToCart() throws JsonProcessingException {
 
-        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(), "products");
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new ProductToCart(
-                        jsonArray.getJSONObject(i).getString("url"),
-                        jsonArray.getJSONObject(i).getString("quantity")
-                ))
-                .toArray(ProductToCart[]::new);
+        return getObjectArray(TestdataLoader.getSource(), "products", ProductToCart.class);
     }
 
-    public static ThumbnailData[] getThumbnailsData() {
+    public static ThumbnailData[] getThumbnailsData() throws JsonProcessingException {
 
-        JSONArray jsonArray = getJSONArray(TestdataLoader.getSource(),"thumbnails");
-
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(i -> new ThumbnailData(
-                        String.valueOf(jsonArray.getJSONObject(i).getInt("tycheProduct")),
-                        jsonArray.getJSONObject(i).getString("link")
-                ))
-                .toArray(ThumbnailData[]::new);
+        return getObjectArray(TestdataLoader.getSource(), "thumbnails", ThumbnailData.class);
     }
 }
