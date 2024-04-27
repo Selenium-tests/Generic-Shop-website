@@ -5,12 +5,8 @@ import lombok.Getter;
 @Getter
 public class ProductToCart {
 
-    private final String url;
-    private final String quantity;
+    private String url;
+    private String quantity;
 
-    public ProductToCart(String url, String quantity) {
-
-        this.url = url;
-        this.quantity = quantity;
-    }
+    public ProductToCart() { }
 }

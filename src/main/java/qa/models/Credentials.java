@@ -6,14 +6,9 @@ import lombok.Getter;
 @Getter
 public class Credentials {
 
-    private final String emailOrUsername;
-    private final String password;
-    private final String message;
+    private String emailOrUsername;
+    private String password;
+    private String message;
 
-    public Credentials(String emailOrUsername, String password, String message) {
-
-        this.emailOrUsername = emailOrUsername;
-        this.password = password;
-        this.message = message;
-    }
+    public Credentials() { }
 }
