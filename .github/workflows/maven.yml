@@ -13,6 +13,30 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      qase_api_base_url:
+        description: 'Qase API URL'
+        required: true
+      qase_report:
+        description: 'Enabled/disabled reporting to Qase'
+        required: true
+      qase_project_code:
+        description: 'Qase project code'
+        required: true
+      qase_run_id:
+        description: 'Qase Run ID'
+        required: true
+      qase_run_complete:
+        description: 'Qase Run autocomplete'
+        required: true
+
+env:
+  QASE_ENABLE: ${{ secrets.QASE_ENABLE }}
+  QASE_PROJECT_CODE: ${{ secrets.QASE_PROJECT_CODE }}
+  QASE_RUN_NAME: ${{ secrets.QASE_RUN_NAME }}
+  QASE_RUN_DESCRIPTION: ${{ secrets.QASE_RUN_DESCRIPTION }}
+  QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
 
 jobs:
   build:
@@ -27,6 +51,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Add qase-tms/qase-link-run
+      uses: qase-tms/qase-link-run@main
+      env: 
+        QASE_API_TOKEN: ${{ secret.QASE_API_TOKEN }}
     - name: Build with Maven
       run: mvn clean test
 
