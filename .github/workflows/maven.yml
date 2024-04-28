@@ -32,11 +32,11 @@ on:
         required: true
 
 env:
-  QASE_ENABLE: ${{ env.QASE_ENABLE }}
-  QASE_PROJECT_CODE: ${{ env.QASE_PROJECT_CODE }}
-  QASE_RUN_NAME: ${{ env.QASE_RUN_NAME }}
-  QASE_RUN_DESCRIPTION: ${{ env.QASE_RUN_DESCRIPTION }}
-  QASE_API_TOKEN: ${{ env.QASE_API_TOKEN }}
+  QASE_ENABLE: ${{ secrets.QASE_ENABLE }}
+  QASE_PROJECT_CODE: ${{ secrets.QASE_PROJECT_CODE }}
+  QASE_RUN_NAME: ${{ secrets.QASE_RUN_NAME }}
+  QASE_RUN_DESCRIPTION: ${{ secrets.QASE_RUN_DESCRIPTION }}
+  QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
 
 jobs:
   build:
@@ -55,7 +55,7 @@ jobs:
       - name: Add qase-tms/qase-link-run
         uses: qase-tms/qase-link-run@main
         env: 
-          QASE_API_TOKEN: ${{ env.QASE_API_TOKEN }}
+          QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
       
       - name: Build with Maven
         run: mvn clean test
