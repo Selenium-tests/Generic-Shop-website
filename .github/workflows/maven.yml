@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean test -DQASE_ENABLE=${{env.QASE_ENABLE}} -DQASE_PROJECT_CODE=${{env.QASE_PROJECT_CODE}} -DQASE_RUN_NAME=${{env.QASE_RUN_NAME}} -DQASE_RUN_DESCRIPTION=${{env.QASE_RUN_DESCRIPTION}} -DQASE_API_TOKEN=${{env.QASE_API_TOKEN}}
+      run: mvn clean test
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
