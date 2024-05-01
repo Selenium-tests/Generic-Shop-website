@@ -13,30 +13,6 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch:
-    inputs:
-      qase_api_base_url:
-        description: 'Qase API URL'
-        required: true
-      qase_report:
-        description: 'Enabled/disabled reporting to Qase'
-        required: true
-      qase_project_code:
-        description: 'Qase project code'
-        required: true
-      qase_run_id:
-        description: 'Qase Run ID'
-        required: true
-      qase_run_complete:
-        description: 'Qase Run autocomplete'
-        required: true
-
-env:
-  QASE_ENABLE: ${{ secrets.QASE_ENABLE }}
-  QASE_PROJECT_CODE: ${{ secrets.QASE_PROJECT_CODE }}
-  QASE_RUN_NAME: ${{ secrets.QASE_RUN_NAME }}
-  QASE_RUN_DESCRIPTION: ${{ secrets.QASE_RUN_DESCRIPTION }}
-  QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
 
 jobs:
   build:
@@ -52,13 +28,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
       
-      - name: Add qase-tms/qase-link-run
-        uses: qase-tms/qase-link-run@main
-        env: 
-          QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
-      
       - name: Build with Maven
-        run: mvn clean test
+        run: mvn clean test -DQASE_ENABLE=${{env.QASE_ENABLE}} -DQASE_PROJECT_CODE$={{env.QASE_PROJECT_CODE}} -DQASE_RUN_NAME=${{env.QASE_RUN_NAME}} -DQASE_RUN_DESCRIPTION=${{env.QASE_RUN_DESCRIPTION}} -DQASE_API_TOKEN=${{env.QASE_API_TOKEN}}
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
