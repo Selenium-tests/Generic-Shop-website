@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      BROWSER_TYPE: "edge"
+      BROWSER_TYPE: "firefox"
       QASE_ENABLE: ${{secrets.QASE_ENABLE}}
       QASE_PROJECT_CODE: ${{secrets.QASE_PROJECT_CODE}}
       QASE_API_TOKEN: ${{secrets.QASE_API_TOKEN}}
@@ -34,7 +34,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean test -DBROWSER_TYPE="${{env.BROWSER_TYPE}}" -DQASE_ENABLE="${{env.QASE_ENABLE}}" -DQASE_PROJECT_CODE="${{env.QASE_PROJECT_CODE}}" -DQASE_RUN_NAME="E2E" -DQASE_RUN_DESCRIPTION="Tests on the Microsoft Edge browser" -DQASE_API_TOKEN="${{env.QASE_API_TOKEN}}"
+      run: mvn clean test -DBROWSER_TYPE="${{env.BROWSER_TYPE}}" -DQASE_ENABLE="${{env.QASE_ENABLE}}" -DQASE_PROJECT_CODE="${{env.QASE_PROJECT_CODE}}" -DQASE_RUN_NAME="E2E" -DQASE_RUN_DESCRIPTION="Tests on the Mozilla Firefox browser" -DQASE_API_TOKEN="${{env.QASE_API_TOKEN}}"
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
