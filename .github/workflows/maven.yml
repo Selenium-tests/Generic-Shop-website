@@ -1,3 +1,4 @@
+re
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
 
@@ -33,6 +34,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Install Geckodriver
+      run: |
+        sudo apt-get update
+        sudo apt-get install firefox-geckodriver
     - name: Build with Maven
       run: mvn clean test -DBROWSER_TYPE="${{env.BROWSER_TYPE}}" -DQASE_ENABLE="${{env.QASE_ENABLE}}" -DQASE_PROJECT_CODE="${{env.QASE_PROJECT_CODE}}" -DQASE_RUN_NAME="E2E" -DQASE_RUN_DESCRIPTION="Tests on the Mozilla Firefox browser" -DQASE_API_TOKEN="${{env.QASE_API_TOKEN}}"
 
