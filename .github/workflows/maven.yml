@@ -40,7 +40,7 @@ jobs:
         tar -xvzf geckodriver-v0.34.0-linux-aarch64.tar.gz
         sudo mv geckodriver /usr/local/bin/
     - name: Build with Maven
-      run: mvn clean test -DBROWSER_TYPE="${{env.BROWSER_TYPE}}" -DQASE_ENABLE="${{env.QASE_ENABLE}}" -DQASE_PROJECT_CODE="${{env.QASE_PROJECT_CODE}}" -DQASE_RUN_NAME="E2E" -DQASE_RUN_DESCRIPTION="Tests on the Mozilla Firefox browser" -DQASE_API_TOKEN="${{env.QASE_API_TOKEN}}"
+      run: mvn clean test -DBROWSER_TYPE="${{env.BROWSER_TYPE}}" -DQASE_ENABLE="${{env.QASE_ENABLE}}" -DQASE_PROJECT_CODE="${{env.QASE_PROJECT_CODE}}" -DQASE_RUN_NAME="E2E tests" -DQASE_RUN_DESCRIPTION="Tests on the Mozilla Firefox browser" -DQASE_API_TOKEN="${{env.QASE_API_TOKEN}}"
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
