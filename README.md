@@ -8,6 +8,15 @@ This project is dedicated to automating tests for the website [skleptest.pl](htt
 
 The aim of the project is to ensure high application quality through the automation of the testing process for the Skleptest.pl website. Automation allows tests to be executed in a repeatable and effective manner, contributing to faster detection of errors and improvement of product quality.
 
+### Tested Functionality
+The following functionalities are tested through automated tests:
+- Links on the homepage and subpages
+- Buttons on the homepage and subpages
+- Newsletter subscription
+- Login functionality
+- Providing data for the billing address form
+- Adding products to the cart
+
 ### Tools Used
 - **Selenium WebDriver:** Used for automating interactions with web browsers.
 - **TestNG:** Framework for creating and managing automated tests.
