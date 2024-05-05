@@ -16,6 +16,7 @@ The following functionalities are tested through automated tests:
 - Login functionality
 - Providing data for the billing address form
 - Adding products to the cart
+- Checkout
 
 ### Tools Used
 - **Selenium WebDriver:** Used for automating interactions with web browsers.
