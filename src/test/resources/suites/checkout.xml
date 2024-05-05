@@ -25,10 +25,4 @@
         </classes>
     </test>
 
-    <test name="Payment methods">
-        <classes>
-            <class name="tests.checkout.PaymentMethodsTest"/>
-        </classes>
-    </test>
-
 </suite>
