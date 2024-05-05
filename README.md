@@ -35,7 +35,9 @@ Test data used in tests has been generated using the Mockaroo tool, ensuring div
 
 ## Issue with Tests on Mozilla Firefox Browser
 
-Currently, there is an issue with tests related to the billing address form on the Mozilla Firefox browser. Therefore, it is recommended to temporarily skip these tests when running them on this browser. Work on resolving this issue is ongoing and will be implemented as soon as possible.
+⚠️ Currently, there is an issue with tests related to the billing address form on the Mozilla Firefox browser. Therefore, it is recommended to either skip these tests by removing them from the .xml file for TestNG or using the @Ignore annotation from TestNG when running them on this browser. Work on resolving this issue is ongoing and will be implemented as soon as possible.
+
+
 
 
 ![Java](https://img.shields.io/badge/Java-%230A1A2F?style=flat&logo=openjdk&logoColor=%236875CD) ![Selenium](https://img.shields.io/badge/Selenium-%230A1A2F?style=flat&logo=Selenium&logoColor=%2300cc00) ![Webdriver](https://img.shields.io/badge/Webdriver-%230A1A2F?style=flat&logo=Webdriver
