@@ -10,6 +10,7 @@
         <listener class-name="qa.listeners.ExecutionListener"/>
         <listener class-name="qa.listeners.TestListener"/>
         <listener class-name="qa.listeners.RetryListener"/>
+        <listener class-name="io.qase.testng.QaseListener"/>
     </listeners>
 
     <test name="The slider section buttons">
