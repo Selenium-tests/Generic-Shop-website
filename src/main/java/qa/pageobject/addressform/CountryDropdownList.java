@@ -35,9 +35,9 @@ public class CountryDropdownList extends BasePage {
 
     @io.qameta.allure.Step("Click the trigger element")
     @io.qase.api.annotation.Step("Click the trigger element")
-    public void clickTriggerElement() {
+    public void clickTriggerElement() throws IllegalAccessException {
 
-        getWebDriverWait().until(ExpectedConditions.elementToBeClickable(triggerElement)).click();
+        getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(ToBy.get(triggerElement))).click();
     }
 
     @io.qameta.allure.Step("Enter a country")
