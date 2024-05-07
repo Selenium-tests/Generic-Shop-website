@@ -11,15 +11,10 @@ import org.testng.annotations.Test;
 import qa.support.actions.Authentication;
 import tests.base.BaseTest;
 import qa.support.constans.URLs;
-import qa.support.addressformfiller.AddressFormFiller;
 import qa.support.actions.ShoppingCartActions;
-import qa.support.modelsbuilder.ModelsBuilder;
 import qa.pageobject.checkoutpage.CheckoutPage;
 import qa.pageobject.checkoutpage.PaymentMethodsSection;
-import qa.models.AddressData;
 import qa.pageobject.orderreceivedpage.OrderPage;
-import qa.support.constans.DataProviderNames;
-import qa.support.testdataloader.TestdataLoader;
 import qa.support.consumer.AccessThrowingConsumer;
 
 @Epic("E2E")
@@ -38,10 +33,6 @@ public class PaymentMethodsTest extends BaseTest {
         goToPage(URLs.CHECKOUT_PAGE);
 
         checkoutPage = new CheckoutPage(getDriver());
-
-        String source = TestdataLoader.loadQuickly("GSS_Address");
-        AddressData addressData = ModelsBuilder.getAddressFormData(DataProviderNames.CORRECT, source)[0];
-        AddressFormFiller.get(addressData, getDriver());
     }
 
     public void waitForOrderPage(String url) {
