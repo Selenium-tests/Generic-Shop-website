@@ -41,7 +41,6 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult iTestResult) {
 
-        takeScreenshot();
         saveTextLog(iTestResult.getThrowable().getMessage());
         logger.error("Test FAILED: {}", iTestResult.getThrowable().getMessage());
     }
