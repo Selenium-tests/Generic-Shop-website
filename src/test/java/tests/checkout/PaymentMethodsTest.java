@@ -8,6 +8,7 @@ import io.qase.api.annotation.QaseTitle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import qa.support.actions.Authentication;
 import tests.base.BaseTest;
 import qa.support.constans.URLs;
 import qa.support.addressformfiller.AddressFormFiller;
@@ -30,6 +31,8 @@ public class PaymentMethodsTest extends BaseTest {
     @BeforeMethod
     public void prepare() throws IllegalAccessException, JsonProcessingException {
 
+        goToPage(URLs.LOGIN_PAGE);
+        Authentication.loginWithCredentials(getDriver());
         goToPage(URLs.BLACK_TOP_PRODUCT_PAGE);
         ShoppingCartActions.addToCart(getDriver());
         goToPage(URLs.CHECKOUT_PAGE);
@@ -52,7 +55,7 @@ public class PaymentMethodsTest extends BaseTest {
         }
     }
 
-    private void check(AccessThrowingConsumer<PaymentMethodsSection> consumer) throws IllegalAccessException {
+    private void actions(AccessThrowingConsumer<PaymentMethodsSection> consumer) throws IllegalAccessException {
 
         consumer.accept(checkoutPage.getPaymentMethodsSection());
         checkoutPage.clickPlaceOrderButton();
@@ -69,7 +72,7 @@ public class PaymentMethodsTest extends BaseTest {
     @Description("The \"Direct bank transfer\" method")
     public void directBankTransfer() throws IllegalAccessException {
 
-        check(PaymentMethodsSection::clickDirectBankTransferCheckbox);
+        actions(PaymentMethodsSection::clickDirectBankTransferCheckbox);
         waitForOrderPage(URLs.ORDER_RECEIVED_PAGE);
     }
 
@@ -82,9 +85,9 @@ public class PaymentMethodsTest extends BaseTest {
     @QaseId(144)
     @QaseTitle("The \"Check payments\" method")
     @Description("The \"Check payments\" method")
-    public void checkPayments() throws IllegalAccessException {
+    public void actionsPayments() throws IllegalAccessException {
 
-        check(PaymentMethodsSection::clickCheckPaymentsCheckbox);
+        actions(PaymentMethodsSection::clickCheckPaymentsCheckbox);
         waitForOrderPage(URLs.ORDER_RECEIVED_PAGE);
     }
 
@@ -99,7 +102,7 @@ public class PaymentMethodsTest extends BaseTest {
     @Description("The \"Cash on delivery\" method")
     public void cashOnDelivery() throws IllegalAccessException {
 
-        check(PaymentMethodsSection::clickCashOnDeliveryCheckbox);
+        actions(PaymentMethodsSection::clickCashOnDeliveryCheckbox);
         waitForOrderPage(URLs.ORDER_RECEIVED_PAGE);
     }
 
@@ -114,7 +117,7 @@ public class PaymentMethodsTest extends BaseTest {
     @Description("The \"PayPal\" method")
     public void payPal() throws IllegalAccessException {
 
-        check(PaymentMethodsSection::clickPayPalCheckbox);
+        actions(PaymentMethodsSection::clickPayPalCheckbox);
         waitForOrderPage(URLs.PAY_PAL_PAGE);
     }
 }
