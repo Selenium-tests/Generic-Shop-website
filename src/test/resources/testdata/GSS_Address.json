@@ -1,6 +1,6 @@
 {
     "correct": [{
-        "country": "Afghanistan",
+        "country": "Sweden",
         "firstName": "Hewett",
         "lastName": "Bockmaster",
         "company": "Devpoint",
@@ -13,7 +13,7 @@
         "message": ""
     }],
     "incorrectFirstName": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "38_Rocky6a1hUU_Yh",
         "lastName": "Craigheid",
         "company": "Wordtune",
@@ -78,7 +78,7 @@
         "message": "Please enter a valid postcode / ZIP."
     }],
     "incorrectEmail": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "Trever",
         "lastName": "MacAirt",
         "company": "Meembee",
@@ -91,7 +91,7 @@
         "message": ""
     }],
     "incorrectAddress": [{
-        "country": "Afghanistan",
+        "country": "Sweden",
         "firstName": "Artair",
         "lastName": "Copestick",
         "company": "Eazzy",
@@ -130,7 +130,7 @@
         "message": "Last name is a required field."
     }],
     "blankCompanyField": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "Shellie",
         "lastName": "Monckton",
         "company": "",
@@ -143,7 +143,7 @@
         "message": ""
     }],
     "blankAddressField": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "Janaya",
         "lastName": "Fuke",
         "company": "Vitz",
@@ -156,7 +156,7 @@
         "message": "Street address is a required field."
     }],
     "incorrectOptionalAddress": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "Dolph",
         "lastName": "Heake",
         "company": "Aivee",
@@ -169,7 +169,7 @@
         "message": "Email address is a required field."
     }],
     "blankOptionalAddress": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "Lucias",
         "lastName": "Kassel",
         "company": "Brightdog",
@@ -195,7 +195,7 @@
         "message": "Town / City is a required field."
     }],
     "blankPostcodeField": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "Ravid",
         "lastName": "Alflat",
         "company": "Blognation",
@@ -208,7 +208,7 @@
         "message": "Postcode / ZIP is a required field."
     }],
     "blankPhoneField": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "Gabey",
         "lastName": "Ritter",
         "company": "Kwinu",
@@ -221,7 +221,7 @@
         "message": "Phone is a required field."
     }],
     "blankEmailField": [{
-        "country": "Portugal",
+        "country": "Sweden",
         "firstName": "Dolph",
         "lastName": "Heake",
         "company": "Aivee",
