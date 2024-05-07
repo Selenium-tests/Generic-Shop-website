@@ -11,7 +11,7 @@ public class WebDriverProvider {
         String browser = System.getenv("BROWSER_TYPE");
 
         if (browser == null || browser.isEmpty()) {
-            browser = "chrome";
+            browser = "firefox";
         }
 
         String packages = WebDriverFactory.class.getPackage().getName();
