@@ -111,7 +111,7 @@ public class SettingUserDataTest extends BaseTest {
         checkErrorMessageContent(data);
     }
 
-    @Test(priority = 6, dataProvider = DataProviderNames.CORRECT, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 18, dataProvider = DataProviderNames.CORRECT, dataProviderClass = AddressDataProviders.class)
     @Owner("Paweł Aksman")
     @Tag("Account")
     @Tag("Address form")
@@ -402,7 +402,7 @@ public class SettingUserDataTest extends BaseTest {
         checkValidationMessageContent(data);
     }
 
-    @Test(priority = 18, dataProvider = DataProviderNames.BLANK_EMAIL_FIELD, dataProviderClass = AddressDataProviders.class)
+    @Test(priority = 6, dataProvider = DataProviderNames.BLANK_EMAIL_FIELD, dataProviderClass = AddressDataProviders.class)
     @Owner("Paweł Aksman")
     @Tag("Account")
     @Tag("Address form")
