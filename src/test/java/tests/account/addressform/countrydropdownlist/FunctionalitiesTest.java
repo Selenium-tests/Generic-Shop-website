@@ -38,7 +38,7 @@ public class FunctionalitiesTest extends BaseTest {
     @QaseId(75)
     @QaseTitle("Expanding the list")
     @Description("Expanding the list")
-    public void expandingDropdownList() {
+    public void expandingDropdownList() throws IllegalAccessException {
 
         countryDropdownList.clickTriggerElement();
 
