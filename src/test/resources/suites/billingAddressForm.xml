@@ -40,7 +40,7 @@
             <class name="tests.account.addressform.InputTextVerificationTest"/>
         </classes>
     </test>
-    
+
     <test name="Setting user billing address information">
         <parameter name="fileName" value="GSS_Address"/>
 
