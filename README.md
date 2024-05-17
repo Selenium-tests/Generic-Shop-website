@@ -1,10 +1,10 @@
 # Automated Testing for Skleptest.pl
 
-This project is dedicated to automating tests for the website [skleptest.pl](https://skleptest.pl/) using the Selenium WebDriver tool.
-
 ## Description
 
-## Project goal
+This project is dedicated to automating tests for the website [skleptest.pl](https://skleptest.pl/) using the Selenium WebDriver tool.
+
+### Project goal
 
 The aim of the project is to ensure high application quality through the automation of the testing process for the Skleptest.pl website. Automation allows tests to be executed in a repeatable and effective manner, contributing to faster detection of errors and improvement of product quality.
 
